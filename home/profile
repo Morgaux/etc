@@ -1,0 +1,23 @@
+#!/bin/sh
+#
+# gitlab.com/morgaux/etc
+#
+
+# RUNSHELL function returns the run shell regardsless of the $SHELL variable
+runshell(){
+	ps $$ | tail -n 1 | sed 's/.*://g' | cut -c 4-
+}
+
+# set PATH so it includes user's private bin if it exists
+[ -d "$HOME/bin" ] && PATH="$HOME/bin:$PATH"
+
+if [ -f "$HOME/etc/kshrc" ]; then
+	export ENV="$HOME/etc/kshrc"
+fi
+
+for i in nano vi vim ; do
+	[ -x "$(command -v $i)" ] && EDITOR="$(which $i)"
+done
+
+export PATH HOME EDITOR
+
