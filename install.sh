@@ -25,7 +25,9 @@ usage()
 	echo "./install.sh [ OPTIONS ... ] DIRECTORY"
 	echo ""
 	echo "options:"
-	echo "-h | --help	show this message"
+	echo "-h, --help		show this message"
+	echo "-c [message]		commit local changes"
+	echo "-p [message]		push commits to repo"
 	echo ""
 	exit 0
 }
@@ -41,6 +43,10 @@ readFlags()
 				selfCommit
 				shift
 				;;
+			-p|--push)
+				selfpush
+				shift
+				;;
 		esac
 	done
 }
@@ -49,7 +55,15 @@ selfCommit()
 {
 	[ -x "$(command -v git)" ] || die "git not installed"
 	git add .
-	git commit -m "$MESG"
+	git diff-index --quiet HEAD -- || git commit -m "$MESG"
+}
+
+selfPush()
+{
+	selfCommit
+	until git push ; do
+		echo "Retring" 1>&2
+	done
 }
 
 die()
