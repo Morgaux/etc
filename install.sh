@@ -17,12 +17,12 @@ MESG="Installer commit"
 
 main()
 {
+	[ -d "$HOME/etc" ] || mkdir -p $HOME/etc
 	readFlags $@
 }
 
 usage()
 {
-	echo "$NAME - v$VERSION"
 	echo "usage:"
 	echo "./install.sh [ -h ] | [ -c | -p  MESSAGE ] | [ -i DIRECTORY ]"
 	echo ""
@@ -30,7 +30,9 @@ usage()
 	echo "-h, --help		show this message"
 	echo "-c message		commit local changes"
 	echo "-p message		push commits to repo"
+	echo "-i, --install DIRECTORY	install etc/DIRECTORY files"
 	echo ""
+	echo "$NAME - v$VERSION"
 	exit 0
 }
 
@@ -39,7 +41,7 @@ readFlags()
 	while [ $# -gt 0 ] ; do
 		case $1 in
 			-h|--help)
-				usage
+				usage # exit implicit
 				;;
 			-c|--commit)
 				shift
@@ -55,8 +57,38 @@ readFlags()
 				selfPush
 				exit $?
 				;;
+			-i|--install)
+				shift
+				while [ $# -gt 0 ] ; do
+					selfInstall $1
+					shift
+				done
+				;;
 		esac
 	done
+}
+
+selfInstall()
+{
+	if [ -d $1 ] ; then
+		echo "Installing $1 files..."
+		install$1
+		return
+	fi
+	die "directory $1 not found"
+}
+
+installhome()
+{
+	echo "Installing profile..."
+	cp -uf ~/src/etc/home/profile ~/.profile || echo "Skipping profile..."
+	for i in aliases kshrc vimrc ; do
+		echo "Installing $i..."
+		cp -uf ~/src/etc/home/$i ~/etc/$i || echo "Skipping $i..."
+	done
+	ln -sf ~/etc/kshrc ~/.kshrc
+	ln -sf ~/etc/kshrc ~/.mkshrc
+	ln -sf ~/etc/vimrc ~/.vimrc
 }
 
 selfCommit()
