@@ -42,20 +42,10 @@ readFlags()
 			-c|--commit)
 				selfCommit
 				shift
-				if [ $# -gt 0 ] ; then
-					MESG="$1"
-					shift
-				else
-					die "-c flag requires 1 possitional arg"
-				fi
 				;;
 			-p|--push)
 				selfPush
 				shift
-				if [ $# -gt 0 ] ; then
-					MESG="$1"
-					shift
-				fi
 				;;
 		esac
 	done
