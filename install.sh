@@ -42,14 +42,16 @@ readFlags()
 				usage
 				;;
 			-c|--commit)
-				selfCommit
 				shift
 				[ $# -gt 0 ] || die "-c requires message"
+				MESG="$1"
+				selfCommit
 				;;
 			-p|--push)
-				selfPush
 				shift
 				[ $# -gt 0 ] || die "-p requires message"
+				MESG="$1"
+				selfPush
 				;;
 		esac
 	done
