@@ -39,6 +39,7 @@ readFlags()
 				;;
 			-c|--commit)
 				selfCommit
+				shift
 				;;
 		esac
 	done
