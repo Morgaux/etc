@@ -45,6 +45,8 @@ readFlags()
 				if [ $# -gt 0 ] ; then
 					MESG="$1"
 					shift
+				else
+					die "-c flag requires 1 possitional arg"
 				fi
 				;;
 			-p|--push)
