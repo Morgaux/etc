@@ -24,7 +24,7 @@ usage()
 {
 	echo "$NAME - v$VERSION"
 	echo "usage:"
-	echo "./install.sh [ -h ] [[ -c , -p ] MESSAGE ] [ -i DIRECTORY ]"
+	echo "./install.sh [ -h ] | [ -c | -p  MESSAGE ] | [ -i DIRECTORY ]"
 	echo ""
 	echo "options:"
 	echo "-h, --help		show this message"
@@ -44,14 +44,16 @@ readFlags()
 			-c|--commit)
 				shift
 				[ $# -gt 0 ] || die "-c requires message"
-				MESG="$1"
+				MESG="$@"
 				selfCommit
+				exit $?
 				;;
 			-p|--push)
 				shift
 				[ $# -gt 0 ] || die "-p requires message"
-				MESG="$1"
+				MESG="$@"
 				selfPush
+				exit $?
 				;;
 		esac
 	done
