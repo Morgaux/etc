@@ -67,9 +67,10 @@ selfCommit()
 selfPush()
 {
 	selfCommit
-	until git push ; do
-		echo "Retrying" 1>&2
-	done
+	git push
+	#until git push ; do
+	#	echo "Retrying" 1>&2
+	#done
 }
 
 die()
