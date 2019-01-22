@@ -27,7 +27,7 @@ usage()
 	exit 0
 }
 
-main
+main $@
 
 exit $?
 
