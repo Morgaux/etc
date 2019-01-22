@@ -26,8 +26,8 @@ usage()
 	echo ""
 	echo "options:"
 	echo "-h, --help		show this message"
-	echo "-c [message]		commit local changes"
-	echo "-p [message]		push commits to repo"
+	echo "-c message		commit local changes"
+	echo "-p message		push commits to repo"
 	echo ""
 	exit 0
 }
@@ -42,10 +42,18 @@ readFlags()
 			-c|--commit)
 				selfCommit
 				shift
+				if [ $# -gt 0 ] ; then
+					MESG="$1"
+					shift
+				fi
 				;;
 			-p|--push)
 				selfPush
 				shift
+				if [ $# -gt 0 ] ; then
+					MESG="$1"
+					shift
+				fi
 				;;
 		esac
 	done
@@ -62,7 +70,7 @@ selfPush()
 {
 	selfCommit
 	until git push ; do
-		echo "Retring" 1>&2
+		echo "Retrying" 1>&2
 	done
 }
 
