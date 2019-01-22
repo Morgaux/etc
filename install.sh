@@ -1,4 +1,6 @@
 #!/bin/sh
+
+##
 #
 # http://gitlab.com/morgaux/etc
 #
@@ -42,10 +44,12 @@ readFlags()
 			-c|--commit)
 				selfCommit
 				shift
+				[ $# -gt 0 ] || die "-c requires message"
 				;;
 			-p|--push)
 				selfPush
 				shift
+				[ $# -gt 0 ] || die "-p requires message"
 				;;
 		esac
 	done
@@ -68,7 +72,7 @@ selfPush()
 
 die()
 {
-	echo "$NAME: FATAL: $@" 1>&2
+	echo "$NAME: error: $@" 1>&2
 	exit 1
 }
 
