@@ -44,7 +44,7 @@ readFlags()
 				shift
 				;;
 			-p|--push)
-				selfpush
+				selfPush
 				shift
 				;;
 		esac
