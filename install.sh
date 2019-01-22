@@ -22,7 +22,7 @@ usage()
 {
 	echo "$NAME - v$VERSION"
 	echo "usage:"
-	echo "./install.sh [ OPTIONS ... ] DIRECTORY"
+	echo "./install.sh [ -h ] [ -c | -p MESSAGE ] [ -i DIRECTORY ]"
 	echo ""
 	echo "options:"
 	echo "-h, --help		show this message"
