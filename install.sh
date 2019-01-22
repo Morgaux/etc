@@ -73,10 +73,10 @@ selfPush()
 	selfCommit
 	echo "Pushing commit..."
 	git log --oneline -1
-	git push
-	#until git push ; do
-	#	echo "Retrying" 1>&2
-	#done
+	#git push
+	until git push ; do
+		echo "Retrying" 1>&2
+	done
 }
 
 die()
