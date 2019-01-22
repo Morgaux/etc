@@ -62,13 +62,17 @@ readFlags()
 selfCommit()
 {
 	[ -x "$(command -v git)" ] || die "git not installed"
+	echo "Adding changes..."
 	git add .
+	echo "Commiting changes \"$MESG\""
 	git diff-index --quiet HEAD -- || git commit -m "$MESG"
 }
 
 selfPush()
 {
 	selfCommit
+	echo "Pushing commit..."
+	git log --oneline -1
 	git push
 	#until git push ; do
 	#	echo "Retrying" 1>&2
