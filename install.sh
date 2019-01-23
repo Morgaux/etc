@@ -17,7 +17,6 @@ MESG="Installer commit"
 
 main()
 {
-	[ -d "$HOME/etc" ] || mkdir -p $HOME/etc
 	readFlags $@
 }
 
@@ -80,6 +79,7 @@ selfInstall()
 
 installhome()
 {
+	[ -d "$HOME/etc" ] || mkdir -p $HOME/etc
 	echo "Installing profile..."
 	cp -uf ~/src/etc/home/profile ~/.profile || echo "Skipping profile..."
 	for i in aliases kshrc vimrc ; do
@@ -89,6 +89,13 @@ installhome()
 	ln -sf ~/etc/kshrc ~/.kshrc
 	ln -sf ~/etc/kshrc ~/.mkshrc
 	ln -sf ~/etc/vimrc ~/.vimrc
+}
+
+installvim()
+{
+	[ -d "$HOME/.vim/colors" ] || mkdir -p $HOME/.vim/colors
+	echo "Instaling colors"
+	cp -uf ~/src/etc/vim/colors/* ~/.vim/colors/.
 }
 
 selfCommit()
