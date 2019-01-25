@@ -63,6 +63,8 @@ readFlags()
 					shift
 				done
 				;;
+			*)
+				die "$1 option unknown"
 		esac
 	done
 }
