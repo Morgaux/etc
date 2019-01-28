@@ -12,6 +12,13 @@ set showcmd
 set cul
 set nohlsearch
 set nu
+set ruler
+set verbose
+set leftright
+set extended
+set iclower
+set searchincr
+set report=1
 
 " Needed for st!
 set t_8f=[38;2;%lu;%lu;%lum        " set foreground color
