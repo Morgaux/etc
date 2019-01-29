@@ -13,11 +13,6 @@ set cul
 set nohlsearch
 set nu
 set ruler
-set verbose
-set leftright
-set extended
-set iclower
-set searchincr
 set report=1
 
 " Needed for st!
