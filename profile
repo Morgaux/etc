@@ -19,8 +19,9 @@ if [ -f "$HOME/etc/kshrc" ]; then
 	export ENV="$HOME/etc/kshrc"
 fi
 
-for i in nano vi vim ; do
-	[ -x "$(command -v $i)" ] && EDITOR="$(which $i)" && break
+for i in vim vi nano ; do
+	[ -x "$(command -v $i)" ] || continue
+	EDITOR="$(which $i)" && break
 done
 
 export PATH HOME EDITOR
