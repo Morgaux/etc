@@ -4,8 +4,21 @@
 #
 
 # Aliases
-alias _cd="builtin cd"
-[ -f "$HOME/etc/aliases" ] && . ~/etc/aliases
+alias a="alias"
+
+a _cd="builtin cd"
+a c="clear"
+a ls="ls -F"
+a la="ls -A"
+a ll="ls -l"
+a mkdir="mkdir -p"
+a x="exit"
+a ..="cd .."
+
+# CMDs with "c" prefix
+for i in e ls la ll; do
+	a c"$i"="c; $i"
+done
 
 # Functions
 err()
@@ -53,6 +66,6 @@ else
 fi
 HISTSIZE=1024
 
-uf 2> /dev/null || uname -sm
+uname -sm
 [ -x "$(command -v fortune)" ] && fortune
 

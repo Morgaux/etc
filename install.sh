@@ -9,6 +9,7 @@
 ##
 
 # Definitions
+SRCDIR="$(dirname $(readlink -f "$0"))"
 NAME="~/etc Installer"
 VERSION="1.0.0"
 MESG="Installer commit"
@@ -23,7 +24,7 @@ main()
 usage()
 {
 	echo "usage:"
-	echo "./install.sh [ -h ] | [ -c | -p  MESSAGE ] | [ -i DIRECTORY ]"
+	echo "./install.sh [ -h ] | [ -c | -p  MESSAGE ] | [ -i ]"
 	echo ""
 	echo "options:"
 	echo "-h, --help		show this message"
@@ -58,10 +59,7 @@ readFlags()
 				;;
 			-i|--install)
 				shift
-				while [ $# -gt 0 ] ; do
-					selfInstall $1
-					shift
-				done
+				installHome
 				;;
 			*)
 				die "$1 option unknown"
@@ -69,40 +67,18 @@ readFlags()
 	done
 }
 
-selfInstall()
+installHome()
 {
-	if [ -d $1 ] ; then
-		echo "Installing $1 files..."
-		install$1
-		return
-	fi
-	die "directory $1 not found"
-}
-
-installhome()
-{
-	needDir $HOME/etc
+	mkdir -p $HOME/etc
 	echo "Installing profile..."
-	cp -uf ~/src/etc/home/profile ~/.profile || echo "Skipping profile..."
-	for i in aliases kshrc vimrc ; do
+	cp -uf $SRCDIR/profile ~/.profile || echo "Skipping profile..."
+	for i in kshrc vimrc ; do
 		echo "Installing $i..."
-		cp -uf ~/src/etc/home/$i ~/etc/$i || echo "Skipping $i..."
+		cp -uf $SRCDIR/$i ~/etc/$i || echo "Skipping $i..."
 	done
 	ln -sf ~/etc/kshrc ~/.kshrc
 	ln -sf ~/etc/kshrc ~/.mkshrc
 	ln -sf ~/etc/vimrc ~/.vimrc
-}
-
-installvim()
-{
-	needDir $HOME/.vim/colors
-	echo "Installing colors..."
-	cp -uf ~/src/etc/vim/colors/* ~/.vim/colors/.
-}
-
-needDir()
-{
-	[ -d "$1" ] || mkdir -p $1
 }
 
 selfCommit()
