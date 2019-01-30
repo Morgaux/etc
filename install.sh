@@ -30,7 +30,7 @@ usage()
 	echo "-h, --help		show this message"
 	echo "-c message		commit local changes"
 	echo "-p message		push commits to repo"
-	echo "-i, --install DIRECTORY	install etc/DIRECTORY files"
+	echo "-i, --install DIRECTORY	install etc files"
 	echo ""
 	echo "$NAME - v$VERSION"
 	exit 0
@@ -71,14 +71,22 @@ installHome()
 {
 	mkdir -p $HOME/etc
 	echo "Installing profile..."
-	cp -uf $SRCDIR/profile ~/.profile || echo "Skipping profile..."
+	cp -uf $SRCDIR/profile ~/.profile
 	for i in kshrc vimrc ; do
 		echo "Installing $i..."
-		cp -uf $SRCDIR/$i ~/etc/$i || echo "Skipping $i..."
+		cp -uf $SRCDIR/$i ~/etc/$i
 	done
 	ln -sf ~/etc/kshrc ~/.kshrc
 	ln -sf ~/etc/kshrc ~/.mkshrc
 	ln -sf ~/etc/vimrc ~/.vimrc
+}
+
+installxenodm()
+{
+	rcctl enable xenodm
+	echo 'xset b off' >> /etc/X11/xenodm/Xsetup
+	echo 'xsetroot -solid black' >> /etc/X11/xenodm/Xsetup
+	sed -i 's/xconsole/#xconsole/' /etc/X11/xenodm/Xsetup_0
 }
 
 selfCommit()
