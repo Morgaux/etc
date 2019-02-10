@@ -17,12 +17,12 @@ PATH="$HOME/bin:$PATH"
 
 if [ -f "$HOME/etc/kshrc" ]; then
 	export ENV="$HOME/etc/kshrc"
-	ln -sf $$HOME/etc/kshrc $$HOME/.kshrc
-	ln -sf $$HOME/etc/kshrc $$HOME/.mkshrc
+	ln -sf $HOME/etc/kshrc $HOME/.kshrc
+	ln -sf $HOME/etc/kshrc $HOME/.mkshrc
 fi
 
 if [ -f "$HOME/etc/vimrc" ]; then
-	ln -sf $$HOME/etc/vimrc $$HOME/.vimrc
+	ln -sf $HOME/etc/vimrc $HOME/.vimrc
 fi
 
 for i in vim vi nano ; do
