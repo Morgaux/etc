@@ -2,6 +2,8 @@
 "
 " gitlab.com/morgaux.com/etc
 "
+" Settings from vim
+"
 
 syntax on
 
@@ -9,7 +11,7 @@ let loaded_matchparen = 1
 
 set belloff=all
 set showcmd
-set cul
+"set cul
 set nohlsearch
 set nu
 set ruler
@@ -32,6 +34,22 @@ set tabstop=8 softtabstop=0 shiftwidth=8 noexpandtab
 if &columns < 85
 	set nonu
 endif
+
+"
+" Stuff I've shamelessly stolen
+"
+
+"
+" http://github.com/jcs/dotfiles
+" Author: joshua stein
+" License: none
+"
+" Don't pollute directories with swap files, keep them in one place
+silent !mkdir -p ~/.vim/{backup,swp}/
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swp//
+" ...except crontab, which will complain that it can't see any changes
+au FileType crontab setlocal bkc=yes
 
 "
 " juvenil.vim
