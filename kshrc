@@ -5,7 +5,6 @@
 
 # Aliases
 alias a="alias"
-
 a _cd="builtin cd"
 a c="clear"
 a ls="ls -F"
@@ -39,6 +38,7 @@ cd()
 }
 
 # Environment
+
 _PS1DIR()
 {
 	case "$PWD" in
@@ -55,17 +55,20 @@ _PS1DIR()
 	echo $PS1DIR
 }
 
+# set prompt
 PS1="\$(_PS1DIR) \$ "
 
 # History
 # note: mksh and (o/pd)ksh have in compatible formats
 if [ -d "$HOME/var" ] ; then
-	HISTFILE="$HOME/var/ksh_history"
+	touch "$HOME/var/ksh_history"
 else
-	HISTFILE="$HOME/.ksh_history"
+	mkdir -p $HOME/var
 fi
+HISTFILE="$HOME/var/ksh_history"
 HISTSIZE=1024
 
+# print system info
 uname -sm
 [ -x "$(command -v fortune)" ] && fortune
 

@@ -30,6 +30,11 @@ set ignorecase
 " Tabs must be eight wide!!!
 set tabstop=8 softtabstop=0 shiftwidth=8 noexpandtab
 
+" Show tabs as ........ comments
+set list
+set listchars=tab:..
+match Comment /\t/
+
 " No line numbers if the term is too narrow for 80 chars
 if &columns < 85
 	set nonu
@@ -66,7 +71,9 @@ if v:version > 580
 		syntax reset
 	endif
 endif
+
 let g:colors_name = 'juvenile'
+
 if has('gui_running') || &t_Co == 256
 	hi Comment	cterm=NONE ctermfg=256	ctermbg=NONE gui=NONE guifg=#a0a0a0	guibg=NONE
 	hi NonText	cterm=NONE ctermfg=256	ctermbg=NONE gui=NONE guifg=#a0a0a0	guibg=NONE
@@ -79,9 +86,9 @@ if has('gui_running') || &t_Co == 256
 	hi Type		cterm=NONE ctermfg=NONE	ctermbg=NONE gui=NONE guifg=NONE	guibg=NONE
 	hi Special	cterm=NONE ctermfg=NONE	ctermbg=NONE gui=NONE guifg=NONE	guibg=NONE
 	hi Delimiter	cterm=NONE ctermfg=NONE	ctermbg=NONE gui=NONE guifg=NONE	guibg=NONE
+
 	" Line number colors
 	hi LineNr	cterm=NONE ctermfg=NONE	ctermbg=NONE gui=NONE guifg=NONE	guibg=NONE
 	hi CursorLineNr	cterm=NONE ctermfg=NONE	ctermbg=NONE gui=NONE guifg=NONE	guibg=NONE
-
 endif
 
