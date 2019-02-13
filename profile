@@ -11,11 +11,17 @@ runshell(){
 # update git tracked files
 gitPullDir()
 {
-	[ -x "$(command -v git)" ] && [ -d "$1" ] && [ -d "$1/.git" ] || return
+	[ -x "$(command -v git)" ] || return
 
-	cd "$1"
-	git pull
-	cd -
+	while [ $# -gt 0 ] ; do
+		[ -d "$1" ] && [ -d "$1/.git" ] || return
+
+		pushd "$1"
+		git pull
+		popd
+
+		shift
+	done
 }
 
 # set PATH so it includes user's private bin
