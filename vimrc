@@ -32,7 +32,7 @@ set tabstop=8 softtabstop=0 shiftwidth=8 noexpandtab
 
 " Show tabs as ........ comments
 set list
-set listchars=tab:..
+set listchars=tab:<.
 match Comment /\t/
 
 " No line numbers if the term is too narrow for 80 chars
