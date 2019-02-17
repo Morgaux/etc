@@ -3,38 +3,6 @@
 # gitlab.com/morgaux/etc
 #
 
-# return the running shell
-runshell(){
-	ps $$ | tail -n 1 | sed 's/.*://g' | cut -c 4-
-}
-
-# update git tracked files
-gitPullDir()
-{
-	[ -x "$(command -v git)" ] || return
-
-	while [ $# -gt 0 ] ; do
-		[ -d "$1" ] && [ -d "$1/.git" ] || return
-
-		pushd "$1"
-		git pull
-		popd
-
-		shift
-	done
-}
-
-# for all repos in working dir
-forReposHere()
-{
-	for i in ./*/ ; do
-		if [ -d \"$i/.git\" ] ; then
-			# $i is a repo
-			gitPullDir "$i"
-		fi
-	done
-}
-
 # set PATH so it includes user's private bin
 if [ -d "$HOME/bin" ] ; then
 	PATH="$HOME/bin:$PATH"
