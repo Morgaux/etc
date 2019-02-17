@@ -24,6 +24,17 @@ gitPullDir()
 	done
 }
 
+# for all repos in working dir
+forReposHere()
+{
+	for i in ./*/ ; do
+		if [ -d \"$i/.git\" ] ; then
+			# $i is a repo
+			gitPullDir "$i"
+		fi
+	done
+}
+
 # set PATH so it includes user's private bin
 if [ -d "$HOME/bin" ] ; then
 	PATH="$HOME/bin:$PATH"
