@@ -3,6 +3,9 @@
 # https://gitlab.com/morgaux/etc
 #
 
+# read profile if it hasn't been read
+[ -z "$ENV" ] && source ~/etc/profile
+
 # Aliases
 alias a="alias"
 a _cd="builtin cd"
