@@ -25,37 +25,34 @@ done
 # Functions
 err()
 {
-	echo "$@" 1>&2
+echo "$@" 1>&2
 }
 
 cd()
 {
-	if [ "$#" -eq 0 ] ; then
-		_cd ${HOME}
-	else
-		_cd "$@" 2> /dev/null ||
-		_cd "$@"* 2> /dev/null ||
-		_cd *"$@"* 2> /dev/null ||
-		err "cd: $@ not found"
-	fi
+if [ "$#" -eq 0 ] ; then
+	_cd ${HOME}
+else
+	_cd "$@" 2> /dev/null ||
+	_cd "$@"* 2> /dev/null ||
+	_cd *"$@"* 2> /dev/null ||
+	err "cd: $@ not found"
+fi
 }
 
 # Environment
 
 _PS1DIR()
 {
-	case "$PWD" in
-		"$HOME")
-			PS1DIR="~"
-			;;
-		"/")
-			PS1DIR="/"
-			;;
-		*)
-			PS1DIR="${PWD##*/}"
-			;;
-	esac
-	echo $PS1DIR
+case "$PWD" in
+	"$HOME")
+		PS1DIR="~";;
+	"/")
+		PS1DIR="/";;
+	*)
+		PS1DIR="${PWD##*/}";;
+esac
+echo $PS1DIR
 }
 
 # set prompt
