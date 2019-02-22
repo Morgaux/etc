@@ -58,13 +58,13 @@ echo $PS1DIR
 # set prompt
 PS1="\$(_PS1DIR) \$ "
 
+# Home
+mkdir -p $HOME/var
+mkdir -p $HOME/tmp
+mkdir -p $HOME/msc
+
 # History
 # note: mksh and (o/pd)ksh have in compatible formats
-if [ -d "$HOME/var" ] ; then
-	touch "$HOME/var/ksh_history"
-else
-	mkdir -p $HOME/var
-fi
 HISTFILE="$HOME/var/ksh_history"
 HISTSIZE=1024
 
