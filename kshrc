@@ -5,11 +5,11 @@
 cd()
 {
 if [ "$#" -eq 0 ] ; then
-	_cd ${HOME}
+	_cd "${HOME}"
 else
 	_cd "$@" 2> /dev/null ||
 	_cd "$@"* 2> /dev/null ||
-	_cd *"$@"* 2> /dev/null ||
+	_cd ./*"$@"* 2> /dev/null ||
 	echo "cd: $@ not found" 1>&2
 fi
 }
@@ -29,7 +29,7 @@ case "$PWD" in
 	*)
 		PS1DIR="${PWD##*/}";;
 esac
-echo $PS1DIR
+echo "$PS1DIR"
 }
 
 PS1="\$(_PS1DIR) \$ "

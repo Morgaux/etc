@@ -3,9 +3,9 @@
 [ -x "$(command -v xdg-user-dirs-update)" ] || exit 1
 
 for i in Desktop Documents Downloads Music Pictures Public Templates Videos; do
-	mkdir -p ~/var/$i
-	[ -d "~/$i" ] && mv "~/$i/*" "~/var/$i/."
-	[ -z "$(ls -A ~/$i 2>/dev/null)" ] && rm -rf ~/$i
+	mkdir -p "$HOME/var/$i"
+	[ -d "$HOME/$i" ] && mv "$HOME/$i/*" "$HOME/var/$i/."
+	[ -z "$(ls -A "$HOME/$i" 2>/dev/null)" ] && rm -rf "${HOME:?}/$i"
 done
 
 xdg-user-dirs-update --set DESKTOP ~/var/Desktop
