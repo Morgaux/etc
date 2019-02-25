@@ -1,10 +1,3 @@
-" SHEBANG LINE
-"
-" gitlab.com/morgaux.com/etc
-"
-" Settings from vim
-"
-
 syntax on
 
 let loaded_matchparen = 1

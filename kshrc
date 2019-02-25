@@ -1,32 +1,6 @@
 #!/bin/ksh
-#
-# https://gitlab.com/morgaux/etc
-#
 
-# read profile if it hasn't been read
-[ -z "$ENV" ] && source ~/etc/profile
-
-# Aliases
-alias a="alias"
-a _cd="builtin cd"
-a c="clear"
-a ls="ls -F"
-a la="ls -A"
-a ll="ls -l"
-a mkdir="mkdir -p"
-a x="exit"
-a ..="cd .."
-
-# CMDs with "c" prefix
-for i in e ls la ll; do
-	a c"$i"="c; $i"
-done
-
-# Functions
-err()
-{
-echo "$@" 1>&2
-}
+[ -f ~/etc/aliases ] && . ~/etc/aliases
 
 cd()
 {
@@ -36,11 +10,14 @@ else
 	_cd "$@" 2> /dev/null ||
 	_cd "$@"* 2> /dev/null ||
 	_cd *"$@"* 2> /dev/null ||
-	err "cd: $@ not found"
+	echo "cd: $@ not found" 1>&2
 fi
 }
 
-# Environment
+runshell()
+{
+ps $$ | tail -n 1 | sed 's/.*://g' | cut -c 4-
+}
 
 _PS1DIR()
 {
@@ -55,20 +32,18 @@ esac
 echo $PS1DIR
 }
 
-# set prompt
 PS1="\$(_PS1DIR) \$ "
 
-# Home
-mkdir -p $HOME/var
-mkdir -p $HOME/tmp
-mkdir -p $HOME/msc
+[ -f ~/.profile ] || . ~/etc/profile
+[ -f ~/etc/profile ] && cat ~/etc/profile > ~/.profile
 
-# History
+[ -d ~/var ] || mkdir -p ~/var
+[ -d ~/tmp ] || mkdir -p ~/tmp
+
 # note: mksh and (o/pd)ksh have in compatible formats
 HISTFILE="$HOME/var/ksh_history"
 HISTSIZE=1024
 
-# print system info
-uname -sm
+#uname -sm
 [ -x "$(command -v fortune)" ] && fortune
 
