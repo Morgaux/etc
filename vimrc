@@ -23,10 +23,15 @@ set ignorecase
 " Tabs must be eight wide!!!
 set tabstop=8 softtabstop=0 shiftwidth=8 noexpandtab
 
-" Show tabs as ........ comments
+" Show tabs as commented dots
 set list
-set listchars=tab:.. 
+set listchars=tab:..
 match Comment /\t/
+
+" Catch whitespace errors
+match Error /\s\+$\| \+\ze\t/
+au InsertEnter * redraw!
+au InsertLeave * redraw!
 
 " No line numbers if the term is too narrow for 80 chars
 if &columns < 85
@@ -74,7 +79,7 @@ if has('gui_running') || &t_Co == 256
 	hi Identifier	cterm=NONE ctermfg=NONE	ctermbg=NONE gui=NONE guifg=NONE	guibg=NONE
 	hi Function	cterm=NONE ctermfg=NONE	ctermbg=NONE gui=NONE guifg=NONE	guibg=NONE
 	hi Statement	cterm=NONE ctermfg=NONE	ctermbg=NONE gui=NONE guifg=NONE	guibg=NONE
-	hi PreProc 	cterm=NONE ctermfg=NONE	ctermbg=NONE gui=NONE guifg=NONE	guibg=NONE
+	hi PreProc	cterm=NONE ctermfg=NONE	ctermbg=NONE gui=NONE guifg=NONE	guibg=NONE
 	hi Title	cterm=NONE ctermfg=NONE	ctermbg=NONE gui=NONE guifg=NONE	guibg=NONE
 	hi Type		cterm=NONE ctermfg=NONE	ctermbg=NONE gui=NONE guifg=NONE	guibg=NONE
 	hi Special	cterm=NONE ctermfg=NONE	ctermbg=NONE gui=NONE guifg=NONE	guibg=NONE
