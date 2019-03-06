@@ -1,14 +1,16 @@
+" enable syntax
 syntax on
 
-let loaded_matchparen = 1
-
+" misc options
 set belloff=all
 set showcmd
-"set cul
 set nohlsearch
 set nu
 set ruler
 set report=1
+
+" prevent annoying hilights
+let loaded_matchparen = 1
 
 " Needed for st!
 set t_8f=[38;2;%lu;%lu;%lum        " set foreground color
@@ -38,9 +40,13 @@ if &columns < 85
 	set nonu
 endif
 
+
+
 "
 " Stuff I've shamelessly stolen
 "
+
+
 
 "
 " http://github.com/jcs/dotfiles
@@ -53,6 +59,8 @@ set backupdir=~/.vim/backup//
 set directory=~/.vim/swp//
 " ...except crontab, which will complain that it can't see any changes
 au FileType crontab setlocal bkc=yes
+
+
 
 "
 " juvenil.vim
@@ -69,9 +77,7 @@ if v:version > 580
 		syntax reset
 	endif
 endif
-
 let g:colors_name = 'juvenile'
-
 if has('gui_running') || &t_Co == 256
 	hi Comment	cterm=NONE ctermfg=256	ctermbg=NONE gui=NONE guifg=#a0a0a0	guibg=NONE
 	hi NonText	cterm=NONE ctermfg=256	ctermbg=NONE gui=NONE guifg=#a0a0a0	guibg=NONE
@@ -84,7 +90,6 @@ if has('gui_running') || &t_Co == 256
 	hi Type		cterm=NONE ctermfg=NONE	ctermbg=NONE gui=NONE guifg=NONE	guibg=NONE
 	hi Special	cterm=NONE ctermfg=NONE	ctermbg=NONE gui=NONE guifg=NONE	guibg=NONE
 	hi Delimiter	cterm=NONE ctermfg=NONE	ctermbg=NONE gui=NONE guifg=NONE	guibg=NONE
-
 	" Line number colors
 	hi LineNr	cterm=NONE ctermfg=NONE	ctermbg=NONE gui=NONE guifg=NONE	guibg=NONE
 	hi CursorLineNr	cterm=NONE ctermfg=NONE	ctermbg=NONE gui=NONE guifg=NONE	guibg=NONE
