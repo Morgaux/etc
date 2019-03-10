@@ -26,12 +26,9 @@ ps $$ | tail -n 1 | sed 's/.*://g' | cut -c 4-
 _PS1DIR()
 {
 case "$PWD" in
-	"$HOME")
-		PS1DIR="~";;
-	"/")
-		PS1DIR="/";;
-	*)
-		PS1DIR="${PWD##*/}";;
+	"$HOME")	PS1DIR="~";;
+	"/")		PS1DIR="/";;
+	*)		PS1DIR="${PWD##*/}";;
 esac
 echo "$PS1DIR"
 }
