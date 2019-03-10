@@ -50,9 +50,10 @@ HISTFILE="$HOME/var/ksh_history"
 HISTSIZE=1024
 
 # if xbanish exists and is not yet running, run it in background
-[ -x "$(command -v xbanish)" ] && \
+hasX && \
+	[ -x "$(command -v xbanish)" ] && \
 	[ "$(ps -a | grep xbanish)" = "" ] && \
-	xbanish &
+	{ xbanish & }
 
 # welcome
 uname -sm
