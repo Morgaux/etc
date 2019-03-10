@@ -19,5 +19,3 @@ done
 # export variables
 export PATH HOME EDITOR
 
-[ -x "$(command -v xbanish)" ] && xbanish &
-

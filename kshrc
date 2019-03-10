@@ -1,7 +1,9 @@
 #!/bin/ksh
 
+# aliases
 [ -f ~/etc/aliases ] && . ~/etc/aliases
 
+# change dir
 cd()
 {
 if [ "$#" -eq 0 ] ; then
@@ -14,11 +16,13 @@ else
 fi
 }
 
+# which shell am I running
 runshell()
 {
 ps $$ | tail -n 1 | sed 's/.*://g' | cut -c 4-
 }
 
+# safe base dir name
 _PS1DIR()
 {
 case "$PWD" in
@@ -32,11 +36,15 @@ esac
 echo "$PS1DIR"
 }
 
+# ksh prompt
 PS1="\$(_PS1DIR) \$ "
 
+# update .profile
 [ -f ~/.profile ] || . ~/etc/profile
 [ -f ~/etc/profile ] && cat ~/etc/profile > ~/.profile
 
+# make my dirs
+[ -d ~/src ] || mkdir -p ~/src
 [ -d ~/var ] || mkdir -p ~/var
 [ -d ~/tmp ] || mkdir -p ~/tmp
 
@@ -44,6 +52,12 @@ PS1="\$(_PS1DIR) \$ "
 HISTFILE="$HOME/var/ksh_history"
 HISTSIZE=1024
 
-#uname -sm
+# if xbanish exists and is not yet running, run it in background
+[ -x "$(command -v xbanish)" ] && \
+	[ "$(ps -a | grep xbanish)" = "" ] && \
+	xbanish &
+
+# welcome
+uname -sm
 [ -x "$(command -v fortune)" ] && fortune
 
