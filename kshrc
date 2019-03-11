@@ -49,12 +49,6 @@ PS1="\$(_PS1DIR) \$ "
 HISTFILE="$HOME/var/ksh_history"
 HISTSIZE=1024
 
-# if xbanish exists and is not yet running, run it in background
-hasX && \
-	[ -x "$(command -v xbanish)" ] && \
-	[ "$(ps -a | grep xbanish)" = "" ] && \
-	{ xbanish & }
-
 # welcome
 uname -sm
 [ -x "$(command -v fortune)" ] && fortune

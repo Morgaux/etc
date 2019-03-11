@@ -19,3 +19,9 @@ done
 # export variables
 export PATH HOME EDITOR
 
+# if xbanish exists and is not yet running, run it in background
+hasX && \
+	[ -x "$(command -v xbanish)" ] && \
+	[ "$(ps -a | grep xbanish)" = "" ] && \
+	{ xbanish & }
+
