@@ -1,25 +1,24 @@
 #!/bin/ksh
 
-# aliases
-[ -f ~/etc/aliases ] && . ~/etc/aliases
+#
+# http://gitlab.com/morgaux/etc
+#
+
+# mksh and ksh configuration
+
+# Functions
 
 # change dir
 cd()
 {
 if [ "$#" -eq 0 ] ; then
-	_cd "${HOME}"
+	builtin cd "${HOME}"
 else
-	_cd "$@" 2> /dev/null ||
-	_cd "$@"* 2> /dev/null ||
-	_cd ./*"$@"* 2> /dev/null ||
+	builtin cd "$@" 2> /dev/null ||
+	builtin cd "$@"* 2> /dev/null ||
+	builtin cd ./*"$@"* 2> /dev/null ||
 	echo "cd: $@ not found" 1>&2
 fi
-}
-
-# which shell am I running
-runshell()
-{
-ps $$ | tail -n 1 | sed 's/.*://g' | cut -c 4-
 }
 
 # safe base dir name
@@ -36,26 +35,17 @@ echo "$PS1DIR"
 # ksh prompt
 PS1="\$(_PS1DIR) \$ "
 
-# update .profile
-[ -f ~/.profile ] || . ~/etc/profile
-[ -f ~/etc/profile ] && cat ~/etc/profile > ~/.profile
-
-# make my dirs
-[ -d ~/src ] || mkdir -p ~/src
-[ -d ~/var ] || mkdir -p ~/var
-[ -d ~/tmp ] || mkdir -p ~/tmp
-
 # note: mksh and (o/pd)ksh have in compatible formats
 HISTFILE="$HOME/var/ksh_history"
 HISTSIZE=1024
 
-# if xbanish exists and is not yet running, run it in background
-hasX && \
-	[ -x "$(command -v xbanish)" ] && \
-	[ "$(ps -a | grep xbanish)" = "" ] && \
-	{ xbanish & }
+# update .profile
+[ -f ~/etc/profile ] && ~/etc/profile
+[ -z "$EDITOR" ] || . ~/.profile
 
-# welcome
-uname -sm
-[ -x "$(command -v fortune)" ] && fortune
+[ -f ~/etc/startup ] && . ~/etc/startup
+[ -f ~/etc/welcome ] && . ~/etc/welcome
+
+# if tmux exists and is not runing
+[ -x "$(command -v tmux)" ] && [ -z "$TMUX" ] && exec tmux
 
