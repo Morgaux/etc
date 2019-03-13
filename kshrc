@@ -8,9 +8,6 @@
 
 clear
 
-# if tmux exists and is not runing
-[ -x "$(command -v tmux)" ] && [ -z "$TMUX" ] && exec tmux
-
 # Functions
 
 # change dir
@@ -50,4 +47,7 @@ HISTSIZE=1024
 
 [ -f ~/etc/startup ] && . ~/etc/startup
 [ -f ~/etc/welcome ] && . ~/etc/welcome
+
+# if tmux exists and is not runing
+[ -x "$(command -v tmux)" ] && [ -z "$TMUX" ] && exec tmux
 
