@@ -1,7 +1,4 @@
-#!/bin/sh
-
 alias a='alias'
-a _cd='builtin cd'
 a c='clear'
 a ls='ls -F'
 a la='ls -A'

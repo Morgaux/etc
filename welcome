@@ -1,0 +1,4 @@
+# welcome
+uname -sm
+[ -x "$(command -v fortune)" ] && fortune
+
