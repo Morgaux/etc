@@ -6,6 +6,8 @@
 
 # mksh and ksh configuration
 
+clear
+
 # Functions
 
 # change dir
