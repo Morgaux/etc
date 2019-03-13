@@ -1,0 +1,10 @@
+# create symlinks if missing
+[ -f ~/etc/kshrc ] && [ ! -L ~/.kshrc ] && ln -sf ~/etc/kshrc ~/.kshrc
+[ -f ~/etc/kshrc ] && [ ! -L ~/.kshrc ] && ln -sf ~/etc/kshrc ~/.mkshrc
+[ -f ~/etc/vimrc ] && [ ! -L ~/.vimrc ] && ln -sf ~/etc/vimrc ~/.vimrc
+
+# make my dirs
+[ -d ~/src ] || mkdir -p ~/src
+[ -d ~/var ] || mkdir -p ~/var
+[ -d ~/tmp ] || mkdir -p ~/tmp
+
