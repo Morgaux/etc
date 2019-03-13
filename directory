@@ -2,6 +2,7 @@
 [ -f ~/etc/kshrc ] && [ ! -L ~/.kshrc ] && ln -sf ~/etc/kshrc ~/.kshrc
 [ -f ~/etc/kshrc ] && [ ! -L ~/.kshrc ] && ln -sf ~/etc/kshrc ~/.mkshrc
 [ -f ~/etc/vimrc ] && [ ! -L ~/.vimrc ] && ln -sf ~/etc/vimrc ~/.vimrc
+[ -f ~/etc/tmux.conf ] && [ ! -L ~/.tmux.conf ] && ln -sf ~/etc/tmux.conf ~/.tmux.conf
 
 # make my dirs
 [ -d ~/src ] || mkdir -p ~/src
