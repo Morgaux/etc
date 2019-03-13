@@ -6,6 +6,8 @@
 
 # mksh and ksh configuration
 
+clear
+
 # if tmux exists and is not runing
 [ -x "$(command -v tmux)" ] && [ -z "$TMUX" ] && exec tmux
 
