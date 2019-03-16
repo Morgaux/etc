@@ -49,5 +49,5 @@ HISTSIZE=1024
 [ -f ~/etc/welcome ] && . ~/etc/welcome
 
 # if tmux exists and is not runing
-[ -x "$(command -v tmux)" ] && [ -z "$TMUX" ] && exec tmux
+#[ -x "$(command -v tmux)" ] && [ -z "$TMUX" ] && exec tmux
 
