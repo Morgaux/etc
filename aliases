@@ -1,23 +1,22 @@
 #!/bin/sh
 
-alias a='alias'
-a c='clear'
-a ls='ls -F'
-a la='ls -A'
-a ll='ls -l'
-a mkdir='mkdir -p'
-a x='exit'
-a ..='cd ..'
+alias c='clear'
+alias ls='ls -F'
+alias la='ls -A'
+alias ll='ls -l'
+alias mkdir='mkdir -p'
+alias x='exit'
+alias ..='cd ..'
 
 # CMDs with "c" prefix
 for i in e ls la ll; do
-	a c"$i"="c; $i"
+	alias c"$i"="c; $i"
 done
 
 # CMDs that need root privs
 for i in apt apt-get pacman yum dnf pkg brew eopkg; do
-	a "$i"="sudo $i"
+	alias "$i"="sudo $i"
 done
 # OpenBSD
-a pkg_add='doas pkg_add'
+alias pkg_add='doas pkg_add'
 
