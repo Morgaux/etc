@@ -1,3 +1,5 @@
+#!/bin/sh
+
 alias a='alias'
 a c='clear'
 a ls='ls -F'
@@ -11,4 +13,11 @@ a ..='cd ..'
 for i in e ls la ll; do
 	a c"$i"="c; $i"
 done
+
+# CMDs that need root privs
+for i in apt apt-get pacman yum dnf pkg brew eopkg; do
+	a "$i"="sudo $i"
+done
+# OpenBSD
+a pkg_add='doas pkg_add'
 

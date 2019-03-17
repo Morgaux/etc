@@ -16,10 +16,10 @@ cd()
 if [ "$#" -eq 0 ] ; then
 	builtin cd "${HOME}"
 else
-	builtin cd "$@" 2> /dev/null ||
-	builtin cd "$@"* 2> /dev/null ||
-	builtin cd ./*"$@"* 2> /dev/null ||
-	echo "cd: $@ not found" 1>&2
+	builtin cd "$*" 2> /dev/null ||
+	builtin cd "$*"* 2> /dev/null ||
+	builtin cd ./*"$*"* 2> /dev/null ||
+	echo "cd: $* not found" 1>&2
 fi
 }
 

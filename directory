@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # create symlinks if missing
 [ -f ~/etc/kshrc ] && [ ! -L ~/.kshrc ] && ln -sf ~/etc/kshrc ~/.kshrc
 [ -f ~/etc/kshrc ] && [ ! -L ~/.kshrc ] && ln -sf ~/etc/kshrc ~/.mkshrc
@@ -8,4 +10,10 @@
 [ -d ~/src ] || mkdir -p ~/src
 [ -d ~/var ] || mkdir -p ~/var
 [ -d ~/tmp ] || mkdir -p ~/tmp
+
+# add my bin launchers
+[ -d ~/bin/launchers ] && for APP in ~/bin/launchers/*.desktop; do
+	DESKTOP="$HOME/.local/share/applications/$(basename "$APP")"
+	[ ! -L "$DESKTOP" ] && ln -sf "$APP" "$DESKTOP"
+done
 
