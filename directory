@@ -12,8 +12,8 @@
 [ -d ~/tmp ] || mkdir -p ~/tmp
 
 # add my bin launchers
-[ -d ~/bin/launchers ] && for APP in ~/bin/launchers/*.desktop; do
-	DESKTOP="$HOME/.local/share/applications/$(basename "$APP")"
-	[ ! -L "$DESKTOP" ] && ln -sf "$APP" "$DESKTOP"
+[ -d ~/bin/launchers ] && [ -d ~/.local/share/applications ] && for APP in ~/bin/launchers/*.desktop; do
+	LAUNCHER="$HOME/.local/share/applications/$(basename "$APP")"
+	[ ! -L "$LAUNCHER" ] && ln -sf "$APP" "$DESKTOP"
 done
 
