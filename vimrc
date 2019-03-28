@@ -8,6 +8,7 @@ set nohlsearch
 set nu
 set ruler
 set report=1
+set nowrap
 
 " prevent annoying hilights
 let loaded_matchparen = 1
