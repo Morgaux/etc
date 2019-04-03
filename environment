@@ -11,6 +11,9 @@ for i in vim vi nano ; do
 	EDITOR="$(which $i)" && break
 done
 
+JUNIT_HOME="$HOME/uni/159272/lib/junit4.10"
+CLASSPATH="$CLASSPATH:.:$JUNIT_HOME:$JUNIT_HOME/junit-4.10.jar"
+
 # export variables
-export PATH HOME EDITOR
+export PATH HOME EDITOR JUNIT_HOME CLASSPATH
 
