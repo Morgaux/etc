@@ -29,7 +29,7 @@ set -e # stop on uncaught error
 # add environment setup scripts to temporary file
 ##
 for file in aliases directory environment; do
-	cat ~/etc/$file >> ~/.profile.tmp || exit 1
+	sed -n '/#!\/bin/!p' ~/etc/$file >> ~/.profile.tmp || exit 1
 done
 
 ##
