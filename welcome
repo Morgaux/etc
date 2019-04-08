@@ -2,5 +2,5 @@
 
 # welcome
 uname -sm && log "Machine: $(uname -sm)"
-[ -x "$(command -v fortune)" ] && fortune
+[ -x "$(command -v fortune)" ] && fortune && log "$(fortune -s -n 60)"
 

@@ -10,8 +10,10 @@ clear
 # mksh and ksh configuration
 ##
 
+log "Running kshrc..."
+
 # start tmux if installed and not runing already
-#[ -x "$(command -v tmux)" ] && [ -z "$TMUX" ] && exec tmux
+#[ -x "$(command -v tmux)" ] && [ -z "$TMUX" ] && log "Starting tmux" && exec tmux
 
 ##
 # Functions
@@ -59,4 +61,6 @@ HISTSIZE=1024
 [ -z "$EDITOR" ] || . ~/.profile # if no EDITOR profile may not have been read
 [ -f ~/etc/startup ] && . ~/etc/startup # start applications
 [ -f ~/etc/welcome ] && . ~/etc/welcome # welcome messages
+
+log "kshrc completed, happy hacking!"
 
