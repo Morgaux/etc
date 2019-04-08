@@ -4,10 +4,15 @@
 # http://gitlab.com/morgaux/etc
 #
 
+##
 # ~/.profile generator
+##
 
-set -e
+set -e # stop on uncaught error
 
+##
+# Warning message
+##
 {
 	echo "#!/bin/sh"
 	echo ""
@@ -18,19 +23,20 @@ set -e
 	echo "#                                                                             #"
 	echo "##                                                                           ##"
 	echo ""
-} >> ~/.profile.tmp
+} > ~/.profile.tmp # Create new temporary file
 
+##
+# add environment setup scripts to temporary file
+##
 for file in aliases directory environment; do
-	cat ~/etc/$file >> ~/.profile.tmp || exit 1 # create temporary file
+	cat ~/etc/$file >> ~/.profile.tmp || exit 1
 done
 
+##
+# replace old file
+##
 rm ~/.profile
-
 mv ~/.profile.tmp ~/.profile
 
-# if xbanish exists and is not yet running, run it in background
-hasX && \
-	[ -x "$(command -v xbanish)" ] && \
-	[ "$(ps -a | grep xbanish)" = "" ] && \
-	{ xbanish & }
+log "Profile created sucessfully"
 

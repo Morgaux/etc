@@ -4,11 +4,18 @@
 # http://gitlab.com/morgaux/etc
 #
 
-# mksh and ksh configuration
-
 clear
 
+##
+# mksh and ksh configuration
+##
+
+# start tmux if installed and not runing already
+#[ -x "$(command -v tmux)" ] && [ -z "$TMUX" ] && exec tmux
+
+##
 # Functions
+##
 
 # change dir
 cd()
@@ -34,20 +41,22 @@ esac
 echo "$PS1DIR"
 }
 
-# ksh prompt
+##
+# set ksh prompt
+##
 PS1="\$(_PS1DIR) \$ "
 
-# note: mksh and (o/pd)ksh have in compatible formats
-HISTFILE="$HOME/var/ksh_history"
+##
+# History
+##
+HISTFILE="$HOME/var/ksh_history" # note: mksh and (o/pd)ksh have in compatible formats
 HISTSIZE=1024
 
-# update .profile
-[ -f ~/etc/profile ] && ~/etc/profile
-[ -z "$EDITOR" ] || . ~/.profile
-
-[ -f ~/etc/startup ] && . ~/etc/startup
-[ -f ~/etc/welcome ] && . ~/etc/welcome
-
-# if tmux exists and is not runing
-#[ -x "$(command -v tmux)" ] && [ -z "$TMUX" ] && exec tmux
+##
+# environment
+##
+[ -f ~/etc/profile ] && ~/etc/profile # run script to update ~/.profile
+[ -z "$EDITOR" ] || . ~/.profile # if no EDITOR profile may not have been read
+[ -f ~/etc/startup ] && . ~/etc/startup # start applications
+[ -f ~/etc/welcome ] && . ~/etc/welcome # welcome messages
 

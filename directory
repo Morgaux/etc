@@ -7,13 +7,16 @@
 [ -f ~/etc/tmux.conf ] && [ ! -L ~/.tmux.conf ] && ln -sf ~/etc/tmux.conf ~/.tmux.conf
 
 # make my dirs
-[ -d ~/src ] || mkdir -p ~/src
-[ -d ~/var ] || mkdir -p ~/var
-[ -d ~/tmp ] || mkdir -p ~/tmp
+for DIR in src var uni tmp; do
+	[ -d "$HOME/$DIR" ] && continue
+	mkdir -p "$HOME/$DIR"
+	log "~/$DIR not found, directory added"
+done
 
 # add my bin launchers
 [ -d ~/bin/launchers ] && [ -d ~/.local/share/applications ] && for APP in ~/bin/launchers/*.desktop; do
 	LAUNCHER="$HOME/.local/share/applications/$(basename "$APP")"
 	[ ! -L "$LAUNCHER" ] && ln -sf "$APP" "$DESKTOP"
+	log "$APP luncher installed"
 done
 

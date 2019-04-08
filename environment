@@ -8,12 +8,19 @@ fi
 # set EDITOR to most prefered available
 for i in vim vi nano ; do
 	[ -x "$(command -v $i)" ] || continue
-	EDITOR="$(which $i)" && break
+	EDITOR="$(which $i)"
+	break
 done
 
-JUNIT_HOME="$HOME/uni/159272/lib/junit4.10"
-CLASSPATH="$CLASSPATH:.:$JUNIT_HOME:$JUNIT_HOME/junit-4.10.jar"
+JAVA_HOME=$(readlink -f /usr/bin/javac | sed "s:/bin/javac::")
+JUNIT_HOME="$HOME/uni/159272/lib/junit5"
+CLASSPATH="$CLASSPATH:.:$JUNIT_HOME:$JUNIT_HOME/junit4.10"
 
 # export variables
-export PATH HOME EDITOR JUNIT_HOME CLASSPATH
+export PATH && log "Path: $PATH"
+export HOME && log "Home: $HOME"
+export EDITOR && log "Editor: $EDITOR"
+export JUNIT_HOME && log "JUnit: $JUNIT_HOME"
+export JAVA_HOME && log "Java: $JAVA_HOME"
+export CLASSPATH && log "Classpath: $CLASSPATH"
 
