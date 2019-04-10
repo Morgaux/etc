@@ -1,5 +1,7 @@
 #!/bin/sh
 
+~/bin/log "Setting up environment..."
+
 # set PATH so it includes user's private bin
 if [ -d "$HOME/bin" ] ; then
 	PATH="$HOME/bin:$PATH"
@@ -21,9 +23,6 @@ CLASSPATH="$CLASSPATH:."
 # export variables
 export PATH HOME EDITOR JAVA_HOME CLASSPATH
 
-log "Path: $PATH"
-log "Home: $HOME"
-log "Editor: $EDITOR"
-log "Java: $JAVA_HOME"
-log "Classpath: $CLASSPATH"
+~/bin/log "Path: $PATH"
+~/bin/log "Editor: $EDITOR"
 

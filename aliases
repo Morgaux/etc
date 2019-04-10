@@ -1,5 +1,7 @@
 #!/bin/sh
 
+~/bin/log "Creating aliases..."
+
 alias c='clear'
 alias ls='ls -F'
 alias la='ls -A'
@@ -8,6 +10,8 @@ alias mkdir='mkdir -p'
 alias x='exit'
 alias ..='cd ..'
 alias python='env python3'
+
+alias git='pregit' # see ~/bin
 
 ##
 # CMDs with "c" prefix
@@ -24,6 +28,4 @@ for i in apt apt-get pacman yum dnf pkg brew eopkg; do
 done
 # OpenBSD
 alias pkg_add='doas pkg_add'
-
-log "Aliases created"
 
