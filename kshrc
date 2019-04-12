@@ -48,6 +48,6 @@ HISTSIZE=1024
 [ -f ~/etc/startup ] && . ~/etc/startup
 [ -f ~/etc/welcome ] && . ~/etc/welcome
 
-# if tmux exists and is not runing
-#[ -x "$(command -v tmux)" ] && [ -z "$TMUX" ] && exec tmux
+# if term is st and tmux exists and is not runing
+[ "$(echo $TERM | cut -c -3)" = "st-" ] && [ -x "$(command -v tmux)" ] && [ -z "$TMUX" ] && exec tmux
 

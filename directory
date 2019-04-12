@@ -14,6 +14,6 @@
 # add my bin launchers
 [ -d ~/bin/launchers ] && [ -d ~/.local/share/applications ] && for APP in ~/bin/launchers/*.desktop; do
 	LAUNCHER="$HOME/.local/share/applications/$(basename "$APP")"
-	[ ! -L "$LAUNCHER" ] && ln -sf "$APP" "$DESKTOP"
+	[ ! -L "$LAUNCHER" ] && ln -sf "$APP" "$LAUNCHER"
 done
 
