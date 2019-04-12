@@ -1,19 +1,24 @@
 #!/bin/sh
 
+~/bin/log "Setting up directory structure..."
+
 # create symlinks if missing
-[ -f ~/etc/kshrc ] && [ ! -L ~/.kshrc ] && ln -sf ~/etc/kshrc ~/.kshrc
-[ -f ~/etc/kshrc ] && [ ! -L ~/.kshrc ] && ln -sf ~/etc/kshrc ~/.mkshrc
-[ -f ~/etc/vimrc ] && [ ! -L ~/.vimrc ] && ln -sf ~/etc/vimrc ~/.vimrc
-[ -f ~/etc/tmux.conf ] && [ ! -L ~/.tmux.conf ] && ln -sf ~/etc/tmux.conf ~/.tmux.conf
+[ -f ~/etc/kshrc ] && [ ! -L ~/.kshrc ] && ln -sf ~/etc/kshrc ~/.kshrc && ~/bin/log "~/etc/kshrc linked to ~/.kshrc"
+[ -f ~/etc/kshrc ] && [ ! -L ~/.kshrc ] && ln -sf ~/etc/kshrc ~/.mkshrc && ~/bin/log "~/etc/kshrc linked to ~/.mkshrc"
+[ -f ~/etc/vimrc ] && [ ! -L ~/.vimrc ] && ln -sf ~/etc/vimrc ~/.vimrc && ~/bin/log "~/etc/vimrc linked to ~/.vimrc"
+[ -f ~/etc/tmux.conf ] && [ ! -L ~/.tmux.conf ] && ln -sf ~/etc/tmux.conf ~/.tmux.conf && ~/bin/log "~/etc/tmux.conf linked to ~/.tmux.conf"
 
 # make my dirs
-[ -d ~/src ] || mkdir -p ~/src
-[ -d ~/var ] || mkdir -p ~/var
-[ -d ~/tmp ] || mkdir -p ~/tmp
+for DIR in src var uni tmp; do
+	[ -d "$HOME/$DIR" ] && continue
+	mkdir -p "$HOME/$DIR"
+	~/bin/log "~/$DIR not found, directory added"
+done
 
 # add my bin launchers
 [ -d ~/bin/launchers ] && [ -d ~/.local/share/applications ] && for APP in ~/bin/launchers/*.desktop; do
 	LAUNCHER="$HOME/.local/share/applications/$(basename "$APP")"
 	[ ! -L "$LAUNCHER" ] && ln -sf "$APP" "$LAUNCHER"
+	~/bin/log "$APP luncher installed"
 done
 

@@ -4,11 +4,20 @@
 # http://gitlab.com/morgaux/etc
 #
 
-# mksh and ksh configuration
-
 clear
 
+##
+# mksh and ksh configuration
+##
+
+~/bin/log "Running kshrc..."
+
+# if term is st and tmux exists and is not runing
+[ "$(echo $TERM | cut -c -3)" = "st-" ] && [ -x "$(command -v tmux)" ] && [ -z "$TMUX" ] && log "Starting tmux" && exec tmux
+
+##
 # Functions
+##
 
 # change dir
 cd()
@@ -34,20 +43,24 @@ esac
 echo "$PS1DIR"
 }
 
-# ksh prompt
+##
+# set ksh prompt
+##
 PS1="\$(_PS1DIR) \$ "
 
-# note: mksh and (o/pd)ksh have in compatible formats
-HISTFILE="$HOME/var/ksh_history"
+##
+# History
+##
+HISTFILE="$HOME/var/ksh_history" # note: mksh and (o/pd)ksh have in compatible formats
 HISTSIZE=1024
 
-# update .profile
-[ -f ~/etc/profile ] && ~/etc/profile
-[ -z "$EDITOR" ] || . ~/.profile
+##
+# environment
+##
+[ -f ~/etc/profile ] && ~/etc/profile # run script to update ~/.profile
+#[ -z "$EDITOR" ] || . ~/.profile # profile may not have been read if EDITOR unset
+[ -f ~/etc/startup ] && . ~/etc/startup # start applications
+[ -f ~/etc/welcome ] && . ~/etc/welcome # welcome messages
 
-[ -f ~/etc/startup ] && . ~/etc/startup
-[ -f ~/etc/welcome ] && . ~/etc/welcome
-
-# if term is st and tmux exists and is not runing
-[ "$(echo $TERM | cut -c -3)" = "st-" ] && [ -x "$(command -v tmux)" ] && [ -z "$TMUX" ] && exec tmux
+~/bin/log "kshrc completed, happy hacking!"
 

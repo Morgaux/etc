@@ -1,16 +1,28 @@
 #!/bin/sh
 
+~/bin/log "Setting up environment..."
+
 # set PATH so it includes user's private bin
 if [ -d "$HOME/bin" ] ; then
 	PATH="$HOME/bin:$PATH"
 fi
 
+# remove path duplicates
+PATH=$(printf "%s" "$PATH" | awk -v RS=':' '!a[$1]++ { if (NR > 1) printf RS; printf $1 }')
+
 # set EDITOR to most prefered available
 for i in vim vi nano ; do
 	[ -x "$(command -v $i)" ] || continue
-	EDITOR="$(which $i)" && break
+	EDITOR="$(which $i)"
+	break
 done
 
+JAVA_HOME=$(readlink -f /usr/bin/javac | sed "s:/bin/javac::")
+CLASSPATH="$CLASSPATH:."
+
 # export variables
-export PATH HOME EDITOR
+export PATH HOME EDITOR JAVA_HOME CLASSPATH
+
+~/bin/log "Path: $PATH"
+~/bin/log "Editor: $EDITOR"
 

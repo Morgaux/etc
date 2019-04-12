@@ -1,5 +1,7 @@
 #!/bin/sh
 
+~/bin/log "Creating aliases..."
+
 alias c='clear'
 alias ls='ls -F'
 alias la='ls -A'
@@ -9,12 +11,18 @@ alias x='exit'
 alias ..='cd ..'
 alias python='env python3'
 
+alias git='pregit' # see ~/bin
+
+##
 # CMDs with "c" prefix
+##
 for i in e ls la ll; do
 	alias c"$i"="c; $i"
 done
 
+##
 # CMDs that need root privs
+##
 for i in apt apt-get pacman yum dnf pkg brew eopkg; do
 	alias "$i"="sudo $i"
 done
