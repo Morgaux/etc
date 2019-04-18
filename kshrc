@@ -13,7 +13,7 @@ clear
 ~/bin/log "Running kshrc..."
 
 # if term is st and tmux exists and is not running
-[ "$(echo "$TERM" | cut -c -3)" = "st-" ] && [ -x "$(command -v tmux)" ] && [ -z "$TMUX" ] && log "Starting tmux" && exec tmux
+#[ "$(echo "$TERM" | cut -c -3)" = "st-" ] && [ -x "$(command -v tmux)" ] && [ -z "$TMUX" ] && log "Starting tmux" && exec tmux
 
 ##
 # Functions
