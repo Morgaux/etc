@@ -1,6 +1,6 @@
 #!/bin/sh
 
 # welcome
-uname -sm && log "Machine: $(uname -sm)"
-[ -x "$(command -v fortune)" ] && fortune && log "$(fortune -s -n 60)"
+uname -sm
+[ -x "$(command -v fortune)" ] && fortune
 

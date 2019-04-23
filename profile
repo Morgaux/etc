@@ -27,6 +27,7 @@ set -e # stop on uncaught error
 	echo ''
 	echo '~/bin/log "Running ~/.profile" || true'
 	echo '~/bin/log "Uptime: $(uptime)" || true'
+	echo '~/bin/log "Machine: $(uname -sm)" || true'
 } > ~/.profile.tmp # Create new temporary file
 
 ##
