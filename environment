@@ -10,7 +10,7 @@ fi
 # remove path duplicates
 PATH=$(printf "%s" "$PATH" | awk -v RS=':' '!a[$1]++ { if (NR > 1) printf RS; printf $1 }')
 
-# set EDITOR to most prefered available
+# set EDITOR to most preferred available
 for i in vim vi nano ; do
 	[ -x "$(command -v $i)" ] || continue
 	EDITOR="$(which $i)"

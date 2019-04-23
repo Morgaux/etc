@@ -12,8 +12,8 @@ clear
 
 ~/bin/log "Running kshrc..."
 
-# if term is st and tmux exists and is not runing
-[ "$(echo $TERM | cut -c -3)" = "st-" ] && [ -x "$(command -v tmux)" ] && [ -z "$TMUX" ] && log "Starting tmux" && exec tmux
+# if term is st and tmux exists and is not running
+#[ "$(echo "$TERM" | cut -c -3)" = "st-" ] && [ -x "$(command -v tmux)" ] && [ -z "$TMUX" ] && log "Starting tmux" && exec tmux
 
 ##
 # Functions
@@ -60,6 +60,7 @@ HISTSIZE=1024
 [ -f ~/etc/profile ] && ~/etc/profile # run script to update ~/.profile
 #[ -z "$EDITOR" ] || . ~/.profile # profile may not have been read if EDITOR unset
 [ -f ~/etc/startup ] && . ~/etc/startup # start applications
+[ -f ~/etc/aliases ] && . ~/etc/aliases # aliases
 [ -f ~/etc/welcome ] && . ~/etc/welcome # welcome messages
 
 ~/bin/log "kshrc completed, happy hacking!"

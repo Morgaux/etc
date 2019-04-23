@@ -1,10 +1,15 @@
 #!/bin/sh
 
-~/bin/log "Launching start up applications..."
+~/bin/log "Launching startup applications..."
 
-# if xbanish exists and is not yet running, run it in background
-hasX && \
-	[ -x "$(command -v xbanish)" ] && \
-	[ "$(ps -a | grep xbanish)" = "" ] && \
-	{ ~/bin/log "xbanish started"; xbanish & }
+# Start ups that require Xorg
+if hasX ; then
+	# if xbanish exists and is not yet running, run it in background
+	[ -x "$(command -v xbanish)" ] && if [ "$(ps cax | grep xbanish)" = "" ] ; then
+		~/bin/log "xbanish started"
+		xbanish &
+	else
+		~/bin/log "xbanish already running"
+	fi
+fi
 

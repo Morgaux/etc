@@ -43,5 +43,5 @@ done
 rm ~/.profile
 mv ~/.profile.tmp ~/.profile
 
-~/bin/log "Profile created sucessfully"
+~/bin/log "Profile created successfully"
 
