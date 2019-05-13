@@ -12,35 +12,32 @@ clear
 
 ~/bin/log "Running kshrc..."
 
-# if term is st and tmux exists and is not running
-#[ "$(echo "$TERM" | cut -c -3)" = "st-" ] && [ -x "$(command -v tmux)" ] && [ -z "$TMUX" ] && log "Starting tmux" && exec tmux
+#[ -x "$(command -v dvtm)" ] && [ -z "$DVTM" ] && log "Starting dvtm" && exec dvtm
 
 ##
 # Functions
 ##
 
 # change dir
-cd()
-{
-if [ "$#" -eq 0 ] ; then
-	builtin cd "${HOME}"
-else
-	builtin cd "$*" 2> /dev/null ||
-	builtin cd "$*"* 2> /dev/null ||
-	builtin cd ./*"$*"* 2> /dev/null ||
-	echo "cd: $* not found" 1>&2
-fi
+cd() {
+	if [ "$#" -eq 0 ] ; then
+		builtin cd "${HOME}"
+	else
+		builtin cd "$*" 2> /dev/null ||
+		builtin cd "$*"* 2> /dev/null ||
+		builtin cd ./*"$*"* 2> /dev/null ||
+		echo "cd: $* not found" 1>&2
+	fi
 }
 
 # safe base dir name
-_PS1DIR()
-{
-case "$PWD" in
-	"$HOME")	PS1DIR="~";;
-	"/")		PS1DIR="/";;
-	*)		PS1DIR="${PWD##*/}";;
-esac
-echo "$PS1DIR"
+_PS1DIR() {
+	case "$PWD" in
+		"$HOME")	PS1DIR="~";;
+		"/")		PS1DIR="/";;
+		*)		PS1DIR="${PWD##*/}";;
+	esac
+	echo "$PS1DIR"
 }
 
 ##
