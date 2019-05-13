@@ -10,6 +10,8 @@ clear
 # mksh and ksh configuration
 ##
 
+[ -z "$KSHRC_DONE" ] || return 0
+
 ~/bin/log "Running kshrc..."
 
 #[ -x "$(command -v dvtm)" ] && [ -z "$DVTM" ] && log "Starting dvtm" && exec dvtm
@@ -61,4 +63,6 @@ HISTSIZE=1024
 [ -f ~/etc/welcome ] && . ~/etc/welcome # welcome messages
 
 ~/bin/log "kshrc completed, happy hacking!"
+
+export KSHRC_DONE=""
 

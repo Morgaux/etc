@@ -2,10 +2,12 @@
 
 ~/bin/log "Setting up environment..."
 
-# set PATH so it includes user's private bin
-if [ -d "$HOME/bin" ] ; then
-	PATH="$HOME/bin:$PATH"
-fi
+# set PATH
+for dir in "/sbin" "/bin" "/usr/sbin" "/usr/bin" "/usr/local/sbin" "/usr/local/bin" "$HOME/bin"; do
+	if [ -d "$dir" ] ; then
+		PATH="$dir:$PATH"
+	fi
+done
 
 # remove path duplicates
 PATH=$(printf "%s" "$PATH" | awk -v RS=':' '!a[$1]++ { if (NR > 1) printf RS; printf $1 }')
@@ -17,12 +19,21 @@ for i in vim vi nano ; do
 	break
 done
 
-JAVA_HOME=$(readlink -f /usr/bin/javac | sed "s:/bin/javac::")
-CLASSPATH="$CLASSPATH:."
+# set JAVA variables
+if [ -x "$(command -v javac)" ] ; then
+	JAVA_HOME=$(readlink -f /usr/bin/javac | sed "s:/bin/javac::")
+	CLASSPATH="$CLASSPATH:."
+fi
+
+# set PAGER
+PAGER=less
+
+ENV="$HOME/.kshrc"
 
 # export variables
-export PATH HOME EDITOR JAVA_HOME CLASSPATH
+export PATH HOME EDITOR JAVA_HOME CLASSPATH PAGER ENV
 
+# log ENVIRONMENT
 ~/bin/log "Path: $PATH"
 ~/bin/log "Editor: $EDITOR"
 
