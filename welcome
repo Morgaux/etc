@@ -1,5 +1,6 @@
 #!/bin/sh
 
-[ -x "$(command -v neofetch)" ] && neofetch || uname -sm
+uname -sm
+
 [ -x "$(command -v fortune)" ] && fortune all
 
