@@ -1,6 +1,5 @@
 #!/bin/sh
 
-# welcome
-uname -sm
+[ -x "$(command -v neofetch)" ] && neofetch || uname -sm
 [ -x "$(command -v fortune)" ] && fortune all
 
