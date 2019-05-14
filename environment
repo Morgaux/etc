@@ -28,10 +28,12 @@ fi
 # set PAGER
 PAGER=less
 
+DVTM_TERM="xterm"
+
 ENV="$HOME/.kshrc"
 
 # export variables
-export PATH HOME EDITOR JAVA_HOME CLASSPATH PAGER ENV
+export PATH HOME EDITOR JAVA_HOME CLASSPATH PAGER ENV DVTM_TERM
 
 # log ENVIRONMENT
 ~/bin/log "Path: $PATH"
