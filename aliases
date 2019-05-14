@@ -23,7 +23,7 @@ done
 ##
 # CMDs that need root privileges
 ##
-for i in apt apt-get pacman yum dnf pkg brew eopkg; do
+for i in apt apt-get pacman portmaster yum dnf pkg brew eopkg; do
 	alias "$i"="sudo $i"
 done
 # OpenBSD
