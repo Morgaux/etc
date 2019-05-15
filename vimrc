@@ -14,11 +14,16 @@ set nowrap
 let loaded_matchparen = 1
 
 " Needed for st!
-if &term =~ 'st-256color'
-	set t_8f=[38;2;%lu;%lu;%lum        " set foreground color
-	set t_8b=[48;2;%lu;%lu;%lum        " set background color
-	set t_Co=256                         " Enable 256 colors
-	set termguicolors                    " Enable GUI colors for the term truecolor
+"set t_8f=[38;2;%lu;%lu;%lum        " set foreground color
+"set t_8b=[48;2;%lu;%lu;%lum        " set background color
+"set t_Co=256                         " Enable 256 colors
+set termguicolors
+
+if &term =~ '256color'
+	" disable Background Color Erase (BCE) so that color schemes
+	" render properly when inside 256-color tmux and GNU screen.
+	" see also http://sunaku.github.io/vim-256color-bce.html
+	set t_ut=
 endif
 
 set showtabline=2
