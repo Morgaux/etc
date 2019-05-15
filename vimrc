@@ -23,6 +23,9 @@ set ignorecase
 
 " Tabs must be eight wide!!!
 set tabstop=8 softtabstop=0 shiftwidth=8 noexpandtab
+autocmd Filetype python setlocal tabstop=8 softtabstop=0 shiftwidth=8 noexpandtab
+autocmd Filetype scala setlocal tabstop=8 softtabstop=0 shiftwidth=8 noexpandtab
+autocmd Filetype java setlocal tabstop=8 softtabstop=0 shiftwidth=8 noexpandtab
 
 " Show tabs as commented dots
 set list
