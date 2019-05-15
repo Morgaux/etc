@@ -14,7 +14,7 @@ clear
 
 ~/bin/log "Running kshrc..."
 
-#[ -x "$(command -v dvtm)" ] && [ -z "$DVTM" ] && log "Starting dvtm" && exec dvtm
+[ -x "$(command -v dvtm)" ] && [ -z "$DVTM" ] && log "Starting dvtm" && exec dvtm
 
 ##
 # Functions
@@ -57,7 +57,6 @@ HISTSIZE=1024
 # environment
 ##
 [ -f ~/etc/profile ] && ~/etc/profile # run script to update ~/.profile
-#[ -z "$EDITOR" ] || . ~/.profile # profile may not have been read if EDITOR unset
 [ -f ~/etc/startup ] && . ~/etc/startup # start applications
 [ -f ~/etc/aliases ] && . ~/etc/aliases # aliases
 [ -f ~/etc/welcome ] && . ~/etc/welcome # welcome messages
