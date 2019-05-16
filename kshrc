@@ -4,13 +4,13 @@
 # http://gitlab.com/morgaux/etc
 #
 
-clear
-
 ##
 # mksh and ksh configuration
 ##
 
 [ -z "$KSHRC_DONE" ] || return 0
+
+clear
 
 ~/bin/log "Running kshrc..."
 
