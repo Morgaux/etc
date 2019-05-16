@@ -81,8 +81,10 @@ if v:version > 580
 endif
 let g:colors_name = 'juvenile'
 if has('gui_running') || &t_Co == 256
-	hi Comment	cterm=NONE ctermfg=256	ctermbg=NONE gui=NONE guifg=#a0a0a0	guibg=NONE
-	hi NonText	cterm=NONE ctermfg=256	ctermbg=NONE gui=NONE guifg=#a0a0a0	guibg=NONE
+	hi Comment	cterm=NONE ctermfg=256	ctermbg=NONE	gui=NONE guifg=#a0a0a0	guibg=NONE
+	hi NonText	cterm=NONE ctermfg=256	ctermbg=NONE	gui=NONE guifg=#a0a0a0	guibg=NONE
+
+	" Sytax sugar
 	hi Constant	cterm=NONE ctermfg=NONE	ctermbg=NONE gui=NONE guifg=NONE	guibg=NONE
 	hi Identifier	cterm=NONE ctermfg=NONE	ctermbg=NONE gui=NONE guifg=NONE	guibg=NONE
 	hi Function	cterm=NONE ctermfg=NONE	ctermbg=NONE gui=NONE guifg=NONE	guibg=NONE
@@ -92,6 +94,7 @@ if has('gui_running') || &t_Co == 256
 	hi Type		cterm=NONE ctermfg=NONE	ctermbg=NONE gui=NONE guifg=NONE	guibg=NONE
 	hi Special	cterm=NONE ctermfg=NONE	ctermbg=NONE gui=NONE guifg=NONE	guibg=NONE
 	hi Delimiter	cterm=NONE ctermfg=NONE	ctermbg=NONE gui=NONE guifg=NONE	guibg=NONE
+
 	" Line number colors
 	hi LineNr	cterm=NONE ctermfg=NONE	ctermbg=NONE gui=NONE guifg=NONE	guibg=NONE
 	hi CursorLineNr	cterm=NONE ctermfg=NONE	ctermbg=NONE gui=NONE guifg=NONE	guibg=NONE
