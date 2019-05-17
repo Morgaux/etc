@@ -14,7 +14,7 @@ clear
 
 ~/bin/log "Running kshrc..."
 
-[ -x "$(command -v dvtm)" ] && [ -z "$DVTM" ] && log "Starting dvtm" && exec dvtm
+[ -x "$(command -v dvtm)" ] && [ -z "$DVTM" ] && log "Starting dvtm" && exec dvtm -M
 
 ##
 # Functions
