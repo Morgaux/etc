@@ -100,3 +100,8 @@ if has('gui_running') || &t_Co == 256
 	hi CursorLineNr	cterm=NONE ctermfg=NONE	ctermbg=NONE gui=NONE guifg=NONE	guibg=NONE
 endif
 
+" colors are nice sometimes
+autocmd Filetype java colo default
+autocmd Filetype python colo default
+autocmd Filetype scala colo default
+

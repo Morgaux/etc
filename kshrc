@@ -4,17 +4,17 @@
 # http://gitlab.com/morgaux/etc
 #
 
-clear
-
 ##
 # mksh and ksh configuration
 ##
 
 [ -z "$KSHRC_DONE" ] || return 0
 
+clear
+
 ~/bin/log "Running kshrc..."
 
-[ -x "$(command -v dvtm)" ] && [ -z "$DVTM" ] && log "Starting dvtm" && exec dvtm
+[ -x "$(command -v dvtm)" ] && [ -z "$DVTM" ] && log "Starting dvtm" && exec dvtm -M
 
 ##
 # Functions

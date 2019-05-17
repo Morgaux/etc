@@ -2,5 +2,5 @@
 
 uname -sm
 
-[ -x "$(command -v fortune)" ] && fortune all
+[ -x "$(command -v fortune)" ] && { fortune all || fortune ; }
 
