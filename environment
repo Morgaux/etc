@@ -9,6 +9,11 @@ for dir in "/sbin" "/bin" "/usr/sbin" "/usr/bin" "/usr/local/sbin" "/usr/local/b
 	fi
 done
 
+# set os specific bin
+case "$(uname)" in
+	*"FreeBSD"*)	PATH="$HOME/bin/freebsd:$PATH";;
+esac
+
 # remove path duplicates
 PATH=$(printf "%s" "$PATH" | awk -v RS=':' '!a[$1]++ { if (NR > 1) printf RS; printf $1 }')
 
