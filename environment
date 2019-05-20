@@ -11,7 +11,11 @@ done
 
 # set os specific bin
 case "$(uname)" in
-	*"FreeBSD"*)	PATH="$HOME/bin/freebsd:$PATH";;
+	*"FreeBSD"*)
+		if [ -d "$HOME/bin/freebsd" ] ; then
+			PATH="$HOME/bin/freebsd:$PATH"
+		fi
+		;;
 esac
 
 # remove path duplicates
@@ -33,14 +37,21 @@ fi
 # set PAGER
 PAGER=less
 
+# set DVTM_TERM for compatibility
 DVTM_TERM="xterm"
 
-ENV="$HOME/.kshrc"
+# set ENV to local kshrc, possibly overrides symlinks
+ENV="$HOME/etc/kshrc"
 
 # export variables
 export PATH HOME EDITOR JAVA_HOME CLASSPATH PAGER ENV DVTM_TERM
 
-# log ENVIRONMENT
-~/bin/log "Path: $PATH"
-~/bin/log "Editor: $EDITOR"
+~/bin/log "PATH: $PATH"
+~/bin/log "HOME: $HOME"
+~/bin/log "EDITOR: $EDITOR"
+~/bin/log "JAVA_HOME: $JAVA_HOME"
+~/bin/log "CLASSPATH: $CLASSPATH"
+~/bin/log "PAGER: $PAGER"
+~/bin/log "ENV: $ENV"
+~/bin/log "DVTM_TERM: $DVTM_TERM"
 
