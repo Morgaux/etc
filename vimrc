@@ -109,7 +109,7 @@ hi Special	cterm=NONE ctermfg=NONE ctermbg=NONE gui=NONE guifg=NONE guibg=NONE
 hi Delimiter	cterm=NONE ctermfg=NONE ctermbg=NONE gui=NONE guifg=NONE guibg=NONE
 
 " colors are nice sometimes
-autocmd Filetype java colo default
-autocmd Filetype python colo default
-autocmd Filetype scala colo default
+autocmd Filetype java colo delek
+autocmd Filetype python colo delek
+autocmd Filetype scala colo delek
 
