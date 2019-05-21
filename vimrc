@@ -13,9 +13,13 @@ set nowrap
 " prevent annoying hilights
 let loaded_matchparen = 1
 
+set t_Co=256
+
 " Needed for st!
 set nocompatible
-set t_Co=16
+if &term =~ "st"
+	set t_Co=16
+endif
 
 set showtabline=2
 set laststatus=2
@@ -62,43 +66,47 @@ set directory=~/.vim/swp//
 " ...except crontab, which will complain that it can't see any changes
 au FileType crontab setlocal bkc=yes
 
-
-
 "
-" juvenil.vim
-" Show comments in grey if color available, in defiance Commander Pike
-" But nothing else, in deference to Commander Pike.
+" juvenile.vim -- Show comments in grey if colour available, in defiance of
+" Commander Pike, but nothing else, in deference to Commander Pike.
+"
+" <https://groups.google.com/forum/#!msg/golang-nuts/hJHCAaiL0so/kG3BHV6QFfIJ>
 "
 " Author: Tom Ryder <tom@sanctum.geek.nz>
 " License: Same as Vim itself
 "
 set background=dark
 if v:version > 580
-	hi clear
-	if exists('g:syntax_on')
+	highlight clear
+	if exists('syntax_on')
 		syntax reset
 	endif
 endif
-let g:colors_name = 'juvenile'
-if has('gui_running') || &t_Co == 256
-	hi Comment	cterm=NONE ctermfg=256	ctermbg=NONE	gui=NONE guifg=#a0a0a0	guibg=NONE
-	hi NonText	cterm=NONE ctermfg=256	ctermbg=NONE	gui=NONE guifg=#a0a0a0	guibg=NONE
+let colors_name = 'juvenile'
 
-	" Sytax sugar
-	hi Constant	cterm=NONE ctermfg=NONE	ctermbg=NONE gui=NONE guifg=NONE	guibg=NONE
-	hi Identifier	cterm=NONE ctermfg=NONE	ctermbg=NONE gui=NONE guifg=NONE	guibg=NONE
-	hi Function	cterm=NONE ctermfg=NONE	ctermbg=NONE gui=NONE guifg=NONE	guibg=NONE
-	hi Statement	cterm=NONE ctermfg=NONE	ctermbg=NONE gui=NONE guifg=NONE	guibg=NONE
-	hi PreProc	cterm=NONE ctermfg=NONE	ctermbg=NONE gui=NONE guifg=NONE	guibg=NONE
-	hi Title	cterm=NONE ctermfg=NONE	ctermbg=NONE gui=NONE guifg=NONE	guibg=NONE
-	hi Type		cterm=NONE ctermfg=NONE	ctermbg=NONE gui=NONE guifg=NONE	guibg=NONE
-	hi Special	cterm=NONE ctermfg=NONE	ctermbg=NONE gui=NONE guifg=NONE	guibg=NONE
-	hi Delimiter	cterm=NONE ctermfg=NONE	ctermbg=NONE gui=NONE guifg=NONE	guibg=NONE
-
-	" Line number colors
-	hi LineNr	cterm=NONE ctermfg=NONE	ctermbg=NONE gui=NONE guifg=NONE	guibg=NONE
-	hi CursorLineNr	cterm=NONE ctermfg=NONE	ctermbg=NONE gui=NONE guifg=NONE	guibg=NONE
+if has('gui_running') || &t_Co >= 256
+	hi Normal	cterm=NONE ctermfg=NONE	ctermbg=NONE gui=NONE guifg=#fcfcfc guibg=#030303
+	hi Comment	cterm=NONE ctermfg=246	ctermbg=NONE gui=NONE guifg=#a0a0a0 guibg=NONE
+	hi NonText	cterm=NONE ctermfg=246	ctermbg=NONE gui=NONE guifg=#a0a0a0 guibg=NONE
+elseif &t_Co >= 8
+	hi Normal	cterm=NONE ctermfg=NONE ctermbg=NONE
+	hi Comment	cterm=bold ctermfg=0 ctermbg=NONE
+	hi NonText	cterm=bold ctermfg=0 ctermbg=NONE
+else
+	hi Normal	cterm=NONE ctermfg=NONE ctermbg=NONE
+	hi Comment	cterm=NONE ctermfg=NONE ctermbg=NONE
+	hi NonText	cterm=NONE ctermfg=NONE ctermbg=NONE
 endif
+
+hi Constant	cterm=NONE ctermfg=NONE ctermbg=NONE gui=NONE guifg=NONE guibg=NONE
+hi Identifier	cterm=NONE ctermfg=NONE ctermbg=NONE gui=NONE guifg=NONE guibg=NONE
+hi Function	cterm=NONE ctermfg=NONE ctermbg=NONE gui=NONE guifg=NONE guibg=NONE
+hi Statement	cterm=NONE ctermfg=NONE ctermbg=NONE gui=NONE guifg=NONE guibg=NONE
+hi PreProc	cterm=NONE ctermfg=NONE ctermbg=NONE gui=NONE guifg=NONE guibg=NONE
+hi Title	cterm=NONE ctermfg=NONE ctermbg=NONE gui=NONE guifg=NONE guibg=NONE
+hi Type		cterm=NONE ctermfg=NONE ctermbg=NONE gui=NONE guifg=NONE guibg=NONE
+hi Special	cterm=NONE ctermfg=NONE ctermbg=NONE gui=NONE guifg=NONE guibg=NONE
+hi Delimiter	cterm=NONE ctermfg=NONE ctermbg=NONE gui=NONE guifg=NONE guibg=NONE
 
 " colors are nice sometimes
 autocmd Filetype java colo default
