@@ -6,7 +6,7 @@
 [ -f ~/etc/kshrc ] && [ ! -L ~/.kshrc ] && ln -sf ~/etc/kshrc ~/.kshrc && ~/bin/log "$HOME/etc/kshrc linked to ~/.kshrc"
 [ -f ~/etc/kshrc ] && [ ! -L ~/.kshrc ] && ln -sf ~/etc/kshrc ~/.mkshrc && ~/bin/log "$HOME/etc/kshrc linked to ~/.mkshrc"
 [ -f ~/etc/vimrc ] && [ ! -L ~/.vimrc ] && ln -sf ~/etc/vimrc ~/.vimrc && ~/bin/log "$HOME/etc/vimrc linked to ~/.vimrc"
-[ -f ~/etc/tmux.conf ] && [ ! -L ~/.tmux.conf ] && ln -sf ~/etc/tmux.conf ~/.tmux.conf && ~/bin/log "$HOME/etc/tmux.conf linked to ~/.tmux.conf"
+[ -d ~/etc/vim ] && [ ! -L ~/.vim ] && ln -sf ~/etc/vim ~/.vim && ~/bin/log "$HOME/etc/vim/ linked to ~/.vim"
 
 # make my dirs
 for DIR in src var uni tmp; do
