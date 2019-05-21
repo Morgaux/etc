@@ -108,7 +108,7 @@ hi Type		cterm=NONE ctermfg=NONE ctermbg=NONE gui=NONE guifg=NONE guibg=NONE
 hi Special	cterm=NONE ctermfg=NONE ctermbg=NONE gui=NONE guifg=NONE guibg=NONE
 hi Delimiter	cterm=NONE ctermfg=NONE ctermbg=NONE gui=NONE guifg=NONE guibg=NONE
 
-" colors are nice sometimes
+" colors are nice sometimes, this is basically solarized
 autocmd Filetype java colo flattened_dark
 autocmd Filetype python colo flattened_dark
 autocmd Filetype scala colo flattened_dark
