@@ -8,8 +8,6 @@
 # mksh and ksh configuration
 ##
 
-[ -z "$KSHRC_DONE" ] || return 0
-
 clear
 
 ~/bin/log "Running kshrc..."
@@ -79,6 +77,4 @@ HISTSIZE=1024
 [ -f ~/etc/welcome ] && . ~/etc/welcome # welcome messages
 
 ~/bin/log "kshrc completed, happy hacking!"
-
-export KSHRC_DONE=""
 
