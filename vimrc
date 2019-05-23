@@ -50,6 +50,9 @@ au InsertLeave * redraw!
 " Ruler at 80, hard limit 120
 let &colorcolumn="80,".join(range(120,999),",")
 
+" Highlight curentline
+set cursorline
+
 colo flattened_dark
 
 " No line numbers if the term is too narrow for 80 chars
