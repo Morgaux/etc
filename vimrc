@@ -1,3 +1,9 @@
+"
+" https://gitlab.com/morgaux/etc
+" Author:	Morgaux Meyer
+" License:	MIT (C) Morgaux Meyer
+"
+
 " enable syntax
 syntax on
 
@@ -9,21 +15,21 @@ set nu
 set ruler
 set report=1
 set nowrap
-
-" prevent annoying hilights
-let loaded_matchparen = 1
-
-set t_Co=256
-
-" Needed for st!
 set nocompatible
-if &term =~ "st"
-	set t_Co=16
-endif
-
 set showtabline=2
 set laststatus=2
 set ignorecase
+
+
+
+""
+" Colors and highlighting
+""
+
+" prevent annoying paren matching
+let loaded_matchparen = 1
+
+set t_Co=256
 
 " Tabs must be eight wide!!!
 set tabstop=8 softtabstop=0 shiftwidth=8 noexpandtab
@@ -41,12 +47,7 @@ match Error /\s\+$\| \+\ze\t/
 au InsertEnter * redraw!
 au InsertLeave * redraw!
 
-colo juvenile
-
-" colors are nice sometimes, this is basically solarized
-autocmd Filetype java colo flattened_dark
-autocmd Filetype python colo flattened_dark
-autocmd Filetype scala colo flattened_dark
+colo flattened_dark
 
 " No line numbers if the term is too narrow for 80 chars
 if &columns < 85
@@ -55,11 +56,9 @@ endif
 
 
 
-"
+""
 " Stuff I've shamelessly stolen
-"
-
-
+""
 
 "
 " http://github.com/jcs/dotfiles
@@ -72,5 +71,4 @@ set backupdir=~/.vim/backup//
 set directory=~/.vim/swp//
 " ...except crontab, which will complain that it can't see any changes
 au FileType crontab setlocal bkc=yes
-
 
