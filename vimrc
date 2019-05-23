@@ -26,10 +26,10 @@ set ignorecase
 " Colors and highlighting
 ""
 
+set t_Co=256
+
 " prevent annoying paren matching
 let loaded_matchparen = 1
-
-set t_Co=256
 
 " Tabs must be eight wide!!!
 set tabstop=8 softtabstop=0 shiftwidth=8 noexpandtab
@@ -46,6 +46,9 @@ match Comment /\t/
 match Error /\s\+$\| \+\ze\t/
 au InsertEnter * redraw!
 au InsertLeave * redraw!
+
+" Ruler at 80, hard limit 120
+let &colorcolumn="80,".join(range(120,999),",")
 
 colo flattened_dark
 
