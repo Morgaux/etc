@@ -30,7 +30,7 @@ done
 
 # set JAVA variables
 if [ -x "$(command -v javac)" ] ; then
-	JAVA_HOME=$(readlink -f /usr/bin/javac | sed "s:/bin/javac::")
+	JAVA_HOME="$(readlink -f /usr/bin/javac | sed 's:/bin/javac::')"
 	CLASSPATH="$CLASSPATH:."
 fi
 
