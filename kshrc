@@ -12,8 +12,8 @@ clear
 
 ~/bin/log "Running kshrc..."
 
-# run dvtm 
-[ -x "$(command -v dvtm)" ] && [ -z "$DVTM" ] && log "Starting dvtm" && {
+# run dvtm/dwm 
+false && [ -x "$(command -v dvtm)" ] && [ -z "$DVTM" ] && log "Starting dvtm" && {
 	#exec dvtm -M
 	FIFO="/tmp/dvtm-status.$$"
 
