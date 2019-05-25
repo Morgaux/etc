@@ -1,6 +1,6 @@
 #!/bin/sh
 
-uname -sm
+#uname -sm
 
 [ -x "$(command -v fortune)" ] && { fortune all || fortune ; } 2>/dev/null
 
