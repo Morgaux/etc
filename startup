@@ -11,7 +11,7 @@ if hasX ; then
 	else
 		~/bin/log "xbanish already running"
 	fi
-	[ -x "$(command -v redshift)" ] && if "$(ps cax | grep redshift)" = "" ; then
+	[ -x "$(command -v redshift)" ] && if [ "$(ps cax | grep redshift)" = "" ] ; then
 		redshift -t 6500k:4000k &
 	fi
 fi
