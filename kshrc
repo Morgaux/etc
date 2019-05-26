@@ -12,26 +12,6 @@ clear
 
 ~/bin/log "Running kshrc..."
 
-# run dvtm/dwm 
-false && [ -x "$(command -v dvtm)" ] && [ -z "$DVTM" ] && log "Starting dvtm" && {
-	#exec dvtm -M
-	FIFO="/tmp/dvtm-status.$$"
-
-	[ -p "$FIFO" ] || mkfifo -m 600 "$FIFO" || exit 1
-
-	while true; do
-		date +%H:%M
-		sleep 60
-	done > "$FIFO" &
-
-	STATUS_PID=$!
-	dvtm -M -s "$FIFO" 2> /dev/null
-	kill $STATUS_PID
-	rm -f "$FIFO"
-
-	exit 0
-}
-
 ##
 # Functions
 ##
