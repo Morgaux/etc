@@ -8,9 +8,7 @@
 # mksh and ksh configuration
 ##
 
-clear
-
-~/bin/log "Running kshrc..."
+~/bin/log "Running kshrc..." || true
 
 ##
 # Functions
@@ -46,16 +44,16 @@ PS1="\$(_PS1DIR) \$ "
 ##
 # History
 ##
-HISTFILE="$HOME/var/ksh_history" # note: mksh and (o/pd)ksh have in compatible formats
+HISTFILE="$HOME/var/ksh_history" # note: mksh and (o/pd)ksh are incompatible
 HISTSIZE=1024
 
 ##
 # environment
 ##
-[ -f ~/etc/profile ] && ~/etc/profile # run script to update ~/.profile
+[ -f ~/etc/profile ] &&   ~/etc/profile # run script to update ~/.profile
 [ -f ~/etc/startup ] && . ~/etc/startup # start applications
 [ -f ~/etc/aliases ] && . ~/etc/aliases # aliases
 [ -f ~/etc/welcome ] && . ~/etc/welcome # welcome messages
 
-~/bin/log "kshrc completed, happy hacking!"
+~/bin/log "kshrc completed, happy hacking!" || true
 

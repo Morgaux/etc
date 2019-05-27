@@ -3,7 +3,7 @@
 ~/bin/log "Launching startup applications..."
 
 # Start ups that require Xorg
-if hasX ; then
+if ~/bin/hasX ; then
 	# if xbanish exists and is not yet running, run it in background
 	[ -x "$(command -v xbanish)" ] && if [ "$(ps cax | grep xbanish)" = "" ] ; then
 		~/bin/log "xbanish started"
