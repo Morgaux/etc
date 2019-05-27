@@ -1,0 +1,106 @@
+#!/bin/sh
+
+##
+# Dynamic Status - set status for dwm and dvtm
+##
+
+
+
+################################################################################
+#                              Configuration vars                              #
+################################################################################
+
+PREFIX="$HOME" # set to / if running with permissions
+SELF="$(basename "$0")"
+PIDFILE="$PREFIX/tmp/${SELF}.pid"
+LOGFILE="$PREFIX/tmp/${SELF}.log"
+PWD_DIR="$PWD"
+RUN_DIR="/"
+
+
+
+################################################################################
+#                            Function definitions                              #
+################################################################################
+
+# log function
+log() {
+	_LOG_TIME_STAMP="$(date +%c)"
+	touch "$LOGFILE"
+	echo "$_LOG_TIME_STAMP	$*" >> "$LOGFILE"
+}
+
+# error function
+err() {
+	log "ERROR:	$*"
+	return 1
+}
+
+# fatal error function
+die() {
+	err "$*"
+	exit 1
+}
+
+# main function
+main() {
+	while true ; do
+		CLK="$(date +%c)"
+		BAT=""
+		PER=""
+		VOL=""
+
+		STATUS=" [$PER $BAT] [Vol: $VOL] [$CLK] "
+
+		sleep 1
+
+		log "Status set: $STATUS"
+	done
+}
+
+
+
+################################################################################
+#                                Init daemon                                   #
+################################################################################
+
+# Init logfile
+{
+	echo "Logfile for $SELF - $0"
+	echo "PIDFILE:	$PIDFILE"
+	echo "LOGFILE:	$LOGFILE"
+	echo "PWD_DIR:	$PWD_DIR"
+	echo "RUN_DIR:	$RUN_DIR"
+} > "$LOGFILE"
+
+
+
+################################################################################
+#                                  Run daemon                                  #
+################################################################################
+
+# Change to safe running dir
+cd "$RUN_DIR" || die "Could not enter RUN_DIR"
+
+# Process PID file
+if [ -f "$PIDFILE" ] ; then
+	if ps -p "$(cat "$PIDFILE")" >/dev/null 2>&1 ; then
+		die "PID is still running."
+	else
+		log "PID file found but process not found."
+		rm "$PIDFILE"
+	fi
+fi
+
+# Create PID file
+echo "$$" > "$PIDFILE" || die "Could not create PID file"
+
+# call main
+main "$@" ; log "main($@) {...} completed with exit code $?"
+
+# Remove PID file
+rm "$PIDFILE" || die "Could not remove PID file."
+
+# exit success
+exit 0
+

@@ -3,7 +3,7 @@
 ~/bin/log "Launching startup applications..."
 
 # Start ups that require Xorg
-if hasX ; then
+if ~/bin/hasX ; then
 	# if xbanish exists and is not yet running, run it in background
 	[ -x "$(command -v xbanish)" ] && if [ "$(ps cax | grep xbanish)" = "" ] ; then
 		~/bin/log "xbanish started"
@@ -14,5 +14,10 @@ if hasX ; then
 	[ -x "$(command -v redshift)" ] && if [ "$(ps cax | grep redshift)" = "" ] ; then
 		redshift -t 6500k:4000k >/dev/null 2>&1 &
 	fi
+fi
+
+if [ "$(ps cax | grep dstatus)" = "" ] ;  then
+	# run the status daemon
+	~/etc/dstatus < /dev/null >/dev/null 2>&1 &
 fi
 
