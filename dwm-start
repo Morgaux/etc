@@ -1,0 +1,36 @@
+#!/bin/sh
+
+#black bg
+xsetroot -solid black
+
+#while loop to update statusbar with some goodies
+while true; do
+
+	#battery
+	battper="$(acpi | awk '{print $4}' | tr -d ',')";
+	battery="$(acpi | awk '{print $3}' | tr -d ',')";
+
+	#time
+	CLK=$( date +'%a %b %d %R:%S %Z' )
+
+	#volume
+	if [ "$(amixer get Master | tail -1 | awk '{print $6}' | tr -d '[]')" = "on" ] ; then 
+		VOL="$( amixer get Master | tail -1 | awk '{ print $5 }' | tr -d '[]' )"
+	else
+		VOL="(X)"
+	fi
+
+	#put it in the xsetrootname
+	xsetroot -name " [ $battper - $battery ] [ Vol: $VOL ] [ $CLK ] "
+
+	sleep 1
+done &
+
+sleep 1
+
+/usr/bin/nm-applet &
+feh -z -Z --bg-scale /home/morgaux/var/Pictures/Wallpapers/castle.png
+
+#start dwm after loop
+exec /usr/local/bin/dwm > /dev/null
+
