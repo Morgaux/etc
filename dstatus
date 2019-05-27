@@ -16,6 +16,8 @@ PIDFILE="$PREFIX/tmp/${SELF}.pid"
 LOGFILE="$PREFIX/tmp/${SELF}.log"
 PWD_DIR="$PWD"
 RUN_DIR="/"
+DVTM_FIFO="/tmp/dvtm-status.fifo"
+STATUS_LINE=""
 
 
 
@@ -44,17 +46,46 @@ die() {
 
 # main function
 main() {
-	while true ; do
-		CLK="$(date +%c)"
-		BAT=""
-		PER=""
-		VOL=""
+	for CMD in acpi amixer printf
+	do
+		[ -x "$(command -v $CMD)" ] || die "Command \"$CMD\" could not be found."
+	done
 
-		STATUS=" [$PER $BAT] [Vol: $VOL] [$CLK] "
+	#while loop to update status
+	while true
+	do
+
+		#battery
+		battper="$(acpi | awk '{print $4}' | tr -d ',')"
+		battery="$(acpi | awk '{print $3}' | tr -d ',')"
+
+		#time
+		CLK="$(date +'%a %b %d %R:%S %Z')"
+
+		#volume
+		if [ "$(amixer get Master | tail -1 | awk '{print $6}' | tr -d '[]')" = "on" ]
+		then 
+			# volume % with leading space for padding if <10%
+			VOL="$(printf "%3s" "$(amixer get Master | tail -1 | awk '{ print $5 }' | tr -d '[]')")"
+		else
+			VOL="(X)" # mute symbol
+		fi
+
+		STATUS_LINE=" [ $battper - $battery ] [ Vol: $VOL ] [ $CLK ] "
+
+		#put it in the xsetrootname
+		if [ -x "$(command -v xsetroot)" ] && [ -x "$(command -v dwm)" ]
+		then
+			xsetroot -name "$STATUS_LINE"
+		fi
+
+		#put in in the dvtm FIFO
+		if [ -x "$(command -v dvtm)" ]
+		then
+			echo "$STATUS_LINE" | "$DVTM_FIFO"
+		fi
 
 		sleep 1
-
-		log "Status set: $STATUS"
 	done
 }
 
@@ -73,6 +104,9 @@ main() {
 	echo "RUN_DIR:	$RUN_DIR"
 } > "$LOGFILE"
 
+# Init FIFO
+[ -p "$DVTM_FIFO" ] || mkfifo -m 600 "$DVTM_FIFO" || die "Cannot use FIFO"
+
 
 
 ################################################################################
@@ -83,8 +117,10 @@ main() {
 cd "$RUN_DIR" || die "Could not enter RUN_DIR"
 
 # Process PID file
-if [ -f "$PIDFILE" ] ; then
-	if ps -p "$(cat "$PIDFILE")" >/dev/null 2>&1 ; then
+if [ -f "$PIDFILE" ]
+then
+	if ps -p "$(cat "$PIDFILE")" >/dev/null 2>&1
+	then
 		die "PID is still running."
 	else
 		log "PID file found but process not found."
@@ -96,10 +132,13 @@ fi
 echo "$$" > "$PIDFILE" || die "Could not create PID file"
 
 # call main
-main "$@" ; log "main($@) {...} completed with exit code $?"
+main "$@" ; log "main($*) {...} completed with exit code $?"
 
 # Remove PID file
 rm "$PIDFILE" || die "Could not remove PID file."
+
+# Remove FIFO file
+rm "$DVTM_FIFO" || die "Could not remove the FIFO file."
 
 # exit success
 exit 0
