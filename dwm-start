@@ -1,9 +1,17 @@
 #!/bin/sh
+# https://gitlab.com/morgaux/etc
+
+##
+# dwm wrapper to launch dwm and set the status etc.
+##
+
+#symlink to /usr/local/bin/dwm-start:
+#ln -sf ~/etc/dwm-start /usr/local/bin/dwm-start
 
 #black bg
 xsetroot -solid black
 
-#while loop to update statusbar with some goodies
+#while loop to update statusbar
 while true; do
 
 	#battery
@@ -15,9 +23,10 @@ while true; do
 
 	#volume
 	if [ "$(amixer get Master | tail -1 | awk '{print $6}' | tr -d '[]')" = "on" ] ; then 
-		VOL="$( amixer get Master | tail -1 | awk '{ print $5 }' | tr -d '[]' )"
+		# volume % with leading space for padding if <10%
+		VOL="$(printf "%3s" "$(amixer get Master | tail -1 | awk '{ print $5 }' | tr -d '[]')")"
 	else
-		VOL="(X)"
+		VOL="(X)" # mute symbol
 	fi
 
 	#put it in the xsetrootname
@@ -29,8 +38,9 @@ done &
 sleep 1
 
 /usr/bin/nm-applet &
+
+# set wallpaper
 feh -z -Z --bg-scale /home/morgaux/var/Pictures/Wallpapers/castle.png
 
-#start dwm after loop
 exec /usr/local/bin/dwm > /dev/null
 
