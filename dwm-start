@@ -11,29 +11,7 @@
 #black bg
 xsetroot -solid black
 
-#while loop to update statusbar
-while true; do
-
-	#battery
-	battper="$(acpi | awk '{print $4}' | tr -d ',')";
-	battery="$(acpi | awk '{print $3}' | tr -d ',')";
-
-	#time
-	CLK=$( date +'%a %b %d %R:%S %Z' )
-
-	#volume
-	if [ "$(amixer get Master | tail -1 | awk '{print $6}' | tr -d '[]')" = "on" ] ; then 
-		# volume % with leading space for padding if <10%
-		VOL="$(printf "%3s" "$(amixer get Master | tail -1 | awk '{ print $5 }' | tr -d '[]')")"
-	else
-		VOL="(X)" # mute symbol
-	fi
-
-	#put it in the xsetrootname
-	xsetroot -name " [ $battper - $battery ] [ Vol: $VOL ] [ $CLK ] "
-
-	sleep 1
-done &
+/home/morgaux/etc/dstatus &
 
 sleep 1
 
