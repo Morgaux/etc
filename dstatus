@@ -18,6 +18,7 @@ PWD_DIR="$PWD"
 RUN_DIR="/"
 DVTM_FIFO="/tmp/dvtm-status.fifo"
 STATUS_LINE=""
+FULL_STATUS="TRUE"
 
 
 
@@ -44,34 +45,51 @@ die() {
 	exit 1
 }
 
+simple_status() {
+	echo "$(date +'%a %b %d %R:%S %Z')"
+}
+
+full_status() {
+	#battery
+	battper="$(acpi | awk '{print $4}' | tr -d ',')"
+	battery="$(acpi | awk '{print $3}' | tr -d ',')"
+
+	#time
+	CLK="$(date +'%a %b %d %R:%S %Z')"
+
+	#volume
+	if [ "$(amixer get Master | tail -1 | awk '{print $6}' | tr -d '[]')" = "on" ]
+	then 
+		# volume % with leading space for padding if <10%
+		VOL="$(printf "%3s" "$(amixer get Master | tail -1 | awk '{ print $5 }' | tr -d '[]')")"
+	else
+		VOL="(X)" # mute symbol
+	fi
+
+	echo " [ $battper - $battery ] [ Vol: $VOL ] [ $CLK ] "
+}
+
 # main function
 main() {
+	# check dependacies
 	for CMD in acpi amixer printf
 	do
-		[ -x "$(command -v $CMD)" ] || die "Command \"$CMD\" could not be found."
+		[ -x "$(command -v $CMD)" ] && continue
+		err "Command \"$CMD\" could not be found, using simple status"
+		FULL_STATUS="FALSE"
 	done
 
-	#while loop to update status
+	# while loop to update status
 	while true
 	do
 
-		#battery
-		battper="$(acpi | awk '{print $4}' | tr -d ',')"
-		battery="$(acpi | awk '{print $3}' | tr -d ',')"
-
-		#time
-		CLK="$(date +'%a %b %d %R:%S %Z')"
-
-		#volume
-		if [ "$(amixer get Master | tail -1 | awk '{print $6}' | tr -d '[]')" = "on" ]
-		then 
-			# volume % with leading space for padding if <10%
-			VOL="$(printf "%3s" "$(amixer get Master | tail -1 | awk '{ print $5 }' | tr -d '[]')")"
+		# use back up if dependancies not met
+		if [ "$FULL_STATUS" = "TRUE" ]
+		then
+			STATUS_LINE="$(full_status)"
 		else
-			VOL="(X)" # mute symbol
+			STATUS_LINE="$(simple_status)"
 		fi
-
-		STATUS_LINE=" [ $battper - $battery ] [ Vol: $VOL ] [ $CLK ] "
 
 		#put it in the xsetrootname
 		if [ -x "$(command -v xsetroot)" ] && [ -x "$(command -v dwm)" ]
@@ -86,6 +104,7 @@ main() {
 		fi
 
 		sleep 1
+
 	done
 }
 
