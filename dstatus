@@ -70,7 +70,7 @@ full_status() {
 }
 
 check_dependancies() {
-	for CMD in acpi amixer printf
+	for CMD in acpi amixer
 	do
 		[ -x "$(command -v $CMD)" ] && continue
 		err "Command \"$CMD\" could not be found, using simple status"
