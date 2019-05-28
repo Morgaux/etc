@@ -45,72 +45,69 @@ die() {
 	exit 1
 }
 
-simple_status() {
-	SIMPLE_LINE="$(date +'%a %b %d %R:%S %Z')"
-}
-
-full_status() {
-	#battery
-	battper="$(acpi | awk '{print $4}' | tr -d ',')"
-	battery="$(acpi | awk '{print $3}' | tr -d ',')"
-
-	#time
-	CLK="$(date +'%a %b %d %R:%S %Z')"
-
-	#volume
-	if [ "$(amixer get Master | tail -1 | awk '{print $6}' | tr -d '[]')" = "on" ]
-	then 
-		# volume % with leading space for padding if <10%
-		VOL="$(printf "%3s" "$(amixer get Master | tail -1 | awk '{ print $5 }' | tr -d '[]')")"
-	else
-		VOL="(X)" # mute symbol
-	fi
-
-	FULL_LINE=" [ $battper - $battery ] [ Vol: $VOL ] [ $CLK ] "
-}
-
-check_dependancies() {
-	for CMD in acpi amixer
-	do
-		[ -x "$(command -v $CMD)" ] && continue
-		err "Command \"$CMD\" could not be found, using simple status"
-		return 1
-	done
-	return 0
-}
-
 # main function
 main() {
+	log "Initializing main($*)."
+
+	[ -x "$(command -v dwm)" ] || [ -x "$(command -v dvtm)" ] || {
+		log "No need for status as no programs will use it, exiting."
+		return 0
+	}
+
+	log "Entering main($*) loop."
+
 	# while loop to update status
 	while true
 	do
 
-		# use back up if dependancies not met
-		if check_dependancies
-		then
-			full_status
-			STATUS_LINE="$FULL_LINE"
+		# reset status to a space
+		log "Clear old status line"
+		STATUS_LINE=" "
+
+		#time
+		STATUS_LINE=" [ $(date +'%a %b %d %R:%S %Z') ]$STATUS_LINE"
+
+		#volume
+		if [ -x "$(command -v amixer)" ] && \
+			[ "$(amixer get Master | tail -1 | awk '{print $6}' | tr -d '[]')" = "on" ]
+		then 
+			# volume % with leading space for padding if <10%
+			VOL="$(printf "%3s" "$(amixer get Master | tail -1 | awk '{ print $5 }' | tr -d '[]')")"
 		else
-			simple_status
-			STATUS_LINE="$SIMPLE_LINE"
+			# mute symbol
+			VOL="--%"
 		fi
+		STATUS_LINE=" [ Vol: $VOL ]$STATUS_LINE"
+
+		#battery
+		if [ -x "$(command -v acpi)" ]
+		then
+			PER="$(acpi | awk '{print $4}' | tr -d ',')"
+			BAT="$(acpi | awk '{print $3}' | tr -d ',')"
+			STATUS_LINE=" [ $battper - $battery ]$STATUS_LINE"
+		fi
+
 		log "Status: $STATUS_LINE"
 
 		#put it in the xsetrootname
 		if [ -x "$(command -v xsetroot)" ] && [ -x "$(command -v dwm)" ]
 		then
+			log "Setting status line to xroot window."
 			xsetroot -name "$STATUS_LINE" || err "Could not update root window."
 		fi
 
 		#put in in the dvtm FIFO
 		if [ -x "$(command -v dvtm)" ]
 		then
-			true #echo "$STATUS_LINE" > "$DVTM_FIFO" || err "Could not update FIFO."
+			log "Adding status line to FIFO."
+			echo "$STATUS_LINE"
 		fi
 
 		sleep 1
 
-	done
+	done > "$DVTM_FIFO" || err "Could not update FIFO."
+
+	return $? # unreachable
 }
 
 
@@ -156,7 +153,9 @@ fi
 echo "$$" > "$PIDFILE" || die "Could not create PID file"
 
 # call main
-main "$@" ; log "main($*) {...} completed with exit code $?"
+log "exec main($*) {...}"
+main "$@"
+log "main($*) {...} completed with exit code $?"
 
 # Remove PID file
 rm "$PIDFILE" || die "Could not remove PID file."

@@ -10,7 +10,7 @@ alias mkdir='mkdir -p'
 alias x='exit'
 alias ..='cd ..'
 alias python='env python3'
-alias dvtm='dvtm -s /tmp/dvtm-status.fifo'
+alias dvtm='(etc/dstatus & ) ; dvtm -s /tmp/dvtm-status.fifo'
 
 alias git='pregit' # see ~/bin
 
@@ -29,4 +29,5 @@ for i in apt apt-get pacman portmaster yum dnf pkg brew eopkg; do
 done
 # OpenBSD
 alias pkg_add='doas pkg_add'
+
 
