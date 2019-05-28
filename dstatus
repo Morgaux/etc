@@ -46,7 +46,7 @@ die() {
 }
 
 simple_status() {
-	echo "$(date +'%a %b %d %R:%S %Z')"
+	SIMPLE_LINE="$(date +'%a %b %d %R:%S %Z')"
 }
 
 full_status() {
@@ -66,7 +66,7 @@ full_status() {
 		VOL="(X)" # mute symbol
 	fi
 
-	echo " [ $battper - $battery ] [ Vol: $VOL ] [ $CLK ] "
+	FULL_LINE=" [ $battper - $battery ] [ Vol: $VOL ] [ $CLK ] "
 }
 
 # main function
@@ -86,21 +86,24 @@ main() {
 		# use back up if dependancies not met
 		if [ "$FULL_STATUS" = "TRUE" ]
 		then
-			STATUS_LINE="$(full_status)"
+			full_status
+			STATUS_LINE="$FULL_LINE"
 		else
-			STATUS_LINE="$(simple_status)"
+			simple_status
+			STATUS_LINE="$SIMPLE_LINE"
 		fi
+		log "Status: $STATUS_LINE"
 
 		#put it in the xsetrootname
 		if [ -x "$(command -v xsetroot)" ] && [ -x "$(command -v dwm)" ]
 		then
-			xsetroot -name "$STATUS_LINE"
+			xsetroot -name "$STATUS_LINE" || err "Could not update root window."
 		fi
 
 		#put in in the dvtm FIFO
 		if [ -x "$(command -v dvtm)" ]
 		then
-			echo "$STATUS_LINE" | "$DVTM_FIFO"
+			true #echo "$STATUS_LINE" > "$DVTM_FIFO" || err "Could not update FIFO."
 		fi
 
 		sleep 1
