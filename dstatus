@@ -69,22 +69,24 @@ full_status() {
 	FULL_LINE=" [ $battper - $battery ] [ Vol: $VOL ] [ $CLK ] "
 }
 
-# main function
-main() {
-	# check dependacies
+check_dependancies() {
 	for CMD in acpi amixer printf
 	do
 		[ -x "$(command -v $CMD)" ] && continue
 		err "Command \"$CMD\" could not be found, using simple status"
-		FULL_STATUS="FALSE"
+		return 1
 	done
+	return 0
+}
 
+# main function
+main() {
 	# while loop to update status
 	while true
 	do
 
 		# use back up if dependancies not met
-		if [ "$FULL_STATUS" = "TRUE" ]
+		if check_dependancies
 		then
 			full_status
 			STATUS_LINE="$FULL_LINE"
