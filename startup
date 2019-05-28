@@ -16,8 +16,3 @@ if ~/bin/hasX ; then
 	fi
 fi
 
-if [ "$(ps cax | grep dstatus)" = "" ] ;  then
-	# run the status daemon
-	~/etc/dstatus < /dev/null >/dev/null 2>&1 &
-fi
-
