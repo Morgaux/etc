@@ -84,7 +84,7 @@ main() {
 		then
 			PER="$(acpi | awk '{print $4}' | tr -d ',')"
 			BAT="$(acpi | awk '{print $3}' | tr -d ',')"
-			STATUS_LINE=" [ $battper - $battery ]$STATUS_LINE"
+			STATUS_LINE=" [ $PER - $BAT ]$STATUS_LINE"
 		fi
 
 		log "Status: $STATUS_LINE"
@@ -100,12 +100,12 @@ main() {
 		if [ -x "$(command -v dvtm)" ]
 		then
 			log "Adding status line to FIFO."
-			echo "$STATUS_LINE"
+			#echo "$STATUS_LINE"
 		fi
 
 		sleep 1
 
-	done > "$DVTM_FIFO" || err "Could not update FIFO."
+	done #> "$DVTM_FIFO" || err "Could not update FIFO."
 
 	return $? # unreachable
 }
