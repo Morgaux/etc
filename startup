@@ -14,9 +14,10 @@ if ~/bin/hasX ; then
 	[ -x "$(command -v redshift)" ] && if [ "$(ps cax | grep redshift)" = "" ] ; then
 		redshift -t 6500k:4000k >/dev/null 2>&1 &
 	fi
-	[ -x "$(command -v xmodmap)" ] && {
-		#xmodmap -e "keycode $(xmodmap -pke | grep Alt_R | awk '{print $2}') = Super_L"  # reassign Alt_R to Super_L
-		#xmodmap -e "remove mod1 = Super_L"  # make sure X keeps it out of the mod1 group
+	[ -x "$(command -v xmodmap)" ] && [ ! -z "$(xmodmap -pke | grep Alt_R)" ] && {
+		~/bin/log "Rebinding Atl_R to Super_L"
+		xmodmap -e "keycode $(xmodmap -pke | grep Alt_R | awk '{print $2}') = Super_L"  # reassign Alt_R to Super_L
+		xmodmap -e "remove mod1 = Super_L"  # make sure X keeps it out of the mod1 group
 	}
 fi
 
