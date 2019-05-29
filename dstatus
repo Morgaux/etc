@@ -65,7 +65,7 @@ main() {
 		STATUS_LINE=" "
 
 		#time
-		STATUS_LINE=" [ $(date +'%a %b %d %R:%S %Z') ]$STATUS_LINE"
+		STATUS_LINE=" [ $(date +'%a %b %d %R:%S') ]$STATUS_LINE"
 
 		#volume
 		if [ -x "$(command -v amixer)" ] && \
