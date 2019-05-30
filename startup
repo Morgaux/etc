@@ -20,3 +20,6 @@ if ~/bin/hasX ; then
 	}
 fi
 
+# Sync local repos
+[ -x ~/bin/gitsync ] && ~/bin/gitsync ~/etc ~/bin ~/uni/* ~/src/* &
+
