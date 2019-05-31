@@ -54,7 +54,8 @@ let &colorcolumn="80,".join(range(120,999),",")
 " Highlight curentline
 set cursorline
 
-colo flattened_dark
+"colo flattened_dark
+colo 256_noir
 
 " No line numbers if the term is too narrow for 80 chars
 if &columns < 85
