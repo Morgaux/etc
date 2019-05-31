@@ -54,8 +54,7 @@ au InsertLeave * redraw!
 " Highlight curentline
 set cursorline
 
-"colo flattened_dark
-colo 256_noir
+colo juvenile
 
 " No line numbers if the term is too narrow for 80 chars
 if &columns < 85
