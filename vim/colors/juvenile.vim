@@ -68,3 +68,28 @@ highlight Special
 highlight Delimiter
       \ cterm=NONE ctermfg=NONE ctermbg=NONE
       \ gui=NONE guifg=NONE guibg=NONE
+hi LineNr
+      \ cterm=NONE ctermfg=NONE ctermbg=NONE
+      \ gui=NONE guifg=NONE guibg=NONE
+hi CursorLineNr
+      \ cterm=NONE ctermfg=NONE ctermbg=NONE
+      \ gui=NONE guifg=NONE guibg=NONE
+hi StatusLine
+      \ cterm=reverse ctermfg=NONE ctermbg=NONE
+      \ gui=reverse guifg=NONE guibg=NONE
+hi TabLineFill
+      \ cterm=reverse ctermfg=NONE ctermbg=NONE
+      \ gui=reverse guifg=NONE guibg=NONE
+hi TabLine
+      \ cterm=reverse ctermfg=NONE ctermbg=NONE
+      \ gui=reverse guifg=NONE guibg=NONE
+hi TabLineSel
+      \ cterm=reverse ctermfg=NONE ctermbg=NONE
+      \ gui=reverse guifg=NONE guibg=NONE
+hi ModeMsg
+      \ cterm=NONE ctermfg=NONE ctermbg=NONE
+      \ gui=NONE guifg=NONE guibg=NONE
+hi MoreMsg
+      \ cterm=NONE ctermfg=NONE ctermbg=NONE
+      \ gui=NONE guifg=NONE guibg=NONE
+
