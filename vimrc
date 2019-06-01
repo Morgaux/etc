@@ -50,11 +50,13 @@ au InsertLeave * redraw!
 
 " Ruler at 80, hard limit 120
 "let &colorcolumn="80,".join(range(120,999),",")
+let &colorcolumn=80
 
 " Highlight curentline
 set cursorline
 
-colo juvenile
+"colo juvenile
+colo 256_noir
 
 "
 " Static color rules
@@ -83,7 +85,9 @@ hi ModeMsg
 hi MoreMsg
 	\ cterm=NONE ctermfg=NONE ctermbg=NONE
 	\ gui=NONE guifg=NONE guibg=NONE
-
+hi ColorColumn
+	\ cterm=reverse ctermfg=NONE ctermbg=NONE
+	\ gui=reverse guifg=NONE guibg=NONE
 
 " No line numbers if the term is too narrow for 80 chars
 if &columns < 85
