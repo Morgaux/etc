@@ -76,8 +76,8 @@ hi ColorColumn
 	\ cterm=reverse ctermfg=NONE ctermbg=NONE
 	\ gui=reverse guifg=NONE guibg=NONE
 hi SpecialKey
-	\ cterm=NONE ctermfg=NONE ctermbg=NONE
-	\ gui=NONE guifg=NONE guibg=NONE
+	\ cterm=NONE ctermfg=240 ctermbg=16
+	\ gui=NONE guifg=#585858 guibg=#000000
 
 " prevent annoying paren matching
 let loaded_matchparen = 1
