@@ -93,7 +93,6 @@ au InsertLeave * redraw!
 
 " Ruler at 80, hard limit 120
 "let &colorcolumn="80,".join(range(120,999),",")
-let &colorcolumn=80
 
 " Highlight curentline
 set cursorline
