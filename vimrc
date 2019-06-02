@@ -20,17 +20,6 @@ set showtabline=2
 set laststatus=2
 set ignorecase
 
-
-
-""
-" Colors and highlighting
-""
-
-set t_Co=256
-
-" prevent annoying paren matching
-let loaded_matchparen = 1
-
 " Tabs must be eight wide!!!
 set tabstop=8 softtabstop=0 shiftwidth=8 noexpandtab
 " Override language specific settings
@@ -38,25 +27,23 @@ autocmd Filetype python setlocal tabstop=8 softtabstop=0 shiftwidth=8 noexpandta
 autocmd Filetype scala setlocal tabstop=8 softtabstop=0 shiftwidth=8 noexpandtab
 autocmd Filetype java setlocal tabstop=8 softtabstop=0 shiftwidth=8 noexpandtab
 
-" Show tabs as commented dots
-set list
-set listchars=tab:..
-match Comment /\t/
+" No line numbers if the term is too narrow for 80 chars
+if &columns < 85
+	set nonu
+endif
 
-" Catch whitespace errors
-match Error /\s\+$\| \+\ze\t/
-au InsertEnter * redraw!
-au InsertLeave * redraw!
 
-" Ruler at 80, hard limit 120
-"let &colorcolumn="80,".join(range(120,999),",")
-let &colorcolumn=80
 
-" Highlight curentline
-set cursorline
+"
+" Colors and highlighting
+"
+set t_Co=256
 
 "colo juvenile
 colo 256_noir
+
+
+
 
 "
 " Static color rules
@@ -89,10 +76,25 @@ hi ColorColumn
 	\ cterm=reverse ctermfg=NONE ctermbg=NONE
 	\ gui=reverse guifg=NONE guibg=NONE
 
-" No line numbers if the term is too narrow for 80 chars
-if &columns < 85
-	set nonu
-endif
+" prevent annoying paren matching
+let loaded_matchparen = 1
+
+" Show tabs as commented dots
+set list
+set listchars=tab:..
+match Comment /\t/
+
+" Catch whitespace errors
+match Error /\s\+$\| \+\ze\t/
+au InsertEnter * redraw!
+au InsertLeave * redraw!
+
+" Ruler at 80, hard limit 120
+"let &colorcolumn="80,".join(range(120,999),",")
+let &colorcolumn=80
+
+" Highlight curentline
+set cursorline
 
 
 
