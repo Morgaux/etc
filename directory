@@ -7,6 +7,7 @@
 [ -f ~/etc/kshrc ] && [ ! -L ~/.kshrc ] && ln -sf ~/etc/kshrc ~/.mkshrc && ~/bin/log "$HOME/etc/kshrc linked to ~/.mkshrc"
 [ -f ~/etc/vimrc ] && [ ! -L ~/.vimrc ] && ln -sf ~/etc/vimrc ~/.vimrc && ~/bin/log "$HOME/etc/vimrc linked to ~/.vimrc"
 [ -d ~/etc/vim ] && [ ! -L ~/.vim ] && ln -sf ~/etc/vim ~/.vim && ~/bin/log "$HOME/etc/vim/ linked to ~/.vim"
+[ -f ~/etc/Xresources ] && [ ! -L ~/.Xresources ] && ln -sf ~/etc/Xresources ~/.Xresources && ~/bin/log "$HOME/etc/Xresources linked to ~/.Xresources"
 
 # make my dirs
 for DIR in src var uni tmp; do
