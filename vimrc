@@ -75,14 +75,16 @@ hi MoreMsg
 hi ColorColumn
 	\ cterm=reverse ctermfg=NONE ctermbg=NONE
 	\ gui=reverse guifg=NONE guibg=NONE
+hi SpecialKey
+	\ cterm=NONE ctermfg=NONE ctermbg=NONE
+	\ gui=NONE guifg=NONE guibg=NONE
 
 " prevent annoying paren matching
 let loaded_matchparen = 1
 
-" Show tabs as commented dots
+" Show tabs as comments
 set list
 set listchars=tab:..
-match Comment /\t/
 
 " Catch whitespace errors
 match Error /\s\+$\| \+\ze\t/
