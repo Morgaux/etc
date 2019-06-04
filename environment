@@ -3,8 +3,10 @@
 ~/bin/log "Setting up environment..."
 
 # set PATH
-for dir in "/sbin" "/bin" "/usr/sbin" "/usr/bin" "/usr/local/sbin" "/usr/local/bin" "$HOME/bin"; do
-	if [ -d "$dir" ] ; then
+for dir in "/sbin" "/bin" "/usr/sbin" "/usr/bin" "/usr/local/sbin" "/usr/local/bin" "$HOME/bin"
+do
+	if [ -d "$dir" ]
+	then
 		PATH="$dir:$PATH"
 	fi
 done
@@ -12,7 +14,8 @@ done
 # set os specific bin
 case "$(uname)" in
 	*"FreeBSD"*)
-		if [ -d "$HOME/bin/freebsd" ] ; then
+		if [ -d "$HOME/bin/freebsd" ]
+		then
 			PATH="$HOME/bin/freebsd:$PATH"
 		fi
 		;;
@@ -29,7 +32,8 @@ for i in vim vi nano ; do
 done
 
 # set JAVA variables
-if [ -x "$(command -v javac)" ] ; then
+if [ -x "$(command -v javac)" ]
+then
 	JAVA_HOME="$(readlink -f /usr/bin/javac | sed 's:/bin/javac::')"
 	CLASSPATH="$CLASSPATH:."
 fi
@@ -46,12 +50,12 @@ ENV="$HOME/etc/kshrc"
 # export variables
 export PATH HOME EDITOR JAVA_HOME CLASSPATH PAGER ENV DVTM_TERM
 
-~/bin/log "PATH: $PATH"
-~/bin/log "HOME: $HOME"
-~/bin/log "EDITOR: $EDITOR"
-~/bin/log "JAVA_HOME: $JAVA_HOME"
-~/bin/log "CLASSPATH: $CLASSPATH"
-~/bin/log "PAGER: $PAGER"
-~/bin/log "ENV: $ENV"
-~/bin/log "DVTM_TERM: $DVTM_TERM"
+~/bin/log "PATH:\t$PATH"
+~/bin/log "HOME:\t$HOME"
+~/bin/log "EDITOR:\t$EDITOR"
+~/bin/log "JAVA_HOME:\t$JAVA_HOME"
+~/bin/log "CLASSPATH:\t$CLASSPATH"
+~/bin/log "PAGER:\t$PAGER"
+~/bin/log "ENV:\t$ENV"
+~/bin/log "DVTM_TERM:\t$DVTM_TERM"
 
