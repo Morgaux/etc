@@ -48,6 +48,7 @@ colo 256_noir
 "
 " Static color rules
 "
+hi Normal ctermbg=NONE guibg=NONE
 hi LineNr
 	\ cterm=NONE ctermfg=NONE ctermbg=NONE
 	\ gui=NONE guifg=NONE guibg=NONE
