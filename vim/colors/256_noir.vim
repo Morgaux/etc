@@ -21,12 +21,12 @@ endif
 let g:colors_name = "256_noir"
 
 if has("gui_running") || &t_Co == 256
-    hi Normal cterm=NONE ctermfg=250 ctermbg=16 gui=NONE guifg=#bcbcbc guibg=#000000
-    hi Keyword cterm=NONE ctermfg=255 ctermbg=16 gui=NONE guifg=#eeeeee guibg=#000000
-    hi Constant cterm=NONE ctermfg=252 ctermbg=16 gui=NONE guifg=#d0d0d0 guibg=#000000
-    hi String cterm=NONE ctermfg=245 ctermbg=16 gui=NONE guifg=#8a8a8a guibg=#000000
-    hi Comment cterm=NONE ctermfg=240 ctermbg=16 gui=NONE guifg=#585858 guibg=#000000
-    hi Number cterm=NONE ctermfg=196 ctermbg=16 gui=NONE guifg=#ff0000 guibg=#000000
+    hi Normal cterm=NONE ctermfg=250 ctermbg=NONE gui=NONE guifg=#bcbcbc guibg=NONE
+    hi Keyword cterm=NONE ctermfg=255 ctermbg=NONE gui=NONE guifg=#eeeeee guibg=NONE
+    hi Constant cterm=NONE ctermfg=252 ctermbg=NONE gui=NONE guifg=#d0d0d0 guibg=NONE
+    hi String cterm=NONE ctermfg=245 ctermbg=NONE gui=NONE guifg=#8a8a8a guibg=NONE
+    hi Comment cterm=NONE ctermfg=240 ctermbg=NONE gui=NONE guifg=#585858 guibg=NONE
+    hi Number cterm=NONE ctermfg=196 ctermbg=NONE gui=NONE guifg=#ff0000 guibg=NONE
     hi Error cterm=NONE ctermfg=255 ctermbg=88 gui=NONE guifg=#eeeeee guibg=#870000
     hi ErrorMsg cterm=NONE ctermfg=255 ctermbg=124 gui=NONE guifg=#eeeeee guibg=#af0000
     hi Search cterm=NONE ctermfg=245 ctermbg=236 gui=NONE guifg=#8a8a8a guibg=#303030
@@ -36,24 +36,24 @@ if has("gui_running") || &t_Co == 256
     hi SignColumn cterm=NONE ctermfg=124 ctermbg=240 gui=NONE guifg=#af0000 guibg=#585858
     hi SpellBad cterm=undercurl ctermfg=255 ctermbg=88 gui=undercurl guifg=#eeeeee guibg=#870000
     hi SpellCap cterm=NONE ctermfg=255 ctermbg=124 gui=NONE guifg=#eeeeee guibg=#af0000
-    hi SpellRare cterm=NONE ctermfg=124 ctermbg=16 gui=NONE guifg=#af0000 guibg=#000000
+    hi SpellRare cterm=NONE ctermfg=124 ctermbg=NONE gui=NONE guifg=#af0000 guibg=NONE
     hi WildMenu cterm=NONE ctermfg=240 ctermbg=255 gui=NONE guifg=#585858 guibg=#eeeeee
     hi Pmenu cterm=NONE ctermfg=255 ctermbg=240 gui=NONE guifg=#eeeeee guibg=#585858
     hi PmenuThumb cterm=NONE ctermfg=232 ctermbg=240 gui=NONE guifg=#080808 guibg=#585858
-    hi SpecialKey cterm=NONE ctermfg=16 ctermbg=255 gui=NONE guifg=#000000 guibg=#eeeeee
-    hi MatchParen cterm=NONE ctermfg=16 ctermbg=240 gui=NONE guifg=#000000 guibg=#585858
+    hi SpecialKey cterm=NONE ctermfg=16 ctermbg=255 gui=NONE guifg=NONE guibg=#eeeeee
+    hi MatchParen cterm=NONE ctermfg=16 ctermbg=240 gui=NONE guifg=NONE guibg=#585858
     hi CursorLine cterm=NONE ctermfg=NONE ctermbg=233 gui=NONE guifg=NONE guibg=#121212
-    hi StatusLine cterm=bold,reverse ctermfg=245 ctermbg=16 gui=bold,reverse guifg=#8a8a8a guibg=#000000
-    hi StatusLineNC cterm=reverse ctermfg=236 ctermbg=16 gui=reverse guifg=#303030 guibg=#000000
-    hi Visual cterm=reverse ctermfg=250 ctermbg=16 gui=reverse guifg=#bcbcbc guibg=#000000
+    hi StatusLine cterm=bold,reverse ctermfg=245 ctermbg=NONE gui=bold,reverse guifg=#8a8a8a guibg=NONE
+    hi StatusLineNC cterm=reverse ctermfg=236 ctermbg=NONE gui=reverse guifg=#303030 guibg=NONE
+    hi Visual cterm=reverse ctermfg=250 ctermbg=NONE gui=reverse guifg=#bcbcbc guibg=NONE
     hi TermCursor cterm=reverse ctermfg=NONE ctermbg=NONE gui=reverse guifg=NONE guibg=NONE
 else
-    hi Normal cterm=NONE ctermfg=Gray ctermbg=Black
-    hi Keyword cterm=NONE ctermfg=White ctermbg=Black
-    hi Constant cterm=NONE ctermfg=Gray ctermbg=Black
-    hi String cterm=NONE ctermfg=Gray ctermbg=Black
-    hi Comment cterm=NONE ctermfg=DarkGray ctermbg=Black
-    hi Number cterm=NONE ctermfg=Red ctermbg=Black
+    hi Normal cterm=NONE ctermfg=Gray ctermbg=NONE
+    hi Keyword cterm=NONE ctermfg=White ctermbg=NONE
+    hi Constant cterm=NONE ctermfg=Gray ctermbg=NONE
+    hi String cterm=NONE ctermfg=Gray ctermbg=NONE
+    hi Comment cterm=NONE ctermfg=DarkGray ctermbg=NONE
+    hi Number cterm=NONE ctermfg=Red ctermbg=NONE
     hi Error cterm=NONE ctermfg=White ctermbg=DarkRed
     hi ErrorMsg cterm=NONE ctermfg=White ctermbg=Red
     hi Search cterm=NONE ctermfg=Gray ctermbg=DarkGray
@@ -63,16 +63,16 @@ else
     hi SignColumn cterm=NONE ctermfg=Red ctermbg=DarkGray
     hi SpellBad cterm=undercurl ctermfg=White ctermbg=DarkRed
     hi SpellCap cterm=NONE ctermfg=White ctermbg=Red
-    hi SpellRare cterm=NONE ctermfg=Red ctermbg=Black
+    hi SpellRare cterm=NONE ctermfg=Red ctermbg=NONE
     hi WildMenu cterm=NONE ctermfg=DarkGray ctermbg=White
     hi Pmenu cterm=NONE ctermfg=White ctermbg=DarkGray
-    hi PmenuThumb cterm=NONE ctermfg=Black ctermbg=DarkGray
-    hi SpecialKey cterm=NONE ctermfg=Black ctermbg=White
-    hi MatchParen cterm=NONE ctermfg=Black ctermbg=DarkGray
-    hi CursorLine cterm=NONE ctermfg=NONE ctermbg=Black
-    hi StatusLine cterm=bold,reverse ctermfg=Gray ctermbg=Black
-    hi StatusLineNC cterm=reverse ctermfg=DarkGray ctermbg=Black
-    hi Visual cterm=reverse ctermfg=Gray ctermbg=Black
+    hi PmenuThumb cterm=NONE ctermfg=NONE ctermbg=DarkGray
+    hi SpecialKey cterm=NONE ctermfg=NONE ctermbg=White
+    hi MatchParen cterm=NONE ctermfg=NONE ctermbg=DarkGray
+    hi CursorLine cterm=NONE ctermfg=NONE ctermbg=NONE
+    hi StatusLine cterm=bold,reverse ctermfg=Gray ctermbg=NONE
+    hi StatusLineNC cterm=reverse ctermfg=DarkGray ctermbg=NONE
+    hi Visual cterm=reverse ctermfg=Gray ctermbg=NONE
     hi TermCursor cterm=reverse ctermfg=NONE ctermbg=NONE
 endif
 highlight! link Boolean Normal
