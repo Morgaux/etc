@@ -2,5 +2,5 @@
 
 #uname -sm
 
-[ -x "$(command -v fortune)" ] && { fortune all || fortune ; } 2>/dev/null
+#[ -x "$(command -v fortune)" ] && { fortune all || fortune ; } 2>/dev/null
 
