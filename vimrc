@@ -96,7 +96,7 @@ au InsertLeave * redraw!
 "let &colorcolumn="80,".join(range(120,999),",")
 
 " Highlight curentline
-set cursorline
+"set cursorline
 
 
 
