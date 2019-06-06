@@ -92,12 +92,6 @@ match Error /\s\+$\| \+\ze\t/
 au InsertEnter * redraw!
 au InsertLeave * redraw!
 
-" Ruler at 80, hard limit 120
-"let &colorcolumn="80,".join(range(120,999),",")
-
-" Highlight curentline
-"set cursorline
-
 
 
 ""
