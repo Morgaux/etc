@@ -35,6 +35,8 @@ if [ -x "$(command -v javac)" ]
 then
 	JAVA_HOME="$(readlink -f /usr/bin/javac | sed 's:/bin/javac::')"
 	CLASSPATH="$CLASSPATH:."
+	# for DWM and other tilling wms
+	_JAVA_AWT_WM_NONREPARENTING="1"
 fi
 
 # set PAGER
@@ -47,7 +49,7 @@ DVTM_TERM="xterm"
 ENV="$HOME/etc/kshrc"
 
 # export variables
-export PATH HOME EDITOR JAVA_HOME CLASSPATH PAGER ENV DVTM_TERM
+export PATH HOME EDITOR JAVA_HOME CLASSPATH PAGER ENV DVTM_TERM _JAVA_AWT_WM_NONREPARENTING
 
 ~/bin/log "PATH:\t$PATH"
 ~/bin/log "HOME:\t$HOME"
