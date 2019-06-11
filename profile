@@ -25,9 +25,9 @@ set -e # stop on uncaught error
 	echo '#                                                                             #'
 	echo '##                                                                           ##'
 	echo ''
-	echo '~/bin/log "Running ~/.profile" || true'
-	echo '~/bin/log "Uptime: $(uptime)" || true'
-	echo '~/bin/log "Machine: $(uname -sm)" || true'
+	echo '~/bin/log "Running ~/.profile"'
+	echo '~/bin/log "Uptime: $(uptime)"'
+	echo '~/bin/log "Machine: $(uname -sm)"'
 } > ~/.profile.tmp # Create new temporary file
 
 ##
@@ -41,7 +41,12 @@ done
 # replace old file
 ##
 rm ~/.profile || ~/bin/log "Error occured in removing file"
-mv ~/.profile.tmp ~/.profile || ~/bin/log "Error occured in moving file"
+
+awk '{if ($0 ~ /\~\/bin\/log/) {print $0 " || true"} else {print $0}}' \
+	< ~/.profile.tmp \
+	> ~/.profile || ~/bin/log "Error occured in moving file"
+
+rm -f ~/.profile.tmp || ~/bin/log "Error in removing file"
 
 exit 0
 
