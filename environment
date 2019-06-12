@@ -3,7 +3,8 @@
 ~/bin/log "Setting up environment..."
 
 # set PATH
-for dir in "/sbin" "/bin" "/usr/sbin" "/usr/bin" "/usr/local/sbin" "/usr/local/bin" "$HOME/bin" "$HOME/.cargo/bin"; do
+for dir in "/sbin" "/bin" "/usr/sbin" "/usr/bin" "/usr/local/sbin" "/usr/local/bin" "$HOME/bin" "$HOME/.cargo/bin" "$HOME/src/ufetch"
+do
 	if [ -d "$dir" ]
 	then
 		PATH="$dir:$PATH"
