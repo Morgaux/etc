@@ -10,7 +10,6 @@ alias mkdir='mkdir -p'
 alias x='exit'
 alias ..='cd ..'
 alias python='env python3'
-alias dvtm='( ~/etc/dstatus & ) ; dvtm -s /tmp/dvtm-status.fifo'
 
 alias git='pregit' # see ~/bin
 

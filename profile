@@ -40,6 +40,7 @@ done
 ##
 # replace old file
 ##
+cat ~/.profile > ~/.profile.bak || true
 rm ~/.profile || ~/bin/log "Error occured in removing file"
 
 awk '{if ($0 ~ /\/bin\/log/) {print $0 " || true"} else {print $0}}' \

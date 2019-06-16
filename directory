@@ -2,12 +2,19 @@
 
 ~/bin/log "Setting up directory structure..."
 
+link_from_to() { # $1:fromFile $2:toFile
+	[ -f $1 ] || [ -d $1 ] || return 1
+	[ ! -L $2 ] || return 1
+	[ -f $2 ] && mv $2 ${2}.old
+	ln -sf $1 $2 && ~/bin/log "$1 linked to $2"
+}
+
 # create symlinks if missing
-[ -f ~/etc/kshrc ] && [ ! -L ~/.kshrc ] && ln -sf ~/etc/kshrc ~/.kshrc && ~/bin/log "$HOME/etc/kshrc linked to ~/.kshrc"
-[ -f ~/etc/kshrc ] && [ ! -L ~/.kshrc ] && ln -sf ~/etc/kshrc ~/.mkshrc && ~/bin/log "$HOME/etc/kshrc linked to ~/.mkshrc"
-[ -f ~/etc/vimrc ] && [ ! -L ~/.vimrc ] && ln -sf ~/etc/vimrc ~/.vimrc && ~/bin/log "$HOME/etc/vimrc linked to ~/.vimrc"
-[ -d ~/etc/vim ] && [ ! -L ~/.vim ] && ln -sf ~/etc/vim ~/.vim && ~/bin/log "$HOME/etc/vim/ linked to ~/.vim"
-[ -f ~/etc/Xresources ] && [ ! -L ~/.Xresources ] && ln -sf ~/etc/Xresources ~/.Xresources && ~/bin/log "$HOME/etc/Xresources linked to ~/.Xresources"
+link_from_to ~/etc/kshrc ~/.kshrc
+link_from_to ~/etc/kshrc ~/.mkshrc
+link_from_to ~/etc/vimrc ~/.vimrc
+link_from_to ~/etc/vim ~/.vim
+link_from_to ~/etc/Xresources ~/.Xresources
 
 # make my dirs
 for DIR in src var uni tmp; do
