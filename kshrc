@@ -50,10 +50,11 @@ HISTSIZE=1024
 ##
 # environment
 ##
-[ -f ~/etc/profile ] &&   ~/etc/profile # run script to update ~/.profile
-[ -f ~/etc/startup ] && . ~/etc/startup # start applications
-[ -f ~/etc/aliases ] && . ~/etc/aliases # aliases
-[ -f ~/etc/welcome ] && . ~/etc/welcome # welcome messages
+[ -f ~/etc/profile ] &&   ~/etc/profile		# run script to update ~/.profile
+[ -f ~/etc/startup ] && . ~/etc/startup		# start applications
+[ -f ~/etc/aliases ] && . ~/etc/aliases		# aliases
+[ -f ~/etc/welcome ] && . ~/etc/welcome		# welcome messages
+[ -f ~/etc/git-config ] && . ~/etc/git-config	# configure git
 
 ~/bin/log "kshrc completed, happy hacking!" || true
 

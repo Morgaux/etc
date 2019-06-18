@@ -1,0 +1,19 @@
+#!/bin/sh
+
+[ -x "$(command -v git)" ] || exit 1
+
+GIT_NAME="Morgaux"
+GIT_EMAIL="3158796-morgaux@users.noreply.gitlab.com"
+
+if [ -z "$(git config user.name)" ]
+then
+	git config --global user.name "$GIT_NAME"
+fi
+
+if [ -z "$(git config user.email)" ]
+then
+	git config --global user.email "$GIT_EMAIL"
+fi
+
+git config --global credential.helper cache 3600
+
