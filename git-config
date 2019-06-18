@@ -1,6 +1,6 @@
 #!/bin/sh
 
-[ -x "$(command -v git)" ] || exit 1
+[ -x "$(command -v git)" ] && {
 
 GIT_NAME="Morgaux"
 GIT_EMAIL="3158796-morgaux@users.noreply.gitlab.com"
@@ -17,3 +17,4 @@ fi
 
 git config --global credential.helper cache 3600
 
+}
