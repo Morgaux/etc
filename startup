@@ -28,7 +28,7 @@ then
 				grep Alt_R | \
 				awk '{print $2}') = Super_L" 2>&1)"
 		# make sure X keeps it out of the mod1 group
-		~/bin/log "$(xmodmap -e "remove mod1 = Super_L")"
+		~/bin/log "$(xmodmap -e "remove mod1 = Super_L" 2>&1)"
 	fi
 fi
 
