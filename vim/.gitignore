@@ -3,6 +3,7 @@
 
 # except
 !.gitignore
+!vimrc
 !colors/
 !colors/*
 
