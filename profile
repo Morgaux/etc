@@ -38,6 +38,20 @@ for file in startup environment directory aliases; do
 done
 
 ##
+# auto startx
+##
+{
+	echo ''
+	echo 'if	[ -z "$DISPLAY" ] && \\'
+	echo '	[ "$XDG_VTNR" -eq 1 ] && \\'
+	echo '	[ -x "$(command -v startx)" ]'
+	echo 'then'
+	echo '	exec startx'
+	echo 'fi'
+	echo ''
+} >> ~/.profile.tmp
+
+##
 # replace old file
 ##
 [ -f ~/.profile ] && cat ~/.profile > ~/.profile.bak || true
