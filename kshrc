@@ -8,7 +8,19 @@
 # mksh and ksh configuration
 ##
 
-~/bin/log "Running kshrc..." || true
+CURRENT_SHELL="$(ps -p $$ | tail -1 | awk '{print $4}' || basename "$SHELL")"
+
+[ -f ~/etc/aliases ] && . ~/etc/aliases
+
+# don't run unless interactive ksh seession
+case "$CURRENT_SHELL" in
+	*ksh*)
+		[[ $- = *i* ]] || return
+		;;
+	*)
+		return
+		;;
+esac
 
 ##
 # Functions
@@ -19,8 +31,8 @@ cd() {
 	if [ "$#" -eq 0 ] ; then
 		builtin cd "${HOME}"
 	else
-		builtin cd "$*" 2> /dev/null ||
-		builtin cd "$*"* 2> /dev/null ||
+		builtin cd "$*" 2> /dev/null     ||
+		builtin cd "$*"* 2> /dev/null    ||
 		builtin cd ./*"$*"* 2> /dev/null ||
 		echo "cd: $* not found" 1>&2
 	fi
@@ -44,17 +56,15 @@ PS1="\$(_PS1DIR) \$ "
 ##
 # History
 ##
-HISTFILE="$HOME/var/ksh_history" # note: mksh and (o/pd)ksh are incompatible
+HISTFILE="$HOME/var/${CURRENT_SHELL}_history"
 HISTSIZE=1024
 
 ##
 # environment
 ##
-[ -f ~/etc/profile ] &&   ~/etc/profile		# run script to update ~/.profile
-[ -f ~/etc/startup ] && . ~/etc/startup		# start applications
-[ -f ~/etc/aliases ] && . ~/etc/aliases		# aliases
-[ -f ~/etc/welcome ] && . ~/etc/welcome		# welcome messages
-[ -f ~/etc/git-config ] && . ~/etc/git-config	# configure git
 
-~/bin/log "kshrc completed, happy hacking!" || true
+for SCRIPT in profile startup git-config welcome
+do
+	[ -f "$HOME/etc/$SCRIPT" ] && $HOME/etc/$SCRIPT
+done
 
