@@ -3,10 +3,10 @@
 ~/bin/log "Setting up directory structure..."
 
 link_from_to() { # $1:fromFile $2:toFile
-	[ -f $1 ] || [ -d $1 ] || return 1
-	[ ! -L $2 ] || return 1
-	[ -f $2 ] && mv $2 ${2}.old
-	ln -sf $1 $2 && ~/bin/log "$1 linked to $2"
+	[ -f "$1" ] || [ -d "$1" ] || return 1
+	[ ! -L "$2" ] || return 1
+	[ -f "$2" ] && mv "$2" "${2}.old"
+	ln -sf "$1" "$2" && ~/bin/log "$1 linked to $2"
 }
 
 # create symlinks if missing
@@ -80,7 +80,7 @@ then
 				"${HOME}/${OLD_DIR}"/.[!.]* \
 				"${HOME}/${OLD_DIR}"/..?* \
 				"${HOME}/var/${OLD_DIR}"/.
-			rm -rf ${HOME}/${OLD_DIR}
+			rm -rf "${HOME:?}/${OLD_DIR}"
 		fi
 	done
 fi
