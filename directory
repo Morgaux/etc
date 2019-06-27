@@ -13,6 +13,7 @@ link_from_to ~/etc/kshrc ~/.mkshrc
 link_from_to ~/etc/vim/vimrc ~/.vimrc
 link_from_to ~/etc/vim ~/.vim
 link_from_to ~/etc/Xresources ~/.Xresources
+link_from_to ~/etc/xinitrc ~/.xinitrc
 
 # make my dirs
 for DIR in src var uni tmp; do
