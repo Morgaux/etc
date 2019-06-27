@@ -1,12 +1,10 @@
 #!/bin/sh
 
-~/bin/log "Setting up directory structure..."
-
 link_from_to() { # $1:fromFile $2:toFile
 	[ -f "$1" ] || [ -d "$1" ] || return 1
 	[ ! -L "$2" ] || return 1
 	[ -f "$2" ] && mv "$2" "${2}.old"
-	ln -sf "$1" "$2" && ~/bin/log "$1 linked to $2"
+	ln -sf "$1" "$2"
 }
 
 # create symlinks if missing
@@ -18,20 +16,21 @@ link_from_to ~/etc/Xresources ~/.Xresources
 
 # make my dirs
 for DIR in src var uni tmp; do
-	[ -d "$HOME/$DIR" ] && continue
-	mkdir -p "$HOME/$DIR"
-	~/bin/log "$HOME/$DIR not found, directory added"
+	[ -d "$HOME/$DIR" ] || mkdir -p "$HOME/$DIR"
 done
 
 # add my bin launchers
-[ -d ~/bin/launchers ] && [ -d ~/.local/share/applications ] && for APP in ~/bin/launchers/*.desktop; do
+[ -d ~/bin/launchers ] && \
+	[ -d ~/.local/share/applications ] && \
+	for APP in ~/bin/launchers/*.desktop
+do
 	LAUNCHER="$HOME/.local/share/applications/$(basename "$APP")"
 	[ ! -L "$LAUNCHER" ] && ln -sf "$APP" "$LAUNCHER"
-	~/bin/log "$APP luncher installed"
 done
 
 if [ -x "$(command -v xdg-user-dirs-update)" ]
 then
+	# Destination directories
 	XDG_DESKTOP_DIR="$HOME/var/Desktop"
 	XDG_DOCUMENTS_DIR="$HOME/var/Documents"
 	XDG_DOWNLOAD_DIR="$HOME/var/Downloads"

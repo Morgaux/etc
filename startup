@@ -1,34 +1,31 @@
 #!/bin/sh
 
-~/bin/log "Launching startup applications..."
-
 # Start ups that require Xorg
-if ~/bin/hasX
+if [ -n "$DISPLAY" ] && xset q >/dev/null 2>&1
 then
 	# if xbanish exists and is not yet running, run it in background
-	[ -x "$(command -v xbanish)" ] && if [ "$(ps cax | grep xbanish)" = "" ]
+	if [ -x "$(command -v xbanish)" ] && \
+		[ "$(ps cax | grep xbanish)" = "" ]
 	then
-		~/bin/log "xbanish started"
 		( xbanish & )
-	else
-		~/bin/log "xbanish already running"
 	fi
 
-	[ -x "$(command -v redshift)" ] && if [ "$(ps cax | grep redshift)" = "" ]
+	if [ -x "$(command -v redshift)" ] && \
+		[ "$(ps cax | grep redshift)" = "" ]
 	then
 		( redshift -t 6500k:4000k >/dev/null 2>&1 & )
 	fi
 
-	[ -x "$(command -v xmodmap)" ] && if xmodmap -pke | grep -q Alt_R
+	if [ -x "$(command -v xmodmap)" ] && \
+		xmodmap -pke | grep -q Alt_R
 	then
-		~/bin/log "Rebinding Atl_R to Super_L"
 		# reassign Alt_R to Super_L
-		~/bin/log "$(\
-			xmodmap -e "keycode $(xmodmap -pke | \
-				grep Alt_R | \
-				awk '{print $2}') = Super_L" 2>&1)"
+		xmodmap -e "keycode $(xmodmap -pke | \
+			grep Alt_R | \
+			awk '{print $2}') = Super_L"
+
 		# make sure X keeps it out of the mod1 group
-		~/bin/log "$(xmodmap -e "remove mod1 = Super_L" 2>&1)"
+		xmodmap -e "remove mod1 = Super_L"
 	fi
 fi
 

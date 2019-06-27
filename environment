@@ -1,9 +1,14 @@
 #!/bin/sh
 
-~/bin/log "Setting up environment..."
-
 # set PATH
-for dir in "/sbin" "/bin" "/usr/sbin" "/usr/bin" "/usr/local/sbin" "/usr/local/bin" "$HOME/bin" "$HOME/.cargo/bin" "$HOME/src/ufetch"
+for dir in	"/sbin" \
+		"/bin" \
+		"/usr/sbin" \
+		"/usr/bin" \
+		"/usr/local/sbin" \
+		"/usr/local/bin" \
+		"$HOME/bin" \
+		"$HOME/src/ufetch"
 do
 	if [ -d "$dir" ]
 	then
@@ -12,52 +17,39 @@ do
 done
 
 # set os specific bin
-case "$(uname)" in
+case "$(uname -a)" in
 	*"FreeBSD"*)
-		if [ -d "$HOME/bin/freebsd" ]
-		then
-			PATH="$HOME/bin/freebsd:$PATH"
-		fi
-		;;
+		[ -d "$HOME/bin/freebsd" ] && PATH="$HOME/bin/freebsd:$PATH" ;;
+	*"OpenBSD"*)
+		[ -d "$HOME/bin/openbsd" ] && PATH="$HOME/bin/openbsd:$PATH" ;;
 esac
 
 # remove path duplicates
-PATH=$(printf "%s" "$PATH" | awk -v RS=':' '!a[$1]++ { if (NR > 1) printf RS; printf $1 }')
+export PATH=$(printf "%s" "$PATH" | \
+	awk -v RS=':' '!a[$1]++ { if (NR > 1) printf RS; printf $1 }')
 
 # set EDITOR to most preferred available
-for i in vim vi nano ; do
-	[ -x "$(command -v $i)" ] || continue
-	EDITOR="$(which $i)"
-	break
-done
+export EDITOR="$(which vim || which vi)"
 
-# set JAVA variables
-if [ -x "$(command -v javac)" ]
+# set JAVA variables if java is installed
+if [ -x "$(command -v javac)" ] || [ -x "$(command -v java)" ]
 then
-	JAVA_HOME="$(readlink -f /usr/bin/javac | sed 's:/bin/javac::')"
-	CLASSPATH="$CLASSPATH:."
+	export JAVA_HOME="$(readlink -f /usr/bin/javac | sed 's:/bin/javac::')"
+	export CLASSPATH="$CLASSPATH:."
+
 	# for DWM and other tilling wms
-	_JAVA_AWT_WM_NONREPARENTING="1"
+	export _JAVA_AWT_WM_NONREPARENTING="1"
 fi
 
 # set PAGER
-PAGER=less
+export PAGER=less
 
 # set DVTM_TERM for compatibility
-DVTM_TERM="xterm"
+if [ -x "$(command -v dvtm)" ]
+then
+	export DVTM_TERM="xterm"
+fi
 
 # set ENV to local kshrc, possibly overrides symlinks
-ENV="$HOME/etc/kshrc"
-
-# export variables
-export PATH HOME EDITOR JAVA_HOME CLASSPATH PAGER ENV DVTM_TERM _JAVA_AWT_WM_NONREPARENTING
-
-~/bin/log "PATH:      $PATH"
-~/bin/log "HOME:      $HOME"
-~/bin/log "EDITOR:    $EDITOR"
-~/bin/log "PAGER:     $PAGER"
-~/bin/log "ENV:       $ENV"
-~/bin/log "JAVA_HOME: $JAVA_HOME"
-~/bin/log "CLASSPATH: $CLASSPATH"
-~/bin/log "DVTM_TERM: $DVTM_TERM"
+export ENV="$HOME/etc/kshrc"
 

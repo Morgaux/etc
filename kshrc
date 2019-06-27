@@ -10,16 +10,15 @@
 
 CURRENT_SHELL="$(ps -p $$ | tail -1 | awk '{print $4}' || basename "$SHELL")"
 
+# Source aliases for non-ksh shells
 [ -f ~/etc/aliases ] && . ~/etc/aliases
 
 # don't run unless interactive ksh seession
 case "$CURRENT_SHELL" in
 	*ksh*)
-		[[ $- = *i* ]] || return
-		;;
+		[[ $- = *i* ]] || return ;;
 	*)
-		return
-		;;
+		return ;;
 esac
 
 ##
@@ -41,9 +40,9 @@ cd() {
 # safe base dir name
 _PS1DIR() {
 	case "$PWD" in
-		"$HOME")	PS1DIR="~";;
-		"/")		PS1DIR="/";;
-		*)		PS1DIR="${PWD##*/}";;
+		"$HOME")	PS1DIR="~" ;;
+		"/")		PS1DIR="/" ;;
+		*)		PS1DIR="${PWD##*/}" ;;
 	esac
 	echo "$PS1DIR"
 }

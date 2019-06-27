@@ -10,8 +10,6 @@
 
 set -e # stop on uncaught error
 
-~/bin/log "Generating ~/.profile..."
-
 ##
 # Warning message
 ##
@@ -25,9 +23,6 @@ set -e # stop on uncaught error
 	echo '#                                                                             #'
 	echo '##                                                                           ##'
 	echo ''
-	echo '~/bin/log "Running ~/.profile"'
-	echo '~/bin/log "Uptime: $(uptime)"'
-	echo '~/bin/log "Machine: $(uname -sm)"'
 } > ~/.profile.tmp # Create new temporary file
 
 ##
@@ -38,7 +33,7 @@ for file in startup environment directory aliases; do
 done
 
 ##
-# auto startx
+# auto startx, MUST be last section added
 ##
 {
 	echo ''
@@ -54,14 +49,10 @@ done
 ##
 # replace old file
 ##
-[ -f ~/.profile ] && cat ~/.profile > ~/.profile.bak || true
-rm -f ~/.profile || ~/bin/log "Error occured in removing file"
+[ -f ~/.profile ] && cat ~/.profile > ~/.profile.bak
+rm -f ~/.profile
 
-awk '{if ($0 ~ /\/bin\/log/) {print $0 " || true"} else {print $0}}' \
-	< ~/.profile.tmp \
-	> ~/.profile || ~/bin/log "Error occured in moving file"
-
-rm -f ~/.profile.tmp || ~/bin/log "Error in removing file"
+rm -f ~/.profile.tmp
 
 exit 0
 
