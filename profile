@@ -50,9 +50,12 @@ done
 # replace old file
 ##
 [ -f ~/.profile ] && cat ~/.profile > ~/.profile.bak
+
 rm -f ~/.profile
 
-rm -f ~/.profile.tmp
+mv ~/.profile.tmp ~/.profile
+
+[ -f ~/.profile ] || cat ~/.profile.bak > ~/.profile
 
 exit 0
 
