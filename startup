@@ -27,5 +27,5 @@ then
 		# make sure X keeps it out of the mod1 group
 		xmodmap -e "remove mod1 = Super_L"
 	fi
-fi
+fi >/dev/null 2>&1
 
