@@ -64,7 +64,7 @@ then
 
 	xdg-user-dirs-update
 
-	for OLD_DIR in	"Desktop" \
+	for DIR in	"Desktop" \
 			"Documents" \
 			"Downloads" \
 			"Music" \
@@ -73,14 +73,14 @@ then
 			"Templates" \
 			"Videos"
 	do
-		if [ -d "${HOME}/${OLD_DIR}" ] &&
-			[ -d "${HOME}/var/${OLD_DIR}" ]
+		if [ -d "${HOME}/${DIR}" ] &&
+			[ -d "${HOME}/var/${DIR}" ]
 		then
-			mv "${HOME}/${OLD_DIR}"/* \
-				"${HOME}/${OLD_DIR}"/.[!.]* \
-				"${HOME}/${OLD_DIR}"/..?* \
-				"${HOME}/var/${OLD_DIR}"/.
-			rm -rf "${HOME:?}/${OLD_DIR}"
+			mv "${HOME}/${DIR}"/* \
+				"${HOME}/${DIR}"/.[!.]* \
+				"${HOME}/${DIR}"/..?* \
+				"${HOME}/var/${DIR}"/.
+			rm -rf "${HOME:?}/${DIR}"
 		fi
 	done
 fi
