@@ -1,0 +1,20 @@
+
+*.color0:	rgb:27/35/37
+*.color1:	rgb:94/3a/2c
+*.color2:	rgb:3e/45/3d
+*.color3:	rgb:ef/a7/2b
+*.color4:	rgb:2d/46/5f
+*.color5:	rgb:40/56/6b
+*.color6:	rgb:81/ad/b8
+*.color7:	rgb:aa/c0/c2
+*.color8:	rgb:3f/4f/51
+*.color9:	rgb:df/4b/35
+*.color10:	rgb:56/5d/55
+*.color11:	rgb:f7/e2/9b
+*.color12:	rgb:41/5c/71
+*.color13:	rgb:cf/96/84
+*.color14:	rgb:a4/cb/da
+*.color15:	rgb:e9/f8/fd
+*.background:	rgb:27/35/37
+*.foreground:	rgb:e9/f8/fd
+
