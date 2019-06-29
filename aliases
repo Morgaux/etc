@@ -24,7 +24,18 @@ done
 ##
 # CMDs that need root privileges
 ##
-for i in apt apt-get pacman portmaster yum dnf pkg brew eopkg; do
+for i in \
+	apt \
+	apt-get \
+	pacman \
+	portmaster \
+	yum \
+	dnf \
+	pkg \
+	brew \
+	eopkg\
+	wifi-menu
+do
 	[ -x "$(command -v $i)" ] && alias "$i"="sudo $i"
 done
 # OpenBSD
