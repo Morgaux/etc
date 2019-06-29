@@ -37,11 +37,11 @@ done
 ##
 {
 	echo ''
-	echo 'if	[ -z "$DISPLAY" ] && \\'
-	echo '	[ "$XDG_VTNR" -eq 1 ] && \\'
+	echo 'if	[ -z "$DISPLAY" ] && \'
+	echo '	[ "$XDG_VTNR" -eq 1 ] && \'
 	echo '	[ -x "$(command -v startx)" ]'
 	echo 'then'
-	echo '	exec startx'
+	echo '	startx'
 	echo 'fi'
 	echo ''
 } >> ~/.profile.tmp
