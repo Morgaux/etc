@@ -53,7 +53,10 @@ then
 	export _JAVA_AWT_WM_NONREPARENTING="1"
 fi
 
-export DOTNET_CLI_TELEMETRY_OPTOUT=1
+if [ -x "$(command -v dotnet)" ]
+then
+	export DOTNET_CLI_TELEMETRY_OPTOUT=1
+fi
 
 # set DVTM_TERM for compatibility
 if [ -x "$(command -v dvtm)" ]
