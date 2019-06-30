@@ -55,7 +55,7 @@ PS1="\$(_PS1DIR) \$ "
 ##
 # History
 ##
-HISTFILE="$HOME/var/${CURRENT_SHELL}_history"
+HISTFILE="$HOME/var/history.${CURRENT_SHELL}"
 HISTSIZE=1024
 
 ##
