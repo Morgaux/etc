@@ -36,7 +36,7 @@ endif
 
 
 "
-" Colors and highlighting
+" Colours and highlighting
 "
 set t_Co=256
 
@@ -47,7 +47,7 @@ colo 256_noir
 
 
 "
-" Static color rules
+" Static colour rules
 "
 hi Normal ctermbg=NONE guibg=NONE
 hi LineNr
@@ -101,7 +101,7 @@ au InsertLeave * redraw!
 
 "
 " http://github.com/jcs/dotfiles
-" Author: joshua stein
+" Author: Joshua Stein
 " License: none
 "
 " Don't pollute directories with swap files, keep them in one place
