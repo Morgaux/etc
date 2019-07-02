@@ -25,3 +25,9 @@ whitespace
 dotfiles
 github
 crontab
+mksh
+ksh
+var
+startup
+config
+cd
