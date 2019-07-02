@@ -13,7 +13,7 @@ CURRENT_SHELL="$(ps -p $$ | tail -1 | awk '{print $4}' || basename "$SHELL")"
 # Source aliases for non-ksh shells
 [ -f ~/etc/aliases ] && . ~/etc/aliases
 
-# don't run unless interactive ksh seession
+# don't run unless interactive ksh session
 case "$CURRENT_SHELL" in
 	*ksh*)
 		[[ $- = *i* ]] || return ;;
@@ -62,8 +62,10 @@ HISTSIZE=1024
 # environment
 ##
 
-for SCRIPT in profile startup git-config welcome
+for SCRIPT in profile startup git-config
 do
-	[ -f "$HOME/etc/$SCRIPT" ] && $HOME/etc/$SCRIPT
+	[ -f "$HOME/etc/$SCRIPT" ] && ( $HOME/etc/$SCRIPT & )
 done
+
+[ -f "$HOME/etc/welcome" ] && $HOME/etc/welcome
 
