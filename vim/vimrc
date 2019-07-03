@@ -116,8 +116,8 @@ function! <SID>InsertModeUp()
 	return "\<Up>"
 endfunction
 
-"inoremap <expr> <Down> <SID>InsertModeDown()
-"inoremap <expr> <Up>   <SID>InsertModeUp()
+inoremap <expr> <Down> <SID>InsertModeDown()
+inoremap <expr> <Up>   <SID>InsertModeUp()
 
 " Quickly type 'j' and 'k' to leave insert mode without pressing ESC
 inoremap jk <ESC>
