@@ -9,11 +9,6 @@ alias x='exit'
 alias ..='cd ..'
 alias python='env python3'
 
-if [ -x "$(command -v $HOME/bin/pregit)" ]
-then
-	alias git='pregit' # see ~/bin
-fi
-
 ##
 # CMDs with "c" prefix
 ##
