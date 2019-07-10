@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/morgaux/src/dwm/castle.png",
+    "special": {
+        "cursor": "#ccdce4",
+        "foreground": "#ccdce4",
+        "background": "#0f1213"
+    },
+    "colors": {
+        "color0": "#0f1213",
+        "color15": "#ccdce4",
+        "color1": "#566B73",
+        "color6": "#A9C3D1",
+        "color3": "#5A7988",
+        "color4": "#6F8E9C",
+        "color2": "#9C7863",
+        "color5": "#8AA3AE",
+        "color7": "#ccdce4",
+        "color8": "#8e9a9f",
+        "color13": "#8AA3AE",
+        "color10": "#9C7863",
+        "color12": "#6F8E9C",
+        "color9": "#566B73",
+        "color14": "#A9C3D1",
+        "color11": "#5A7988"
+    },
+    "alpha": "100"
+}

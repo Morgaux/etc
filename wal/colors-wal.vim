@@ -1,0 +1,23 @@
+" Special
+let wallpaper  = "/home/morgaux/src/dwm/castle.png"
+let background = "#0f1213"
+let foreground = "#ccdce4"
+let cursor     = "#ccdce4"
+
+" Colors
+let color0  = "#0f1213"
+let color1  = "#566B73"
+let color2  = "#9C7863"
+let color3  = "#5A7988"
+let color4  = "#6F8E9C"
+let color5  = "#8AA3AE"
+let color6  = "#A9C3D1"
+let color7  = "#ccdce4"
+let color8  = "#8e9a9f"
+let color9  = "#566B73"
+let color10 = "#9C7863"
+let color11 = "#5A7988"
+let color12 = "#6F8E9C"
+let color13 = "#8AA3AE"
+let color14 = "#A9C3D1"
+let color15 = "#ccdce4"

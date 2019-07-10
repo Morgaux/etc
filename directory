@@ -7,18 +7,24 @@ link_from_to() { # $1:fromFile $2:toFile
 	ln -sf "$1" "$2"
 }
 
-# create symlinks if missing
-link_from_to ~/etc/kshrc ~/.kshrc
-link_from_to ~/etc/kshrc ~/.mkshrc
-link_from_to ~/etc/vim/vimrc ~/.vimrc
-link_from_to ~/etc/vim ~/.vim
-link_from_to ~/etc/Xresources ~/.Xresources
-link_from_to ~/etc/xinitrc ~/.xinitrc
-
 # make my dirs
-for DIR in src var uni tmp; do
+for DIR in	'src' \
+		'var' \
+		'uni' \
+		'tmp' \
+		'.cache'
+do
 	[ -d "$HOME/$DIR" ] || mkdir -p "$HOME/$DIR"
 done
+
+# create symlinks if missing
+link_from_to ~/etc/kshrc	~/.kshrc
+link_from_to ~/etc/kshrc	~/.mkshrc
+link_from_to ~/etc/vim/vimrc	~/.vimrc
+link_from_to ~/etc/vim		~/.vim
+link_from_to ~/etc/Xresources	~/.Xresources
+link_from_to ~/etc/xinitrc	~/.xinitrc
+link_from_to ~/etc/wal		~/.cache/wal
 
 # add my bin launchers
 [ -d ~/bin/launchers ] && \
