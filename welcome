@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ -x "$(command -v setfont)" ]
+if [ -x "$(command -v setfont)" ] && [ "$TERM" = "linux" ]
 then
 	# set console font
 	setfont Lat2-Terminus16
