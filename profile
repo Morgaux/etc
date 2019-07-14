@@ -28,7 +28,8 @@ set -e # stop on uncaught error
 ##
 # add environment setup scripts to temporary file
 ##
-for file in startup environment directory aliases; do
+for file in startup environment directory aliases welcome
+do
 	sed -n '/#!\/bin/!p' ~/etc/$file >> ~/.profile.tmp || exit 1
 done
 
