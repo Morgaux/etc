@@ -23,6 +23,9 @@ set -e # stop on uncaught error
 	echo '#                                                                             #'
 	echo '##                                                                           ##'
 	echo ''
+	echo 'CURRENT_SHELL="$(ps -p "$$" | tail -1 | awk "{print $4}" || basename "$SHELL")"'
+	echo 'export CURRENT_SHELL'
+	echo ''
 } > ~/.profile.tmp # Create new temporary file
 
 ##
