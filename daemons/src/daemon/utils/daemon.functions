@@ -1,0 +1,85 @@
+#!/bin/sh
+
+
+
+################################################################################
+#                            Daemon functions                                  #
+################################################################################
+
+init_daemon() {
+	# Change to safe running dir
+	cd "$RUN_DIR" || die "Could not enter RUN_DIR"
+
+	# Init log file
+	{
+		echo "Log file for $SELF - $0"
+		echo "PIDFILE:	$PIDFILE"
+		echo "LOGFILE:	$LOGFILE"
+		echo "PWD_DIR:	$PWD_DIR"
+		echo "RUN_DIR:	$RUN_DIR"
+	} >> "$LOGFILE"
+
+	# Init dirs
+	for dir in "$SRC_DIR" "$PWD_DIR" "$RUN_DIR" "$TMP_DIR"
+	do
+		# inure dirs exist
+		mkdir -p "$dir" && continue
+		die "Could not create $dir, 'mkdir -p $dir' exited with code $?"
+	done
+}
+
+rm_pid() { # Remove PID file
+	rm -f "$PIDFILE" || die "Could not remove PID file."
+}
+
+init_pid() { # Manage PID file
+	# Process existing PID file(s)
+	if [ -f "$PIDFILE" ]
+	then
+		_OLDPID="$(cat "$PIDFILE")"
+		ps -p "$_OLDPID" >/dev/null 2>&1 &&
+			die "PID $_OLDPID is still running."
+		rm_pid
+	fi
+
+	# Create PID file
+	echo "$$" > "$PIDFILE" || die "Could not create PID file"
+}
+
+main_wrapper() {
+	init_daemon
+	init_pid
+
+	# call main
+	main "$@" >> "$LOGFILE" 2>&1
+
+	rm_pid
+}
+
+log() { # log function
+	_LOG_TIME_STAMP="$(date +%c)"
+	touch "$LOGFILE"
+	if [ "$OPT_VERBOSE" = "TRUE" ]
+	then
+		echo "$_LOG_TIME_STAMP	$*" | tee -a "$LOGFILE"
+	else
+		echo "$_LOG_TIME_STAMP	$*" >> "$LOGFILE"
+	fi
+}
+
+err() { # error function
+	_TMP_OPT_VERBOSE="$OPT_VERBOSE"
+	OPT_VERBOSE="TRUE"
+	log "ERROR: $*"
+	OPT_VERBOSE="${_TMP_OPT_VERBOSE}"
+	return 1
+}
+
+die() { # fatal error function
+	OPT_VERBOSE="TRUE"
+	err "FATAL ERROR OCCURRED IN PROCESS $$"
+	err "$@"
+	err "EXITING..."
+	exit 1
+}
+

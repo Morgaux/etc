@@ -1,0 +1,80 @@
+#!/bin/sh
+
+# https://gitlab.com/morgaux/bin
+# @Author:	Morgaux Meyer
+# @License:	MIT (C) 2019
+
+
+
+################################################################################
+#                                     Headers                                  #
+################################################################################
+
+# shellcheck source=/dev/null
+include() { . "$(dirname $0)/$*"; }
+
+include daemon.functions
+
+
+
+################################################################################
+#                                Automatic vars                                #
+################################################################################
+
+SELF="$(basename "$0")"
+SRC_DIR="$(dirname "$0")"
+PWD_DIR="$PWD"
+RUN_DIR="/"
+
+
+
+################################################################################
+#                              Configuration vars                              #
+################################################################################
+
+PREFIX=""				# leave blank to default to "/"
+TMP_DIR="$PREFIX/tmp"			# dir for tmp and log files
+PIDFILE="${TMP_DIR}/${SELF}.pid"	# PID file location
+LOGFILE="${TMP_DIR}/${SELF}.log"	# LOG file location
+
+
+
+################################################################################
+#                                Option vars                                   #
+################################################################################
+
+OPT_FORK="TRUE"				# fork process automatically
+OPT_VERBOSE="FALSE"			# give verbose messages
+
+
+
+################################################################################
+#                            Function definitions                              #
+################################################################################
+
+# main function
+main() {
+	true #no-op
+}
+
+
+
+################################################################################
+#                                  Run daemon                                  #
+################################################################################
+
+case "$OPT_FORK" in
+	"TRUE") # fork main()
+		( main_wrapper "$@" </dev/null >/dev/null 2>&1 & ) &
+		;;
+	"FALSE") # don't fork main()
+		main_wrapper "$@"
+		;;
+	*) # unreachable
+		die "$OPT_FORK is invalid value for boolean OPT_FORK"
+		;;
+esac
+
+# exit success
+exit 0
+
