@@ -1,5 +1,5 @@
 " Special
-let wallpaper  = "/home/morgaux/src/dwm/castle.png"
+let wallpaper  = "/usr/share/backgrounds/dwm-wallpaper"
 let background = "#0f1213"
 let foreground = "#ccdce4"
 let cursor     = "#ccdce4"

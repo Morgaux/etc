@@ -1,4 +1,4 @@
-set $wallpaper /home/morgaux/src/dwm/castle.png
+set $wallpaper /usr/share/backgrounds/dwm-wallpaper
 
 set $background #0f1213
 set $foreground #ccdce4
