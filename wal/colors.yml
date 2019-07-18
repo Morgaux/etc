@@ -1,4 +1,4 @@
-wallpaper: "/home/morgaux/src/dwm/castle.png"
+wallpaper: "/usr/share/backgrounds/dwm-wallpaper"
 
 special:
     background: "#0f1213"
