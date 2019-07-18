@@ -41,9 +41,9 @@ done
 ##
 {
 	echo ''
-	echo 'if	[ -z "$DISPLAY" ] #&&'
-	echo '	#[ "$XDG_VTNR" -eq 1 ] &&'
-	echo '	#[ -x "$(command -v startx)" ]'
+	echo 'if	[ -z "$DISPLAY" ] &&'
+	echo '	[ "$XDG_VTNR" -eq 1 ] &&'
+	echo '	[ -x "$(command -v startx)" ]'
 	echo 'then'
 	echo '	START="$(date +%s)"'
 	echo '	END="$START"'
