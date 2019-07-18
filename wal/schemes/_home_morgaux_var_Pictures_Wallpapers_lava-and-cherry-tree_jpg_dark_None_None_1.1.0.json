@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/morgaux/var/Pictures/Wallpapers/lava-and-cherry-tree.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#0A0814",
+        "foreground": "#beb4bb",
+        "cursor": "#beb4bb"
+    },
+    "colors": {
+        "color0": "#0A0814",
+        "color1": "#635162",
+        "color2": "#6C596B",
+        "color3": "#B34F44",
+        "color4": "#966566",
+        "color5": "#D59571",
+        "color6": "#737186",
+        "color7": "#beb4bb",
+        "color8": "#857d82",
+        "color9": "#635162",
+        "color10": "#6C596B",
+        "color11": "#B34F44",
+        "color12": "#966566",
+        "color13": "#D59571",
+        "color14": "#737186",
+        "color15": "#beb4bb"
+    }
+}

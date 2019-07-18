@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/morgaux/var/Pictures/Wallpapers/arch-badge.png",
+    "alpha": "100",
+    "special": {
+        "background": "#050607",
+        "foreground": "#c3d0d7",
+        "cursor": "#c3d0d7"
+    },
+    "colors": {
+        "color0": "#050607",
+        "color1": "#2293D1",
+        "color2": "#249EE0",
+        "color3": "#4195C2",
+        "color4": "#959799",
+        "color5": "#BABABB",
+        "color6": "#C3BCBA",
+        "color7": "#c3d0d7",
+        "color8": "#889196",
+        "color9": "#2293D1",
+        "color10": "#249EE0",
+        "color11": "#4195C2",
+        "color12": "#959799",
+        "color13": "#BABABB",
+        "color14": "#C3BCBA",
+        "color15": "#c3d0d7"
+    }
+}

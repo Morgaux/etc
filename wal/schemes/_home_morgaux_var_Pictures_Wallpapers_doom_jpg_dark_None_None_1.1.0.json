@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/morgaux/var/Pictures/Wallpapers/doom.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#0d0304",
+        "foreground": "#eacb9a",
+        "cursor": "#eacb9a"
+    },
+    "colors": {
+        "color0": "#0d0304",
+        "color1": "#982C1E",
+        "color2": "#B22C11",
+        "color3": "#CC260B",
+        "color4": "#AD4F23",
+        "color5": "#D3591B",
+        "color6": "#BC684C",
+        "color7": "#eacb9a",
+        "color8": "#a38e6b",
+        "color9": "#982C1E",
+        "color10": "#B22C11",
+        "color11": "#CC260B",
+        "color12": "#AD4F23",
+        "color13": "#D3591B",
+        "color14": "#BC684C",
+        "color15": "#eacb9a"
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/morgaux/var/Pictures/Wallpapers/4k-Surreal-Sunset.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#0d0d17",
+        "foreground": "#c4c6cb",
+        "cursor": "#c4c6cb"
+    },
+    "colors": {
+        "color0": "#0d0d17",
+        "color1": "#DDAE30",
+        "color2": "#1F5A8D",
+        "color3": "#1A4F96",
+        "color4": "#566D94",
+        "color5": "#917790",
+        "color6": "#6A8BA8",
+        "color7": "#c4c6cb",
+        "color8": "#898a8e",
+        "color9": "#DDAE30",
+        "color10": "#1F5A8D",
+        "color11": "#1A4F96",
+        "color12": "#566D94",
+        "color13": "#917790",
+        "color14": "#6A8BA8",
+        "color15": "#c4c6cb"
+    }
+}

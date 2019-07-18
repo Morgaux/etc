@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/morgaux/var/Pictures/Wallpapers/4k-star-wars.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#150d0e",
+        "foreground": "#92cac7",
+        "cursor": "#92cac7"
+    },
+    "colors": {
+        "color0": "#150d0e",
+        "color1": "#D8602E",
+        "color2": "#168C73",
+        "color3": "#5CA671",
+        "color4": "#D8A74C",
+        "color5": "#F7DB5B",
+        "color6": "#096B8C",
+        "color7": "#92cac7",
+        "color8": "#668d8b",
+        "color9": "#D8602E",
+        "color10": "#168C73",
+        "color11": "#5CA671",
+        "color12": "#D8A74C",
+        "color13": "#F7DB5B",
+        "color14": "#096B8C",
+        "color15": "#92cac7"
+    }
+}

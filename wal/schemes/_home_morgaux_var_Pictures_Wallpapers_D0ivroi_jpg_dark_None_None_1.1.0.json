@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/morgaux/var/Pictures/Wallpapers/D0ivroi.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#020202",
+        "foreground": "#ece8da",
+        "cursor": "#ece8da"
+    },
+    "colors": {
+        "color0": "#020202",
+        "color1": "#7B6B4F",
+        "color2": "#667268",
+        "color3": "#6D8179",
+        "color4": "#898367",
+        "color5": "#B0AF91",
+        "color6": "#DBD4B3",
+        "color7": "#ece8da",
+        "color8": "#a5a298",
+        "color9": "#7B6B4F",
+        "color10": "#667268",
+        "color11": "#6D8179",
+        "color12": "#898367",
+        "color13": "#B0AF91",
+        "color14": "#DBD4B3",
+        "color15": "#ece8da"
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/morgaux/var/Pictures/Wallpapers/16d638d4210f092262e3b2de1c00d564f2770ff8.png",
+    "alpha": "100",
+    "special": {
+        "background": "#111819",
+        "foreground": "#77e0e0",
+        "cursor": "#77e0e0"
+    },
+    "colors": {
+        "color0": "#111819",
+        "color1": "#3D7B84",
+        "color2": "#0192A0",
+        "color3": "#00AAB7",
+        "color4": "#6F8990",
+        "color5": "#00C0BF",
+        "color6": "#00B0C4",
+        "color7": "#77e0e0",
+        "color8": "#539c9c",
+        "color9": "#3D7B84",
+        "color10": "#0192A0",
+        "color11": "#00AAB7",
+        "color12": "#6F8990",
+        "color13": "#00C0BF",
+        "color14": "#00B0C4",
+        "color15": "#77e0e0"
+    }
+}
