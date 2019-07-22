@@ -23,6 +23,7 @@ include() {
 
 include config.daemon
 include util.daemon
+include git.config.daemon
 include git.util.daemon
 
 _TARGET_DIR="$HOME/etc"

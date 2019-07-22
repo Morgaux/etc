@@ -17,10 +17,12 @@ git_get_local_hash() {
 }
 
 git_get_remote_hash() {
+	[ -n "$_UPSTREAM_REF" ] || git_set_upstream_refernce
 	git rev-parse "$_UPSTREAM_REF"
 }
 
 git_get_base_hash() {
+	[ -n "$_UPSTREAM_REF" ] || git_set_upstream_refernce
 	git merge-base @ "$_UPSTREAM_REF"
 }
 
