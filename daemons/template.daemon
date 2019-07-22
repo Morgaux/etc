@@ -11,40 +11,9 @@
 ################################################################################
 
 # shellcheck source=/dev/null
-include() { . "$(dirname $0)/$*"; }
+include() { . "$(dirname $0)/$*"&&return;echo "Error: include $*" 1>&2;exit 1; }
 
 include daemon.functions
-
-
-
-################################################################################
-#                                Automatic vars                                #
-################################################################################
-
-SELF="$(basename "$0")"
-SRC_DIR="$(dirname "$0")"
-PWD_DIR="$PWD"
-RUN_DIR="/"
-
-
-
-################################################################################
-#                              Configuration vars                              #
-################################################################################
-
-PREFIX=""				# leave blank to default to "/"
-TMP_DIR="$PREFIX/tmp"			# dir for tmp and log files
-PIDFILE="${TMP_DIR}/${SELF}.pid"	# PID file location
-LOGFILE="${TMP_DIR}/${SELF}.log"	# LOG file location
-
-
-
-################################################################################
-#                                Option vars                                   #
-################################################################################
-
-OPT_FORK="TRUE"				# fork process automatically
-OPT_VERBOSE="FALSE"			# give verbose messages
 
 
 
