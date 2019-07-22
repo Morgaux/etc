@@ -1,0 +1,58 @@
+#!/bin/sh
+
+
+
+################################################################################
+#                               GIT functions                                  #
+################################################################################
+
+# See https://stackoverflow.com/questions/3258243
+
+git_set_upstream_refernce() {
+	_UPSTREAM_REF="${1:-'@{u}'}"
+}
+
+git_get_local_hash() {
+	git rev-parse @
+}
+
+git_get_remote_hash() {
+	git rev-parse "$_UPSTREAM_REF"
+}
+
+git_get_base_hash() {
+	git merge-base @ "$_UPSTREAM_REF"
+}
+
+git_is_up_to_date() {
+	[ "$(git_get_local_hash)" = "$(git_get_remote_hash)" ]
+	return "$?"
+}
+
+git_is_pull_needed() {
+	git_is_up_to_date && return 1
+
+	[ "$(git_get_local_hash)" = "$(git_get_base_hash)" ]
+	return "$?"
+}
+
+git_is_push_needed() {
+	git_is_pull_needed && return 1
+
+	[ "$(git_get_remote_hash)" = "$(git_get_base_hash)" ]
+	return "$?"
+}
+
+git_will_pull_succeed() {
+	git fetch
+	git merge-tree "$(
+		git merge-base FETCH_HEAD master
+	)" FETCH_HEAD master | grep -q "<<<"
+	return $?
+}
+
+git_is_dir_repo() {
+	[ -d "$_TARGET_DIR/.git" ]
+	return "$?"
+}
+
