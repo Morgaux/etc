@@ -49,7 +49,7 @@ init_daemon() {
 	# Init dirs
 	for dir in "$SRC_DIR" "$PWD_DIR" "$RUN_DIR" "$TMP_DIR"
 	do
-		# inure dirs exist
+		# insure dirs exist
 		mkdir -p "$dir" && continue
 		die "Could not create $dir, 'mkdir -p $dir' exited with code $?"
 	done
@@ -73,11 +73,31 @@ rm_pid() { # Remove PID file
 	rm -f "$PIDFILE" || die "Could not remove PID file."
 }
 
+read_options() {
+	while [ "$#" -gt 0 ]
+	do
+		case "$1" in
+			--OPT_FORK=*)
+				OPT_FORK="${1#*=}" # fork process automatically
+				;;
+			--OPT_VERBOSE=*)
+				OPT_VERBOSE="${1#*=}" # give verbose messages
+				;;
+			--|*)
+				# pass remaining options to main($@)
+				echo "$@"
+				break
+				;;
+		esac
+		shift
+	done
+}
+
 main_wrapper() {
 	init_daemon
 	init_pid
 
-	# call main
+	# call main()
 	main "$@" >> "$LOGFILE" 2>&1
 
 	rm_pid
