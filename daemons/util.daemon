@@ -11,9 +11,9 @@ log() { # log function
 	touch "$LOGFILE"
 	if [ "$OPT_VERBOSE" = "TRUE" ]
 	then
-		echo "$_LOG_TIME_STAMP	$*" | tee -a "$LOGFILE"
+		echo "$_LOG_TIME_STAMP $*" | tee -a "$LOGFILE"
 	else
-		echo "$_LOG_TIME_STAMP	$*" >> "$LOGFILE"
+		echo "$_LOG_TIME_STAMP $*" >> "$LOGFILE"
 	fi
 }
 
@@ -96,7 +96,17 @@ daemon_wrapper() {
 	init_pid
 
 	# call main()
-	main "$@" >> "$LOGFILE" 2>&1
+	case "$OPT_VERBOSE" in
+		"TRUE") # verbose
+			main "$@" 2>&1 | tee -a "$LOGFILE"
+			;;
+		"FALSE") # not verbose
+			main "$@" >> "$LOGFILE" 2>&1
+			;;
+		*) # unreachable
+			die "$OPT_VERBOSE is invalid value for boolean OPT_VERBOSE"
+			;;
+	esac
 
 	rm_pid
 }
@@ -107,7 +117,7 @@ main_wrapper() {
 
 	case "$OPT_FORK" in
 		"TRUE") # fork
-			( daemon_wrapper "$@" </dev/null >/dev/null 2>&1 & ) &
+			( daemon_wrapper "$@" </dev/null & ) &
 			;;
 		"FALSE") # don't fork
 			daemon_wrapper "$@"
