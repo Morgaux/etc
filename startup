@@ -15,16 +15,5 @@ then
 	then
 		( redshift -t 6500k:4000k >/dev/null 2>&1 & )
 	fi
-
-	#if [ -x "$(command -v xmodmap)" ] && \
-	#	xmodmap -pke | grep -q Alt_R
-	#then
-	#	# reassign Alt_R to Super_L
-	#	xmodmap -e "keycode $(xmodmap -pke | \
-	#		grep Alt_R | \
-	#		awk '{print $2}') = Super_L"
-	#	# make sure X keeps it out of the mod1 group
-	#	xmodmap -e "remove mod1 = Super_L"
-	#fi
 fi >/dev/null 2>&1
 

@@ -22,5 +22,7 @@ then
 	then
 		feh -z -Z --bg-scale "$WALLPAPER"
 	fi
+else
+	xrdb -merge ~/etc/Xresources
 fi
 
