@@ -27,10 +27,14 @@ err() { # error function
 
 die() { # fatal error function
 	OPT_VERBOSE="TRUE"
+
 	err "FATAL ERROR OCCURRED IN PROCESS $$"
 	err "$@"
 	err "EXITING..."
-	exit 1
+
+	kill "$(cat $PIDFILE)"
+
+	exit 1 # unreachable
 }
 
 init_daemon() {
