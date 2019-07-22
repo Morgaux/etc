@@ -84,16 +84,14 @@ read_options() {
 				OPT_VERBOSE="${1#*=}" # give verbose messages
 				;;
 			--|*)
-				# pass remaining options to main($@)
-				echo "$@"
-				break
+				return "$#" # return number of remaining args
 				;;
 		esac
 		shift
 	done
 }
 
-main_wrapper() {
+daemon_wrapper() {
 	init_daemon
 	init_pid
 
@@ -101,5 +99,22 @@ main_wrapper() {
 	main "$@" >> "$LOGFILE" 2>&1
 
 	rm_pid
+}
+
+main_wrapper() {
+	read_options "$@"
+	shift "$(($# - $?))" # shift away the read arguments
+
+	case "$OPT_FORK" in
+		"TRUE") # fork
+			( daemon_wrapper "$@" </dev/null >/dev/null 2>&1 & ) &
+			;;
+		"FALSE") # don't fork
+			daemon_wrapper "$@"
+			;;
+		*) # unreachable
+			die "$OPT_FORK is invalid value for boolean OPT_FORK"
+			;;
+	esac
 }
 

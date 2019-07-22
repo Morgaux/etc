@@ -13,8 +13,8 @@
 # shellcheck source=/dev/null
 include() { . "$(dirname $0)/$*"&&return;echo "Error: include $*" 1>&2;exit 1; }
 
-include util.daemon
 include config.daemon
+include util.daemon
 
 
 
@@ -33,17 +33,7 @@ main() {
 #                                  Run daemon                                  #
 ################################################################################
 
-case "$OPT_FORK" in
-	"TRUE") # fork main()
-		( main_wrapper "$@" </dev/null >/dev/null 2>&1 & ) &
-		;;
-	"FALSE") # don't fork main()
-		main_wrapper "$@"
-		;;
-	*) # unreachable
-		die "$OPT_FORK is invalid value for boolean OPT_FORK"
-		;;
-esac
+main_wrapper "$@"
 
 # exit success
 exit 0
