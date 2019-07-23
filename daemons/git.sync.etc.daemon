@@ -38,11 +38,12 @@ _SYNC_TIMEOUT="600" # 10 minutes
 git_sync_repo() { # $1 : root directory of repo
 	cd "$1" || die "Could not enter directory: $1"
 
-	log "Syncing $1..."
-
 	if git_is_pull_needed && git_will_pull_succeed
 	then
+		log "Syncing $1..."
 		git pull
+	else
+		log "$1 is up-to-date or cannot be cleanly merged."
 	fi
 
 	cd "$RUN_DIR" || die "Could not return to RUN_DIR: $RUN_DIR"
