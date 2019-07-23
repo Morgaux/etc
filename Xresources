@@ -18,3 +18,4 @@
 *color14: rgb:54/fc/fc
 *color15: rgb:fc/fc/fc
 
+*.scrollBar: false
