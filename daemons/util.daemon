@@ -26,15 +26,25 @@ err() { # error function
 }
 
 die() { # fatal error function
+	_KILL_PID="TRUE"
 	OPT_VERBOSE="TRUE"
+
+	if [ "$1" = "--no-kill" ]
+	then
+		_KILL_PID="FALSE"
+		shift
+	fi
 
 	err "FATAL ERROR OCCURRED IN PROCESS $$"
 	err "$@"
 	err "EXITING..."
 
-	kill "$(cat $PIDFILE)"
+	if [ "$_KILL_PID" = "TRUE" ]
+	then
+		kill "$(cat $PIDFILE)"
+	fi
 
-	exit 1 # unreachable
+	exit 1
 }
 
 init_daemon() {
@@ -44,10 +54,10 @@ init_daemon() {
 	# Init log file
 	{
 		echo "Log file for $SELF - $0"
-		echo "PIDFILE:	$PIDFILE"
-		echo "LOGFILE:	$LOGFILE"
-		echo "PWD_DIR:	$PWD_DIR"
-		echo "RUN_DIR:	$RUN_DIR"
+		echo "PIDFILE: $PIDFILE"
+		echo "LOGFILE: $LOGFILE"
+		echo "PWD_DIR: $PWD_DIR"
+		echo "RUN_DIR: $RUN_DIR"
 	} >> "$LOGFILE"
 
 	# Init dirs
@@ -64,8 +74,10 @@ init_pid() { # Manage PID file
 	if [ -f "$PIDFILE" ]
 	then
 		_OLDPID="$(cat "$PIDFILE")"
-		ps -p "$_OLDPID" >/dev/null 2>&1 &&
-			die "PID $_OLDPID is still running."
+		if ps -p "$_OLDPID" >/dev/null 2>&1
+		then
+			die --no-kill "PID $_OLDPID is still running."
+		fi
 		rm_pid
 	fi
 
