@@ -17,3 +17,16 @@ then
 	fi
 fi >/dev/null 2>&1
 
+git_pull_dir() { ( cd "$1" && git pull </dev/null >/dev/null 2>&1 & ) ; }
+
+if [ -x "$(command -v git)" ]
+then
+	for i in "$HOME/bin" "$HOME/etc"
+	do
+		git_pull_dir "$i"
+	done
+
+	( cd "$HOME/src" && for i in ./* ; do git_pull_dir "$i"; done; )
+	( cd "$HOME/uni" && for i in ./* ; do git_pull_dir "$i"; done; )
+fi </dev/null >/dev/null 2>&1
+

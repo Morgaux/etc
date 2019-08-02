@@ -71,11 +71,8 @@ done
 # replace old file
 ##
 [ -f ~/.profile ] && cat ~/.profile > ~/.profile.bak
-
 rm -f ~/.profile
-
 mv ~/.profile.tmp ~/.profile
-
 [ -f ~/.profile ] || cat ~/.profile.bak > ~/.profile
 
 exit 0
