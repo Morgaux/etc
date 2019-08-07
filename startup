@@ -13,7 +13,7 @@ then
 	if [ -x "$(command -v redshift)" ] && \
 		[ "$(ps cax | grep redshift)" = "" ]
 	then
-		( redshift -t 6500k:4000k >/dev/null 2>&1 & )
+		( redshift >/dev/null 2>&1 & )
 	fi
 fi >/dev/null 2>&1
 
