@@ -238,3 +238,9 @@ foo
 H
 L
 hex
+basename
+ColorColumn
+MoreMsg
+ModeMsg
+TabLineSel
+LineNr
