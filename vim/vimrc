@@ -39,8 +39,9 @@ endif
 " Colours and highlighting
 "
 set t_Co=256
-
-colo 256_noir
+let g:gruvbox_contrast_dark = 'hard'
+set background=dark
+colo gruvbox
 
 
 
@@ -48,37 +49,13 @@ colo 256_noir
 "
 " Static colour rules
 "
-hi Normal ctermbg=NONE guibg=NONE
-hi LineNr
-	\ cterm=NONE ctermfg=NONE ctermbg=NONE
-	\ gui=NONE guifg=NONE guibg=NONE
-hi CursorLineNr
-	\ cterm=NONE ctermfg=NONE ctermbg=NONE
-	\ gui=NONE guifg=NONE guibg=NONE
-hi StatusLine
-	\ cterm=reverse ctermfg=NONE ctermbg=NONE
-	\ gui=reverse guifg=NONE guibg=NONE
-hi TabLineFill
-	\ cterm=reverse ctermfg=NONE ctermbg=NONE
-	\ gui=reverse guifg=NONE guibg=NONE
-hi TabLine
-	\ cterm=reverse ctermfg=NONE ctermbg=NONE
-	\ gui=reverse guifg=NONE guibg=NONE
-hi TabLineSel
-	\ cterm=reverse ctermfg=NONE ctermbg=NONE
-	\ gui=reverse guifg=NONE guibg=NONE
-hi ModeMsg
-	\ cterm=NONE ctermfg=NONE ctermbg=NONE
-	\ gui=NONE guifg=NONE guibg=NONE
-hi MoreMsg
-	\ cterm=NONE ctermfg=NONE ctermbg=NONE
-	\ gui=NONE guifg=NONE guibg=NONE
-hi ColorColumn
-	\ cterm=reverse ctermfg=NONE ctermbg=NONE
-	\ gui=reverse guifg=NONE guibg=NONE
-hi SpecialKey
-	\ cterm=NONE ctermfg=240 ctermbg=NONE
-	\ gui=NONE guifg=#585858 guibg=NONE
+
+hi clear SpellBad
+hi SpellBad
+	\ cterm=underline ctermfg=red ctermbg=NONE
+	\ gui=undercurl guifg=red guibg=NONE
+
+
 
 " prevent annoying paren matching
 let loaded_matchparen = 1
@@ -95,7 +72,7 @@ au InsertLeave * redraw!
 
 
 ""
-" Stuff I've shamelessly stolen
+" Stuff I've shamelessly stolen, although it's quite good so I don't mind
 ""
 
 "

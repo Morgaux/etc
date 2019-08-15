@@ -256,3 +256,15 @@ gt
 gt
 SC2086
 shellcheck
+basename
+ColorColumn
+MoreMsg
+ModeMsg
+TabLineSel
+LineNr
+backends
+xsetroot
+esac
+cmd
+dropdown
+dterm
