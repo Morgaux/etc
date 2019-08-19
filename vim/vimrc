@@ -39,7 +39,11 @@ endif
 " Colours and highlighting
 "
 set t_Co=256
-let g:gruvbox_contrast_dark = 'hard'
+set t_ut=""
+let g:gruvbox_contrast_dark='hard'
+let g:gruvbox_improved_strings=1
+let g:gruvbox_improved_warnings=1
+let g:gruvbox_termcolors=256
 set background=dark
 colo gruvbox
 
