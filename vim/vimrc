@@ -20,6 +20,7 @@ set showtabline=2
 set laststatus=2
 set ignorecase
 set spell spelllang=en_nz
+set autoindent
 
 " Tabs must be eight wide!!!
 set tabstop=8 softtabstop=0 shiftwidth=8 noexpandtab
@@ -27,6 +28,9 @@ set tabstop=8 softtabstop=0 shiftwidth=8 noexpandtab
 autocmd Filetype python setlocal tabstop=8 softtabstop=0 shiftwidth=8 noexpandtab
 autocmd Filetype scala setlocal tabstop=8 softtabstop=0 shiftwidth=8 noexpandtab
 autocmd Filetype java setlocal tabstop=8 softtabstop=0 shiftwidth=8 noexpandtab
+
+" auto make latex on save
+autocmd BufWritePost *.tex silent !make >/dev/null
 
 " No line numbers if the term is too narrow for 80 chars
 if &columns < 85
