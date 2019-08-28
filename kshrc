@@ -62,7 +62,7 @@ HISTSIZE=1024
 # environment
 ##
 
-for SCRIPT in profile startup git-config
+for SCRIPT in profile startup git-config directory
 do
 	[ -f "$HOME/etc/$SCRIPT" ] && ( $HOME/etc/$SCRIPT & )
 done
