@@ -327,3 +327,6 @@ xbacklight
 Cpu
 
 
+symlinks
+toFile
+fromFile
