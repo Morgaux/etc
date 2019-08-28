@@ -14,7 +14,31 @@ for DIR in	'src' \
 		'tmp' \
 		'.cache'
 do
-	[ -d "$HOME/$DIR" ] || mkdir -p "$HOME/$DIR"
+	[ -d "${HOME}/${DIR}" ] || mkdir -p "${HOME}/${DIR}"
+done
+
+# keep dirs clean
+[ -x "$(command -v basename)" ] && for DIR in ~/*
+do
+	[ -d "$DIR" ] || continue # ignore non dirs, i.e. files
+
+	DIR="$(basename "$DIR")" # strip path
+
+	case "$DIR" in
+		"."*) true ;; # ignore dot.dirs, do nothing
+		""|"bin"|"etc"|"iso"|"lib"|"new"|"old"|"src"|"tmp"|"uni"|"var")
+			true ;; # I don't mind this dir being in HOME
+		*) # this dir doesn't belong here
+			if [ -d "${HOME}/var/${DIR}" ]
+			then
+				mv -f "${HOME}/${DIR}"/*  "${HOME}/var/${DIR}"/.
+				mv -f "${HOME}/${DIR}"/.* "${HOME}/var/${DIR}"/.
+				rm -rf "${HOME}/${DIR}"
+			else
+				mv -f "${HOME}/${DIR}"  "${HOME}/var"/.
+			fi >/dev/null 2>&1
+			;;
+	esac
 done
 
 # create symlinks if missing
@@ -24,7 +48,14 @@ link_from_to ~/etc/vim/vimrc	~/.vimrc
 link_from_to ~/etc/vim		~/.vim
 link_from_to ~/etc/Xresources	~/.Xresources
 link_from_to ~/etc/xinitrc	~/.xinitrc
+link_from_to ~/etc/xinitrc	~/.xsession
 link_from_to ~/etc/wal		~/.cache/wal
+
+# make executable
+for i in ~/.kshrc ~/.mkshrc ~/.xintrc ~/.xsession
+do
+	chmod 755 "$i"
+done
 
 # add my bin launchers
 [ -d ~/bin/launchers ] && \

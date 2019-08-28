@@ -75,5 +75,7 @@ rm -f ~/.profile
 mv ~/.profile.tmp ~/.profile
 [ -f ~/.profile ] || cat ~/.profile.bak > ~/.profile
 
+chmod 755 ~/.profile
+
 exit 0
 
