@@ -8,7 +8,7 @@
 # mksh and ksh configuration
 ##
 
-CURRENT_SHELL="$(ps -p $$ | tail -1 | awk '{print $4}' || basename "$SHELL")"
+CURRENT_SHELL="$(ps -p $$ | tr ' ' '\n' | tail -n 1 || basename "$SHELL")"
 
 # Source aliases for non-ksh shells
 [ -f ~/etc/aliases ] && . ~/etc/aliases
