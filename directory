@@ -33,13 +33,25 @@ do
 			then
 				mv -f "${HOME}/${DIR}"/*  "${HOME}/var/${DIR}"/.
 				mv -f "${HOME}/${DIR}"/.* "${HOME}/var/${DIR}"/.
-				rm -rf "${HOME}/${DIR}"
+				rm -rf "${HOME:?}/${DIR}"
 			else
 				mv -f "${HOME}/${DIR}"  "${HOME}/var"/.
 			fi >/dev/null 2>&1
 			;;
 	esac
 done
+
+# install my repos
+if [ -x "$(command -v git)" ]
+then
+	[ ! -d "${HOME}/bin" ] &&
+		cd ~  &&
+		git clone https://gitlab.com/morgaux/bin
+
+	[ ! -d "${HOME}/src/sude" ] &&
+		cd "${HOME}/src"    &&
+		git clone https://gitlab.com/morgaux/sude
+fi
 
 # create symlinks if missing
 link_from_to ~/etc/kshrc	~/.kshrc
