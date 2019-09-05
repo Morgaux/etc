@@ -361,3 +361,7 @@ wal
 wal
 gitRepoUrl
 targetDirectory
+ftdetect
+colors
+gitignore
+IO
