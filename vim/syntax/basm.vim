@@ -14,7 +14,7 @@ syn keyword BASM_FLOW IF ENDIF LOOP ENDLOOP
 
 " Matches
 syn match BASM_CELL '\<0x\x\x\x\x\>'
-syn match BASM_CELL '\<\u\>'
+syn match BASM_CELL '\<\u*\>'
 
 " Regions
 
