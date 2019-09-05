@@ -8,9 +8,6 @@ endif
 
 let b:current_syntax = "BASM"
 
-" BF Keywords in comments
-syn match BASM_BF   '[,.<>[\]+-]'
-
 " Matches
 syn match BASM_ADDR '\<0x\x\x\x\x\>'           " 0x???? 1 hex word
 syn match BASM_BYTE '\<0x\x\x\>'               " 0x??   1 hex byte
@@ -28,7 +25,6 @@ syn keyword BASM_FLOW IF ENDIF LOOP ENDLOOP
 " Regions
 
 hi def link BASM_CMNT Comment
-hi def link BASM_BF   TODO
 
 hi def link BASM_NAME Identifier
 hi def link BASM_ADDR Number
