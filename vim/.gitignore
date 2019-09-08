@@ -8,4 +8,8 @@
 !colors/*
 !spell/
 !spell/*
+!syntax
+!syntax/*
+!ftdetect
+!ftdetect/*
 
