@@ -21,6 +21,22 @@ case "$CURRENT_SHELL" in
 		return ;;
 esac
 
+# Curse emacs!
+# ...but I like to use the up arrow for my shell history
+set -o emacs
+alias _A=
+alias _B=
+alias _C=
+alias _D=
+alias _H=
+alias _Y=
+alias __A=
+alias __B=
+alias __C=
+alias __D=
+alias __H=
+alias __Y=
+
 ##
 # Functions
 ##
