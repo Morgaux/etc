@@ -26,7 +26,11 @@ then
 		git_pull_dir "$i"
 	done
 
+	# pull git repos in ~/src and ~/uni
 	( cd "$HOME/src" && for i in ./* ; do git_pull_dir "$i"; done; )
 	( cd "$HOME/uni" && for i in ./* ; do git_pull_dir "$i"; done; )
+
+	# commit spelling changes to vim spelling files
+	( cd "$HOME/etc" && git commit -m "Automatic spelling commit" vim/spell/* )
 fi </dev/null >/dev/null 2>&1
 
