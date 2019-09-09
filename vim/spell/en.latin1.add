@@ -73,3 +73,7 @@ var
 src
 toFile
 fromFile
+emacs
+ksh
+PS1DIR
+mksh
