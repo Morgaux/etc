@@ -495,3 +495,6 @@ alnum
 punct
 ord
 chr
+PS1DIR
+emacs
+emacs
