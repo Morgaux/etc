@@ -365,3 +365,8 @@ ftdetect
 colors
 gitignore
 IO
+th
+alnum
+punct
+ord
+chr
