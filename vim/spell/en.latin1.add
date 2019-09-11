@@ -77,3 +77,11 @@ emacs
 ksh
 PS1DIR
 mksh
+uname
+SUDE
+sude
+MANPREFIX
+NetBSD
+OpenBSD
+FreeBSD
+esac
