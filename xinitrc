@@ -15,4 +15,3 @@
 	export SSH_AUTH_SOCK
 
 exec dwm-start
-
