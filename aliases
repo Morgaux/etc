@@ -1,4 +1,6 @@
 #!/bin/sh
+# shellcheck disable=SC2139
+# vi: syntax=sh
 
 alias c='clear'
 alias ls='ls -F'
@@ -13,27 +15,44 @@ alias yaourt='yay'
 ##
 # CMDs with "c" prefix
 ##
-for i in e ls la ll; do
-	alias c"$i"="c; $i"
+for i in         \
+	e        \
+	ls       \
+	la       \
+	ll       \
+	uf       \
+	nf       \
+	fortune  \
+	neofetch
+do
+	alias "c${i}=c; ${i}"
 done
 
 ##
 # CMDs that need root privileges
 ##
-for i in \
-	apt \
-	apt-get \
-	pacman \
+
+# Linux / FreeBSD
+for i in           \
+	apt        \
+	apt-get    \
+	pacman     \
 	portmaster \
-	yum \
-	dnf \
-	pkg \
-	brew \
-	eopkg\
+	yum        \
+	dnf        \
+	pkg        \
+	brew       \
+	eopkg      \
 	wifi-menu
 do
-	[ -x "$(command -v $i)" ] && alias "$i"="sudo $i"
+	[ -x "$(command -v "$i")" ] && alias "${i}='sudo ${i}'"
 done
+
 # OpenBSD
-alias pkg_add='doas pkg_add'
+for i in \
+	pkg_add    \
+	pkg_delete
+do
+	[ -x "$(command -v "$i")" ] && alias "${i}='doas ${i}'"
+done
 

@@ -1,26 +1,39 @@
 #!/bin/sh
 
+# if command exists and is not yet running, run it in background
+run_one_instance_in_bg() {
+	if [ -x "$(command -v "$1")" ] && pgrep "$1"
+	then
+		# shellcheck disable=2068
+		( $@ &)
+	fi
+}
+
+
+#
 # Start ups that require Xorg
+#
+
 if [ -n "$DISPLAY" ] && xset q >/dev/null 2>&1
 then
-	# if xbanish exists and is not yet running, run it in background
-	if [ -x "$(command -v xbanish)" ] && \
-		[ "$(ps cax | grep xbanish)" = "" ]
-	then
-		( xbanish & )
-	fi
 
-	if [ -x "$(command -v redshift)" ] && \
-		[ "$(ps cax | grep redshift)" = "" ]
-	then
-		( redshift >/dev/null 2>&1 & )
-	fi
-fi >/dev/null 2>&1
+	run_one_instance_in_bg "xbanish"
+	run_one_instance_in_bg "redshift"
 
-git_pull_dir() { ( cd "$1" && git pull </dev/null >/dev/null 2>&1 & ) ; }
+fi >/dev/null 2>&1 # hide error stream for the if...fi block
+
+
+#
+# Keep repos up to date - spawn "git pull" daemons
+#
 
 if [ -x "$(command -v git)" ]
 then
+
+	# function to safely pull git repos
+	git_pull_dir() { ( cd "$1" && git pull </dev/null >/dev/null 2>&1 & ) ; }
+
+	# pull git repos in home
 	for i in "$HOME/bin" "$HOME/etc"
 	do
 		git_pull_dir "$i"
@@ -32,5 +45,6 @@ then
 
 	# commit spelling changes to vim spelling files
 	( cd "$HOME/etc" && git commit -m "Automatic spelling commit" vim/spell/* )
-fi </dev/null >/dev/null 2>&1
+
+fi </dev/null >/dev/null 2>&1 # block all io streams for the if...fi block
 

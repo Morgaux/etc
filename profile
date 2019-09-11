@@ -1,4 +1,5 @@
 #!/bin/sh
+# shellcheck disable=SC2016
 
 #
 # http://gitlab.com/morgaux/etc
@@ -31,13 +32,19 @@ set -e # stop on uncaught error
 ##
 # add environment setup scripts to temporary file
 ##
-for file in startup environment directory aliases welcome
+for file in         \
+	startup     \
+	environment \
+	directory   \
+	aliases     \
+	welcome     # welcome should be last of files added to temporary file
 do
+	# strip shebang lines
 	sed -n '/#!\/bin/!p' ~/etc/$file >> ~/.profile.tmp || exit 1
 done
 
 ##
-# auto startx, MUST be last section added
+# auto startx, MUST be last section added to temporary file
 ##
 {
 	echo ''
@@ -70,9 +77,15 @@ done
 ##
 # replace old file
 ##
+
+# make a back up
 [ -f ~/.profile ] && cat ~/.profile > ~/.profile.bak
+
+# replace profile from temporary file
 rm -f ~/.profile
 mv ~/.profile.tmp ~/.profile
+
+# restore backup if something went wrong
 [ -f ~/.profile ] || cat ~/.profile.bak > ~/.profile
 
 chmod 755 ~/.profile

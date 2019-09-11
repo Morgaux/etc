@@ -8,21 +8,7 @@ then
 	setfont Lat2-Terminus16
 fi
 
-if [ -n "$WALLPAPER" ]
-then
-	[ -x "$(command -v wal)" ] &&
-	if [ -f "$HOME/.cache/wal/sequences" ]
-	then
-		wal -n -i "$WALLPAPER"
-	else
-		wal -R
-	fi
-
-	if [ -x "$(command -v feh)" ]
-	then
-		feh -z -Z --bg-scale "$WALLPAPER"
-	fi
-elif [ -n "$DISPLAY" ]
+if [ -n "$DISPLAY" ]
 then
 	xrdb -merge ~/etc/Xresources
 fi

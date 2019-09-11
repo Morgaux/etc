@@ -1,4 +1,5 @@
 #!/bin/sh
+# shellcheck disable=SC2155
 
 #[ PATH ]#######################################################################
 
@@ -33,7 +34,7 @@ export PATH=$(printf "%s" "$PATH" | \
 #[ MISC ]#######################################################################
 
 # set EDITOR to most preferred available
-export EDITOR="$(which vim || which vi)"
+export EDITOR="$(which vim || which vi || which nano)"
 
 # set PAGER
 export PAGER=less
@@ -53,6 +54,7 @@ then
 	export _JAVA_AWT_WM_NONREPARENTING="1"
 fi
 
+# MS visual studio code and what not
 if [ -x "$(command -v dotnet)" ]
 then
 	export DOTNET_CLI_TELEMETRY_OPTOUT=1

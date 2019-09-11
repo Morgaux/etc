@@ -1,16 +1,16 @@
 #!/bin/sh
 
-GIT_NAME="Morgaux"
-GIT_EMAIL="3158796-morgaux@users.noreply.gitlab.com"
+export _GIT_NAME="Morgaux"
+export _GIT_EMAIL="3158796-morgaux@users.noreply.gitlab.com"
 
 if [ -x "$(command -v git)" ]
 then
 
 	[ -z "$(git config user.name)" ] && \
-		git config --global user.name "$GIT_NAME"
+		git config --global user.name "${_GIT_NAME}"
 
 	[ -z "$(git config user.email)" ] && \
-		git config --global user.email "$GIT_EMAIL"
+		git config --global user.email "${_GIT_EMAIL}"
 
 	git config --global credential.helper cache 86400
 

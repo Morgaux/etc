@@ -1,4 +1,5 @@
 #!/bin/ksh
+# shellcheck source=/dev/null
 
 #
 # http://gitlab.com/morgaux/etc
@@ -8,7 +9,7 @@
 # mksh and ksh configuration
 ##
 
-CURRENT_SHELL="$(ps -p $$ | tr ' ' '\n' | tail -n 1 || basename "$SHELL")"
+CURRENT_SHELL="$(ps -p "$$" | tr ' ' '\n' | tail -n 1 || basename "$SHELL")"
 
 # Source aliases for non-ksh shells
 [ -f ~/etc/aliases ] && . ~/etc/aliases
@@ -80,8 +81,8 @@ HISTSIZE=1024
 
 for SCRIPT in profile startup git-config directory
 do
-	[ -f "$HOME/etc/$SCRIPT" ] && ( $HOME/etc/$SCRIPT & )
+	[ -f "$HOME/etc/$SCRIPT" ] && ( "$HOME/etc/$SCRIPT" & )
 done
 
-[ -f "$HOME/etc/welcome" ] && $HOME/etc/welcome
+[ -f "$HOME/etc/welcome" ] && "$HOME/etc/welcome"
 

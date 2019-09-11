@@ -1,9 +1,15 @@
 #!/bin/sh
 
 link_from_to() { # $1:fromFile $2:toFile
-	[ -f "$1" ] || [ -d "$1" ] || return 1
-	[ ! -L "$2" ] || return 1
-	[ -f "$2" ] && mv "$2" "${2}.old"
+	[   -f "$1" ] || [ -d "$1" ] ||
+		return 1 # fromFile doesn't exist
+
+	[ ! -L "$2" ] || # toFile is already a link
+		return 1
+
+	[   -f "$2" ] &&
+		mv "$2" "${2}.old" # make a back up of toFile
+
 	ln -sf "$1" "$2"
 }
 
@@ -25,10 +31,16 @@ do
 	DIR="$(basename "$DIR")" # strip path
 
 	case "$DIR" in
-		"."*) true ;; # ignore dot.dirs, do nothing
+		"."*)
+			# ignore dot.dirs, do nothing
+			true
+			;;
 		""|"bin"|"etc"|"iso"|"lib"|"new"|"old"|"src"|"tmp"|"uni"|"var")
-			true ;; # I don't mind this dir being in HOME
-		*) # this dir doesn't belong here
+			# I don't mind this dir being in HOME
+			true
+			;;
+		*)
+			# this dir doesn't belong here
 			if [ -d "${HOME}/var/${DIR}" ]
 			then
 				mv -f "${HOME}/${DIR}"/*  "${HOME}/var/${DIR}"/.
@@ -45,23 +57,25 @@ done
 if [ -x "$(command -v git)" ]
 then
 	[ ! -d "${HOME}/bin" ] &&
-		cd ~  &&
+		cd "${HOME}"   &&
 		git clone https://gitlab.com/morgaux/bin
 
 	[ ! -d "${HOME}/src/sude" ] &&
 		cd "${HOME}/src"    &&
 		git clone https://gitlab.com/morgaux/sude
+
+	cd "${HOME}" || echo "couldn't cd home" 1>&2
 fi
 
 # create symlinks if missing
-link_from_to ~/etc/kshrc	~/.kshrc
-link_from_to ~/etc/kshrc	~/.mkshrc
-link_from_to ~/etc/vim/vimrc	~/.vimrc
-link_from_to ~/etc/vim		~/.vim
-link_from_to ~/etc/Xresources	~/.Xresources
-link_from_to ~/etc/xinitrc	~/.xinitrc
-link_from_to ~/etc/xinitrc	~/.xsession
-link_from_to ~/etc/wal		~/.cache/wal
+link_from_to ~/etc/kshrc      ~/.kshrc
+link_from_to ~/etc/kshrc      ~/.mkshrc
+link_from_to ~/etc/vim/vimrc  ~/.vimrc
+link_from_to ~/etc/vim        ~/.vim
+link_from_to ~/etc/Xresources ~/.Xresources
+link_from_to ~/etc/xinitrc    ~/.xinitrc
+link_from_to ~/etc/xinitrc    ~/.xsession
+link_from_to ~/etc/wal        ~/.cache/wal
 
 # make executable
 for i in ~/.kshrc ~/.mkshrc ~/.xinitrc ~/.xsession
@@ -70,13 +84,14 @@ do
 done
 
 # add my bin launchers
-[ -d ~/bin/launchers ] && \
-	[ -d ~/.local/share/applications ] && \
+if [ -d ~/bin/launchers ] && [ -d ~/.local/share/applications ]
+then
 	for APP in ~/bin/launchers/*.desktop
-do
-	LAUNCHER="$HOME/.local/share/applications/$(basename "$APP")"
-	[ ! -L "$LAUNCHER" ] && ln -sf "$APP" "$LAUNCHER"
-done
+	do
+		LAUNCHER="$HOME/.local/share/applications/$(basename "$APP")"
+		[ ! -L "$LAUNCHER" ] && ln -sf "$APP" "$LAUNCHER"
+	done
+fi
 
 if [ -x "$(command -v xdg-user-dirs-update)" ]
 then
@@ -90,26 +105,26 @@ then
 	XDG_TEMPLATES_DIR="$HOME/var/Templates"
 	XDG_VIDEOS_DIR="$HOME/var/Videos"
 
-	for XDG_DIR in	"$XDG_DESKTOP_DIR" \
-			"$XDG_DOCUMENTS_DIR" \
-			"$XDG_DOWNLOAD_DIR" \
-			"$XDG_MUSIC_DIR" \
-			"$XDG_PICTURES_DIR" \
+	for XDG_DIR in	"$XDG_DESKTOP_DIR"     \
+			"$XDG_DOCUMENTS_DIR"   \
+			"$XDG_DOWNLOAD_DIR"    \
+			"$XDG_MUSIC_DIR"       \
+			"$XDG_PICTURES_DIR"    \
 			"$XDG_PUBLICSHARE_DIR" \
-			"$XDG_TEMPLATES_DIR" \
+			"$XDG_TEMPLATES_DIR"   \
 			"$XDG_VIDEOS_DIR"
 	do
 		mkdir -p "$XDG_DIR"
 	done
 
-	xdg-user-dirs-update --set DESKTOP "$XDG_DESKTOP_DIR"
-	xdg-user-dirs-update --set DOCUMENTS "$XDG_DOCUMENTS_DIR"
-	xdg-user-dirs-update --set DOWNLOAD "$XDG_DOWNLOAD_DIR"
-	xdg-user-dirs-update --set MUSIC "$XDG_MUSIC_DIR"
-	xdg-user-dirs-update --set PICTURES "$XDG_PICTURES_DIR"
+	xdg-user-dirs-update --set DESKTOP     "$XDG_DESKTOP_DIR"
+	xdg-user-dirs-update --set DOCUMENTS   "$XDG_DOCUMENTS_DIR"
+	xdg-user-dirs-update --set DOWNLOAD    "$XDG_DOWNLOAD_DIR"
+	xdg-user-dirs-update --set MUSIC       "$XDG_MUSIC_DIR"
+	xdg-user-dirs-update --set PICTURES    "$XDG_PICTURES_DIR"
 	xdg-user-dirs-update --set PUBLICSHARE "$XDG_PUBLICSHARE_DIR"
-	xdg-user-dirs-update --set TEMPLATES "$XDG_TEMPLATES_DIR"
-	xdg-user-dirs-update --set VIDEOS "$XDG_VIDEOS_DIR"
+	xdg-user-dirs-update --set TEMPLATES   "$XDG_TEMPLATES_DIR"
+	xdg-user-dirs-update --set VIDEOS      "$XDG_VIDEOS_DIR"
 
 	xdg-user-dirs-update
 
@@ -126,9 +141,9 @@ then
 			[ -d "${HOME}/var/${DIR}" ]
 		then
 			mv "${HOME}/${DIR}"/* \
-				"${HOME}/${DIR}"/.[!.]* \
-				"${HOME}/${DIR}"/..?* \
-				"${HOME}/var/${DIR}"/.
+			   "${HOME}/${DIR}"/.[!.]* \
+			   "${HOME}/${DIR}"/..?* \
+			   "${HOME}/var/${DIR}"/.
 			rm -rf "${HOME:?}/${DIR}"
 		fi
 	done
