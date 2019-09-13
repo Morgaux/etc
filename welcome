@@ -13,3 +13,8 @@ then
 	xrdb -merge ~/etc/Xresources
 fi
 
+if [ -x ~/bin/uf ] && uname -s | grep -q "OpenBSD"
+then
+	clear ; uf 2>/dev/null
+fi
+
