@@ -45,7 +45,7 @@ for i in           \
 	eopkg      \
 	wifi-menu
 do
-	[ -x "$(command -v "$i")" ] && alias "${i}='sudo ${i}'"
+	[ -x "$(command -v "$i")" ] && alias "${i}=sudo ${i}"
 done
 
 # OpenBSD
@@ -53,6 +53,6 @@ for i in \
 	pkg_add    \
 	pkg_delete
 do
-	[ -x "$(command -v "$i")" ] && alias "${i}='doas ${i}'"
+	[ -x "$(command -v "$i")" ] && alias "${i}=doas ${i}"
 done
 
