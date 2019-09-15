@@ -2,10 +2,11 @@
 
 # if command exists and is not yet running, run it in background
 run_one_instance_in_bg() {
-	if [ -x "$(command -v "$1")" ] && pgrep "$1"
+	# shellcheck disable=SC2009
+	if [ -x "$(command -v "$1")" ] && ps cax | grep -iq "$1"
 	then
 		# shellcheck disable=2068
-		( $@ &)
+		( sh -c $@ &)
 	fi
 }
 
