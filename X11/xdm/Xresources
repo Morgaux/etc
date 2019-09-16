@@ -3,8 +3,8 @@
 ! NOTE: run `rcctl enable xenodm` to enable graphical boot
 ! NOTE: to disable the Xconsole at start, run:
 !	echo 'xset b off' >> /etc/X11/xenodm/Xsetup
-!	echo 'xsetroot -solid black' >> /etc/X11/xenodm/Xsetup
-!	echo 'xsetroot -solid black' >> /etc/X11/xenodm/Xsetup_0
+!	echo 'xsetroot -solid #1d2021' >> /etc/X11/xenodm/Xsetup
+!	echo 'xsetroot -solid #1d2021' >> /etc/X11/xenodm/Xsetup_0
 !	sed -i 's/xconsole/#xconsole/' /etc/X11/xenodm/Xsetup_0
 !
 
@@ -15,16 +15,16 @@ xlogin.Login.namePrompt:       \040login\040
 xlogin.Login.passwdPrompt:     passwd\040
 
 xlogin.Login.height:           180
-xlogin.Login.width:            280
+xlogin.Login.width:            500
 xlogin.Login.y:                320
 xlogin.Login.frameWidth:       0
 xlogin.Login.innerFramesWidth: 0
 
-xlogin.Login.background:       black
-xlogin.Login.foreground:       #eeeeee
-xlogin.Login.failColor:        white
-xlogin.Login.inpColor:         black
-xlogin.Login.promptColor:      #eeeeec
+xlogin.Login.background:       #1d2021
+xlogin.Login.foreground:       #ebdbb2
+xlogin.Login.failColor:        #fe8019
+xlogin.Login.inpColor:         #1d2021
+xlogin.Login.promptColor:      #ebdbb2
 
 xlogin.Login.face:             fixed-13
 xlogin.Login.failFace:         fixed-13
