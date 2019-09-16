@@ -4,6 +4,7 @@
 ! NOTE: to disable the Xconsole at start, run:
 !	echo 'xset b off' >> /etc/X11/xenodm/Xsetup
 !	echo 'xsetroot -solid black' >> /etc/X11/xenodm/Xsetup
+!	echo 'xsetroot -solid black' >> /etc/X11/xenodm/Xsetup_0
 !	sed -i 's/xconsole/#xconsole/' /etc/X11/xenodm/Xsetup_0
 !
 
