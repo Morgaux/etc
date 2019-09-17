@@ -22,8 +22,17 @@ then
 	exit 1
 fi
 
+USER_NAME="morgaux"
+USER_HOME="/home/morgaux"
+
+# create user
+if ! id -u "$USER_NAME"
+then
+	useradd "$USER_NAME" -v -G staff,wsrc -c "Morgaux Meyer"
+fi
+
 # configure doas
-echo "persist permit morgaux" | tee -a /etc/doas.conf
+echo "persist permit $USER_NAME" | tee -a /etc/doas.conf
 
 # install needed additions
 pkg_add git--
@@ -31,20 +40,20 @@ pkg_add vim--no_x11
 pkg_add unzip--
 
 # install git repos
-cd "$HOME" || { echo "couldn't cd to $HOME" 1>&2 ; exit 1 ; }
+cd "$USER_HOME" || { echo "couldn't cd to $USER_HOME" 1>&2 ; exit 1 ; }
 [ -d bin ] || git clone https://gitlab.com/morgaux/bin || exit 1
 [ -d etc ] || git clone https://gitlab.com/morgaux/etc || exit 1
 
-mkdir -p "$HOME/src" && cd "$HOME/src" || { echo "couldn't cd to $HOME/src" 1>&2 ; exit 1 ; }
+mkdir -p "$USER_HOME/src" && cd "$USER_HOME/src" || { echo "couldn't cd to $USER_HOME/src" 1>&2 ; exit 1 ; }
 [ -d sude ] || git clone https://gitlab.com/morgaux/sude || exit 1
 
 # install fonts
-cd "$HOME/etc/fonts" || { echo "couldn't cd to $HOME/etc/fonts" 1>&2 ; exit 1 ; }
+cd "$USER_HOME/etc/fonts" || { echo "couldn't cd to $USER_HOME/etc/fonts" 1>&2 ; exit 1 ; }
 unzip 3270.zip || exit 1
-mv "3270-*"  "$HOME/.local/share/fonts/."
-mv "3270\ *" "$HOME/.local/share/fonts/."
+mv "3270-*"  "$USER_HOME/.local/share/fonts/."
+mv "3270\ *" "$USER_HOME/.local/share/fonts/."
 
 # install sude
-cd "$HOME/src/sude" || { echo "couldn't cd to $HOME/src/sude" 1>&2 ; exit 1 ; }
+cd "$USER_HOME/src/sude" || { echo "couldn't cd to $USER_HOME/src/sude" 1>&2 ; exit 1 ; }
 make clean install || { echo "failed to install sude" 1>&2 ; exit 1 ; }
 
