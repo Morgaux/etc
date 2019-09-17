@@ -22,6 +22,8 @@ case "$CURRENT_SHELL" in
 		return ;;
 esac
 
+[ -f /etc/ksh.kshrc ] && . /etc/ksh.kshrc
+
 # Curse emacs!
 # ...but I like to use the up arrow for my shell history
 set -o emacs

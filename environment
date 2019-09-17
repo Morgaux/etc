@@ -34,7 +34,7 @@ export PATH=$(printf "%s" "$PATH" | \
 #[ MISC ]#######################################################################
 
 # set EDITOR to most preferred available
-export EDITOR="$(which vim || which vi || which nano)"
+export EDITOR="$(which vim || which vi || which nano 2/>dev/null)"
 
 # set PAGER
 export PAGER=less
