@@ -88,6 +88,7 @@ safe_cd "$USER_HOME/src/sude"
 make clean install || die "failed to install sude"
 
 # setup xdm /Xenodm
+cat "$USER_HOME/etc/X11/xdm/Xresources" > "/etc/X11/xenodm/Xresources"
 echo 'xset b off' >> /etc/X11/xenodm/Xsetup
 echo 'xsetroot -solid #1d2021' >> /etc/X11/xenodm/Xsetup
 echo 'xsetroot -solid #1d2021' >> /etc/X11/xenodm/Xsetup_0
