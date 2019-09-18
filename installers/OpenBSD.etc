@@ -11,7 +11,7 @@ SELF_NAME="OpenBSD ~/etc installer"
 
 # funcs
 err() {
-	echo "${SELF_NAME}: $@" 1>&2
+	echo "${SELF_NAME}: error: $@" 1>&2
 }
 
 die() {
