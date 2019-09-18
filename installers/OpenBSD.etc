@@ -4,58 +4,86 @@
 # OpenBSD installer for ~/etc
 #
 
+# config
+USER_NAME="morgaux"
+USER_HOME="/home/morgaux"
+SELF_NAME="OpenBSD ~/etc installer"
+
+# funcs
+err() {
+	echo "${SELF_NAME}: $@" 1>&2
+}
+
+die() {
+	err "FATAL: $@"
+	exit 1
+}
+
+safe_cd() {
+	cd "$1" || die "couldn't cd to $1"
+}
+
+safe_clone() {
+	[ -x "$(command -v git)" ] || die "git not installed."
+	git clone "$@" || die "couldn't clone $@"
+}
+
 if [ ! "$(uname -s)" = "OpenBSD" ]
 then
-	echo "$(basename "$0") should be run on OpenBSD." 1>&2
-	exit 1
+	die "${SELF_NAME} should be run on OpenBSD."
 fi
 
 if [ ! "$(id -u)" = 0 ]
 then
-	echo "$(basename "$0") should be run as root." 1>&2
-	exit 1
+	die "${SELF_NAME} should be run as root." 1>&2
 fi
 
-if [ -f "$HOME/.etc.installed" ]
+if [ -f "$USER_HOME/.etc.installed" ]
 then
-	echo "$(basename "$0") has already been run." 1>&2
-	exit 1
+	die "${SELF_NAME} has already been run." 1>&2
 fi
-
-USER_NAME="morgaux"
-USER_HOME="/home/morgaux"
 
 # create user
 if ! id -u "$USER_NAME"
 then
-	useradd -v -m -G staff,wsrc -c "Morgaux Meyer" "$USER_NAME"
+	echo "creating user: ${USER_NAME}"
+	useradd -v -m -G "staff,wsrc,${USER_NAME}" "${USER_NAME}"
 fi
 
 # configure doas
-echo "persist permit $USER_NAME" | tee -a /etc/doas.conf
+echo "doas config:"
+echo "permit persist $USER_NAME" | tee -a /etc/doas.conf
 
 # install needed additions
+echo "installing packages"
 pkg_add git--
 pkg_add vim--no_x11
 pkg_add unzip--
 
 # install git repos
-cd "$USER_HOME" || { echo "couldn't cd to $USER_HOME" 1>&2 ; exit 1 ; }
-[ -d bin ] || git clone https://gitlab.com/morgaux/bin || exit 1
-[ -d etc ] || git clone https://gitlab.com/morgaux/etc || exit 1
+safe_cd "$USER_HOME"
+[ -d bin ] || safe_clone https://gitlab.com/morgaux/bin
+[ -d etc ] || safe_clone https://gitlab.com/morgaux/etc
 
 mkdir -p "$USER_HOME/src" &&
-cd "$USER_HOME/src" || { echo "couldn't cd to $USER_HOME/src" 1>&2 ; exit 1 ; }
-[ -d sude ] || git clone https://gitlab.com/morgaux/sude || exit 1
+safe_cd "$USER_HOME/src"
+[ -d sude ] || safe_clone https://gitlab.com/morgaux/sude
 
 # install fonts
 mkdir -p "$USER_HOME/.local/share/fonts/."
-cd "$USER_HOME/etc/fonts" || { echo "couldn't cd to $USER_HOME/etc/fonts" 1>&2 ; exit 1 ; }
+safe_cd "$USER_HOME/etc/fonts"
 unzip 3270.zip || exit 1
-mv "3270-*"  "$USER_HOME/.local/share/fonts/."
-mv "3270\ *" "$USER_HOME/.local/share/fonts/."
+mv 3270-*  "$USER_HOME/.local/share/fonts/."
+mv 3270\ * "$USER_HOME/.local/share/fonts/."
 
 # install sude
-cd "$USER_HOME/src/sude" || { echo "couldn't cd to $USER_HOME/src/sude" 1>&2 ; exit 1 ; }
-make clean install || { echo "failed to install sude" 1>&2 ; exit 1 ; }
+safe_cd "$USER_HOME/src/sude"
+make clean install || die "failed to install sude"
+
+# make USER owner of their stuff
+chmod -R "${USER_NAME}:${USER_NAME}" "${USER_HOME}"
+
+# we're done
+echo "${SELF}: done!" | tee -a "$USER_HOME/.etc.installed"
+exit 0
 
