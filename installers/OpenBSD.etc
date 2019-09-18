@@ -90,7 +90,12 @@ make clean install || die "failed to install sude"
 # make USER owner of their stuff
 chown -R "${USER_NAME}:${USER_NAME}" "${USER_HOME}"
 
+# create USER .profile
+cd "$USER_HOME"
+su - "$USER_NAME"
+./etc/profile
+
 # we're done
-echo "${SELF}: done!" | tee -a "$USER_HOME/.etc.installed"
+echo "${SELF_NAME}: done!" | tee -a "$USER_HOME/.etc.installed"
 exit 0
 
