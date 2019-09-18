@@ -5,34 +5,13 @@
 #
 
 # config
-USER_NAME="morgaux"
-USER_HOME="/home/morgaux"
 SELF_NAME="OpenBSD ~/etc installer"
 
 # funcs
-err() {
-	echo "${SELF_NAME}: error: $*" 1>&2
-}
-
-die() {
-	err "FATAL: $*"
-	exit 1
-}
-
-safe_cd() {
-	echo "cd $1"
-	cd "$1" || die "couldn't cd to $1"
-}
-
-safe_mkdir() {
-	echo "mkdir -p $1"
-	mkdir -p "$1" || die "couldn't make $1 a directory"
-}
-
-safe_clone() {
-	[ -x "$(command -v git)" ] || die "git not installed."
-	echo "git clone $*"
-	git clone "$*" || die "couldn't clone $*"
+include_fetch() {
+	TMP_INCLUDE_FILE="${_TMP_DIR_}/$(echo "$@" | tr -c '[:alnum:]' '_')"
+	curl -s "$@" > "$TMP_INCLUDE_FILE"
+	. "$TMP_INCLUDE_FILE"
 }
 
 if [ ! "$(uname -s)" = "OpenBSD" ]
@@ -44,6 +23,9 @@ if [ ! "$(id -u)" = 0 ]
 then
 	die "${SELF_NAME} should be run as root." 1>&2
 fi
+
+# include libraries
+include_fetch https://gitlab.com/morgaux/etc/raw/master/installers/setup.lib.etc
 
 if [ -f "$USER_HOME/.etc.installed" ]
 then

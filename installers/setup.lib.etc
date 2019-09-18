@@ -1,0 +1,38 @@
+#!/bin/sh
+
+#
+# installer library for ~/etc
+#
+
+# config
+USER_NAME="morgaux"
+USER_HOME="/home/morgaux"
+SELF_NAME="~/etc installer"
+_TMP_DIR_="/tmp/"$(echo "$SELF_NAME" | tr -c '[:alnum:]' '_')""
+
+# funcs
+err() {
+	echo "${SELF_NAME}: error: $*" 1>&2
+}
+
+die() {
+	err "FATAL: $*"
+	exit 1
+}
+
+safe_cd() {
+	echo "cd $1"
+	cd "$1" || die "couldn't cd to $1"
+}
+
+safe_mkdir() {
+	echo "mkdir -p $1"
+	mkdir -p "$1" || die "couldn't make $1 a directory"
+}
+
+safe_clone() {
+	[ -x "$(command -v git)" ] || die "git not installed."
+	echo "git clone $*"
+	git clone "$*" || die "couldn't clone $*"
+}
+
