@@ -20,11 +20,18 @@ die() {
 }
 
 safe_cd() {
+	echo "cd $1"
 	cd "$1" || die "couldn't cd to $1"
+}
+
+safe_mkdir() {
+	echo "mkdir -p $1"
+	mkdir -p "$1" || die "couldn't make $1 a directory"
 }
 
 safe_clone() {
 	[ -x "$(command -v git)" ] || die "git not installed."
+	echo "git clone $@"
 	git clone "$@" || die "couldn't clone $@"
 }
 
@@ -65,12 +72,12 @@ safe_cd "$USER_HOME"
 [ -d bin ] || safe_clone https://gitlab.com/morgaux/bin
 [ -d etc ] || safe_clone https://gitlab.com/morgaux/etc
 
-mkdir -p "$USER_HOME/src" &&
+mkdir -p "$USER_HOME/src"
 safe_cd "$USER_HOME/src"
 [ -d sude ] || safe_clone https://gitlab.com/morgaux/sude
 
 # install fonts
-mkdir -p "$USER_HOME/.local/share/fonts/."
+safe_mkdir -p "$USER_HOME/.local/share/fonts/."
 safe_cd "$USER_HOME/etc/fonts"
 unzip 3270.zip || exit 1
 mv 3270-*  "$USER_HOME/.local/share/fonts/."
@@ -81,7 +88,7 @@ safe_cd "$USER_HOME/src/sude"
 make clean install || die "failed to install sude"
 
 # make USER owner of their stuff
-chmod -R "${USER_NAME}:${USER_NAME}" "${USER_HOME}"
+chown -R "${USER_NAME}:${USER_NAME}" "${USER_HOME}"
 
 # we're done
 echo "${SELF}: done!" | tee -a "$USER_HOME/.etc.installed"
