@@ -77,7 +77,7 @@ safe_cd "$USER_HOME/src"
 [ -d sude ] || safe_clone https://gitlab.com/morgaux/sude
 
 # install fonts
-safe_mkdir -p "$USER_HOME/.local/share/fonts/."
+safe_mkdir "$USER_HOME/.local/share/fonts/."
 safe_cd "$USER_HOME/etc/fonts"
 unzip 3270.zip || exit 1
 mv 3270-*  "$USER_HOME/.local/share/fonts/."
