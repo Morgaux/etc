@@ -26,16 +26,16 @@ fi
 echo "persist permit morgaux" | tee -a /etc/doas.conf
 
 # install needed additions
-pkg_add git
-pkg_add vim
-pkg_add unzip
+pkg_add git--
+pkg_add vim--no_x11
+pkg_add unzip--
 
 # install git repos
 cd "$HOME" || { echo "couldn't cd to $HOME" 1>&2 ; exit 1 ; }
 [ -d bin ] || git clone https://gitlab.com/morgaux/bin || exit 1
 [ -d etc ] || git clone https://gitlab.com/morgaux/etc || exit 1
 
-cd "$HOME/src" || { echo "couldn't cd to $HOME/src" 1>&2 ; exit 1 ; }
+mkdir -p "$HOME/src" && cd "$HOME/src" || { echo "couldn't cd to $HOME/src" 1>&2 ; exit 1 ; }
 [ -d sude ] || git clone https://gitlab.com/morgaux/sude || exit 1
 
 # install fonts
