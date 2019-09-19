@@ -49,7 +49,7 @@ do
 done
 
 # OpenBSD
-for i in \
+for i in           \
 	pkg_add    \
 	pkg_delete
 do
