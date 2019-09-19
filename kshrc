@@ -9,10 +9,12 @@
 # mksh and ksh configuration
 ##
 
+try_source() { [ -f "$1" ] && . "$1" ; }
+
 CURRENT_SHELL="$(ps -p "$$" | tr ' ' '\n' | tail -n 1 || basename "$SHELL")"
 
 # Source aliases for non-ksh shells
-[ -f ~/etc/aliases ] && . ~/etc/aliases
+try_source ~/etc/aliases
 
 # don't run unless interactive ksh session
 case "$CURRENT_SHELL" in
@@ -22,7 +24,7 @@ case "$CURRENT_SHELL" in
 		return ;;
 esac
 
-[ -f /etc/ksh.kshrc ] && . /etc/ksh.kshrc
+try_source /etc/ksh.kshrc
 
 # Curse emacs!
 # ...but I like to use the up arrow for my shell history
