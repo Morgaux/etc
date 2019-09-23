@@ -33,4 +33,10 @@ xlogin.Login.promptColor:      #ebdbb2
 xlogin.Login.face:             fixed-13
 xlogin.Login.failFace:         fixed-13
 xlogin.Login.promptFace:       fixed-13
+xlogin.Login.greetFace:        fixed-13
+xlogin.Login.face:             fixed-13
+xlogin.Login.failFont:         fixed-13
+xlogin.Login.promptFont:       fixed-13
+xlogin.Login.greetFont:        fixed-13
+
 
