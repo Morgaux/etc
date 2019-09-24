@@ -48,6 +48,7 @@ echo "installing packages"
 pkg_add git--
 pkg_add vim--no_x11
 pkg_add unzip--
+pkg_add gohufont--
 
 # install git repos
 safe_cd "$USER_HOME"
