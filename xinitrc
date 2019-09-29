@@ -25,4 +25,4 @@ fc-cache -f -v
 		[ -x "$(command -v "$WM")" ] && exec "$WM"
 	done
 
-exec dwm-start
+exec sude-start
