@@ -19,5 +19,10 @@ fc-cache -f -v
 	eval "$(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)" &&
 	export SSH_AUTH_SOCK
 
-[ -x "$(command -v dwm-start)" ] &&
+[ -x "$(command -v dwm-start)" ] || # SUDE not installed, try fallbacks in order
+	for WM in dwm fvwm startxfce4 budgie-desktop gnome-session
+	do
+		[ -x "$(command -v "$WM")" ] && exec "$WM"
+	done
+
 exec dwm-start
