@@ -9,6 +9,9 @@
 # fonts
 [ -d /usr/local/share/fonts/gohufont/ ] &&
 	xset +fp /usr/local/share/fonts/gohufont/
+
+[ -d /usr/local/share/fonts/X11/misc/ ] &&
+	xset +fp /usr/local/share/fonts/X11/misc/
 fc-cache -f -v
 
 # key ring without display manager
