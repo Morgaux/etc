@@ -7,11 +7,12 @@
 [ -f ~/.profile ] && . ~/.profile
 
 # fonts
-[ -d /usr/local/share/fonts/gohufont/ ] &&
-	xset +fp /usr/local/share/fonts/gohufont/
-
-[ -d /usr/local/share/fonts/X11/misc/ ] &&
-	xset +fp /usr/local/share/fonts/X11/misc/
+for FONT in \
+	/usr/local/share/fonts/gohufont/ \
+	/usr/local/share/fonts/X11/misc/
+do
+	[ -d "$FONT" ] && xset +fp "$FONT"
+done
 fc-cache -f -v
 
 # key ring without display manager
