@@ -9,7 +9,7 @@ SELF_NAME="OpenBSD ~/etc installer"
 
 # funcs
 include_fetch() {
-	TMP_INCLUDE_FILE="${_TMP_DIR_}/$(echo "$@" | tr -c '[:alnum:]' '_')"
+	TMP_INCLUDE_FILE="${_TMP_DIR_:-tmp}/$(echo "$@" | tr -c '[:alnum:]' '_')"
 	curl -s "$@" > "$TMP_INCLUDE_FILE"
 	. "$TMP_INCLUDE_FILE"
 }
@@ -32,13 +32,6 @@ then
 	die "${SELF_NAME} has already been run." 1>&2
 fi
 
-# create user
-if ! id -u "$USER_NAME"
-then
-	echo "creating user: ${USER_NAME}"
-	useradd -v -m -G "staff,wsrc,${USER_NAME}" "${USER_NAME}"
-fi
-
 # configure doas
 echo "doas config:"
 echo "permit persist $USER_NAME" | tee -a /etc/doas.conf
@@ -50,40 +43,19 @@ pkg_add vim--no_x11
 pkg_add unzip--
 pkg_add gohufont--
 
-# install git repos
-safe_cd "$USER_HOME"
-[ -d bin ] || safe_clone https://gitlab.com/morgaux/bin
-[ -d etc ] || safe_clone https://gitlab.com/morgaux/etc
+create_user
 
-mkdir -p "$USER_HOME/src"
-safe_cd "$USER_HOME/src"
-[ -d sude ] || safe_clone https://gitlab.com/morgaux/sude
+install_home_git_repos
 
-# install fonts
-safe_mkdir "$USER_HOME/.local/share/fonts/."
-safe_cd "$USER_HOME/etc/fonts"
-unzip 3270.zip || exit 1
-mv 3270-*  "$USER_HOME/.local/share/fonts/."
-mv 3270\ * "$USER_HOME/.local/share/fonts/."
+install_fonts
 
-# install sude
-safe_cd "$USER_HOME/src/sude"
-make clean install || die "failed to install sude"
+install_sude
 
-# setup xdm /Xenodm
-cat "$USER_HOME/etc/X11/xdm/Xresources" > "/etc/X11/xenodm/Xresources"
-echo 'xset b off' >> /etc/X11/xenodm/Xsetup
-echo 'xsetroot -solid "#1d2021"' >> /etc/X11/xenodm/Xsetup
-echo 'xsetroot -solid "#1d2021"' >> /etc/X11/xenodm/Xsetup_0
-cp /etc/X11/xenodm/Xsetup_0 .tmp &&
-	sed 's/xconsole/#xconsole/' .tmp > /etc/X11/xenodm/Xsetup_0 &&
-	rm .tmp
+setup_xenodm
 
-# make USER owner of their stuff
-chown -R "${USER_NAME}:${USER_NAME}" "${USER_HOME}"
+chown_user_home
 
-# create USER .profile
-su "$USER_NAME" -c "${USER_HOME}/etc/profile"
+create_user_profile
 
 # we're done
 echo "${SELF_NAME}: done!" | tee -a "$USER_HOME/.etc.installed"

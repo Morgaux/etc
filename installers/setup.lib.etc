@@ -6,9 +6,11 @@
 
 # config
 USER_NAME="morgaux"
-USER_HOME="/home/morgaux"
+USER_HOME="/home/${USER_NAME}"
 SELF_NAME="~/etc installer"
 _TMP_DIR_="/tmp/"$(echo "$SELF_NAME" | tr -c '[:alnum:]' '_')""
+_CUR_DIR_="$(pwd)"
+_DISPMAN_="xdm" # default
 
 # funcs
 err() {
@@ -34,5 +36,94 @@ safe_clone() {
 	[ -x "$(command -v git)" ] || die "git not installed."
 	echo "git clone $*"
 	git clone "$*" || die "couldn't clone $*"
+}
+
+create_user() {
+	# create user
+	if ! id -u "$USER_NAME"
+	then
+		echo "creating user: ${USER_NAME}"
+		useradd -v -m -G "staff,wsrc,${USER_NAME}" "${USER_NAME}"
+	fi
+}
+
+install_home_git_repos() {
+	# install git repos
+	_CUR_DIR_="$(pwd)"
+
+	safe_cd "$USER_HOME"
+
+	[ -d bin ] || safe_clone https://gitlab.com/morgaux/bin
+	[ -d etc ] || safe_clone https://gitlab.com/morgaux/etc
+
+	safe_cd "$_CUR_DIR_"
+}
+
+install_fonts() {
+	# install fonts
+	_CUR_DIR_="$(pwd)"
+
+	safe_mkdir "$USER_HOME/.local/share/fonts/."
+	safe_cd "$USER_HOME/etc/fonts/uw-ttyp0"
+
+	./configure
+	make
+	make install
+
+	safe_cd "$_CUR_DIR_"
+}
+
+install_sude() {
+	# install sude
+	_CUR_DIR_="$(pwd)"
+
+	mkdir -p "$USER_HOME/src"
+	safe_cd "$USER_HOME/src"
+
+	[ -d sude ] || safe_clone https://gitlab.com/morgaux/sude
+	safe_cd "$USER_HOME/src/sude"
+	make clean install || die "failed to install sude"
+
+	safe_cd "$_CUR_DIR_"
+}
+
+_setup_xdm_or_xenodm() { # $1:string, can be "xdm" or "xenodm"
+	# setup xdm /Xenodm
+	_DISPMAN_="${1:-xdm}" # default to xdm
+	_CUR_DIR_="$(pwd)"
+
+	mkdir -p "/etc/X11/${_DISPMAN_}/"
+	touch "/etc/X11/${_DISPMAN_}/Xresources"
+	ln -sf "$USER_HOME/etc/X11/xdm/Xresources" "/etc/X11/${_DISPMAN_}/Xresources"
+	echo 'xset b off' >> "/etc/X11/${_DISPMAN_}/Xsetup"
+	echo 'xsetroot -solid "#1d2021"' >> "/etc/X11/${_DISPMAN_}/Xsetup"
+	echo 'xsetroot -solid "#1d2021"' >> "/etc/X11/${_DISPMAN_}/Xsetup_0"
+
+	safe_cd "$_TMP_DIR_"
+
+	rm .tmp # remove and old tmp files
+	cp "/etc/X11/${_DISPMAN_}/Xsetup_0" .tmp &&
+		sed 's/xconsole/#xconsole/' .tmp > "/etc/X11/${_DISPMAN_}/Xsetup_0" &&
+		rm .tmp
+
+	safe_cd "$_CUR_DIR_"
+}
+
+setup_xenodm() {
+	_setup_xdm_or_xenodm "xenodm"
+}
+
+setup_xdm() {
+	_setup_xdm_or_xenodm "xdm"
+}
+
+chown_user_home() {
+	# make USER owner of their stuff
+	chown -R "${USER_NAME}:${USER_NAME}" "${USER_HOME}"
+}
+
+create_user_profile() {
+	# create USER .profile
+	su "$USER_NAME" -c "${USER_HOME}/etc/profile"
 }
 
