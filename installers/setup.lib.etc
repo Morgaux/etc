@@ -67,8 +67,8 @@ install_fonts() {
 	safe_cd "$USER_HOME/etc/fonts/uw-ttyp0-1.3"
 
 	./configure
-	make
-	make install
+	gmake
+	gmake install
 
 	safe_cd "$_CUR_DIR_"
 }

@@ -42,6 +42,7 @@ pkg_add git--
 pkg_add vim--no_x11
 pkg_add unzip--
 pkg_add gohufont--
+pkg_add gmake--
 
 create_user
 
