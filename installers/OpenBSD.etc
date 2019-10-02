@@ -9,7 +9,7 @@ SELF_NAME="OpenBSD ~/etc installer"
 
 # funcs
 include_fetch() {
-	TMP_INCLUDE_FILE="${_TMP_DIR_:-tmp}/$(echo "$@" | tr -c '[:alnum:]' '_')"
+	TMP_INCLUDE_FILE="${_TMP_DIR_:-/tmp}/$(echo "$@" | tr -c '[:alnum:]' '_')"
 	curl -s "$@" > "$TMP_INCLUDE_FILE"
 	. "$TMP_INCLUDE_FILE"
 }
