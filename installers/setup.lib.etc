@@ -62,8 +62,7 @@ install_home_git_repos() {
 	safe_cd "$_CUR_DIR_"
 }
 
-install_fonts() {
-	# install fonts
+install_ttyp0_font() {
 	_CUR_DIR_="$(pwd)"
 
 	safe_mkdir "$USER_HOME/.local/share/fonts/."
@@ -74,6 +73,23 @@ install_fonts() {
 	gmake install
 
 	safe_cd "$_CUR_DIR_"
+}
+
+install_3270_Nerd_font() {
+	_CUR_DIR_="$(pwd)"
+
+	safe_cd "$USER_HOME/etc/fonts"
+	unzip 3270.zip || exit 1
+	mv 3270-*  "$USER_HOME/.local/share/fonts/."
+	mv 3270\ * "$USER_HOME/.local/share/fonts/."
+
+	safe_cd "$_CUR_DIR_"
+}
+
+install_fonts() {
+	# install fonts
+	install_ttyp0_font
+	install_3270_Nerd_font
 }
 
 install_sude() {
