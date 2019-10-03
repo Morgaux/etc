@@ -12,6 +12,9 @@ _TMP_DIR_="/tmp/"$(echo "$SELF_NAME" | tr -c '[:alnum:]' '_')""
 _CUR_DIR_="$(pwd)"
 _DISPMAN_="xdm" # default
 
+# init
+mkdir -p "$_TMP_DIR_"
+
 # funcs
 err() {
 	echo "${SELF_NAME}: error: $*" 1>&2
