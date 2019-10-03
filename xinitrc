@@ -13,7 +13,7 @@ for FONT in \
 do
 	[ -d "$FONT" ] && xset +fp "$FONT"
 done
-(fc-cache -f -v > "$HOME/.xsession-errors" 2>/&1 &) &
+(fc-cache -f -v > "$HOME/.xsession-errors" 2&>1 &) &
 
 # key ring without display manager
 [ -f /etc/X11/xinit/xinitrc.d/50-systemd-user.sh ] &&
