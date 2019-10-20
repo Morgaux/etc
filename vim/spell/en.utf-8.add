@@ -572,3 +572,6 @@ q
 DOCPATH
 wav
 IDs
+bool
+obj
+struct
