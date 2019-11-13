@@ -60,6 +60,7 @@ done
 	echo '	END="$START"'
 	echo '	_DELTA_T="1"'
 	echo '	_TIMEOUT="3"'
+	echo '	[ -x ~/bin/uf ] && ~/bin/uf'
 	echo '	echo "Starting X in..."'
 	echo '	while true'
 	echo '	do'

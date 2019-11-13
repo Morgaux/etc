@@ -34,7 +34,6 @@ xlogin.Login.face:             -uw-ttyp0-medium-r-normal--16-150-75-75-c-80-iso1
 xlogin.Login.failFace:         -uw-ttyp0-medium-r-normal--16-150-75-75-c-80-iso10646-1
 xlogin.Login.promptFace:       -uw-ttyp0-medium-r-normal--16-150-75-75-c-80-iso10646-1
 xlogin.Login.greetFace:        -uw-ttyp0-medium-r-normal--16-150-75-75-c-80-iso10646-1
-xlogin.Login.face:             -uw-ttyp0-medium-r-normal--16-150-75-75-c-80-iso10646-1
 xlogin.Login.failFont:         -uw-ttyp0-medium-r-normal--16-150-75-75-c-80-iso10646-1
 xlogin.Login.promptFont:       -uw-ttyp0-medium-r-normal--16-150-75-75-c-80-iso10646-1
 xlogin.Login.greetFont:        -uw-ttyp0-medium-r-normal--16-150-75-75-c-80-iso10646-1
