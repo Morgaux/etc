@@ -1,7 +1,7 @@
 "
 " https://gitlab.com/morgaux/etc
-" Author:	Morgaux Meyer
-" License:	MIT (C) Morgaux Meyer
+" Author:   Morgaux Meyer
+" License:  MIT (C) Morgaux Meyer
 "
 
 " enable syntax
@@ -73,7 +73,7 @@ let loaded_matchparen = 1
 
 " Show tabs as comments
 set list
-set listchars=tab:..
+set listchars=tab:\|\ 
 
 " Catch whitespace errors
 match Error /\s\+$\| \+\ze\t/
