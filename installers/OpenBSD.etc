@@ -43,6 +43,7 @@ pkg_add vim--no_x11
 pkg_add unzip--
 pkg_add gohufont--
 pkg_add gmake--
+pkg_add feh
 
 create_user
 
