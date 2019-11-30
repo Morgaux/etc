@@ -627,3 +627,6 @@ OSS
 ALSA
 essid
 wifi_essid
+snd
+seq
+controlC0
