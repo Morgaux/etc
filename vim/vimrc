@@ -44,14 +44,6 @@ endif
 "
 set t_Co=256
 set t_ut=""
-let g:gruvbox_contrast_dark='medium'
-let g:gruvbox_bold=1
-let g:gruvbox_italic=1
-let g:gruvbox_underline=1
-let g:gruvbox_invert_tabline=1
-let g:gruvbox_improved_strings=0
-let g:gruvbox_improved_warnings=1
-let g:gruvbox_termcolors=256
 set background=dark
 colo juvenile
 
@@ -64,8 +56,9 @@ colo juvenile
 hi clear SpellBad
 hi SpellBad
 	\ cterm=underline ctermfg=red ctermbg=NONE
-	\ gui=undercurl guifg=red guibg=NONE
+	\ gui=undercurl   guifg=red   guibg=NONE
 
+match Comment /\t/
 
 
 " prevent annoying paren matching
