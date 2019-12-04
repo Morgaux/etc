@@ -31,12 +31,12 @@ esac
 # Curse emacs!
 # ...but I like to use the up arrow for my shell history
 set -o emacs
-alias _A=
-alias _B=
-alias _C=
-alias _D=
-alias _H=
-alias _Y=
+alias  _A=
+alias  _B=
+alias  _C=
+alias  _D=
+alias  _H=
+alias  _Y=
 alias __A=
 alias __B=
 alias __C=
