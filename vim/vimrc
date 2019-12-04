@@ -38,7 +38,6 @@ if &columns < 85
 endif
 
 
-
 "
 " Colours and highlighting
 "
@@ -48,17 +47,12 @@ set background=dark
 colo juvenile
 
 
-
 "
 " Static colour rules
 "
 
 hi clear SpellBad
-hi SpellBad
-	\ cterm=underline ctermfg=red ctermbg=NONE
-	\ gui=undercurl   guifg=red   guibg=NONE
-
-match Comment /\t/
+hi link SpellBad Error
 
 
 " prevent annoying paren matching
@@ -67,12 +61,12 @@ let loaded_matchparen = 1
 " Show tabs as comments
 set list
 set listchars=tab:\|\ 
+match Comment /\t/
 
 " Catch whitespace errors
 match Error /\s\+$\| \+\ze\t/
 au InsertEnter * redraw!
 au InsertLeave * redraw!
-
 
 
 ""
