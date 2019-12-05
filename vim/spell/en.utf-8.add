@@ -690,3 +690,7 @@ tabbed
 slstatus
 fopen
 operstate
+ioctl
+SIOCGIWESSID
+AF
+INET
