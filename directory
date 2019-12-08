@@ -1,24 +1,26 @@
 #!/bin/sh
 
 link_from_to() { # $1:fromFile $2:toFile
-	[   -f "$1" ] || [ -d "$1" ] ||
+	[   -f "$1" ] ||
+	[   -d "$1" ] ||
 		return 1 # fromFile doesn't exist
 
 	[ ! -L "$2" ] || # toFile is already a link
 		return 1
 
-	[   -f "$2" ] &&
+	[   -f "$2" ] && # if toFile exists
 		mv "$2" "${2}.old" # make a back up of toFile
 
-	ln -sf "$1" "$2"
+	ln -sf "$1" "$2" # link files
 }
 
 # make my dirs
-for DIR in	'src' \
-		'var' \
-		'uni' \
-		'tmp' \
-		'.cache'
+for DIR in       \
+	'src'    \
+	'var'    \
+	'uni'    \
+	'tmp'    \
+	'.cache'
 do
 	[ -d "${HOME}/${DIR}" ] || mkdir -p "${HOME}/${DIR}"
 done
@@ -80,7 +82,7 @@ link_from_to ~/etc/wal        ~/.cache/wal
 # make executable
 for i in ~/.kshrc ~/.mkshrc ~/.xinitrc ~/.xsession
 do
-	chmod 755 "$i"
+	[ -x "$i" ] || chmod 755 "$i"
 done
 
 # add my bin launchers
@@ -105,14 +107,15 @@ then
 	XDG_TEMPLATES_DIR="$HOME/var/Templates"
 	XDG_VIDEOS_DIR="$HOME/var/Videos"
 
-	for XDG_DIR in	"$XDG_DESKTOP_DIR"     \
-			"$XDG_DOCUMENTS_DIR"   \
-			"$XDG_DOWNLOAD_DIR"    \
-			"$XDG_MUSIC_DIR"       \
-			"$XDG_PICTURES_DIR"    \
-			"$XDG_PUBLICSHARE_DIR" \
-			"$XDG_TEMPLATES_DIR"   \
-			"$XDG_VIDEOS_DIR"
+	for XDG_DIR in                 \
+		"$XDG_DESKTOP_DIR"     \
+		"$XDG_DOCUMENTS_DIR"   \
+		"$XDG_DOWNLOAD_DIR"    \
+		"$XDG_MUSIC_DIR"       \
+		"$XDG_PICTURES_DIR"    \
+		"$XDG_PUBLICSHARE_DIR" \
+		"$XDG_TEMPLATES_DIR"   \
+		"$XDG_VIDEOS_DIR"
 	do
 		mkdir -p "$XDG_DIR"
 	done
@@ -128,21 +131,22 @@ then
 
 	xdg-user-dirs-update
 
-	for DIR in	"Desktop" \
-			"Documents" \
-			"Downloads" \
-			"Music" \
-			"Pictures" \
-			"Public" \
-			"Templates" \
-			"Videos"
+	for DIR in          \
+		"Desktop"   \
+		"Documents" \
+		"Downloads" \
+		"Music"     \
+		"Pictures"  \
+		"Public"    \
+		"Templates" \
+		"Videos"
 	do
 		if [ -d "${HOME}/${DIR}" ] &&
 			[ -d "${HOME}/var/${DIR}" ]
 		then
-			mv "${HOME}/${DIR}"/* \
+			mv "${HOME}/${DIR}"/*      \
 			   "${HOME}/${DIR}"/.[!.]* \
-			   "${HOME}/${DIR}"/..?* \
+			   "${HOME}/${DIR}"/..?*   \
 			   "${HOME}/var/${DIR}"/.
 			rm -rf "${HOME:?}/${DIR}"
 		fi

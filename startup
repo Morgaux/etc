@@ -17,10 +17,8 @@ run_one_instance_in_bg() {
 
 if [ -n "$DISPLAY" ] && xset q >/dev/null 2>&1
 then
-
 	run_one_instance_in_bg "xbanish"
 	run_one_instance_in_bg "redshift"
-
 fi >/dev/null 2>&1 # hide error stream for the if...fi block
 
 
@@ -30,7 +28,6 @@ fi >/dev/null 2>&1 # hide error stream for the if...fi block
 
 if [ -x "$(command -v git)" ]
 then
-
 	# function to safely pull git repos
 	git_pull_dir() { ( cd "$1" && git pull </dev/null >/dev/null 2>&1 & ) ; }
 
@@ -46,6 +43,5 @@ then
 
 	# commit spelling changes to vim spelling files
 	( cd "$HOME/etc" && git commit -m "Automatic spelling commit" vim/spell/* )
-
 fi </dev/null >/dev/null 2>&1 # block all io streams for the if...fi block
 

@@ -1,70 +1,38 @@
 #!/bin/sh
-# shellcheck disable=SC2155
-
-#[ PATH ]#######################################################################
 
 # set PATH
-for dir in	"/sbin" \
-		"/bin" \
-		"/usr/sbin" \
-		"/usr/bin" \
-		"/usr/local/sbin" \
-		"/usr/local/bin" \
-		"$HOME/bin" \
-		"$HOME/src/ufetch"
+for dir in                                                \
+	"/sbin"                                           \
+	"/bin"                                            \
+	"/usr/sbin"                                       \
+	"/usr/bin"                                        \
+	"/usr/local/sbin"                                 \
+	"/usr/local/bin"                                  \
+	"$HOME/bin"                                       \
+	"$HOME/bin/$(uname | tr '[:upper:]' '[:lower:]')" \
+	"$HOME/src/ufetch"
 do
-	if [ -d "$dir" ]
-	then
-		PATH="$dir:$PATH"
-	fi
+	[ -d "$dir" ] && PATH="$dir:$PATH"
 done
 
-# set os specific bin
-case "$(uname -a)" in
-	*"FreeBSD"*)
-		[ -d "$HOME/bin/freebsd" ] && PATH="$HOME/bin/freebsd:$PATH" ;;
-	*"OpenBSD"*)
-		[ -d "$HOME/bin/openbsd" ] && PATH="$HOME/bin/openbsd:$PATH" ;;
-esac
-
 # remove path duplicates
-export PATH=$(printf "%s" "$PATH" | \
-	awk -v RS=':' '!a[$1]++ { if (NR > 1) printf RS; printf $1 }')
+PATH="$(printf "%s" "$PATH" | awk -v RS=':' '!a[$1]++ { if (NR > 1) printf RS; printf $1 }')"
 
-#[ MISC ]#######################################################################
+EDITOR="$(command -v vim || command -v vi || command -v nano 2/>dev/null)"
+JAVA_HOME="$(readlink -f /usr/bin/javac | sed 's:/bin/javac::')"
+PAGER=less
+ENV="$HOME/etc/kshrc"
+CLASSPATH="$CLASSPATH:."
+_JAVA_AWT_WM_NONREPARENTING="1"
+DOTNET_CLI_TELEMETRY_OPTOUT=1
+DVTM_TERM="xterm"
 
-# set EDITOR to most preferred available
-export EDITOR="$(which vim || which vi || which nano 2/>dev/null)"
-
-# set PAGER
-export PAGER=less
-
-# set ENV to local kshrc, possibly overrides symlinks
-export ENV="$HOME/etc/kshrc"
-
-#[ DEV ]########################################################################
-
-# set JAVA variables if java is installed
-if [ -x "$(command -v javac)" ] || [ -x "$(command -v java)" ]
-then
-	export JAVA_HOME="$(readlink -f /usr/bin/javac | sed 's:/bin/javac::')"
-	export CLASSPATH="$CLASSPATH:."
-
-	# for DWM and other tilling wms
-	export _JAVA_AWT_WM_NONREPARENTING="1"
-fi
-
-# MS visual studio code and what not
-if [ -x "$(command -v dotnet)" ]
-then
-	export DOTNET_CLI_TELEMETRY_OPTOUT=1
-fi
-
-# set DVTM_TERM for compatibility
-if [ -x "$(command -v dvtm)" ]
-then
-	export DVTM_TERM="xterm"
-fi
-
-################################################################################
-
+export PATH
+export EDITOR
+export JAVA_HOME
+export PAGER
+export ENV
+export CLASSPATH
+export _JAVA_AWT_WM_NONREPARENTING
+export DOTNET_CLI_TELEMETRY_OPTOUT
+export DVTM_TERM

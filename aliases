@@ -1,5 +1,4 @@
 #!/bin/sh
-# shellcheck disable=SC2139
 # vi: syntax=sh
 
 alias c='clear'
@@ -25,6 +24,7 @@ for i in         \
 	fortune  \
 	neofetch
 do
+	# shellcheck disable=SC2139
 	alias "c${i}=c; ${i}"
 done
 
@@ -45,6 +45,7 @@ for i in           \
 	eopkg      \
 	wifi-menu
 do
+	# shellcheck disable=SC2139
 	[ -x "$(command -v "$i")" ] && alias "${i}=sudo ${i}"
 done
 
@@ -53,6 +54,7 @@ for i in           \
 	pkg_add    \
 	pkg_delete
 do
+	# shellcheck disable=SC2139
 	[ -x "$(command -v "$i")" ] && alias "${i}=doas ${i}"
 done
 
