@@ -758,3 +758,7 @@ rpath
 c99
 grep
 4
+tcc
+int
+argc
+argv
