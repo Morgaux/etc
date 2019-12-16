@@ -283,3 +283,17 @@ NR
 printf
 javac
 symlinks
+include
+all
+mk
+def
+gz
+dist
+README
+cf
+gzip
+rf
+install
+DESTDIR
+chmod
+uninstall
