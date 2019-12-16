@@ -267,3 +267,6 @@ sed
 rm
 neofetch
 Startup
+cat
+shutdown
+startup
