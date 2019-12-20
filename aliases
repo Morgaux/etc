@@ -34,6 +34,7 @@ done
 
 # Linux / FreeBSD
 for i in           \
+	apk        \
 	apt        \
 	apt-get    \
 	pacman     \

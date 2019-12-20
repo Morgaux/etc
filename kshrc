@@ -53,8 +53,8 @@ cd() {
 	if [ "$#" -eq 0 ] ; then
 		builtin cd "${HOME}"
 	else
-		builtin cd "$*" 2> /dev/null     ||
-		builtin cd "$*"* 2> /dev/null    ||
+		builtin cd    "$*"  2> /dev/null ||
+		builtin cd    "$*"* 2> /dev/null ||
 		builtin cd ./*"$*"* 2> /dev/null ||
 		echo "cd: $* not found" 1>&2
 	fi
@@ -63,11 +63,10 @@ cd() {
 # safe base dir name
 _PS1DIR() {
 	case "$PWD" in
-		"$HOME")	PS1DIR="~" ;;
-		"/")		PS1DIR="/" ;;
-		*)		PS1DIR="${PWD##*/}" ;;
+		"$HOME") echo "~" ;;
+		"/")     echo "/" ;;
+		*)       echo "${PWD##*/}" ;;
 	esac
-	echo "$PS1DIR"
 }
 
 ##
