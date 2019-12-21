@@ -24,11 +24,11 @@ xlogin.Login.y:                320
 xlogin.Login.frameWidth:       0
 xlogin.Login.innerFramesWidth: 0
 
-xlogin.Login.background:       #1d2021
-xlogin.Login.foreground:       #ebdbb2
-xlogin.Login.failColor:        #fe8019
-xlogin.Login.inpColor:         #1d2021
-xlogin.Login.promptColor:      #ebdbb2
+xlogin.Login.background:       #000000
+xlogin.Login.foreground:       #ffffff
+xlogin.Login.failColor:        #ffffff
+xlogin.Login.inpColor:         #000000
+xlogin.Login.promptColor:      #ffffff
 
 xlogin.Login.face:             -uw-ttyp0-medium-r-normal--16-150-75-75-c-80-iso10646-1
 xlogin.Login.failFace:         -uw-ttyp0-medium-r-normal--16-150-75-75-c-80-iso10646-1
