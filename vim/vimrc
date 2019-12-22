@@ -4,6 +4,18 @@
 " License:  MIT (C) Morgaux Meyer
 "
 
+" Vundle
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'Valloric/YouCompleteMe'
+
+call vundle#end()
+
+filetype on
+
 " enable syntax
 syntax on
 
@@ -32,6 +44,8 @@ autocmd Filetype java   setlocal tabstop=8 softtabstop=0 shiftwidth=8 noexpandta
 
 " auto make latex on save
 autocmd BufWritePost *.tex silent !make >/dev/null
+
+autocmd BufNewFile,BufRead *.cshtml set syntax=html
 
 " No line numbers if the term is too narrow for 80 chars
 if &columns < 85
