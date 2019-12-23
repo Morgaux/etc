@@ -7,6 +7,10 @@
 " enable syntax
 syntax on
 
+" start pathogen
+execute pathogen#infect()
+filetype plugin indent on
+
 " misc options
 set belloff=all
 set showcmd
