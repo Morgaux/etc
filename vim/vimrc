@@ -37,8 +37,6 @@ autocmd Filetype java   setlocal tabstop=8 softtabstop=0 shiftwidth=8 noexpandta
 " auto make latex on save
 autocmd BufWritePost *.tex silent !make >/dev/null
 
-autocmd BufNewFile,BufRead *.cshtml set syntax=html
-
 " No line numbers if the term is too narrow for 80 chars
 if &columns < 85
 	set nonu
