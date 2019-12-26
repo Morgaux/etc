@@ -69,7 +69,6 @@ set list
 set listchars=tab:\|\ 
 match Comment /\t/
 
-
 "
 " I've shamelessly stolen this stuff, although it's quite good so I don't mind
 "
