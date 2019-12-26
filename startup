@@ -38,6 +38,6 @@ then
 	done
 
 	# commit spelling changes to vim spelling files
-	( cd "$HOME/etc" && git commit -m "Automatic spelling commit" vim/spell/* )
+	( cd "$HOME/etc" && git commit -m "Automatic spelling commit" vim/spell/* & )
 fi </dev/null >/dev/null 2>&1 # block all io streams for the if...fi block
 
