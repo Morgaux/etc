@@ -11,6 +11,11 @@ syntax on
 execute pathogen#infect()
 filetype plugin indent on
 
+" options for https://github.com/lifepillar/vim-mucomplete
+set completeopt+=menuone
+set completeopt+=noselect
+set completeopt+=noinsert
+
 " misc options
 set belloff=all
 set showcmd
