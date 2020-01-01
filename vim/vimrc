@@ -23,7 +23,6 @@ set nohlsearch
 set nu
 set ruler
 set report=1
-set nowrap
 set nocompatible
 set showtabline=2
 set laststatus=2
@@ -33,6 +32,9 @@ set smartindent
 set backspace=indent,eol,start
 set incsearch
 set wildmenu
+
+" wrap lines that are longer than the terminal window
+set wrap linebreak nolist
 
 " Tabs must be eight wide!!!
 set tabstop=8 softtabstop=0 shiftwidth=8 noexpandtab
