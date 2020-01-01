@@ -10,6 +10,15 @@ run_one_instance_in_bg() {
 	fi
 }
 
+#
+# Arch linux specific startups
+#
+
+if [ -x "$(command -v pacman)" ]
+then
+	pacman -Scc # clear the package cache, this saves loads of space
+fi
+
 
 #
 # Start ups that require Xorg
