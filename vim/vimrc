@@ -16,6 +16,12 @@ set completeopt+=menuone
 set completeopt+=noselect
 set completeopt+=noinsert
 
+" options for https://github.com/airblade/vim-gitgutter
+set updatetime=100
+hi link GitGutterAdd    Todo
+hi link GitGutterChange Normal
+hi link GitGutterDelete Error
+
 " misc options
 set belloff=all
 set showcmd
