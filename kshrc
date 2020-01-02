@@ -84,7 +84,7 @@ HISTSIZE=1024
 # environment
 ##
 
-for SCRIPT in profile startup git-config directory
+for SCRIPT in profile startup git-config vim-plugins directory
 do
 	[ -f "$HOME/etc/$SCRIPT" ] && ( "$HOME/etc/$SCRIPT" & )
 done
