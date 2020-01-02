@@ -14,9 +14,18 @@ run_one_instance_in_bg() {
 # Arch linux specific startups
 #
 
-if [ -x "$(command -v pacman)" ]
+if [ -x "$(command -v sudo)"                ] &&
+   [ -x "$(command -v "$(sudo -l pacman)")" ]
 then
-	pacman -Scc # clear the package cache, this saves loads of space
+	#
+	# Clear the package cache
+	#
+	# When I set up my arch-box, I was way to conservative on my
+	# partitioning scheme and so while my /home has plenty of space,
+	# running `pacman -Syu` often fails due to /var getting filled up
+	# with cached package versions, which I don't care about.
+	#
+	(yes | sudo pacman -Sccq >/dev/null 2>&1 &)
 fi
 
 
