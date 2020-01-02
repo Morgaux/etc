@@ -15,6 +15,7 @@ run_one_instance_in_bg() {
 #
 
 if [ -x "$(command -v sudo)"                ] &&
+   [ -x "$(command -v pacman)"              ] &&
    [ -x "$(command -v "$(sudo -l pacman)")" ]
 then
 	#
