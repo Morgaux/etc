@@ -5,10 +5,28 @@
 #
 
 BUNDLE_DIR="$HOME/etc/vim/bundle"
+AUTOLOAD_DIR="$HOME/etc/vim/autoload"
+PATHOGEN_URL="https://tpo.pe/pathogen.vim"
+
+if [ ! -d "$BUNDLE_DIR" ]
+then
+	mkdir -p "$BUNDLE_DIR"
+fi
+
+if [ ! -d "$AUTOLOAD_DIR" ]
+then
+	mkdir -p "$AUTOLOAD_DIR"
+fi
 
 if [ ! -x "$(command -v git)" ]
 then
 	echo "git is not installed" 1>&2
+	exit 1
+fi
+
+if [ ! -x "$(command -v curl)" ]
+then
+	echo "curl is not installed" 1>&2
 	exit 1
 fi
 
@@ -21,10 +39,9 @@ then
 	exit 1
 fi
 
-if [ ! -d "$BUNDLE_DIR" ]
+if ! curl -LSso "${AUTOLOAD_DIR}/pathogen.vim" "$PATHOGEN_URL"
 then
-	echo "'${BUNDLE_DIR}' is not a directory" 1>&2
-	exit 1
+	echo "Could not install ${PATHOGEN_URL}" 1>&2
 fi
 
 clone_or_pull() { # $1:url $2:destdir
