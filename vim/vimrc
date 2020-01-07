@@ -7,6 +7,21 @@
 " enable syntax
 syntax on
 
+" start pathogen
+execute pathogen#infect()
+filetype plugin indent on
+
+" options for https://github.com/lifepillar/vim-mucomplete
+set completeopt+=menuone
+set completeopt+=noselect
+set completeopt+=noinsert
+
+" options for https://github.com/airblade/vim-gitgutter
+set updatetime=100
+hi link GitGutterAdd    Todo
+hi link GitGutterChange Normal
+hi link GitGutterDelete Error
+
 " misc options
 set belloff=all
 set showcmd
@@ -14,20 +29,28 @@ set nohlsearch
 set nu
 set ruler
 set report=1
-set nowrap
 set nocompatible
 set showtabline=2
 set laststatus=2
 set ignorecase
 set spell spelllang=en_nz
-set autoindent
+set smartindent
+set backspace=indent,eol,start
+set incsearch
+set wildmenu
+set mouse=a
+
+" wrap lines that are longer than the terminal window
+set wrap linebreak nolist
 
 " Tabs must be eight wide!!!
 set tabstop=8 softtabstop=0 shiftwidth=8 noexpandtab
+
 " Override language specific settings
-autocmd Filetype python setlocal tabstop=8 softtabstop=0 shiftwidth=8 noexpandtab
-autocmd Filetype scala  setlocal tabstop=8 softtabstop=0 shiftwidth=8 noexpandtab
-autocmd Filetype java   setlocal tabstop=8 softtabstop=0 shiftwidth=8 noexpandtab
+autocmd Filetype python setlocal tabstop=8 softtabstop=0 shiftwidth=8 noexpandtab nowrap
+autocmd Filetype scala  setlocal tabstop=8 softtabstop=0 shiftwidth=8 noexpandtab nowrap
+autocmd Filetype java   setlocal tabstop=8 softtabstop=0 shiftwidth=8 noexpandtab nowrap
+autocmd Filetype cs     setlocal           softtabstop=4 shiftwidth=4   expandtab nowrap
 
 " auto make latex on save
 autocmd BufWritePost *.tex silent !make >/dev/null
@@ -37,26 +60,15 @@ if &columns < 85
 	set nonu
 endif
 
-
-"
 " Colours and highlighting
-"
 set t_Co=256
 set t_ut=""
-set background=dark
-set t_8f=[38;2;%lu;%lu;%lum        " set foreground color
-set t_8b=[48;2;%lu;%lu;%lum        " set background color
-set t_Co=256                         " Enable 256 colors
-set termguicolors                    " Enable GUI colors for the terminal to get truecolor
+set background=dark           " ahhhhhh my eyes!!
+set t_8f=[38;2;%lu;%lu;%lum " set foreground color
+set t_8b=[48;2;%lu;%lu;%lum " set background color
+set t_Co=256                  " Enable 256 colors
+set termguicolors             " Enable GUI colors for the terminal to get truecolor
 colo sourcerer
-
-"
-" Static colour rules
-"
-
-hi clear SpellBad
-hi link SpellBad Error
-
 
 " prevent annoying paren matching
 let loaded_matchparen = 1
@@ -71,11 +83,8 @@ set list
 set listchars=tab:\|\ 
 match Comment /\t/
 
-
-""
-" Stuff I've shamelessly stolen, although it's quite good so I don't mind
-""
-
+"
+" I've shamelessly stolen this stuff, although it's quite good so I don't mind
 "
 " http://github.com/jcs/dotfiles
 " Author: Joshua Stein

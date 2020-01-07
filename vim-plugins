@@ -1,0 +1,85 @@
+#!/bin/sh
+
+#
+# Auto git cloner for vim plugins
+#
+
+BUNDLE_DIR="$HOME/etc/vim/bundle"
+
+if [ ! -x "$(command -v git)" ]
+then
+	echo "git is not installed" 1>&2
+	exit 1
+fi
+
+if ! ping -q -w 1 -c 1 8.8.8.8 >/dev/null 2>&1
+then
+	#echo "host is offline, cannot check vim plugins" 1>&2
+
+	(sleep 5 && exec "$0" &) &
+
+	exit 1
+fi
+
+if [ ! -d "$BUNDLE_DIR" ]
+then
+	echo "'${BUNDLE_DIR}' is not a directory" 1>&2
+	exit 1
+fi
+
+clone_or_pull() { # $1:url $2:destdir
+	if ! git ls-remote "$1" 1>/dev/null 2>&1
+	then
+		echo "$1 is an invalid repo url" 1>&2
+		exit 1
+	fi
+
+	if [ ! -d "$2" ]
+	then
+		mkdir -p "$2"
+	fi
+
+	_PREV_DIR="$(pwd)"
+	cd "$2"
+
+	if [ -d "$(basename "$1")" ]
+	then
+		cd "$(basename "$1")"
+		if ! git pull 1>/dev/null 2>&1
+		then
+			echo "git pull failed" 1>&2
+			exit 1
+		fi
+	else
+		if ! git clone "$1" 1>/dev/null 2>&1
+		then
+			echo "git clone $1 failed" 1>&2
+			exit 1
+		fi
+	fi
+
+	cd "$_PREV_DIR"
+}
+
+for file in "${BUNDLE_DIR}/.plugins.github"
+do
+	if [ ! -f "$file" ]
+	then
+		echo "$file doesn't exist, skipping..." 1>&2
+		continue
+	fi
+
+	case "$(echo "$file" | sed 's/.*\.//g')" in
+		"github")
+			for line in $(tr '\n' ' ' < "$file")
+			do
+				clone_or_pull "https://github.com/${line}" "$BUNDLE_DIR"
+			done
+			;;
+		*)
+			echo "unreachable"
+			exit 1
+			;;
+	esac
+done
+

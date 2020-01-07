@@ -11,7 +11,7 @@
 
 try_source() { [ -f "$1" ] && . "$1" ; }
 
-CURRENT_SHELL="$(ps -p "$$" | tr ' ' '\n' | tail -n 1 || basename "$SHELL")"
+CURRENT_SHELL="$(ps | grep "$$" | awk '!/grep/{print $4;exit 0}')"
 
 # don't run unless interactive ksh session
 case "$CURRENT_SHELL" in
@@ -53,9 +53,9 @@ cd() {
 	if [ "$#" -eq 0 ] ; then
 		builtin cd "${HOME}"
 	else
-		builtin cd "$*" 2> /dev/null     ||
-		builtin cd "$*"* 2> /dev/null    ||
-		builtin cd ./*"$*"* 2> /dev/null ||
+		builtin cd    "$*"/  2> /dev/null ||
+		builtin cd    "$*"*/ 2> /dev/null ||
+		builtin cd ./*"$*"*/ 2> /dev/null ||
 		echo "cd: $* not found" 1>&2
 	fi
 }
@@ -63,11 +63,10 @@ cd() {
 # safe base dir name
 _PS1DIR() {
 	case "$PWD" in
-		"$HOME")	PS1DIR="~" ;;
-		"/")		PS1DIR="/" ;;
-		*)		PS1DIR="${PWD##*/}" ;;
+		"$HOME") echo "~" ;;
+		"/")     echo "/" ;;
+		*)       echo "${PWD##*/}" ;;
 	esac
-	echo "$PS1DIR"
 }
 
 ##
@@ -85,7 +84,7 @@ HISTSIZE=1024
 # environment
 ##
 
-for SCRIPT in profile startup git-config directory
+for SCRIPT in profile startup git-config vim-plugins directory
 do
 	[ -f "$HOME/etc/$SCRIPT" ] && ( "$HOME/etc/$SCRIPT" & )
 done

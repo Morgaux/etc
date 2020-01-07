@@ -10,6 +10,25 @@ run_one_instance_in_bg() {
 	fi
 }
 
+#
+# Arch linux specific startups
+#
+
+if [ -x "$(command -v sudo)"                ] &&
+   [ -x "$(command -v pacman)"              ] &&
+   [ -x "$(command -v "$(sudo -l pacman)")" ]
+then
+	#
+	# Clear the package cache
+	#
+	# When I set up my arch-box, I was way to conservative on my
+	# partitioning scheme and so while my /home has plenty of space,
+	# running `pacman -Syu` often fails due to /var getting filled up
+	# with cached package versions, which I don't care about.
+	#
+	(yes | sudo pacman -Sccq >/dev/null 2>&1 &)
+fi
+
 
 #
 # Start ups that require Xorg
@@ -37,11 +56,7 @@ then
 		git_pull_dir "$i"
 	done
 
-	# pull git repos in ~/src and ~/uni
-	( cd "$HOME/src" && for i in ./* ; do git_pull_dir "$i"; done; )
-	( cd "$HOME/uni" && for i in ./* ; do git_pull_dir "$i"; done; )
-
 	# commit spelling changes to vim spelling files
-	( cd "$HOME/etc" && git commit -m "Automatic spelling commit" vim/spell/* )
+	( cd "$HOME/etc" && git commit -m "Automatic spelling commit" vim/spell/* & )
 fi </dev/null >/dev/null 2>&1 # block all io streams for the if...fi block
 
