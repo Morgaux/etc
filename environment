@@ -10,6 +10,7 @@ for dir in                                                \
 	"/usr/local/bin"                                  \
 	"$HOME/bin"                                       \
 	"$HOME/bin/$(uname | tr '[:upper:]' '[:lower:]')" \
+	"$HOME/.cabal/bin"                                \
 	"$HOME/src/ufetch"
 do
 	[ -d "$dir" ] && PATH="$dir:$PATH"
