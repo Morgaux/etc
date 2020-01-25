@@ -51,7 +51,7 @@ then
 	git_pull_dir() { ( cd "$1" && git pull </dev/null >/dev/null 2>&1 & ) ; }
 
 	# pull git repos in home
-	for i in "$HOME/bin" "$HOME/etc"
+	for i in "$HOME/bin" "$HOME/etc" "$HOME/src/sude" "$HOME/src/kata"
 	do
 		git_pull_dir "$i"
 	done

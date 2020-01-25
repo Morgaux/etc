@@ -66,6 +66,10 @@ then
 		cd "${HOME}/src"    &&
 		git clone https://gitlab.com/morgaux/sude
 
+	[ ! -d "${HOME}/src/kata" ] &&
+		cd "${HOME}/src"    &&
+		git clone https://gitlab.com/morgaux/kata
+
 	cd "${HOME}" || echo "couldn't cd home" 1>&2
 fi
 
