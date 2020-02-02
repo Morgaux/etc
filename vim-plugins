@@ -64,7 +64,7 @@ clone_or_pull() { # $1:url $2:destdir
 		cd "$(basename "$1")"
 		if ! git pull 1>/dev/null 2>&1
 		then
-			echo "git pull failed" 1>&2
+			echo "git $1 pull failed" 1>&2
 			exit 1
 		fi
 	else
