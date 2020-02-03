@@ -53,6 +53,7 @@ autocmd Filetype java   setlocal           softtabstop=4 shiftwidth=4 noexpandta
 autocmd Filetype cs     setlocal           softtabstop=4 shiftwidth=4   expandtab nowrap
 autocmd Filetype sh     setlocal tabstop=8 softtabstop=0 shiftwidth=8 noexpandtab nowrap
 autocmd Filetype vim    setlocal tabstop=8 softtabstop=0 shiftwidth=8 noexpandtab nowrap
+autocmd Filetype c      setlocal tabstop=8 softtabstop=0 shiftwidth=8 noexpandtab nowrap
 
 " auto make latex on save
 autocmd BufWritePost *.tex silent !make >/dev/null
