@@ -77,7 +77,7 @@ PS1="\$(_PS1DIR) \$ "
 ##
 # History
 ##
-HISTFILE="$HOME/var/history.${CURRENT_SHELL}"
+HISTFILE="$HOME/var/history.$(echo "${CURRENT_SHELL}" | sed 's/[^a-zA-Z0-9]//g')"
 HISTSIZE=1024
 
 ##
