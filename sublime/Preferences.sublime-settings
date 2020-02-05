@@ -1,40 +1,46 @@
 {
-    "added_words":
-    [
-    ],
-    "always_show_minimap_viewport": true,
-    "auto_complete_cycle": true,
-    "color_scheme": "Packages/Base16 Color Schemes/Themes/base16-harmonic-dark.tmTheme",
-    "drag_text": false,
-    "draw_minimap_border": true,
-    "fade_fold_buttons": true,
-    "fold_buttons": true,
-    "font_face": "",
-    "font_size": 11,
-    "gutter": true,
-    "ignored_packages":
-    [
-        "Vintage"
-    ],
-    "ignored_words":
-    [
-    ],
-    "indent_guide_options":
-    [
-        "draw_active"
-    ],
-    "line_numbers": true,
-    "match_brackets": false,
-    "mini_diff": "auto",
-    "rulers":
-    [
-        80
-    ],
-    "shift_tab_unindent": true,
-    "show_line_endings": true,
-    "spell_check": true,
-    "theme": "Adaptive.sublime-theme",
-    "translate_tabs_to_spaces": true,
-    "trim_automatic_white_space": true,
-    "word_wrap": false
+	"added_words":
+	[
+		"func",
+		"prev",
+		"func1",
+		"func2",
+		"func0",
+		"steganography",
+		"Base16"
+	],
+	"always_show_minimap_viewport": true,
+	"auto_complete_cycle": true,
+	"color_scheme": "Packages/Base16 Color Schemes/Themes/base16-harmonic-dark.tmTheme",
+	"drag_text": false,
+	"draw_minimap_border": true,
+	"fade_fold_buttons": true,
+	"fold_buttons": true,
+	"font_face": "",
+	"font_size": 11,
+	"gutter": true,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"ignored_words":
+	[
+	],
+	"indent_guide_options":
+	[
+		"draw_active"
+	],
+	"line_numbers": true,
+	"match_brackets": false,
+	"mini_diff": "auto",
+	"rulers":
+	[
+		80
+	],
+	"shift_tab_unindent": true,
+	"show_line_endings": true,
+	"spell_check": true,
+	"theme": "Adaptive.sublime-theme",
+	"trim_automatic_white_space": false,
+	"word_wrap": false
 }
