@@ -31,7 +31,7 @@
 		"draw_active"
 	],
 	"line_numbers": true,
-	"match_brackets": false,
+	"match_brackets": true,
 	"mini_diff": "auto",
 	"rulers":
 	[
