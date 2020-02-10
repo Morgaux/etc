@@ -50,6 +50,10 @@ do
 	[ -x "$(command -v "$i")" ] && alias "${i}=sudo ${i}"
 done
 
+# Auto confirmation
+alias apt='apt -y'
+alias apt-get='apt-get -y'
+
 # OpenBSD
 for i in           \
 	pkg_add    \
