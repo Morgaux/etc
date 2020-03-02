@@ -1,5 +1,9 @@
 #!/bin/sh
 
+_LAST_LOGIN_FILE="${HOME}/.logintimestamp"
+
+touch "${_LAST_LOGIN_FILE}"
+
 export WALLPAPER=""
 
 if [ -x "$(command -v setfont)" ] && [ "$TERM" = "linux" ]
@@ -12,4 +16,12 @@ if [ -n "$DISPLAY" ]
 then
 	xrdb -merge ~/etc/Xresources
 fi
+
+# Run ASCII welcome if first login in past 24hrs
+if [ "$(expr "$(date +%s)" - 86400)" -gt "$(head -n 1 "${_LAST_LOGIN_FILE}")" ]
+then
+	[ -x "$(command -v uf)" ] && uf # run ufetch
+fi
+
+date +%s > "${_LAST_LOGIN_FILE}" # update login time, UNIX timestamp format
 

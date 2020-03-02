@@ -972,6 +972,7 @@ ss
 Z0
 plaintext
 ciphertext
+kata's
 uncycle
 kata's
 ASCIIbetical
@@ -1004,3 +1005,6 @@ yzabcdefghijklmnopqrstuvwx
 zabcdefghijklmnopqrstuvwxy
 Jin
 pycache
+katas
+logintimestamp
+hrs
