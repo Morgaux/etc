@@ -1008,3 +1008,6 @@ pycache
 katas
 logintimestamp
 hrs
+nbytes
+randbyte
+cgi
