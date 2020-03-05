@@ -58,7 +58,7 @@ autocmd Filetype c       setlocal tabstop=8 softtabstop=0 shiftwidth=8 noexpandt
 autocmd Filetype make    setlocal tabstop=8 softtabstop=0 shiftwidth=8 noexpandtab nowrap
 
 " auto make latex on save
-autocmd BufWritePost *.tex silent !make >/dev/null
+autocmd VimLeave *.tex silent !make
 
 " No line numbers if the term is too narrow for 80 chars
 if &columns < 85
