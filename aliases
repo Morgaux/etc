@@ -42,24 +42,32 @@ for i in           \
 	yum        \
 	dnf        \
 	pkg        \
+	pkg_add    \
+	pkg_delete \
 	brew       \
 	eopkg      \
 	wifi-menu
 do
-	# shellcheck disable=SC2139
-	[ -x "$(command -v "$i")" ] && alias "${i}=sudo ${i}"
-done
+	if [ ! -x "$(command -v "$i")" ]
+	then
+		continue
+	fi
 
-# Auto confirmation
-alias apt='apt -y'
-alias apt-get='apt-get -y'
+	if uname | grep -qi "openbsd"
+	then
+		PRIVILEGE_COMAND="doas"
+	else
+		PRIVILEGE_COMAND="sudo"
+	fi
 
-# OpenBSD
-for i in           \
-	pkg_add    \
-	pkg_delete
-do
-	# shellcheck disable=SC2139
-	[ -x "$(command -v "$i")" ] && alias "${i}=doas ${i}"
+	if [ "$i" = "apt"     ] ||
+	   [ "$i" = "apt-get" ]
+	then
+		# shellcheck disable=SC2139
+		alias "${i}=${PRIVILEGE_COMAND} ${i} -y"
+	else
+		# shellcheck disable=SC2139
+		alias "${i}=${PRIVILEGE_COMAND} ${i}"
+	fi
 done
 
