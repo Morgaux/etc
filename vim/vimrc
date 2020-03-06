@@ -38,7 +38,9 @@ set smartindent
 set backspace=indent,eol,start
 set incsearch
 set wildmenu
-set mouse=i
+set mouse=a
+set mousemodel=popup
+set mouseshape=a:beam
 
 " wrap lines that are longer than the terminal window
 set wrap linebreak nolist
