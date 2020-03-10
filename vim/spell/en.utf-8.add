@@ -1042,3 +1042,7 @@ Edsger
 ACs
 admin
 admin's
+keystring
+msgstring
+cleartxtmsg
+ciphertxtmsg
