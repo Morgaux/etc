@@ -1046,3 +1046,4 @@ keystring
 msgstring
 cleartxtmsg
 ciphertxtmsg
+isPrime
