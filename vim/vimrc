@@ -78,10 +78,6 @@ set t_8f=[38;2;%lu;%lu;%lum " set foreground color
 set t_8b=[48;2;%lu;%lu;%lum " set background color
 set t_Co=256                  " Enable 256 colors
 set termguicolors             " Enable GUI colors for the terminal to get truecolor
-colo typewriter-night
-
-" prevent annoying paren matching
-let loaded_matchparen = 1
 
 " Catch whitespace errors
 match Error /\s\+$\| \+\ze\t/
@@ -92,6 +88,11 @@ au InsertLeave * redraw!
 set list
 set listchars=tab:\|\ 
 match Comment /\t/
+
+colo typewriter-night
+
+" prevent annoying paren matching
+let loaded_matchparen = 1
 
 "
 " I've shamelessly stolen this stuff, although it's quite good so I don't mind
