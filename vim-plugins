@@ -78,7 +78,7 @@ clone_or_pull() { # $1:url $2:destdir
 	cd "$_PREV_DIR"
 }
 
-for file in "${BUNDLE_DIR}/.plugins.github"
+for file in "${BUNDLE_DIR}/.plugins.github" "${BUNDLE_DIR}/.plugins.gitlab"
 do
 	if [ ! -f "$file" ]
 	then
@@ -91,6 +91,12 @@ do
 			for line in $(tr '\n' ' ' < "$file")
 			do
 				clone_or_pull "https://github.com/${line}" "$BUNDLE_DIR"
+			done
+			;;
+		"gitlab")
+			for line in $(tr '\n' ' ' < "$file")
+			do
+				clone_or_pull "https://gitlab.com/${line}" "$BUNDLE_DIR"
 			done
 			;;
 		*)

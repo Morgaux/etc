@@ -4,8 +4,7 @@
 " License:  MIT (C) Morgaux Meyer
 "
 
-" enable syntax
-syntax on
+" Package Management {{{
 
 " start pathogen
 execute pathogen#infect()
@@ -21,6 +20,10 @@ set updatetime=100
 hi link GitGutterAdd    Todo
 hi link GitGutterChange Normal
 hi link GitGutterDelete Error
+
+" Package Management }}}
+
+" Generic Options {{{
 
 " misc options
 set belloff=all
@@ -39,12 +42,26 @@ set backspace=indent,eol,start
 set incsearch
 set wildmenu
 set mouse=a
+set mousemodel=popup
+set mouseshape=a:beam
+set textwidth=80
+set colorcolumn=+1
+set foldmethod=marker
 
 " wrap lines that are longer than the terminal window
 set wrap linebreak nolist
 
 " Tabs must be eight wide!!!
 set tabstop=8 softtabstop=0 shiftwidth=8 noexpandtab
+
+" No line numbers if the term is too narrow for 80 chars
+if &columns < 85
+	set nonu
+endif
+
+" Generic Options }}}
+
+" Language Specific Options {{{
 
 " Override language specific settings
 autocmd Filetype python  setlocal           softtabstop=4 shiftwidth=4 noexpandtab nowrap
@@ -56,27 +73,27 @@ autocmd Filetype sh      setlocal tabstop=8 softtabstop=0 shiftwidth=8 noexpandt
 autocmd Filetype vim     setlocal tabstop=8 softtabstop=0 shiftwidth=8 noexpandtab nowrap
 autocmd Filetype c       setlocal tabstop=8 softtabstop=0 shiftwidth=8 noexpandtab nowrap
 autocmd Filetype make    setlocal tabstop=8 softtabstop=0 shiftwidth=8 noexpandtab nowrap
+autocmd Filetype tex     setlocal tabstop=8 softtabstop=0 shiftwidth=8 noexpandtab nowrap
 
 " auto make latex on save
-autocmd VimLeave *.tex silent !make
+autocmd VimLeave *.tex silent !make > /dev/null
 
-" No line numbers if the term is too narrow for 80 chars
-if &columns < 85
-	set nonu
-endif
+" Language Specific Options }}}
+
+" Visual and Syntax Options {{{
+
+" enable syntax
+syntax on
 
 " Colours and highlighting
-set t_Co=256
-set t_ut=""
-set background=dark           " ahhhhhh my eyes!!
+set t_Co=256                  " use 256 colors
+set t_ut=""                   " disable background erase
 set t_8f=[38;2;%lu;%lu;%lum " set foreground color
 set t_8b=[48;2;%lu;%lu;%lum " set background color
 set t_Co=256                  " Enable 256 colors
 set termguicolors             " Enable GUI colors for the terminal to get truecolor
-colo sourcerer
-
-" prevent annoying paren matching
-let loaded_matchparen = 1
+set background=dark           " ahhhhhh my eyes!!
+let loaded_matchparen = 1     " prevent annoying paren matching
 
 " Catch whitespace errors
 match Error /\s\+$\| \+\ze\t/
@@ -87,6 +104,13 @@ au InsertLeave * redraw!
 set list
 set listchars=tab:\|\ 
 match Comment /\t/
+
+" Set colorscheme (after other highlight settings)
+colo typewriter-night
+
+" Visual and Syntax Options }}}
+
+" Settings Stolen from JCS {{{
 
 "
 " I've shamelessly stolen this stuff, although it's quite good so I don't mind
@@ -102,4 +126,6 @@ set backupdir=~/.vim/backup//
 set directory=~/.vim/swp//
 " ...except crontab, which will complain that it can't see any changes
 au FileType crontab setlocal bkc=yes
+
+" Settings Stolen from JCS }}}
 
