@@ -111,6 +111,7 @@ colo typewriter-night
 " Visual and Syntax Options }}}
 
 " Count Words Per Minute {{{
+"
 function! s:start_counting_wpm() abort
 	if get(b:, 'wpm_start', 0) is 0 " start counting
 		let b:wpm_start = [reltime(), wordcount()]
