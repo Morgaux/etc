@@ -110,6 +110,43 @@ colo typewriter-night
 
 " Visual and Syntax Options }}}
 
+" Count Words Per Minute {{{
+function! s:start_counting_wpm() abort
+	if get(b:, 'wpm_start', 0) is 0 " start counting
+		let b:wpm_start = [reltime(), wordcount()]
+	endif
+endfunction
+
+function! s:finish_counting_wpm() abort
+	if get(b:, 'wpm_start', 0) isnot 0 " finish counting
+		let l:secs  = reltime(b:wpm_start[0])[0]
+		let l:mins  = l:secs[0] / 60
+		let l:words = wordcount()['words'] - b:wpm_start[1]['words']
+		let l:speed = l:words / max([1, l:mins])
+		unlet b:wpm_start
+
+		echomsg printf('%s WPM: you typed %s words in %s seconds', l:speed, l:words, l:secs)
+	endif
+endfunction
+
+" how long to cut off the count if nothing has been typed (milliseconds)
+set updatetime=4000 " 4000 ms is the default
+
+augroup wpm
+	" clear group
+	autocmd!
+
+	" events to start counting
+	autocmd InsertEnter  * call s:start_counting_wpm()
+	autocmd CursorMovedI * call s:start_counting_wpm()
+
+	" events to stop counting and display
+	autocmd InsertLeave * call s:finish_counting_wpm()
+	autocmd CursorHoldI * call s:finish_counting_wpm()
+augroup end
+
+" Count Words Per Minute }}}
+
 " Settings Stolen from JCS {{{
 
 "
