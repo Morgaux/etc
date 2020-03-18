@@ -111,7 +111,9 @@ colo typewriter-night
 " Visual and Syntax Options }}}
 
 " Count Words Per Minute {{{
-"
+
+let g:average_wpm = 0
+
 function! s:start_counting_wpm() abort
 	if get(b:, 'wpm_start', 0) is 0 " start counting
 		let b:wpm_start = [reltime(), wordcount()]
@@ -124,9 +126,8 @@ function! s:finish_counting_wpm() abort
 		let l:mins  = l:secs[0] / 60
 		let l:words = wordcount()['words'] - b:wpm_start[1]['words']
 		let l:speed = l:words / max([1, l:mins])
+		let g:average_wpm = (g:average_wpm + l:speed) / 2
 		unlet b:wpm_start
-
-		echomsg printf('%s WPM: you typed %s words in %s seconds', l:speed, l:words, l:secs)
 	endif
 endfunction
 
@@ -147,6 +148,34 @@ augroup wpm
 augroup end
 
 " Count Words Per Minute }}}
+
+" Custom Status Line {{{
+
+" Define all the different modes
+let g:currentmode={
+	\ 'n'  : 'Normal',
+	\ 'no' : 'N·Operator Pending',
+	\ 'v'  : 'Visual',
+	\ 'V'  : 'V·Line',
+	\ 's'  : 'Select',
+	\ 'S'  : 'S·Line',
+	\ 'i'  : 'Insert',
+	\ 'R'  : 'Replace',
+	\ 'Rv' : 'V·Replace',
+	\ 'c'  : 'Command',
+	\ 'cv' : 'Vim Ex',
+	\ 'ce' : 'Ex',
+	\ 'r'  : 'Prompt',
+	\ 'rm' : 'More',
+	\ 'r?' : 'Confirm',
+	\ '!'  : 'Shell',
+	\}
+
+set statusline= " clear statusline
+set statusline+=[%{g:currentmode[mode()]}]
+set statusline+=\ [WPM:\ %{g:average_wpm}]
+
+" Custom Status Line }}}
 
 " Settings Stolen from JCS {{{
 
