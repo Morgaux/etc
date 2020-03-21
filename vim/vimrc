@@ -36,7 +36,6 @@ set nocompatible
 set showtabline=2
 set laststatus=2
 set ignorecase
-set spell spelllang=en_nz
 set smartindent
 set backspace=indent,eol,start
 set incsearch
@@ -60,6 +59,18 @@ if &columns < 85
 endif
 
 " Generic Options }}}
+
+" Typing Settings {{{
+
+" Enable spell checking
+set spell spelllang=en_nz
+
+" Abbreviations and custom Autocorrections
+abbreviate teh       the
+abbreviate intrest   interest
+abbreviate bussiness business
+
+" Typing Settings }}}
 
 " Language Specific Options {{{
 
