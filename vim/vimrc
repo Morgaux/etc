@@ -67,6 +67,7 @@ set spell spelllang=en_nz
 
 " Abbreviations and custom Autocorrections
 abbreviate teh       the
+abbreviate te        the
 abbreviate intrest   interest
 abbreviate bussiness business
 
