@@ -118,7 +118,7 @@ set listchars=tab:\|\
 match Comment /\t/
 
 " Set colorscheme (after other highlight settings)
-colo typewriter-night
+colo frign
 
 " Visual and Syntax Options }}}
 
