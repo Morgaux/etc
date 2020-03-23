@@ -1,5 +1,5 @@
 flazz/vim-colorschemes
-felixhummel/setcolors.vim
+vim-scripts/CycleColor
 lifepillar/vim-mucomplete
 airblade/vim-gitgutter
 itspriddle/vim-shellcheck
