@@ -4,18 +4,26 @@
 # installer library for ~/etc
 #
 
-# config
+# ~/etc/installers/setup.lib.etc {{{
+
+# Config {{{
 USER_NAME="morgaux"
 USER_HOME="/home/${USER_NAME}"
 SELF_NAME="~/etc installer"
 _TMP_DIR_="/tmp/"$(echo "$SELF_NAME" | tr -c '[:alnum:]' '_')""
 _CUR_DIR_="$(pwd)"
 _DISPMAN_="xdm" # default
+# Config }}}
 
-# init
+# Initialisation {{{
 mkdir -p "$_TMP_DIR_"
+# Initialisation }}}
 
-# funcs
+# Functions {{{
+
+# Helper functions {{{
+
+# Error functions {{{
 err() {
 	echo "${SELF_NAME}: error: $*" 1>&2
 }
@@ -24,7 +32,9 @@ die() {
 	err "FATAL: $*"
 	exit 1
 }
+# Error functions }}}
 
+# Safety wrappers {{{
 safe_cd() {
 	echo "cd $1"
 	cd "$1" || die "couldn't cd to $1"
@@ -40,7 +50,9 @@ safe_clone() {
 	echo "git clone $*"
 	git clone "$*" || die "couldn't clone $*"
 }
+# Safety wrappers }}}
 
+# User managment functions {{{
 create_user() {
 	# create user
 	if ! id -u "$USER_NAME"
@@ -50,6 +62,52 @@ create_user() {
 	fi
 }
 
+chown_user_home() {
+	# make USER owner of their stuff
+	chown -R "${USER_NAME}:${USER_NAME}" "${USER_HOME}"
+}
+
+create_user_profile() {
+	# create USER .profile
+	su "$USER_NAME" -c "${USER_HOME}/etc/profile"
+}
+# User managment functions }}}
+
+# XDM / XenoDM managment functions {{{
+_setup_xdm_or_xenodm() { # $1:string, can be "xdm" or "xenodm"
+	# setup xdm /Xenodm
+	_DISPMAN_="${1:-xdm}" # default to xdm
+	_CUR_DIR_="$(pwd)"
+
+	mkdir -p "/etc/X11/${_DISPMAN_}/"
+	touch "/etc/X11/${_DISPMAN_}/Xresources"
+	ln -sf "$USER_HOME/etc/X11/xdm/Xresources" "/etc/X11/${_DISPMAN_}/Xresources"
+	echo 'xset b off' >> "/etc/X11/${_DISPMAN_}/Xsetup"
+	echo 'xsetroot -solid "#1d2021"' >> "/etc/X11/${_DISPMAN_}/Xsetup"
+	echo 'xsetroot -solid "#1d2021"' >> "/etc/X11/${_DISPMAN_}/Xsetup_0"
+
+	safe_cd "$_TMP_DIR_"
+
+	rm .tmp # remove and old tmp files
+	cp "/etc/X11/${_DISPMAN_}/Xsetup_0" .tmp &&
+		sed 's/xconsole/#xconsole/' .tmp > "/etc/X11/${_DISPMAN_}/Xsetup_0" &&
+		rm .tmp
+
+	safe_cd "$_CUR_DIR_"
+}
+
+setup_xenodm() {
+	_setup_xdm_or_xenodm "xenodm"
+}
+
+setup_xdm() {
+	_setup_xdm_or_xenodm "xdm"
+}
+# XDM / XenoDM managment functions }}}
+
+# Helper functions }}}
+
+# Installer functions {{{
 install_home_git_repos() {
 	# install git repos
 	_CUR_DIR_="$(pwd)"
@@ -105,44 +163,9 @@ install_sude() {
 
 	safe_cd "$_CUR_DIR_"
 }
+# Installer functions }}}
 
-_setup_xdm_or_xenodm() { # $1:string, can be "xdm" or "xenodm"
-	# setup xdm /Xenodm
-	_DISPMAN_="${1:-xdm}" # default to xdm
-	_CUR_DIR_="$(pwd)"
+# Functions }}}
 
-	mkdir -p "/etc/X11/${_DISPMAN_}/"
-	touch "/etc/X11/${_DISPMAN_}/Xresources"
-	ln -sf "$USER_HOME/etc/X11/xdm/Xresources" "/etc/X11/${_DISPMAN_}/Xresources"
-	echo 'xset b off' >> "/etc/X11/${_DISPMAN_}/Xsetup"
-	echo 'xsetroot -solid "#1d2021"' >> "/etc/X11/${_DISPMAN_}/Xsetup"
-	echo 'xsetroot -solid "#1d2021"' >> "/etc/X11/${_DISPMAN_}/Xsetup_0"
-
-	safe_cd "$_TMP_DIR_"
-
-	rm .tmp # remove and old tmp files
-	cp "/etc/X11/${_DISPMAN_}/Xsetup_0" .tmp &&
-		sed 's/xconsole/#xconsole/' .tmp > "/etc/X11/${_DISPMAN_}/Xsetup_0" &&
-		rm .tmp
-
-	safe_cd "$_CUR_DIR_"
-}
-
-setup_xenodm() {
-	_setup_xdm_or_xenodm "xenodm"
-}
-
-setup_xdm() {
-	_setup_xdm_or_xenodm "xdm"
-}
-
-chown_user_home() {
-	# make USER owner of their stuff
-	chown -R "${USER_NAME}:${USER_NAME}" "${USER_HOME}"
-}
-
-create_user_profile() {
-	# create USER .profile
-	su "$USER_NAME" -c "${USER_HOME}/etc/profile"
-}
+# ~/etc/installers/setup.lib.etc }}}
 

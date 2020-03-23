@@ -1,6 +1,9 @@
 #!/bin/sh
 # vi: syntax=sh
 
+# ~/etc/aliases {{{
+
+# Misc Aliases {{{
 alias c='clear'
 alias ls='ls -F'
 alias la='ls -A'
@@ -10,10 +13,9 @@ alias x='exit'
 alias ..='cd ..'
 alias python='env python3'
 alias yaourt='yay'
+# Misc Aliases }}}
 
-##
-# CMDs with "c" prefix
-##
+# Alias to make commands with "c" prefix to clear screen {{{
 for i in         \
 	e        \
 	ls       \
@@ -27,12 +29,9 @@ do
 	# shellcheck disable=SC2139
 	alias "c${i}=c; ${i}"
 done
+# Alias to make commands with "c" prefix to clear screen }}}
 
-##
-# CMDs that need root privileges
-##
-
-# Linux / FreeBSD
+# Aliases to automatically escalate root privileges {{{
 for i in           \
 	apk        \
 	apt        \
@@ -48,18 +47,23 @@ for i in           \
 	eopkg      \
 	wifi-menu
 do
+	# Skip commands that aren't available {{{
 	if [ ! -x "$(command -v "$i")" ]
 	then
 		continue
 	fi
+	# Skip commands that aren't available }}}
 
+	# Determine if sudo or doas should be used {{{
 	if uname | grep -qi "openbsd"
 	then
 		PRIVILEGE_COMAND="doas"
 	else
 		PRIVILEGE_COMAND="sudo"
 	fi
+	# Determine if sudo or doas should be used }}}
 
+	# Check for special cases and bind the aliases {{{
 	if [ "$i" = "apt"     ] ||
 	   [ "$i" = "apt-get" ]
 	then
@@ -69,5 +73,9 @@ do
 		# shellcheck disable=SC2139
 		alias "${i}=${PRIVILEGE_COMAND} ${i}"
 	fi
+	# Check for special cases and bind the aliases }}}
 done
+# Aliases to automatically escalate root privileges }}}
+
+# ~/etc/aliases }}}
 

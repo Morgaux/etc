@@ -1,9 +1,13 @@
 #!/bin/sh
 
+# ~/etc/welcome {{{
+
+# Check last login time {{{
 _LAST_LOGIN_FILE="${HOME}/.logintimestamp"
-
 touch "${_LAST_LOGIN_FILE}"
+# Check last login time }}}
 
+# Manage UNIX style configurations {{{
 export WALLPAPER=""
 
 if [ -x "$(command -v setfont)" ] && [ "$TERM" = "linux" ]
@@ -16,12 +20,18 @@ if [ -n "$DISPLAY" ]
 then
 	xrdb -merge ~/etc/Xresources
 fi
+# Manage UNIX style configurations }}}
 
-# Run ASCII welcome if first login in past 24hrs
+# Run ASCII welcome if first login in past 24hrs {{{
 if [ "$(expr "$(date +%s)" - 86400)" -gt "$(head -n 1 "${_LAST_LOGIN_FILE}")" ]
 then
 	[ -x "$(command -v uf)" ] && uf # run ufetch
 fi
+# Run ASCII welcome if first login in past 24hrs }}}
 
-date +%s > "${_LAST_LOGIN_FILE}" # update login time, UNIX timestamp format
+# Update last login time {{{
+date +%s > "${_LAST_LOGIN_FILE}" # UNIX timestamp format
+# Update last login time }}}
+
+# ~/etc/welcome }}}
 

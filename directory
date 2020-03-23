@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# ~/etc/directory {{{
+
+# Helper function to manage symlinks {{{
 link_from_to() { # $1:fromFile $2:toFile
 	[   -f "$1" ] ||
 	[   -d "$1" ] ||
@@ -13,8 +16,9 @@ link_from_to() { # $1:fromFile $2:toFile
 
 	ln -sf "$1" "$2" # link files
 }
+# Helper function to manage symlinks }}}
 
-# make my dirs
+# Ensure directories exist {{{
 for DIR in       \
 	'src'    \
 	'var'    \
@@ -24,8 +28,13 @@ for DIR in       \
 do
 	[ -d "${HOME}/${DIR}" ] || mkdir -p "${HOME}/${DIR}"
 done
+# Ensure directories exist }}}
 
-# keep dirs clean
+# Keep the HOME directory clean {{{
+#
+# This section moves everything in the home directory to ~/var, except for
+# dotfiles and the directories I allow, listed below.
+#
 [ -x "$(command -v basename)" ] && for DIR in ~/*
 do
 	[ -d "$DIR" ] || continue # ignore non dirs, i.e. files
@@ -54,8 +63,9 @@ do
 			;;
 	esac
 done
+# Keep the HOME directory clean }}}
 
-# install my repos
+# Install git repositories if absent {{{
 if [ -x "$(command -v git)" ]
 then
 	[ ! -d "${HOME}/bin" ] &&
@@ -72,8 +82,9 @@ then
 
 	cd "${HOME}" || echo "couldn't cd home" 1>&2
 fi
+# Install git repositories if absent }}}
 
-# create symlinks if missing
+# Symlink dotfiles to the HOME directory {{{
 link_from_to ~/etc/kshrc      ~/.kshrc
 link_from_to ~/etc/kshrc      ~/.mkshrc
 link_from_to ~/etc/vim/vimrc  ~/.vimrc
@@ -82,14 +93,16 @@ link_from_to ~/etc/Xresources ~/.Xresources
 link_from_to ~/etc/xinitrc    ~/.xinitrc
 link_from_to ~/etc/xinitrc    ~/.xsession
 link_from_to ~/etc/wal        ~/.cache/wal
+# Symlink dotfiles to the HOME directory }}}
 
-# make executable
+# Make sure these dotfiles are executable {{{
 for i in ~/.kshrc ~/.mkshrc ~/.xinitrc ~/.xsession
 do
 	[ -x "$i" ] || chmod 755 "$i"
 done
+# Make sure these dotfiles are executable }}}
 
-# add my bin launchers
+# Add custom XDG destop launchers {{{
 if [ -d ~/bin/launchers ] && [ -d ~/.local/share/applications ]
 then
 	for APP in ~/bin/launchers/*.desktop
@@ -98,7 +111,9 @@ then
 		[ ! -L "$LAUNCHER" ] && ln -sf "$APP" "$LAUNCHER"
 	done
 fi
+# Add custom XDG destop launchers }}}
 
+# Setup custom XDG directories {{{
 if [ -x "$(command -v xdg-user-dirs-update)" ]
 then
 	# Destination directories
@@ -156,4 +171,7 @@ then
 		fi
 	done
 fi
+# Setup custom XDG directories }}}
+
+# ~/etc/directory }}}
 

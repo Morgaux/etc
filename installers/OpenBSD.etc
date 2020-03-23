@@ -4,15 +4,29 @@
 # OpenBSD installer for ~/etc
 #
 
-# config
-SELF_NAME="OpenBSD ~/etc installer"
+# ~/installers/OpenBSD.etc {{{
 
-# funcs
+# Config {{{
+SELF_NAME="OpenBSD ~/etc installer"
+# Config }}}
+
+# Functions {{{
 include_fetch() {
 	TMP_INCLUDE_FILE="${_TMP_DIR_:-/tmp}/$(echo "$@" | tr -c '[:alnum:]' '_')"
 	curl -s "$@" > "$TMP_INCLUDE_FILE"
 	. "$TMP_INCLUDE_FILE"
 }
+# Functions }}}
+
+# Include libraries {{{
+include_fetch https://gitlab.com/morgaux/etc/raw/master/installers/setup.lib.etc
+# Include libraries }}}
+
+# Runtime validation {{{
+if [ -f "$USER_HOME/.etc.installed" ]
+then
+	die "${SELF_NAME} has already been run." 1>&2
+fi
 
 if [ ! "$(uname -s)" = "OpenBSD" ]
 then
@@ -23,20 +37,14 @@ if [ ! "$(id -u)" = 0 ]
 then
 	die "${SELF_NAME} should be run as root." 1>&2
 fi
+# Runtime validation }}}
 
-# include libraries
-include_fetch https://gitlab.com/morgaux/etc/raw/master/installers/setup.lib.etc
-
-if [ -f "$USER_HOME/.etc.installed" ]
-then
-	die "${SELF_NAME} has already been run." 1>&2
-fi
-
-# configure doas
+# Configure doas {{{
 echo "doas config:"
 echo "permit persist $USER_NAME" | tee -a /etc/doas.conf
+# Configure doas }}}
 
-# install needed additions
+# Install needed additions {{{
 echo "installing packages"
 pkg_add git--
 pkg_add vim--no_x11
@@ -44,7 +52,9 @@ pkg_add unzip--
 pkg_add gohufont--
 pkg_add gmake--
 pkg_add feh
+# Install needed additions }}}
 
+# Call functions from installer library {{{
 create_user
 
 install_home_git_repos
@@ -58,8 +68,12 @@ setup_xenodm
 chown_user_home
 
 create_user_profile
+# Call functions from installer library }}}
 
-# we're done
+# Finalise {{{
 echo "${SELF_NAME}: done!" | tee -a "$USER_HOME/.etc.installed"
 exit 0
+# Finalise }}}
+
+# ~/installers/OpenBSD.etc }}}
 

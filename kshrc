@@ -1,19 +1,40 @@
 #!/bin/ksh
 # shellcheck source=/dev/null
 
-#
-# http://gitlab.com/morgaux/etc
-#
+# ~/etc/kshrc {{{
 
-##
+#
 # mksh and ksh configuration
-##
+#
 
-try_source() { [ -f "$1" ] && . "$1" ; }
+# Functions {{{
+try_source() { # include external scripts
+	[ -f "$1" ] && . "$1" ;
+}
 
+cd() { # change directories but allow short hand directory names
+	if [ "$#" -eq 0 ] ; then
+		builtin cd "${HOME}"
+	else
+		builtin cd    "$*"/  2> /dev/null ||
+		builtin cd    "$*"*/ 2> /dev/null ||
+		builtin cd ./*"$*"*/ 2> /dev/null ||
+		echo "cd: $* not found" 1>&2
+	fi
+}
+
+_PS1DIR() { # safely get the base directory for the PS1 prompt
+	case "$PWD" in
+		"$HOME") echo "~" ;;
+		"/")     echo "/" ;;
+		*)       echo "${PWD##*/}" ;;
+	esac
+}
+# Functions }}}
+
+# Detect the type of shell running, only run for interactive *ksh sessions {{{
 CURRENT_SHELL="$(ps | grep "$$" | awk '!/grep/{print $4;exit 0}')"
 
-# don't run unless interactive ksh session
 case "$CURRENT_SHELL" in
 	*ksh*)
 		[[ $- = *i* ]] || return
@@ -26,10 +47,15 @@ case "$CURRENT_SHELL" in
 		return
 		;;
 esac
+# Detect the type of shell running, only run for interactive *ksh sessions }}}
 
+# Setup Emacs like cursor key navigation {{{
 
-# Curse emacs!
-# ...but I like to use the up arrow for my shell history
+#
+# I hate Emacs but I realllllly like using the up arrow 17 times to find an "ls"
+# commands in my shell history to save 2 key presses.
+#
+
 set -o emacs
 alias  _A=
 alias  _B=
@@ -43,51 +69,33 @@ alias __C=
 alias __D=
 alias __H=
 alias __Y=
+# Setup Emacs like cursor key navigation }}}
 
-##
-# Functions
-##
+# Miscellaneous configurations {{{
 
-# change dir
-cd() {
-	if [ "$#" -eq 0 ] ; then
-		builtin cd "${HOME}"
-	else
-		builtin cd    "$*"/  2> /dev/null ||
-		builtin cd    "$*"*/ 2> /dev/null ||
-		builtin cd ./*"$*"*/ 2> /dev/null ||
-		echo "cd: $* not found" 1>&2
-	fi
-}
-
-# safe base dir name
-_PS1DIR() {
-	case "$PWD" in
-		"$HOME") echo "~" ;;
-		"/")     echo "/" ;;
-		*)       echo "${PWD##*/}" ;;
-	esac
-}
-
-##
-# set ksh prompt
-##
+#
+# Prompt
+#
 PS1="\$(_PS1DIR) \$ "
 
-##
+#
 # History
-##
 HISTFILE="$HOME/var/history.$(echo "${CURRENT_SHELL}" | sed 's/[^a-zA-Z0-9]//g')"
 HISTSIZE=1024
 
-##
-# environment
-##
-
+#
+# Environment
+#
 for SCRIPT in profile startup git-config vim-plugins directory
 do
 	[ -f "$HOME/etc/$SCRIPT" ] && ( "$HOME/etc/$SCRIPT" & )
 done
 
+#
+# welcome script
+#
 [ -f "$HOME/etc/welcome" ] && "$HOME/etc/welcome"
+# Miscellaneous configurations {{{
+
+# ~/etc/kshrc }}}
 

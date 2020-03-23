@@ -1,13 +1,29 @@
 #!/bin/sh
 
+# ~/etc/vim-plugins {{{
+
 #
 # Auto git cloner for vim plugins
 #
 
+# Retry if offline {{{
+if ! ping -q -w 1 -c 1 8.8.8.8 >/dev/null 2>&1
+then
+	#echo "host is offline, cannot check vim plugins" 1>&2
+
+	(sleep 5 && exec "$0" &) &
+
+	exit 1
+fi
+# Retry if offline }}}
+
+# Config {{{
 BUNDLE_DIR="$HOME/etc/vim/bundle"
 AUTOLOAD_DIR="$HOME/etc/vim/autoload"
 PATHOGEN_URL="https://tpo.pe/pathogen.vim"
+# Config }}}
 
+# Start up validation {{{
 if [ ! -d "$BUNDLE_DIR" ]
 then
 	mkdir -p "$BUNDLE_DIR"
@@ -30,20 +46,13 @@ then
 	exit 1
 fi
 
-if ! ping -q -w 1 -c 1 8.8.8.8 >/dev/null 2>&1
-then
-	#echo "host is offline, cannot check vim plugins" 1>&2
-
-	(sleep 5 && exec "$0" &) &
-
-	exit 1
-fi
-
 if ! curl -LSso "${AUTOLOAD_DIR}/pathogen.vim" "$PATHOGEN_URL"
 then
 	echo "Could not install ${PATHOGEN_URL}" 1>&2
 fi
+# Start up validation }}}
 
+# Function to clone a repo to a directory, or pull if the directory exists {{{
 clone_or_pull() { # $1:url $2:destdir
 	if ! git ls-remote "$1" 1>/dev/null 2>&1
 	then
@@ -77,7 +86,9 @@ clone_or_pull() { # $1:url $2:destdir
 
 	cd "$_PREV_DIR"
 }
+# Function to clone a repo to a directory, or pull if the directory exists }}}
 
+# Main loop, run through all plugin repositories listed {{{
 for file in "${BUNDLE_DIR}/.plugins.github" "${BUNDLE_DIR}/.plugins.gitlab"
 do
 	if [ ! -f "$file" ]
@@ -105,4 +116,7 @@ do
 			;;
 	esac
 done
+# Main loop, run through all plugin repositories listed }}}
+
+# ~/etc/vim-plugins }}}
 

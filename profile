@@ -1,9 +1,7 @@
 #!/bin/sh
 # shellcheck disable=SC2016
 
-#
-# http://gitlab.com/morgaux/etc
-#
+# ~/etc/profile {{{
 
 ##
 # ~/.profile generator
@@ -11,9 +9,7 @@
 
 set -e # stop on uncaught error
 
-##
-# Warning message
-##
+# Add warning message {{{
 {
 	echo '#!/bin/sh'
 	echo ''
@@ -32,10 +28,9 @@ set -e # stop on uncaught error
 	echo 'export CURRENT_SHELL'
 	echo ''
 } > ~/.profile.tmp # Create new temporary file
+# Add warning message }}}
 
-##
-# add environment setup scripts to temporary file
-##
+# Add environment setup scripts to temporary file {{{
 for file in         \
 	startup     \
 	environment \
@@ -46,10 +41,9 @@ do
 	# strip shebang lines
 	sed -n '/#!\/bin/!p' ~/etc/$file >> ~/.profile.tmp || exit 1
 done
+# Add environment setup scripts to temporary file }}}
 
-##
-# auto startx, MUST be last section added to temporary file
-##
+# Auto startx, MUST be last section added to temporary file {{{
 {
 	echo ''
 	echo 'if'
@@ -87,22 +81,20 @@ done
 	echo 'fi'
 	echo ''
 } >> ~/.profile.tmp
+# Auto startx, MUST be last section added to temporary file }}}
 
-##
-# replace old file
-##
+# Replace old file {{{
+[ -f ~/.profile ] && cat ~/.profile > ~/.profile.bak # make a back up
 
-# make a back up
-[ -f ~/.profile ] && cat ~/.profile > ~/.profile.bak
+rm -f ~/.profile # remove old file
+mv ~/.profile.tmp ~/.profile # replace profile from temporary file
 
-# replace profile from temporary file
-rm -f ~/.profile
-mv ~/.profile.tmp ~/.profile
+[ -f ~/.profile ] || cat ~/.profile.bak > ~/.profile # restore backup on failure
 
-# restore backup if something went wrong
-[ -f ~/.profile ] || cat ~/.profile.bak > ~/.profile
+chmod 755 ~/.profile # make new profile executable
+# Replace old file }}}
 
-chmod 755 ~/.profile
+exit 0 # exit success
 
-exit 0
+# ~/etc/profile }}}
 
