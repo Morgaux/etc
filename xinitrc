@@ -18,10 +18,6 @@ done
 (fc-cache -f -v > "$HOME/.xsession-errors" >/dev/null 2>&1 &) &
 # Setup fonts for Xorg }}}
 
-# Start chrome remote desktop daemon {{{
-[ -x "$(command -c crd)" ] && crd --start
-# Start chrome remote desktop daemon }}}
-
 # Setup key ring without display manager {{{
 [ -f /etc/X11/xinit/xinitrc.d/50-systemd-user.sh ] &&
 	. /etc/X11/xinit/xinitrc.d/50-systemd-user.sh
