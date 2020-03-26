@@ -120,7 +120,7 @@ set listchars=tab:\|\
 match Comment /\t/
 
 " Set colorscheme (after other highlight settings)
-colo codedark
+colo two-firewatch
 
 " Visual and Syntax Options }}}
 
