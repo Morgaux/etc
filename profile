@@ -46,6 +46,7 @@ done
 # Auto startx, MUST be last section added to temporary file {{{
 {
 	echo ''
+	echo '# Automatic startx ___' | sed 's/_/{/g'
 	echo 'if'
 	echo '	[ -z "$DISPLAY"             ] &&'
 	echo '	[ -n "$XDG_VTNR"            ] &&'
@@ -79,6 +80,7 @@ done
 	echo '	done'
 	echo '	startx'
 	echo 'fi'
+	echo '# Automatic startx ___' | sed 's/_/}/g'
 	echo ''
 } >> ~/.profile.tmp
 # Auto startx, MUST be last section added to temporary file }}}
