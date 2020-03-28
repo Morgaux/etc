@@ -78,9 +78,9 @@ abbreviate eah       each
 " Language Specific Options {{{
 
 " Override language specific settings
-autocmd Filetype python       setlocal           softtabstop=4 shiftwidth=4 noexpandtab nowrap
-autocmd Filetype scala        setlocal           softtabstop=4 shiftwidth=4 noexpandtab nowrap
-autocmd Filetype java         setlocal           softtabstop=4 shiftwidth=4 noexpandtab nowrap
+autocmd Filetype python       setlocal           softtabstop=4 shiftwidth=4   expandtab nowrap
+autocmd Filetype scala        setlocal           softtabstop=4 shiftwidth=4   expandtab nowrap
+autocmd Filetype java         setlocal           softtabstop=4 shiftwidth=4   expandtab nowrap
 autocmd Filetype cs           setlocal           softtabstop=4 shiftwidth=4   expandtab nowrap
 autocmd Filetype cshtml       setlocal           softtabstop=4 shiftwidth=4   expandtab nowrap
 autocmd Filetype cshtml.html  setlocal           softtabstop=4 shiftwidth=4   expandtab nowrap
