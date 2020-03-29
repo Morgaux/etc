@@ -29,7 +29,6 @@ let g:haskell_enable_pattern_synonyms = 1 " enable highlighting 'pattern'
 let g:haskell_enable_typeroles        = 1 " enable highlighting type roles
 let g:haskell_enable_static_pointers  = 1 " enable highlighting 'static'
 let g:haskell_backpack                = 1 " enable highlighting backpacks
-
 let g:haskell_indent_if               = 3 " indent 'if then else' to condition
 let g:haskell_indent_case             = 5 " indent 'case' to expression
 let g:haskell_indent_let              = 4 " indent 'let' to expression
