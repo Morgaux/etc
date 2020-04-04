@@ -19,16 +19,48 @@ link_from_to() { # $1:fromFile $2:toFile
 # Helper function to manage symlinks }}}
 
 # Ensure directories exist {{{
-for DIR in       \
-	'src'    \
-	'var'    \
-	'uni'    \
-	'tmp'    \
+for DIR in          \
+	'src'       \
+	'var'       \
+	'var/books' \
+	'uni'       \
+	'tmp'       \
 	'.cache'
 do
 	[ -d "${HOME}/${DIR}" ] || mkdir -p "${HOME}/${DIR}"
 done
 # Ensure directories exist }}}
+
+# Install Books {{{
+# Loop var BOOK is a string in the form:
+# 	<URL> | <FILENAME>
+# where URL is a link at which the book can be downloaded from and FILENAME is
+# the file name the book should the saved as in the ~/var/books directory. Note
+# that FILENAME may contain a "/" to denote subdirectories but not "|" as this
+# is the delimiter character.
+for BOOK in \
+	'https://www.gutenberg.org/files/2488/2488-8.txt|20000_Leagues_Under_the_Seas.txt' \
+	'https://www.gutenberg.org/files/132/132-0.txt|The_Art_of_War.txt'
+do
+	URL="$(echo "$BOOK" | awk -F '|' '{ print $1 }')"
+	FILENAME="${HOME}/var/books/$(echo "$BOOK" | awk -F '|' '{ print $2 }')"
+
+	# proceed if book not yet downloaded
+	if [ -f "${FILENAME}" ]
+	then
+		continue
+	fi
+
+	# download using curl or wget
+	if [ -x "$(command -v curl)" ]
+	then
+		curl -s -S -o "${FILENAME}" "${URL}"
+	elif [ -x "$(command -v wget)" ]
+	then
+		wget -q -O "${FILENAME}" "${URL}"
+	fi
+done
+# Install Books }}}
 
 # Keep the HOME directory clean {{{
 #
@@ -102,7 +134,7 @@ do
 done
 # Make sure these dotfiles are executable }}}
 
-# Add custom XDG destop launchers {{{
+# Add custom XDG desktop launchers {{{
 if [ -d ~/bin/launchers ] && [ -d ~/.local/share/applications ]
 then
 	for APP in ~/bin/launchers/*.desktop
@@ -111,7 +143,7 @@ then
 		[ ! -L "$LAUNCHER" ] && ln -sf "$APP" "$LAUNCHER"
 	done
 fi
-# Add custom XDG destop launchers }}}
+# Add custom XDG desktop launchers }}}
 
 # Setup custom XDG directories {{{
 if [ -x "$(command -v xdg-user-dirs-update)" ]
