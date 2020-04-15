@@ -41,7 +41,8 @@ done
 for BOOK in \
 	'https://www.gutenberg.org/files/2488/2488-8.txt|20000_Leagues_Under_the_Seas.txt'   \
 	'https://www.gutenberg.org/cache/epub/103/pg103.txt|Around_the_World_in_80_days.txt' \
-	'https://www.gutenberg.org/files/132/132-0.txt|The_Art_of_War.txt'
+	'https://www.gutenberg.org/files/132/132-0.txt|The_Art_of_War.txt'                   \
+	'https://www.gutenberg.org/cache/epub/1004/pg1004.txt|The_Divine_Comedy.txt'
 do
 	URL="$(echo "$BOOK" | awk -F '|' '{ print $1 }')"
 	FILENAME="${HOME}/var/books/$(echo "$BOOK" | awk -F '|' '{ print $2 }')"
