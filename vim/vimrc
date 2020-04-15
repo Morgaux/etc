@@ -140,7 +140,7 @@ set listchars=tab:\|\
 match Comment /\t/
 
 " Set colorscheme (after other highlight settings)
-colo distinguished
+colo orbital
 
 " Visual and Syntax Options }}}
 
