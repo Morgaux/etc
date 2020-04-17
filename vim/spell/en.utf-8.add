@@ -1267,3 +1267,5 @@ help2man
 commandline
 infobar
 unhide
+CLOC
+cloc
