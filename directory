@@ -114,6 +114,10 @@ then
 		cd "${HOME}/src"    &&
 		git clone https://gitlab.com/morgaux/kata
 
+	[ ! -d "${HOME}/src/dvtm" ] &&
+		cd "${HOME}/src"    &&
+		git clone https://github.com/martanne/dvtm
+
 	cd "${HOME}" || echo "couldn't cd home" 1>&2
 fi
 # Install git repositories if absent }}}
