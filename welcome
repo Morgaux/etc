@@ -22,12 +22,12 @@ then
 fi
 # Manage UNIX style configurations }}}
 
-# Run ASCII welcome if first login in past 24hrs {{{
-if [ "$(expr "$(date +%s)" - "$(expr 60 \* 60 \* 24)")" -gt "$(head -n 1 "${_LAST_LOGIN_FILE}")" ]
+# Run ASCII welcome if first login in past hour {{{
+if [ "$(expr "$(date +%s)" - "$(expr 60 \* 60)")" -gt "$(head -n 1 "${_LAST_LOGIN_FILE}")" ]
 then
 	[ -x "$(command -v uf)" ] && uf # run ufetch
 fi
-# Run ASCII welcome if first login in past 24hrs }}}
+# Run ASCII welcome if first login in past hour }}}
 
 # Update last login time {{{
 date +%s > "${_LAST_LOGIN_FILE}" # UNIX timestamp format
