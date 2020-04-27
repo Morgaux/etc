@@ -140,7 +140,7 @@ set listchars=tab:\|\
 match Comment /\t/
 
 " Set colorscheme (after other highlight settings)
-colo hilal
+colo PaperColor
 
 " Visual and Syntax Options }}}
 
