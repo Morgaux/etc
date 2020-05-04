@@ -2,6 +2,18 @@
 
 # ~/etc/environment {{{
 
+# Misc ENV variables {{{
+EDITOR="$(command -v vim || command -v vi || command -v nano 2/>dev/null)"
+JAVA_HOME="$(readlink -f /usr/bin/javac | sed 's:/bin/javac::')"
+PAGER=less
+ENV="$HOME/etc/kshrc"
+CLASSPATH="$CLASSPATH:."
+_JAVA_AWT_WM_NONREPARENTING="1"
+DOTNET_ROOT="$HOME/.dotnet"
+DOTNET_CLI_TELEMETRY_OPTOUT=1
+DVTM_TERM="xterm"
+# Misc ENV variables }}}
+
 # Set PATH {{{
 for dir in                                                \
 	"/sbin"                                           \
@@ -13,7 +25,8 @@ for dir in                                                \
 	"$HOME/bin"                                       \
 	"$HOME/bin/$(uname | tr '[:upper:]' '[:lower:]')" \
 	"$HOME/.cabal/bin"                                \
-	"$HOME/src/ufetch"
+	"$HOME/src/ufetch"                                \
+	"$DOTNET_ROOT"
 do
 	[ -d "$dir" ] && PATH="$dir:$PATH"
 done
@@ -21,17 +34,6 @@ done
 # remove path duplicates
 PATH="$(printf "%s" "$PATH" | awk -v RS=':' '!a[$1]++ { if (NR > 1) printf RS; printf $1 }')"
 # Set PATH }}}
-
-# Misc ENV variables {{{
-EDITOR="$(command -v vim || command -v vi || command -v nano 2/>dev/null)"
-JAVA_HOME="$(readlink -f /usr/bin/javac | sed 's:/bin/javac::')"
-PAGER=less
-ENV="$HOME/etc/kshrc"
-CLASSPATH="$CLASSPATH:."
-_JAVA_AWT_WM_NONREPARENTING="1"
-DOTNET_CLI_TELEMETRY_OPTOUT=1
-DVTM_TERM="xterm"
-# Misc ENV variables }}}
 
 # Exports {{{
 export PATH
@@ -41,6 +43,7 @@ export PAGER
 export ENV
 export CLASSPATH
 export _JAVA_AWT_WM_NONREPARENTING
+export DOTNET_ROOT
 export DOTNET_CLI_TELEMETRY_OPTOUT
 export DVTM_TERM
 # Exports }}}
