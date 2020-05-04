@@ -19,13 +19,14 @@ link_from_to() { # $1:fromFile $2:toFile
 # Helper function to manage symlinks }}}
 
 # Ensure directories exist {{{
-for DIR in          \
-	'src'       \
-	'var'       \
-	'var/books' \
-	'uni'       \
-	'tmp'       \
-	'.cache'
+for DIR in             \
+	"src"          \
+	"var"          \
+	"var/books"    \
+	"uni"          \
+	"tmp"          \
+	".cache"       \
+	"$DOTNET_ROOT"
 do
 	[ -d "${HOME}/${DIR}" ] || mkdir -p "${HOME}/${DIR}"
 done
