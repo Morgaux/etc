@@ -30,9 +30,17 @@ for dir in                                                \
 	"$JAVA_HOME/bin"                                  \
 	"$JAVA_HOME/.."                                   \
 	"$JAVA_HOME/../bin"                               \
+	"$JAVA_HOME/jre"                                  \
+	"$JAVA_HOME/jre/.."                               \
+	"$JAVA_HOME/jre/bin"                              \
+	"$JAVA_HOME/jdk"                                  \
+	"$JAVA_HOME/jdk/.."                               \
+	"$JAVA_HOME/jdk/bin"                              \
 	"$DOTNET_ROOT"
 do
+	# follow link dirs and expand ".." in paths
 	dir="$(readlink -f "$dir")"
+
 	[ -d "$dir" ] && PATH="$dir:$PATH"
 done
 
