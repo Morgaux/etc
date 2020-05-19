@@ -4,7 +4,7 @@
 
 # Misc ENV variables {{{
 EDITOR="$(command -v vim || command -v vi || command -v nano 2/>dev/null)"
-JAVA_HOME="$(readlink -f /usr/bin/javac | sed 's:/bin/javac::')"
+JAVA_HOME="$([ -x "$(command -v java)" ] && java -XshowSettings:properties -version 2>&1 | awk '/java\.home/ { print $3 }')"
 PAGER=less
 ENV="$HOME/etc/kshrc"
 CLASSPATH="$CLASSPATH:."
@@ -26,8 +26,13 @@ for dir in                                                \
 	"$HOME/bin/$(uname | tr '[:upper:]' '[:lower:]')" \
 	"$HOME/.cabal/bin"                                \
 	"$HOME/src/ufetch"                                \
+	"$JAVA_HOME"                                      \
+	"$JAVA_HOME/bin"                                  \
+	"$JAVA_HOME/.."                                   \
+	"$JAVA_HOME/../bin"                               \
 	"$DOTNET_ROOT"
 do
+	dir="$(readlink -f "$dir")"
 	[ -d "$dir" ] && PATH="$dir:$PATH"
 done
 
