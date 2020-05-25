@@ -52,6 +52,7 @@ pkg_add unzip--
 pkg_add gohufont--
 pkg_add gmake--
 pkg_add feh
+pkg_add bash
 # Install needed additions }}}
 
 # Call functions from installer library {{{
@@ -60,10 +61,6 @@ create_user
 install_home_git_repos
 
 install_fonts
-
-install_sude
-
-setup_xenodm
 
 chown_user_home
 
