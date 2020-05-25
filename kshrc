@@ -95,7 +95,7 @@ done
 # welcome script
 #
 [ -f "$HOME/etc/welcome" ] && "$HOME/etc/welcome"
-# Miscellaneous configurations {{{
+# Miscellaneous configurations }}}
 
 # ~/etc/kshrc }}}
 
