@@ -25,7 +25,7 @@ set -e # stop on uncaught error
 	echo '##                                                                            ##'
 	echo ''
 	echo '# Shell Environment Detection ___' | sed 's/_/{/g'
-	echo 'CURRENT_SHELL="$(ps | grep "$$" | awk "!/grep/{print \$4;exit 0}")"'
+	echo 'CURRENT_SHELL="$(ps | awk "/$$/ {print \$NF; exit 0}")"'
 	echo 'export CURRENT_SHELL'
 	echo '# Shell Environment Detection ___' | sed 's/_/}/g'
 	echo ''

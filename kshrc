@@ -33,7 +33,7 @@ _PS1DIR() { # safely get the base directory for the PS1 prompt
 # Functions }}}
 
 # Detect the type of shell running, only run for interactive *ksh sessions {{{
-CURRENT_SHELL="$(ps | grep "$$" | awk '!/grep/{print $4;exit 0}')"
+CURRENT_SHELL="$(ps | awk "/$$/{print \$NF; exit 0}")"
 
 case "$CURRENT_SHELL" in
 	*ksh*)
