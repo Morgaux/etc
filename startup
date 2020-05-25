@@ -35,6 +35,8 @@ if [ -n "$DISPLAY" ] && xset q >/dev/null 2>&1
 then
 	run_one_instance_in_bg "xbanish"
 	run_one_instance_in_bg "redshift"
+
+	xrdb "$HOME/.Xresources"
 fi >/dev/null 2>&1 # hide error stream for the if...fi block
 # Start ups that require Xorg }}}
 
