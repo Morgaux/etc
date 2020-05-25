@@ -334,3 +334,4 @@ wlp58s0
 autoload
 mksh
 grep
+pfetch
