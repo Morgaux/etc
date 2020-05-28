@@ -335,3 +335,8 @@ autoload
 mksh
 grep
 pfetch
+uninstall
+slstatus
+uninstall
+install
+kata
