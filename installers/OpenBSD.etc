@@ -11,11 +11,11 @@ SELF_NAME="OpenBSD ~/etc installer"
 # Config }}}
 
 # Functions {{{
-include_fetch() {
+include_fetch() { # {{{
 	TMP_INCLUDE_FILE="${_TMP_DIR_:-/tmp}/$(echo "$@" | tr -c '[:alnum:]' '_')"
 	curl -s "$@" > "$TMP_INCLUDE_FILE"
 	. "$TMP_INCLUDE_FILE"
-}
+} # }}}
 # Functions }}}
 
 # Include libraries {{{
