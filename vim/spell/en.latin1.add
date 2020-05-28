@@ -341,3 +341,6 @@ uninstall
 install
 kata
 fvwm
+ttyp0
+alnum
+XenoDM
