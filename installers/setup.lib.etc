@@ -24,57 +24,57 @@ mkdir -p "$_TMP_DIR_"
 # Helper functions {{{
 
 # Error functions {{{
-err() {
+err() { # {{{
 	echo "${SELF_NAME}: error: $*" 1>&2
-}
+} # }}}
 
-die() {
+die() { # {{{
 	err "FATAL: $*"
 	exit 1
-}
+} # }}}
 # Error functions }}}
 
 # Safety wrappers {{{
-safe_cd() {
+safe_cd() { # {{{
 	echo "cd $1"
 	cd "$1" || die "couldn't cd to $1"
-}
+} # }}}
 
-safe_mkdir() {
+safe_mkdir() { # {{{
 	echo "mkdir -p $1"
 	mkdir -p "$1" || die "couldn't make $1 a directory"
-}
+} # }}}
 
-safe_clone() {
+safe_clone() { # {{{
 	[ -x "$(command -v git)" ] || die "git not installed."
 	echo "git clone $*"
 	git clone "$*" || die "couldn't clone $*"
-}
+} # }}}
 # Safety wrappers }}}
 
-# User managment functions {{{
-create_user() {
+# User management functions {{{
+create_user() { # {{{
 	# create user
 	if ! id -u "$USER_NAME"
 	then
 		echo "creating user: ${USER_NAME}"
 		useradd -v -m -G "staff,wsrc,${USER_NAME}" "${USER_NAME}"
 	fi
-}
+} # }}}
 
-chown_user_home() {
+chown_user_home() { # {{{
 	# make USER owner of their stuff
 	chown -R "${USER_NAME}:${USER_NAME}" "${USER_HOME}"
-}
+} # }}}
 
-create_user_profile() {
+create_user_profile() { # {{{
 	# create USER .profile
 	su "$USER_NAME" -c "${USER_HOME}/etc/profile"
-}
-# User managment functions }}}
+} # }}}
+# User management functions }}}
 
-# XDM / XenoDM managment functions {{{
-_setup_xdm_or_xenodm() { # $1:string, can be "xdm" or "xenodm"
+# XDM / XenoDM management functions {{{
+_setup_xdm_or_xenodm() { # {{{ $1:string, can be "xdm" or "xenodm"
 	# setup xdm /Xenodm
 	_DISPMAN_="${1:-xdm}" # default to xdm
 	_CUR_DIR_="$(pwd)"
@@ -94,21 +94,21 @@ _setup_xdm_or_xenodm() { # $1:string, can be "xdm" or "xenodm"
 		rm .tmp
 
 	safe_cd "$_CUR_DIR_"
-}
+} # }}}
 
-setup_xenodm() {
+setup_xenodm() { # {{{
 	_setup_xdm_or_xenodm "xenodm"
-}
+} # }}}
 
-setup_xdm() {
+setup_xdm() { # {{{
 	_setup_xdm_or_xenodm "xdm"
-}
-# XDM / XenoDM managment functions }}}
+} # }}}
+# XDM / XenoDM management functions }}}
 
 # Helper functions }}}
 
 # Installer functions {{{
-install_home_git_repos() {
+install_home_git_repos() { # {{{
 	# install git repos
 	_CUR_DIR_="$(pwd)"
 
@@ -118,9 +118,9 @@ install_home_git_repos() {
 	[ -d etc ] || safe_clone https://gitlab.com/morgaux/etc
 
 	safe_cd "$_CUR_DIR_"
-}
+} # }}}
 
-install_ttyp0_font() {
+install_ttyp0_font() { # {{{
 	_CUR_DIR_="$(pwd)"
 
 	safe_mkdir "$USER_HOME/.local/share/fonts/."
@@ -131,9 +131,9 @@ install_ttyp0_font() {
 	gmake install
 
 	safe_cd "$_CUR_DIR_"
-}
+} # }}}
 
-install_3270_Nerd_font() {
+install_3270_Nerd_font() { # {{{
 	_CUR_DIR_="$(pwd)"
 
 	safe_cd "$USER_HOME/etc/fonts"
@@ -142,15 +142,15 @@ install_3270_Nerd_font() {
 	mv 3270\ * "$USER_HOME/.local/share/fonts/."
 
 	safe_cd "$_CUR_DIR_"
-}
+} # }}}
 
-install_fonts() {
+install_fonts() { # {{{
 	# install fonts
 	install_ttyp0_font
 	install_3270_Nerd_font
-}
+} # }}}
 
-install_sude() {
+install_sude() { # {{{
 	# install sude
 	_CUR_DIR_="$(pwd)"
 
@@ -162,7 +162,7 @@ install_sude() {
 	make clean install || die "failed to install sude"
 
 	safe_cd "$_CUR_DIR_"
-}
+} # }}}
 # Installer functions }}}
 
 # Functions }}}
