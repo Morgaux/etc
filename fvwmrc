@@ -113,7 +113,8 @@ AddToFunc RestartFunction "I" Module FvwmPager 0 0
 # Menus {{{
 # RootMenu {{{
 AddToMenu RootMenu	"Root Menu"	Title
-+			"XTerm%mini.xterm.xpm%"		Exec exec xterm
+#+			"XTerm%mini.xterm.xpm%"		Exec exec xterm
++			"St%mini.xterm.xpm%"		Exec exec st
 #+			"Rxvt"		Exec exec rxvt
 +			""		Nop
 #+			"Remote Logins"	Popup Remote-Logins
@@ -133,7 +134,8 @@ AddToMenu RootMenu	"Root Menu"	Title
 
 # Utilities {{{
 AddToMenu Utilities     "Utilities" Title
-+			"Top"		Exec exec xterm -T Top -n Top -e top
++			"Surf"		Exec exec surf
++			"Top"		Exec exec st -T Top -n Top -e top
 +			"Calculator"	Exec exec xcalc
 +			"Xman"		Exec exec xman
 +			"Xmag"		Exec exec xmag
@@ -166,33 +168,33 @@ AddToMenu Misc-Ops "Misc Config Opts" Title
 
 # Window-Ops {{{
 AddToMenu Window-Ops	"Window Ops"	Title
-+			"Move%mini.move.xpm%"		Move
-+			"Resize%mini.resize.xpm%"	Resize
-+			"Raise%mini.raise.xpm%"		Raise
-+			"Lower%mini.lower.xpm%"		Lower
+#+			"Move%mini.move.xpm%"		Move
+#+			"Resize%mini.resize.xpm%"	Resize
+#+			"Raise%mini.raise.xpm%"		Raise
+#+			"Lower%mini.lower.xpm%"		Lower
 +		 	"(De)Iconify%mini.iconify.xpm%"	Iconify
-+			"(Un)Stick%mini.stick2.xpm%"	Stick
+#+			"(Un)Stick%mini.stick2.xpm%"	Stick
 +			"(Un)Maximize%mini.maximize.xpm%"	Maximize
 +			""		Nop
-+			"Delete%mini.excl.xpm%"	Delete
+#+			"Delete%mini.excl.xpm%"	Delete
 +			"Close%mini.cut.xpm%"		Close
-+			"Destroy%mini.destroy.xpm%"	Destroy
+#+			"Destroy%mini.destroy.xpm%"	Destroy
 +			""		Nop
 +			"Refresh Window%mini.refresh.xpm%" RefreshWindow
 # }}}
 
 # Window-Ops2 {{{
 AddToMenu Window-Ops2	"&Move%mini.move.xpm%"		Move
-+			"&Resize%mini.resize.xpm%"	Resize
-+			"R&aise%mini.raise.xpm%"	Raise
-+			"&Lower%mini.lower.xpm%"	Lower
+#+			"&Resize%mini.resize.xpm%"	Resize
+#+			"R&aise%mini.raise.xpm%"	Raise
+#+			"&Lower%mini.lower.xpm%"	Lower
 +			"(De)&Iconify%mini.iconify.xpm%"	Iconify
-+			"(Un)&Stick%mini.stick2.xpm%"	Stick
+#+			"(Un)&Stick%mini.stick2.xpm%"	Stick
 +                       "(Un)Ma&ximize%mini.maximize.xpm%" Maximize
 +			""		Nop
-+			"&Delete%mini.excl.xpm%"	Delete
+#+			"&Delete%mini.excl.xpm%"	Delete
 +			"&Close%mini.cut.xpm%"	Close
-+			"Destroy%mini.destroy.xpm%"	Destroy
+#+			"Destroy%mini.destroy.xpm%"	Destroy
 +			""		Nop
 +			"ScrollBar" 	Module FvwmScroll 2 2
 +			"Print"         PrintFunction
@@ -239,6 +241,7 @@ AddToMenu Module-Popup	"FvwmModules"	Title
 AddToMenu Quit-Verify
 +		      	"Restart Fvwm%mini.refresh.xpm%"	    Restart fvwm
 +		      	""		    Nop
++	      	      	"Start dwm"         Restart dwm
 +	      	      	"Start cwm"         Restart cwm
 +	      	      	"Start wm2"         Restart wm2
 +		      	"Start twm"         Restart twm
@@ -378,15 +381,17 @@ Key F7		A	M	CirculateUp
 Key F8		A	M	CirculateDown
 # }}}
 
-#Page Up/Page Down keys are used to scroll by one desktop page
+#Page Up/Page Down keys are used to scroll by one desktop page {{{
 # in any context, press page up/down + control
 # in root context, just pressing page up/down is OK
-#
-# I prefer the non-wrapping scroll. These are for example purposes only
+# }}}
+
+# I prefer the non-wrapping scroll. These are for example purposes only {{{
 #Key Next	A       C       Scroll 100000 0
 #Key Next	R       N       Scroll 100000 0
 #Key Prior	A       C       Scroll -100000 0
 #Key Prior	R       N       Scroll -100000 0
+# }}}
 # }}}
 
 # FvwmButtons button-bar {{{
@@ -447,7 +452,6 @@ Key F8		A	M	CirculateDown
 # }}}
 
 # Icons {{{
-############################################################
 # Note that icons are shown in the module
 #    only if NoIcon commnand is applied.
 #Style     "*"  NoIcon
