@@ -64,6 +64,7 @@ set mouseshape=a:beam
 set textwidth=80
 set colorcolumn=+1
 set foldmethod=marker
+set whichwrap=b,s,<,>,[,]
 
 " wrap lines that are longer than the terminal window
 set wrap linebreak nolist
@@ -83,7 +84,7 @@ endif
 " Enable spell checking
 set spell spelllang=en_nz
 
-" Abbreviations and custom Autocorrections
+" Abbreviations and custom auto corrections
 abbreviate teh       the
 abbreviate th        the
 abbreviate te        the
@@ -106,8 +107,8 @@ autocmd Filetype cshtml.html  setlocal           softtabstop=4 shiftwidth=4   ex
 autocmd Filetype haskell      setlocal           softtabstop=4 shiftwidth=4   expandtab nowrap
 autocmd Filetype sh           setlocal tabstop=8 softtabstop=0 shiftwidth=8 noexpandtab nowrap
 autocmd Filetype vim          setlocal tabstop=8 softtabstop=0 shiftwidth=8 noexpandtab nowrap
-autocmd Filetype c            setlocal tabstop=8 softtabstop=0 shiftwidth=8 noexpandtab nowrap foldmethod=syntax
-autocmd Filetype cpp          setlocal tabstop=8 softtabstop=0 shiftwidth=8 noexpandtab nowrap foldmethod=syntax
+autocmd Filetype c            setlocal tabstop=8 softtabstop=0 shiftwidth=8 noexpandtab nowrap foldmethod=syntax foldnestmax=1
+autocmd Filetype cpp          setlocal tabstop=8 softtabstop=0 shiftwidth=8 noexpandtab nowrap foldmethod=syntax foldnestmax=1
 autocmd Filetype make         setlocal tabstop=8 softtabstop=0 shiftwidth=8 noexpandtab nowrap
 autocmd Filetype tex          setlocal tabstop=8 softtabstop=0 shiftwidth=8 noexpandtab nowrap
 
