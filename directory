@@ -124,6 +124,7 @@ fi
 # Install git repositories if absent }}}
 
 # Symlink dotfiles to the HOME directory {{{
+link_from_to ~/etc/aliases    ~/.aliases
 link_from_to ~/etc/fvwmrc     ~/.fvwmrc
 link_from_to ~/etc/kshrc      ~/.kshrc
 link_from_to ~/etc/kshrc      ~/.mkshrc
