@@ -88,7 +88,10 @@ HISTSIZE=1024
 #
 for SCRIPT in profile startup git-config vim-plugins directory
 do
-	[ -f "$HOME/etc/$SCRIPT" ] && ( "$HOME/etc/$SCRIPT" & )
+	if [ -f "$HOME/etc/$SCRIPT" ]
+	then
+		( "$HOME/etc/$SCRIPT" >/dev/null & )
+	fi
 done
 
 #

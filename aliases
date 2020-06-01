@@ -12,6 +12,7 @@ alias mkdir='mkdir -p'
 alias x='exit'
 alias ..='cd ..'
 alias python='env python3'
+alias py='env python3'
 alias yaourt='yay'
 # Misc Aliases }}}
 
