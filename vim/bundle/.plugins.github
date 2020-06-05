@@ -18,7 +18,7 @@ lifepillar/vim-mucomplete
 airblade/vim-gitgutter
 itspriddle/vim-shellcheck
 altercation/vim-colors-solarized
-Morgaux/vim-code-dark
+tomasiser/vim-code-dark
 romainl/flattened
 chase/focuspoint-vim
 mhartington/oceanic-next
