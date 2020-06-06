@@ -1361,3 +1361,9 @@ AreEqual
 WebElement
 docx
 e10
+tr
+n
+n
+texttt
+regex
+present
