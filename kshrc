@@ -86,11 +86,11 @@ HISTSIZE=1024
 #
 # Environment
 #
-for SCRIPT in "generate-profile"       \
-              "startup"                \
-              "git-config"             \
+for SCRIPT in "setup/generate-profile" \
+              "setup/startup"          \
+              "setup/git-config"       \
               "installers/vim-plugins" \
-              "directory"
+              "setup/directory"
 do
 	if [ -f "$HOME/etc/$SCRIPT" ]
 	then
@@ -101,7 +101,10 @@ done
 #
 # welcome script
 #
-[ -f "$HOME/etc/welcome" ] && "$HOME/etc/welcome"
+if [ -f "$HOME/etc/setup/welcome" ]
+then
+	"$HOME/etc/setup/welcome"
+fi
 # Miscellaneous configurations }}}
 
 # ~/etc/kshrc }}}
