@@ -64,6 +64,7 @@ set mouseshape=a:beam
 set textwidth=80
 set colorcolumn=+1
 set foldmethod=marker
+set whichwrap=b,s,<,>,[,]
 
 " wrap lines that are longer than the terminal window
 set wrap linebreak nolist
