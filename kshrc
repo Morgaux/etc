@@ -86,7 +86,11 @@ HISTSIZE=1024
 #
 # Environment
 #
-for SCRIPT in generate-profile startup git-config vim-plugins directory
+for SCRIPT in "generate-profile"       \
+              "startup"                \
+              "git-config"             \
+              "installers/vim-plugins" \
+              "directory"
 do
 	if [ -f "$HOME/etc/$SCRIPT" ]
 	then
