@@ -39,7 +39,7 @@ for dir in                                                \
 	"$DOTNET_ROOT"
 do
 	# follow link dirs and expand ".." in paths
-	dir="$(readlink -f "$dir")"
+	dir="$(readlink -f "$dir" 2>/dev/null)"
 
 	[ -d "$dir" ] && PATH="$dir:$PATH"
 done

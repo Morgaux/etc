@@ -33,7 +33,7 @@ _PS1DIR() { # safely get the base directory for the PS1 prompt
 # Functions }}}
 
 # Detect the type of shell running, only run for interactive *ksh sessions {{{
-CURRENT_SHELL="$(ps | grep "$$" | awk '!/grep/{print $4;exit 0}')"
+CURRENT_SHELL="$(ps | awk "/$$/{print \$NF; exit 0}")"
 
 case "$CURRENT_SHELL" in
 	*ksh*)
@@ -88,14 +88,17 @@ HISTSIZE=1024
 #
 for SCRIPT in profile startup git-config vim-plugins directory
 do
-	[ -f "$HOME/etc/$SCRIPT" ] && ( "$HOME/etc/$SCRIPT" & )
+	if [ -f "$HOME/etc/$SCRIPT" ]
+	then
+		( "$HOME/etc/$SCRIPT" >/dev/null & )
+	fi
 done
 
 #
 # welcome script
 #
 [ -f "$HOME/etc/welcome" ] && "$HOME/etc/welcome"
-# Miscellaneous configurations {{{
+# Miscellaneous configurations }}}
 
 # ~/etc/kshrc }}}
 

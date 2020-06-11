@@ -11,6 +11,7 @@
 # Setup fonts for Xorg {{{
 for FONT in \
 	/usr/local/share/fonts/gohufont/ \
+	/usr/local/share/fonts/ibm-plex/ \
 	/usr/local/share/fonts/X11/misc/
 do
 	[ -d "$FONT" ] && xset +fp "$FONT"
