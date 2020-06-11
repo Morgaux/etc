@@ -131,6 +131,7 @@ link_from_to ~/etc/kshrc      ~/.mkshrc
 link_from_to ~/etc/vim/vimrc  ~/.vimrc
 link_from_to ~/etc/vim        ~/.vim
 link_from_to ~/etc/Xresources ~/.Xresources
+link_from_to ~/etc/Xresources ~/.Xdefaults
 link_from_to ~/etc/xinitrc    ~/.xinitrc
 link_from_to ~/etc/xinitrc    ~/.xsession
 link_from_to ~/etc/wal        ~/.cache/wal
