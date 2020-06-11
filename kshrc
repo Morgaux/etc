@@ -86,7 +86,7 @@ HISTSIZE=1024
 #
 # Environment
 #
-for SCRIPT in "setup/generate-profile" \
+for SCRIPT in "setup/profile"          \
               "setup/startup"          \
               "setup/git-config"       \
               "installers/vim-plugins" \
