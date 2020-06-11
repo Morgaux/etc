@@ -1,10 +1,36 @@
-
 ! -----------------------------------------------------------------------------
 ! File: ~/etc/Xresources
 ! Author: morgaux meyer
 ! -----------------------------------------------------------------------------
 
-*.scrollBar: false
-xterm*background: black
-xterm*foreground: lightgray
+! Disable the scroll bar
+xterm*scrollBar: false
+
+! Scrollback
+xterm*savelines: 10000
+
+! DOS box colors (https://unix4lyfe.org/xterm)
+xterm*foreground: rgb:A8/A8/A8
+xterm*background: rgb:00/00/00
+xterm*color0:     rgb:00/00/00
+xterm*color1:     rgb:A8/00/00
+xterm*color2:     rgb:00/A8/00
+xterm*color3:     rgb:A8/54/00
+xterm*color4:     rgb:00/00/A8
+xterm*color5:     rgb:A8/00/A8
+xterm*color6:     rgb:00/A8/A8
+xterm*color7:     rgb:A8/A8/A8
+xterm*color8:     rgb:54/54/54
+xterm*color9:     rgb:FC/54/54
+xterm*color10:    rgb:54/FC/54
+xterm*color11:    rgb:FC/FC/54
+xterm*color12:    rgb:54/54/FC
+xterm*color13:    rgb:FC/54/FC
+xterm*color14:    rgb:54/FC/FC
+xterm*color15:    rgb:FC/FC/FC
+
+! Use bright color rather than bold font, better for raster fonts
+xterm*boldMode:    false
+xterm*colorBDMode: true
+xterm*colorBD:     rgb:FC/FC/FC
 
