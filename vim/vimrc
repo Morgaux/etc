@@ -84,7 +84,7 @@ endif
 " Enable spell checking
 set spell spelllang=en_nz
 
-" Abbreviations and custom Autocorrections
+" Abbreviations and custom auto corrections
 abbreviate teh       the
 abbreviate th        the
 abbreviate te        the
