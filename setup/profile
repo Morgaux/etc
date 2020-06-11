@@ -33,12 +33,11 @@ set -e # stop on uncaught error
 # Add warning message }}}
 
 # Add environment setup scripts to temporary file {{{
-for file in         \
-	startup     \
-	environment \
-	directory   \
-	aliases     \
-	welcome     # welcome should be last of files added to temporary file
+for file in aliases           \
+            setup/startup     \
+            setup/environment \
+            setup/directory   \
+            setup/welcome     # welcome must be last file added
 do
 	# strip shebang lines
 	sed -n '/#!\/bin/!p' ~/etc/$file >> ~/.profile.tmp || exit 1
