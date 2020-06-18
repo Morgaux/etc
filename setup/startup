@@ -3,14 +3,42 @@
 # ~/etc/startup {{{
 
 # Helper functions {{{
-run_one_instance_in_bg() { # run command singleton in background
+# run command singleton in background
+run_one_instance_in_bg() { # {{{
 	# shellcheck disable=SC2009
 	if [ -x "$(command -v "$1")" ]
 	then
 		# shellcheck disable=2068
 		ps cax | grep -iq "$1" || ( sh -c $@ &)
 	fi
-}
+} # }}}
+
+# function to safely pull git repos
+git_pull_dir() { # {{{
+	( cd "$1" && git pull </dev/null >/dev/null 2>&1 & )
+} # }}}
+
+# manage the vim spelling file
+automatically_update_vim_spelling_file() { # {{{
+	COMMIT_MESSAGE="Automatic spelling commit"
+	SPELL_DIR="vim/spell"
+	ETC_DIR="$HOME/etc"
+	TMP_DIR="$HOME/tmp"
+
+	# These dirs must exist to continue
+	if [ ! -d "$TMP_DIR" ] || [ ! -d "${ETC_DIR}/${SPELL_DIR}" ]
+	then
+		return
+	fi
+
+	for spell_file in "${ETC_DIR}/${SPELL_DIR}"/*.add
+	do
+		sort -i "$spell_file" | uniq -i > "${TMP_DIR}/$(basename "$spell_file")".tmp
+		cat "${TMP_DIR}/$(basename "$spell_file")".tmp > "$spell_file"
+	done
+
+	cd "$ETC_DIR" && git commit -m "$COMMIT_MESSAGE" "$SPELL_DIR"
+} # }}}
 # Helper functions }}}
 
 # Arch linux specific startups {{{
@@ -43,9 +71,6 @@ fi >/dev/null 2>&1 # hide error stream for the if...fi block
 # Keep repos up to date - spawn "git pull" daemons {{{
 if [ -x "$(command -v git)" ]
 then
-	# function to safely pull git repos
-	git_pull_dir() { ( cd "$1" && git pull </dev/null >/dev/null 2>&1 & ) ; }
-
 	# pull git repos in home
 	for i in "$HOME/bin"      \
 	         "$HOME/etc"      \
@@ -57,7 +82,7 @@ then
 	done
 
 	# commit spelling changes to vim spelling files
-	( cd "$HOME/etc" && git commit -m "Automatic spelling commit" vim/spell/ & )
+	( automatically_update_vim_spelling_file </dev/null >/dev/null 2>&1 & )
 fi </dev/null >/dev/null 2>&1 # block all io streams for the if...fi block
 # Keep repos up to date - spawn "git pull" daemons }}}
 
