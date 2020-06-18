@@ -97,6 +97,8 @@ Boudary/!
 BrainHIVE
 Button1
 Button1Mask
+Button2
+Button3
 ButtonPress
 ButtonRelease
 C
@@ -302,6 +304,7 @@ MediaSource
 Metadata
 Minix
 Minix's
+Mod1
 Mod2Mask
 ModeMsg
 MoreMsg
@@ -311,6 +314,7 @@ NAK
 NAKing
 NBBY
 NONINFRINGEMENT
+NONREPARENTING
 NOP
 NR
 NUnit
@@ -338,6 +342,7 @@ OnSel
 Oo
 OpenBSD
 OpenGL
+OpenJDK
 Oq
 Os
 Ot
@@ -439,6 +444,7 @@ TEST6
 TEST7
 TMPDIR
 TODO
+TP
 TTF
 TTT
 TabLineSel
@@ -484,6 +490,7 @@ XK
 XL
 XPath
 XTerm
+XToolkit
 XX
 XXC
 XXX
@@ -1063,6 +1070,7 @@ regexp
 rej
 removeClass
 rendring/!
+reparenting
 repo
 repos
 requirments
