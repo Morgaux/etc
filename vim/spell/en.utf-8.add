@@ -263,6 +263,7 @@ IVXLCDM
 IVXLCDM0
 IWebDriver
 IWebElement
+Iconify
 Imagemagick
 Inbox
 Init
@@ -350,6 +351,7 @@ POSIX
 PPID
 PPid
 PRIVILEGE_COMAND
+PS1
 PS1DIR
 PWD
 PacBSD
@@ -366,6 +368,7 @@ QEMU
 README
 REL
 RGB
+RLOGIN
 Refactor
 Refractor
 Regex
@@ -519,6 +522,7 @@ admin's
 ahhhhhh
 airblade
 al
+ala
 alnum
 alt
 aluable
@@ -755,6 +759,7 @@ fullscreen
 func
 funcs
 fvwm
+fvwm2rc
 g
 geek
 getline
@@ -939,6 +944,7 @@ msgstring
 mucomplete
 multithreading
 mv
+mwm
 n
 nb
 nbytes
@@ -1062,6 +1068,7 @@ repo
 repos
 requirments
 resizals
+rlogin
 roman
 rpath
 rstuvwxyzabcdefghijklmnopq
@@ -1282,9 +1289,3 @@ z
 zA
 zabcdefghijklmnopqrstuvwxy
 ze
-fvwm2rc
-Iconify
-RLOGIN
-rlogin
-ala
-mwm
