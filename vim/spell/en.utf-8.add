@@ -50,8 +50,6 @@ aluable
 AMD
 amixer
 antialias
-anymore
-anymore/!
 API
 apk
 apm
@@ -94,8 +92,6 @@ bbbbbb
 bcdefghijklmnopqrstuvwxyza
 beeing
 beeing/!
-behavior
-behavior/!
 bg
 BigBlue
 bin
@@ -115,7 +111,6 @@ brt
 BSDs
 bspwm
 BSSID
-btnModalSaveTradeMeExtendedFeatures
 builtin
 Button1
 BUTTON1
@@ -151,7 +146,6 @@ CCCCCCCCCC
 CCD
 CCM
 cd
-cdefghijklmnopqrstuvwxyzab
 celsius
 center
 certdir
@@ -188,7 +182,6 @@ commandline
 conection
 conf
 config
-configired/!
 const
 contrarian
 controlC0
@@ -231,7 +224,6 @@ dec
 DECID
 def
 DefaultXX
-defghijklmnopqrstuvwxyzabc
 deps
 DE's
 dest
@@ -291,9 +283,6 @@ dylanaraps
 dyt
 e
 e10
-#eakbar
-#eakbar/!
-eakbar
 ebdbb2
 ec07c
 Edsger
@@ -415,8 +404,6 @@ ffff00
 ffffff
 FFFFFF
 fg
-fghijklmnopqrstuvwxyzabcde
-fi
 FILENAME
 filesystem
 firefox
@@ -451,7 +438,6 @@ geek
 getline
 getpalace
 GETPOWER
-ghijklmnopqrstuvwxyzabcdef
 gid
 gitgutter
 github
@@ -542,7 +528,6 @@ IIIIIIII
 IIIIIIIII
 IIIIIIIIII
 IIX
-ijklmnopqrstuvwxyzabcdefgh
 Imagemagick
 img
 Inbox
@@ -600,7 +585,6 @@ jdk
 Jin
 Jira
 Jira's
-jklmnopqrstuvwxyzabcdefghi
 JPEG
 jpg
 jQuery
@@ -620,7 +604,6 @@ keymap
 keystring
 keysym
 keyval
-klmnopqrstuvwxyzabcdefghij
 konsole
 ksh
 kshrc
@@ -643,7 +626,6 @@ linux
 listingDuration
 ListingImageCount
 listingType
-lmnopqrstuvwxyzabcdefghijk
 LOGFILE
 logintimestamp
 ls
@@ -665,14 +647,6 @@ math
 max
 mdi
 MediaSource
-megamega
-megamegamega
-megamegamegamega
-megamegamegamegamega
-megamegamegamegamegamega
-megamegamegamegamegamegamega
-megamegamegamegamegamegamegamega
-megamegamegamegamegamegamegamegamega
 mem
 meminfo
 memory
@@ -698,7 +672,6 @@ MMMMMMM
 MMMMMMMM
 MMMMMMMMM
 MMMMMMMMMM
-mnopqrstuvwxyzabcdefghijkl
 mnt
 Mod1
 Mod2Mask
@@ -747,7 +720,6 @@ NONINFRINGEMENT
 NONREPARENTING
 nonzero
 NOP
-nopqrstuvwxyzabcdefghijklm
 noreply
 NR
 nuget
@@ -800,7 +772,6 @@ Oq
 ord
 ORed
 org
-#ormate/!
 os
 Os
 OSS
@@ -865,9 +836,6 @@ priv
 PRIVILEGE_COMAND
 proc
 ProjectSelenium
-PropertyDetailViewModel
-PropertyTradeMeBoost
-PropertyTradeMeFeatures
 ps
 PS1
 PS1DIR
@@ -875,8 +843,6 @@ pseudocode
 Pseudocode
 #pto
 pto
-PublishTrademeExtendedFeatures
-punct
 PWD
 px
 py
@@ -887,7 +853,6 @@ Python3
 q
 Q
 QEMU
-qrstuvwxyzabcdefghijklmnop
 qsort
 r
 randbyte
@@ -914,7 +879,6 @@ Regolith
 rej
 REL
 removeClass
-rendring/!
 reparenting
 repo
 repos
@@ -927,7 +891,6 @@ rlogin
 RLOGIN
 roman
 rpath
-rstuvwxyzabcdefghijklmnopq
 rx
 s
 S1
@@ -1082,7 +1045,6 @@ TEST6
 TEST7
 TestExplorer
 tex
-tex/!
 texttt
 th
 the
@@ -1115,7 +1077,6 @@ tty
 ttyp0
 Ttyp0
 tutorial1
-tuvwxyzabcdefghijklmnopqrs
 tx
 txt
 tz0
@@ -1140,7 +1101,7 @@ Unstyled
 updategeom
 upstream's
 upstreams
-upto/!
+upto
 uri
 url
 urls
@@ -1156,7 +1117,6 @@ UTF8
 util
 utils
 utmp
-uvwxyzabcdefghijklmnopqrst
 uw
 UW
 UX
@@ -1183,7 +1143,6 @@ volas
 VS
 VTNR
 Vundle
-vwxyzabcdefghijklmnopqrstu
 w
 w3m
 wal
@@ -1214,7 +1173,6 @@ workflow
 writable
 WTFPL
 www
-wxyzabcdefghijklmnopqrstuv
 x0d
 X11
 x86
@@ -1258,10 +1216,7 @@ XXXXXXX
 XXXXXXXX
 XXXXXXXXX
 XXXXXXXXXX
-xyzabcdefghijklmnopqrstuvw
 y
-Yan
-Yaroshevich
 yay
 yellow3
 yiffle
@@ -1269,10 +1224,8 @@ yoffset
 youtube
 yt
 yyyy
-yzabcdefghijklmnopqrstuvwx
 z
 Z
 Z0
 zA
-zabcdefghijklmnopqrstuvwxy
 ze
