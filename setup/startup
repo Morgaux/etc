@@ -33,7 +33,7 @@ automatically_update_vim_spelling_file() { # {{{
 
 	for spell_file in "${ETC_DIR}/${SPELL_DIR}"/*.add
 	do
-		sort -i "$spell_file" | uniq -i > "${TMP_DIR}/$(basename "$spell_file")".tmp
+		sort -i "$spell_file" | uniq > "${TMP_DIR}/$(basename "$spell_file")".tmp
 		cat "${TMP_DIR}/$(basename "$spell_file")".tmp > "$spell_file"
 	done
 
