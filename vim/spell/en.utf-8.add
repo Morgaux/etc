@@ -349,7 +349,6 @@ PF
 PIDFILE
 POSIX
 PPID
-PPid
 PRIVILEGE_COMAND
 PS1
 PS1DIR
@@ -477,7 +476,6 @@ Wallpaper1
 WebDriver
 WebElement
 WebKit
-Webkit
 WiFi
 X11
 XC
