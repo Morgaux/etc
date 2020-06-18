@@ -34,6 +34,7 @@ addons
 addSegment
 admin
 admin's
+aeb9b
 AES
 AF
 ahhhhhh
@@ -91,6 +92,7 @@ BASM
 BAT0
 bbbbbb
 bcdefghijklmnopqrstuvwxyza
+beeing
 beeing/!
 behavior
 behavior/!
@@ -105,6 +107,7 @@ blue2
 bluetooth
 bmp
 bool
+Boudary
 Boudary/!
 br
 BrainHIVE
@@ -290,21 +293,25 @@ e
 e10
 #eakbar
 #eakbar/!
+eakbar
 ebdbb2
 ec07c
 Edsger
 edu
 eeeeee
 #eeing
+eeing
 efghijklmnopqrstuvwxyzabcd
 egotiable
 #ehavior
+ehavior
 emacs
 endian
 endianness
 ENDIF
 ENDLOOP
 #endring
+endring
 enum
 enums
 env
@@ -321,6 +328,7 @@ estable
 etc
 eth0
 #etreive
+etreive
 eval
 EWMH
 #ex
@@ -340,6 +348,7 @@ F18
 F19
 F20
 F21
+f21fe29
 F22
 F23
 F24
@@ -423,7 +432,6 @@ foo
 foobarbaz
 fopen
 forall
-formate/!
 freebsd
 FreeBSD
 freedesktop
@@ -622,6 +630,7 @@ L
 laby
 Laby
 lang
+larch
 larch/!
 Liam
 libexec
@@ -750,6 +759,7 @@ NVIDIA
 nyble
 nybles
 #nymore
+nymore
 nz
 o
 OA
@@ -769,6 +779,7 @@ OnBar
 OnDoc
 OnEdit
 #onfigired
+onfigired
 onfirmation
 OnImg
 OnLink
@@ -789,12 +800,14 @@ Oq
 ord
 ORed
 org
+#ormate/!
 os
 Os
 OSS
 Ot
 Ou
 #oudary
+oudary
 Ov
 overriden
 overscroll
@@ -815,7 +828,6 @@ passwd
 pcbsd
 pdf
 PDF
-peakbar/!
 peekbar
 perc
 personas
@@ -862,6 +874,7 @@ PS1DIR
 pseudocode
 Pseudocode
 #pto
+pto
 PublishTrademeExtendedFeatures
 punct
 PWD
@@ -907,6 +920,7 @@ repo
 repos
 requirments
 resizals
+Retreive
 Retreive/!
 RGB
 rlogin
@@ -1136,6 +1150,7 @@ usleep
 usr
 utc
 UTC
+utf
 UTF-8
 UTF8
 util
