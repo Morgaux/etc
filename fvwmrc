@@ -453,7 +453,7 @@ Key F8		A	M	CirculateDown
 
 # Icons {{{
 # Note that icons are shown in the module
-#    only if NoIcon commnand is applied.
+#    only if NoIcon command is applied.
 #Style     "*"  NoIcon
 
 *FvwmIconBoxIconBack    #cfcfcf
@@ -556,7 +556,7 @@ Key F8		A	M	CirculateDown
 # }}}
 
 # MyTalk & MyFvwmTalk from Dave Goldberg {{{
-# MyTalk Form - dissappears after use
+# MyTalk Form - disappears after use
 *MyTalkWarpPointer
 *MyTalkFont *helvetica*m*r*n*14*
 *MyTalkButtonFont *helvetica*m*o*n*14*

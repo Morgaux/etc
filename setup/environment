@@ -2,6 +2,27 @@
 
 # ~/etc/environment {{{
 
+# OS Detection {{{
+# These are any Linux Distros to detect, there is no reasonable way to detect
+# all possible Unix flavours so this is generalised to detect specific distros
+# and default to the uname.
+_DISTROS="arch|alpine|debian|manjaro"
+
+# This searches through the /etc/release files for references to the
+# aforementioned distros, counts them, and selects the most common result
+_LINUX="$(grep -EhiIo "$_DISTROS" /etc/*release* 2>/dev/null | \
+          tr '[:upper:]' '[:lower:]' | \
+          sort                       | \
+          uniq -c                    | \
+          sort -r                    | \
+          awk '{ print $2 ; exit }')"
+
+# Since only Linux flavours may be detected in the above manner, if no Linux
+# distro has been detected, fallback to using uname(1) as this actually works on
+# BSDs and presumably on SunOS/Solaris.
+CURRENT_OS="${_LINUX:-"$(uname | tr '[:upper:]' '[:lower:]')"}"
+# OS Detection }}}
+
 # Misc ENV variables {{{
 EDITOR="$(command -v vim || command -v vi || command -v nano 2/>dev/null)"
 JAVA_HOME="$([ -x "$(command -v java)" ] && java -XshowSettings:properties -version 2>&1 | awk '/java\.home/ { print $3 }')"
@@ -15,27 +36,27 @@ DVTM_TERM="xterm"
 # Misc ENV variables }}}
 
 # Set PATH {{{
-for dir in                                                \
-	"/sbin"                                           \
-	"/bin"                                            \
-	"/usr/sbin"                                       \
-	"/usr/bin"                                        \
-	"/usr/local/sbin"                                 \
-	"/usr/local/bin"                                  \
-	"$HOME/bin"                                       \
-	"$HOME/bin/$(uname | tr '[:upper:]' '[:lower:]')" \
-	"$HOME/.cabal/bin"                                \
-	"$HOME/src/ufetch"                                \
-	"$JAVA_HOME"                                      \
-	"$JAVA_HOME/bin"                                  \
-	"$JAVA_HOME/.."                                   \
-	"$JAVA_HOME/../bin"                               \
-	"$JAVA_HOME/jre"                                  \
-	"$JAVA_HOME/jre/.."                               \
-	"$JAVA_HOME/jre/bin"                              \
-	"$JAVA_HOME/jdk"                                  \
-	"$JAVA_HOME/jdk/.."                               \
-	"$JAVA_HOME/jdk/bin"                              \
+for dir in                        \
+	"/sbin"                   \
+	"/bin"                    \
+	"/usr/sbin"               \
+	"/usr/bin"                \
+	"/usr/local/sbin"         \
+	"/usr/local/bin"          \
+	"$HOME/bin"               \
+	"$HOME/bin/${CURRENT_OS}" \
+	"$HOME/.cabal/bin"        \
+	"$HOME/src/ufetch"        \
+	"$JAVA_HOME"              \
+	"$JAVA_HOME/bin"          \
+	"$JAVA_HOME/.."           \
+	"$JAVA_HOME/../bin"       \
+	"$JAVA_HOME/jre"          \
+	"$JAVA_HOME/jre/.."       \
+	"$JAVA_HOME/jre/bin"      \
+	"$JAVA_HOME/jdk"          \
+	"$JAVA_HOME/jdk/.."       \
+	"$JAVA_HOME/jdk/bin"      \
 	"$DOTNET_ROOT"
 do
 	# follow link dirs and expand ".." in paths
@@ -49,6 +70,7 @@ PATH="$(printf "%s" "$PATH" | awk -v RS=':' '!a[$1]++ { if (NR > 1) printf RS; p
 # Set PATH }}}
 
 # Exports {{{
+export CURRENT_OS
 export PATH
 export EDITOR
 export JAVA_HOME
