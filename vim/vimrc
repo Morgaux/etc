@@ -6,22 +6,25 @@
 
 " Package Management {{{
 
-" start pathogen
+" start pathogen {{{
 execute pathogen#infect()
 filetype plugin indent on
+" }}}
 
-" options for https://github.com/lifepillar/vim-mucomplete
+" options for https://github.com/lifepillar/vim-mucomplete {{{
 set completeopt+=menuone
 set completeopt+=noselect
 set completeopt+=noinsert
+" }}}
 
-" options for https://github.com/airblade/vim-gitgutter
+" options for https://github.com/airblade/vim-gitgutter {{{
 set updatetime=100
 hi link GitGutterAdd    Todo
 hi link GitGutterChange Normal
 hi link GitGutterDelete Error
+" }}}
 
-" options for https://github.com/neovimhaskell/haskell-vim
+" options for https://github.com/neovimhaskell/haskell-vim {{{
 let g:haskell_enable_quantification   = 1 " enable highlighting 'forall'
 let g:haskell_enable_recursivedo      = 1 " enable highlighting 'mod' & reg'
 let g:haskell_enable_arrowsyntax      = 1 " enable highlighting 'proc'
@@ -38,6 +41,11 @@ let g:haskell_indent_after_bare_where = 6 " indent naked 'where'
 let g:haskell_indent_do               = 3 " indent 'do' to expression
 let g:haskell_indent_in               = 0 " match 'in' indent to 'let'
 let g:haskell_indent_guard            = 2 " indent '|' guard
+" }}}
+
+" options for https://github.com/cormacrelf/vim-colors-github {{{
+let g:github_colors_block_diffmark = 0
+" }}}
 
 " Package Management }}}
 
