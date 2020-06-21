@@ -21,7 +21,20 @@ fi
 BUNDLE_DIR="$HOME/etc/vim/bundle"
 AUTOLOAD_DIR="$HOME/etc/vim/autoload"
 PATHOGEN_URL="https://tpo.pe/pathogen.vim"
+INSTALL_ONLY="FALSE"
+SELF="$(basename "$0")"
 # Config }}}
+
+# Helper functions {{{
+err() {
+	echo "$@" 1>&2
+}
+
+die() {
+	err "${SELF}: ERROR: $@"
+	exit 1
+}
+# Helper functions }}}
 
 # Start up validation {{{
 if [ ! -d "$BUNDLE_DIR" ]
@@ -36,30 +49,31 @@ fi
 
 if [ ! -x "$(command -v git)" ]
 then
-	echo "git is not installed" 1>&2
-	exit 1
+	die "git is not installed"
 fi
 
 if [ ! -x "$(command -v curl)" ]
 then
-	echo "curl is not installed" 1>&2
-	exit 1
+	die "curl is not installed"
 fi
 
 if ! curl -LSso "${AUTOLOAD_DIR}/pathogen.vim" "$PATHOGEN_URL"
 then
-	echo "Could not install ${PATHOGEN_URL}" 1>&2
+	err "${SELF}: WARNING: Could not install ${PATHOGEN_URL}"
 fi
 # Start up validation }}}
 
-# Function to clone a repo to a directory, or pull if the directory exists {{{
-clone_or_pull() { # $1:url $2:destdir
+# Function to validate a repo URL {{{
+validate() { # $1:url
 	if ! git ls-remote "$1" 1>/dev/null 2>&1
 	then
-		echo "$1 is an invalid repo url" 1>&2
-		exit 1
+		die "$1 is an invalid repo url"
 	fi
+}
+# Function to validate a repo URL }}}
 
+# Function to clone a repo to a directory, or pull if the directory exists {{{
+clone_or_pull() { # $1:url $2:destdir
 	if [ ! -d "$2" ]
 	then
 		mkdir -p "$2"
@@ -70,28 +84,66 @@ clone_or_pull() { # $1:url $2:destdir
 
 	if [ -d "$(basename "$1")" ]
 	then
-		cd "$(basename "$1")"
-
-		echo "Updating ${1}..."
-
-		if ! git pull 1>/dev/null 2>&1
+		if [ "$INSTALL_ONLY" = "TRUE" ]
 		then
-			echo "git pull $1 failed" 1>&2
-			exit 1
+			err "Skipping ${1}..."
+		else
+			cd "$(basename "$1")"
+
+			err "Updating ${1}..."
+
+			validate "$1"
+
+			if ! git pull 1>/dev/null 2>&1
+			then
+				die "git pull $1 failed"
+			fi
 		fi
 	else
-		echo "Installing ${1}..."
+		err "Installing ${1}..."
+
+		validate "$1"
 
 		if ! git clone "$1" 1>/dev/null 2>&1
 		then
-			echo "git clone $1 failed" 1>&2
-			exit 1
+			die "git clone $1 failed"
 		fi
 	fi
 
 	cd "$_PREV_DIR"
 }
 # Function to clone a repo to a directory, or pull if the directory exists }}}
+
+# Arg parsing {{{
+while [ "$#" -gt 0 ]
+do
+	case "$1" in
+		"-i")
+			INSTALL_ONLY="TRUE";
+		;;
+		"--install-only")
+			if [ "$#" -gt 1 ]
+			then
+				if [ "$2" = "TRUE" ] || [ "$2" = "FALSE" ]
+				then
+					INSTALL_ONLY="$2"
+				else
+					die "option $1 can be 'TRUE' or 'FALSE'"
+				fi
+
+				shift
+			else
+				die "option $1 requires a boolean argument"
+			fi
+		;;
+		*)
+			break
+		;;
+	esac
+
+	shift
+done
+# Arg parsing }}}
 
 # Main loop, run through all plugin repositories listed {{{
 for PLUG_FILE in "${BUNDLE_DIR}/.plugins.github" "${BUNDLE_DIR}/.plugins.gitlab"
