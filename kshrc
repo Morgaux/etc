@@ -94,7 +94,7 @@ for SCRIPT in "setup/profile"          \
 do
 	if [ -f "$HOME/etc/$SCRIPT" ]
 	then
-		( "$HOME/etc/$SCRIPT" >/dev/null & )
+		( "$HOME/etc/$SCRIPT" >/dev/null 2>&1 & )
 	fi
 done
 
