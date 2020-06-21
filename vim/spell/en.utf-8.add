@@ -50,6 +50,7 @@ aluable
 AMD
 amixer
 antialias
+api
 API
 apk
 apm
@@ -84,6 +85,8 @@ backend
 backends
 Backticks
 base16
+base64
+Base64
 basename
 basm
 BASM
@@ -227,6 +230,7 @@ def
 DefaultXX
 deps
 DE's
+deserialization
 dest
 destdir
 dev
@@ -406,8 +410,12 @@ ffffff
 FFFFFF
 fg
 fi
+filename
+filename/!
+FileName
 FILENAME
 filesystem
+FileType
 firefox
 Firefox
 fizzbuzz
@@ -502,6 +510,7 @@ hijklmnopqrstuvwxyzabcdefg
 histfile
 hls
 hostname
+Hotfix
 hotkeys
 hpmor
 HPMOR
@@ -530,6 +539,7 @@ IIIIIIII
 IIIIIIIII
 IIIIIIIIII
 IIX
+#ilename
 Imagemagick
 img
 Inbox
@@ -745,6 +755,7 @@ OC
 OEMs
 of
 offline
+OG
 Oj
 ok
 Ok
@@ -810,6 +821,7 @@ pfetch
 pfetch's
 pg1004
 pg103
+PhotoId
 pid
 PIDFILE
 pixelsize
@@ -1058,6 +1070,7 @@ Thunar
 timeout
 timeouts
 timestamp
+TLS
 tmp
 TMPDIR
 Tmux
@@ -1155,6 +1168,7 @@ Wallpaper1
 wav
 wc
 webapp
+webcode
 WebDriver
 WebElement
 WebKit
@@ -1175,6 +1189,7 @@ WM
 wms
 WMs
 workflow
+WP27
 writable
 WTFPL
 www
