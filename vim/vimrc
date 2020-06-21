@@ -104,22 +104,95 @@ abbreviate eah       each
 " Typing Settings }}}
 
 " Language Specific Options {{{
-
 " Override language specific settings
-autocmd Filetype python       setlocal           softtabstop=4 shiftwidth=4   expandtab nowrap
-autocmd Filetype scala        setlocal           softtabstop=4 shiftwidth=4   expandtab nowrap
-autocmd Filetype java         setlocal           softtabstop=4 shiftwidth=4   expandtab nowrap
-autocmd Filetype cs           setlocal           softtabstop=4 shiftwidth=4   expandtab nowrap
-autocmd Filetype cshtml       setlocal           softtabstop=4 shiftwidth=4   expandtab nowrap
-autocmd Filetype cshtml.html  setlocal           softtabstop=4 shiftwidth=4   expandtab nowrap
-autocmd Filetype haskell      setlocal           softtabstop=4 shiftwidth=4   expandtab nowrap
-autocmd Filetype sh           setlocal tabstop=8 softtabstop=0 shiftwidth=8 noexpandtab nowrap
-autocmd Filetype vim          setlocal tabstop=8 softtabstop=0 shiftwidth=8 noexpandtab nowrap
-autocmd Filetype c            setlocal tabstop=8 softtabstop=0 shiftwidth=8 noexpandtab nowrap foldmethod=syntax foldnestmax=1
-autocmd Filetype cpp          setlocal tabstop=8 softtabstop=0 shiftwidth=8 noexpandtab nowrap foldmethod=syntax foldnestmax=1
-autocmd Filetype make         setlocal tabstop=8 softtabstop=0 shiftwidth=8 noexpandtab nowrap
-autocmd Filetype tex          setlocal tabstop=8 softtabstop=0 shiftwidth=8 noexpandtab nowrap
 
+augroup python_filetype " {{{
+	autocmd!
+	autocmd Filetype python setlocal softtabstop=4
+	autocmd Filetype python setlocal shiftwidth=4
+	autocmd Filetype python setlocal expandtab
+	autocmd Filetype python setlocal nowrap
+augroup END " }}}
+
+augroup java_scala_filetype " {{{
+	autocmd!
+
+	autocmd Filetype scala\|java setlocal softtabstop=4
+	autocmd Filetype scala\|java setlocal shiftwidth=4
+	autocmd Filetype scala\|java setlocal expandtab
+	autocmd Filetype scala\|java setlocal nowrap
+augroup END " }}}
+
+augroup csharp_razor_filetype " {{{
+	autocmd!
+
+	autocmd Filetype cs\|cshtml\|cshtml.html setlocal softtabstop=4
+	autocmd Filetype cs\|cshtml\|cshtml.html setlocal shiftwidth=4
+	autocmd Filetype cs\|cshtml\|cshtml.html setlocal expandtab
+	autocmd Filetype cs\|cshtml\|cshtml.html setlocal nowrap
+
+	autocmd Filetype cs\|cshtml\|cshtml.html colo vstudioDark
+augroup END " }}}
+
+augroup haskell_filetype " {{{
+	autocmd!
+
+	autocmd Filetype haskell setlocal softtabstop=4
+	autocmd Filetype haskell setlocal shiftwidth=4
+	autocmd Filetype haskell setlocal expandtab
+	autocmd Filetype haskell setlocal nowrap
+augroup END " }}}
+
+augroup shell_filetype " {{{
+	autocmd!
+
+	autocmd Filetype sh setlocal tabstop=8
+	autocmd Filetype sh setlocal softtabstop=0
+	autocmd Filetype sh setlocal shiftwidth=8
+	autocmd Filetype sh setlocal noexpandtab
+	autocmd Filetype sh setlocal nowrap
+augroup END " }}}
+
+augroup vimscript_filetype " {{{
+	autocmd!
+
+	autocmd Filetype vim setlocal tabstop=8
+	autocmd Filetype vim setlocal softtabstop=0
+	autocmd Filetype vim setlocal shiftwidth=8
+	autocmd Filetype vim setlocal noexpandtab
+	autocmd Filetype vim setlocal nowrap
+augroup END " }}}
+
+augroup c_cpp_filetype " {{{
+	autocmd!
+
+	autocmd Filetype c\|cpp setlocal tabstop=8
+	autocmd Filetype c\|cpp setlocal softtabstop=0
+	autocmd Filetype c\|cpp setlocal shiftwidth=8
+	autocmd Filetype c\|cpp setlocal noexpandtab
+	autocmd Filetype c\|cpp setlocal nowrap
+	autocmd Filetype c\|cpp setlocal foldmethod=syntax
+	autocmd Filetype c\|cpp setlocal foldnestmax=1
+augroup END " }}}
+
+augroup makefile_filetype " {{{
+	autocmd!
+
+	autocmd Filetype make setlocal tabstop=8
+	autocmd Filetype make setlocal softtabstop=0
+	autocmd Filetype make setlocal shiftwidth=8
+	autocmd Filetype make setlocal noexpandtab nowrap
+augroup END " }}}
+
+augroup latex_filetype " {{{
+	autocmd!
+
+	autocmd Filetype tex setlocal tabstop=8
+	autocmd Filetype tex setlocal softtabstop=0
+	autocmd Filetype tex setlocal shiftwidth=8
+	autocmd Filetype tex setlocal noexpandtab
+	autocmd Filetype tex setlocal nowrap
+augroup END " }}}
 " Language Specific Options }}}
 
 " Visual and Syntax Options {{{
