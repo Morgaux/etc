@@ -45,6 +45,8 @@ for dir in                        \
 	"/usr/local/bin"          \
 	"$HOME/bin"               \
 	"$HOME/bin/${CURRENT_OS}" \
+	"$HOME/.local/bin"        \
+	"$HOME/.local/share/bin"  \
 	"$HOME/.cabal/bin"        \
 	"$HOME/src/ufetch"        \
 	"$JAVA_HOME"              \
