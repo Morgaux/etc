@@ -94,32 +94,20 @@ clone_or_pull() { # $1:url $2:destdir
 # Function to clone a repo to a directory, or pull if the directory exists }}}
 
 # Main loop, run through all plugin repositories listed {{{
-for file in "${BUNDLE_DIR}/.plugins.github" "${BUNDLE_DIR}/.plugins.gitlab"
+for PLUG_FILE in "${BUNDLE_DIR}/.plugins.github" "${BUNDLE_DIR}/.plugins.gitlab"
 do
-	if [ ! -f "$file" ]
+	DOMAIN="$(echo "$PLUG_FILE" | sed 's/.*\.plugins\.\(.*\)$/\1/g')"
+
+	if [ ! -f "$PLUG_FILE" ]
 	then
-		echo "$file doesn't exist, skipping..." 1>&2
+		echo "$PLUG_FILE doesn't exist, skipping..." 1>&2
 		continue
 	fi
 
-	case "$(echo "$file" | sed 's/.*\.//g')" in
-		"github")
-			for line in $(tr '\n' ' ' < "$file")
-			do
-				clone_or_pull "https://github.com/${line}" "$BUNDLE_DIR"
-			done
-			;;
-		"gitlab")
-			for line in $(tr '\n' ' ' < "$file")
-			do
-				clone_or_pull "https://gitlab.com/${line}" "$BUNDLE_DIR"
-			done
-			;;
-		*)
-			echo "unreachable"
-			exit 1
-			;;
-	esac
+	for REPO in $(tr '\n' ' ' < "$PLUG_FILE")
+	do
+		clone_or_pull "https://${DOMAIN}.com/${REPO}" "$BUNDLE_DIR"
+	done
 done
 # Main loop, run through all plugin repositories listed }}}
 
