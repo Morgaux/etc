@@ -190,6 +190,7 @@ config
 const
 contrarian
 controlC0
+coords
 course_code
 cpu
 Cpu
@@ -594,6 +595,7 @@ IWebElement
 j
 java
 javac
+JavaScript
 JB
 jcs
 jdk
@@ -1192,6 +1194,7 @@ wm
 WM
 wms
 WMs
+Wolfenstein
 workflow
 WP27
 writable
