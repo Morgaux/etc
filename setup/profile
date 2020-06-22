@@ -38,28 +38,40 @@ BAK_PROFILE="${HOME}/.profile.bak"
 # Add warning message }}}
 
 # Add environment setup scripts to temporary file {{{
-for FILE in aliases                \
-            installers/vim-plugins \
-            setup/startup          \
-            setup/environment      \
-            setup/directory        \
-            setup/welcome          # welcome must be last file added
+for FILE in aliases           \
+            setup/startup     \
+            setup/environment \
+            setup/directory   \
+            setup/welcome     # welcome must be last file added
 do
 	# strip shebang lines
 	sed -n '/#!\/bin/!p' "${HOME}/etc/${FILE}" >> "$TMP_PROFILE"
 done
 # Add environment setup scripts to temporary file }}}
 
+# Auto install vim plugins {{{
+{
+	echo ''
+	echo '# Automatic installer for vim plugins ___' | sed 's/_/{/g'
+	echo 'VIM_PLUGIN_INSTALLER="${HOME}/etc/installers/vim-plugins"'
+	echo 'if [ -x "$VIM_PLUGIN_INSTALLER" ]'
+	echo 'then'
+	echo '	( "$VIM_PLUGIN_INSTALLER" </dev/null >/dev/null 2>&1 & )'
+	echo 'fi'
+	echo '# Automatic installer for vim plugins ___' | sed 's/_/}/g'
+	echo ''
+} >> "$TMP_PROFILE"
+# Auto install vim plugins }}}
+
 # Auto startx, MUST be last section added to temporary file {{{
 {
 	echo ''
 	echo '# Automatic startx ___' | sed 's/_/{/g'
-	echo 'if'
-	echo '	[ -z "$DISPLAY"             ] &&'
-	echo '	[ -n "$XDG_VTNR"            ] &&'
-	echo '	[ "$XDG_VTNR" -eq 1         ] &&'
-	echo '	[ "$TERM" = "linux"         ] &&'
-	echo '	[ -x "$(command -v startx)" ]'
+	echo 'if [ -z "$DISPLAY"             ] &&'
+	echo '   [ -n "$XDG_VTNR"            ] &&'
+	echo '   [ "$XDG_VTNR" -eq 1         ] &&'
+	echo '   [ "$TERM" = "linux"         ] &&'
+	echo '   [ -x "$(command -v startx)" ]'
 	echo 'then'
 	echo '	START="$(date +%s)"'
 	echo '	END="$START"'
