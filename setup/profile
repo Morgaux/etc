@@ -1,13 +1,18 @@
 #!/bin/sh
 # shellcheck disable=SC2016
 
-# ~/etc/profile {{{
+# ~/etc/setup/profile {{{
 
 ##
 # ~/.profile generator
 ##
 
 set -e # stop on uncaught error
+
+# Config {{{
+TMP_PROFILE="${HOME}/.profile.tmp"
+BAK_PROFILE="${HOME}/.profile.bak"
+# Config }}}
 
 # Add warning message {{{
 {
@@ -29,18 +34,19 @@ set -e # stop on uncaught error
 	echo 'export CURRENT_SHELL'
 	echo '# Shell Environment Detection ___' | sed 's/_/}/g'
 	echo ''
-} > ~/.profile.tmp # Create new temporary file
+} > "$TMP_PROFILE" # Create new temporary file
 # Add warning message }}}
 
 # Add environment setup scripts to temporary file {{{
-for file in aliases           \
-            setup/startup     \
-            setup/environment \
-            setup/directory   \
-            setup/welcome     # welcome must be last file added
+for FILE in aliases                \
+            installers/vim-plugins \
+            setup/startup          \
+            setup/environment      \
+            setup/directory        \
+            setup/welcome          # welcome must be last file added
 do
 	# strip shebang lines
-	sed -n '/#!\/bin/!p' ~/etc/$file >> ~/.profile.tmp || exit 1
+	sed -n '/#!\/bin/!p' "${HOME}/etc/${FILE}" >> "$TMP_PROFILE"
 done
 # Add environment setup scripts to temporary file }}}
 
@@ -83,21 +89,21 @@ done
 	echo 'fi'
 	echo '# Automatic startx ___' | sed 's/_/}/g'
 	echo ''
-} >> ~/.profile.tmp
+} >> "$TMP_PROFILE"
 # Auto startx, MUST be last section added to temporary file }}}
 
 # Replace old file {{{
-[ -f ~/.profile ] && cat ~/.profile > ~/.profile.bak # make a back up
+[ -f ~/.profile ] && cat ~/.profile > "$BAK_PROFILE" # make a back up
 
 rm -f ~/.profile # remove old file
-mv ~/.profile.tmp ~/.profile # replace profile from temporary file
+mv "$TMP_PROFILE" ~/.profile # replace profile from temporary file
 
-[ -f ~/.profile ] || cat ~/.profile.bak > ~/.profile # restore backup on failure
+[ -f ~/.profile ] || cat "$BAK_PROFILE" > ~/.profile # restore backup on failure
 
 chmod 755 ~/.profile # make new profile executable
 # Replace old file }}}
 
 exit 0 # exit success
 
-# ~/etc/profile }}}
+# ~/etc/setup/profile }}}
 

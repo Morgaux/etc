@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# ~/etc/directory {{{
+# ~/etc/setup/directory {{{
 
 # Helper function to manage symlinks {{{
 link_from_to() { # $1:fromFile $2:toFile
@@ -215,5 +215,5 @@ then
 fi
 # Setup custom XDG directories }}}
 
-# ~/etc/directory }}}
+# ~/etc/setup/directory }}}
 

@@ -89,7 +89,6 @@ HISTSIZE=1024
 for SCRIPT in "setup/profile"          \
               "setup/startup"          \
               "setup/git-config"       \
-              "installers/vim-plugins" \
               "setup/directory"
 do
 	if [ -f "$HOME/etc/$SCRIPT" ]

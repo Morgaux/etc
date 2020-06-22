@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# ~/etc/welcome {{{
+# ~/etc/setup/welcome {{{
 
 # Check last login time {{{
 _LAST_LOGIN_FILE="${HOME}/.logintimestamp"
@@ -33,5 +33,5 @@ fi
 date +%s > "${_LAST_LOGIN_FILE}" # UNIX timestamp format
 # Update last login time }}}
 
-# ~/etc/welcome }}}
+# ~/etc/setup/welcome }}}
 

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# ~/etc/environment {{{
+# ~/etc/setup/environment {{{
 
 # OS Detection {{{
 # These are any Linux Distros to detect, there is no reasonable way to detect
@@ -85,5 +85,5 @@ export DOTNET_CLI_TELEMETRY_OPTOUT
 export DVTM_TERM
 # Exports }}}
 
-# ~/etc/environment }}}
+# ~/etc/setup/environment }}}
 
