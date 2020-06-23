@@ -43,6 +43,7 @@ AIX
 AKL
 al
 ala
+#alcations
 alnum
 ALSA
 alt
@@ -136,6 +137,7 @@ C
 C0C0C0
 c5cff
 c99
+calcations/!
 CARQ
 CC0
 cc241d
@@ -157,6 +159,7 @@ cgi
 checkbox
 chmod
 chr
+chroot
 ciphertext
 ciphertxtmsg
 classfile
@@ -212,6 +215,7 @@ currentTime
 cursorlinenr
 CWD
 cyan3
+cz
 d
 d2021
 d3869b
@@ -494,6 +498,7 @@ guid
 Guids
 GUIFG
 gutenberg
+gz
 h
 H
 h1
@@ -510,6 +515,7 @@ hex
 hh
 HH
 HiddenFor
+highschool
 hijklmnopqrstuvwxyzabcdefg
 histfile
 hls
@@ -737,6 +743,7 @@ noir
 NONINFRINGEMENT
 NONREPARENTING
 nonzero
+NOOP
 NOP
 noreply
 NR
@@ -856,6 +863,7 @@ printf
 priv
 PRIVILEGE_COMAND
 proc
+Programmatically
 ProjectSelenium
 ps
 PS1
@@ -878,6 +886,8 @@ qsort
 r
 randbyte
 rasterized
+raycasting
+raycastlib
 README
 readprop
 realllllly
@@ -1014,6 +1024,7 @@ struct
 stty
 stuvwxyzabcdefghijklmnopqr
 styledir
+subdir
 sublayer
 sublicense
 sublicensed
@@ -1045,6 +1056,7 @@ tagline
 tagmask
 tagset
 targetDirectory
+tasyfish
 TC0
 TC1
 TC2
@@ -1116,6 +1128,7 @@ uname
 uncycle
 unhide
 unicode
+uninstallation
 uniq
 unix
 UnmapNotify's
@@ -1194,7 +1207,9 @@ wm
 WM
 wms
 WMs
+wolfenstein
 Wolfenstein
+wolfenstein3D
 workflow
 WP27
 writable
