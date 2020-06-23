@@ -47,6 +47,17 @@ let g:haskell_indent_guard            = 2 " indent '|' guard
 let g:github_colors_block_diffmark = 0
 " }}}
 
+" options for https://github.com/plasticboy/vim-markdown {{{
+set conceallevel=2
+let g:vim_markdown_fenced_languages          = [ 'c=c', 'csharp=cs', 'vim=vim', 'sh=sh', 'make=make', 'latex=tex', 'haskell=haskell', 'javascript=javascript', 'js=javascript', 'python=python', 'py=python' ]
+let g:vim_markdown_folding_disabled          = 1
+let g:vim_markdown_follow_anchor             = 1
+let g:vim_markdown_strikethrough             = 1
+let g:vim_markdown_new_list_item_indent      = 2
+let g:vim_markdown_no_extensions_in_markdown = 1
+let g:vim_markdown_autowrite                 = 1
+" }}}
+
 " Package Management }}}
 
 " Generic Options {{{
@@ -182,6 +193,7 @@ augroup makefile_filetype " {{{
 	autocmd Filetype make setlocal softtabstop=0
 	autocmd Filetype make setlocal shiftwidth=8
 	autocmd Filetype make setlocal noexpandtab nowrap
+	autocmd Filetype make setlocal foldmethod=indent
 augroup END " }}}
 
 augroup latex_filetype " {{{
