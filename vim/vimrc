@@ -18,7 +18,6 @@ set completeopt+=noinsert
 " }}}
 
 " options for https://github.com/airblade/vim-gitgutter {{{
-set updatetime=50
 hi link GitGutterAdd    Todo
 hi link GitGutterChange Normal
 hi link GitGutterDelete Error
@@ -48,14 +47,25 @@ let g:github_colors_block_diffmark = 0
 " }}}
 
 " options for https://github.com/plasticboy/vim-markdown {{{
-set conceallevel=2
-let g:vim_markdown_fenced_languages          = [ 'c=c', 'csharp=cs', 'vim=vim', 'sh=sh', 'make=make', 'latex=tex', 'haskell=haskell', 'javascript=javascript', 'js=javascript', 'python=python', 'py=python' ]
 let g:vim_markdown_folding_disabled          = 1
 let g:vim_markdown_follow_anchor             = 1
 let g:vim_markdown_strikethrough             = 1
 let g:vim_markdown_new_list_item_indent      = 2
 let g:vim_markdown_no_extensions_in_markdown = 1
 let g:vim_markdown_autowrite                 = 1
+let g:vim_markdown_fenced_languages          = [
+                                             \    'c=c',
+                                             \    'csharp=cs',
+                                             \    'vim=vim',
+                                             \    'sh=sh',
+                                             \    'make=make',
+                                             \    'latex=tex',
+                                             \    'haskell=haskell',
+                                             \    'javascript=javascript',
+                                             \    'js=javascript',
+                                             \    'python=python',
+                                             \    'py=python'
+                                             \ ]
 " }}}
 
 " Package Management }}}
@@ -84,6 +94,8 @@ set textwidth=80
 set colorcolumn=+1
 set foldmethod=marker
 set whichwrap=b,s,<,>,[,]
+set conceallevel=2
+set updatetime=50
 
 " wrap lines that are longer than the terminal window
 set wrap linebreak nolist
