@@ -1,3 +1,4 @@
+justinmk/vim-syntax-extra
 plasticboy/vim-markdown
 Michal-Miko/vim-mono-red
 cormacrelf/vim-colors-github
@@ -44,5 +45,4 @@ altercation/vim-colors-solarized
 dylanaraps/wal
 rakr/vim-two-firewatch
 widatama/vim-phoenix
-
 arzg/vim-colors-xcode
