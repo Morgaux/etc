@@ -3,6 +3,7 @@
 
 
 
+ƒ
 ﲁ
 ﱝ
 直
@@ -162,6 +163,7 @@ chr
 chroot
 ciphertext
 ciphertxtmsg
+Ciz
 classfile
 CLEANMASK
 cleartxtmsg
@@ -194,6 +196,7 @@ const
 contrarian
 controlC0
 coords
+cormacrelf
 course_code
 cpu
 Cpu
@@ -225,6 +228,8 @@ DA
 daemonizable
 daemonized
 darkred
+dataview
+DataView
 datetime
 DBL
 dbus
@@ -317,6 +322,7 @@ enum
 enums
 env
 EOF
+EOI
 eopkg
 EP
 epub
@@ -336,6 +342,7 @@ EWMH
 exe
 execed
 execvp
+exif
 EXIF
 exit
 expandtab
@@ -457,6 +464,7 @@ getline
 getpalace
 GETPOWER
 gid
+gif
 gitgutter
 github
 GitHub
@@ -563,6 +571,7 @@ infobars
 ing
 init
 Init
+inline
 INPUTFILE
 int
 Int32
@@ -601,6 +610,7 @@ IWebElement
 j
 java
 javac
+javascript
 JavaScript
 JB
 jcs
@@ -608,6 +618,7 @@ jdk
 Jin
 Jira
 Jira's
+jpeg
 JPEG
 jpg
 jQuery
@@ -665,10 +676,13 @@ Main
 man1
 manjaro
 manpage
+manpages
 massey
 matchparen
 math
 max
+maxHeigth
+maxWidth
 mdi
 MediaSource
 mem
@@ -677,6 +691,7 @@ memory
 Metadata
 meyer
 mfact
+Miloslav
 mimetypes
 min
 mincraft
@@ -723,6 +738,7 @@ mwm
 n
 NAK
 NAKing
+namespace
 nb
 NBBY
 nbytes
@@ -738,6 +754,7 @@ netspeeds
 NetWMCheck
 nf
 nl
+#nload
 nn
 noir
 NONINFRINGEMENT
@@ -781,6 +798,7 @@ onfigired
 onfirmation
 OnImg
 OnLink
+onload/!
 OnMedia
 OnSel
 onversation
@@ -818,6 +836,9 @@ pactl
 pagesfree
 pagesize
 pagestotal
+pangloss
+param
+params
 paren
 parsing
 pass8
@@ -843,6 +864,7 @@ PKGS
 pkgtool
 placeholder
 plaintext
+plasticboy
 plist
 plugin
 plugins
@@ -896,6 +918,7 @@ recives
 red3
 redshift
 redstar
+reevaluation
 refactor
 Refactor
 refactored
@@ -937,6 +960,7 @@ SAWA
 sawfish
 sb
 sbin
+SC2001
 SC2005
 SC2009
 SC2015
@@ -1021,6 +1045,7 @@ stdout
 stimable
 str
 stringify
+STRIP'd
 struct
 stty
 stuvwxyzabcdefghijklmnopqr
@@ -1042,6 +1067,7 @@ svg
 Symlink
 symlinks
 syn
+syntastic
 sys
 sysinfo
 SystemVersion
@@ -1095,6 +1121,7 @@ TMPDIR
 Tmux
 to
 TODO
+TODOs
 toFile
 togglebar
 ToList
@@ -1273,24 +1300,3 @@ Z
 Z0
 zA
 ze
-plasticboy
-cormacrelf
-javascript
-pangloss
-ƒ
-param
-params
-gif
-jpeg
-dataview
-DataView
-exif
-EOI
-reevaluation
-maxWidth
-maxHeigth
-#nload
-onload/!
-namespace
-syntastic
-SC2001
