@@ -40,6 +40,9 @@ set whichwrap=b,s,<,>,[,]
 set conceallevel=2
 set updatetime=50
 
+" use custom settings for files with special settings
+set modeline modelines=5
+
 " wrap lines that are longer than the terminal window
 set wrap linebreak nolist
 
