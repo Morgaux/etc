@@ -130,6 +130,23 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list            = 1
 let g:syntastic_check_on_open            = 1
 let g:syntastic_check_on_wq              = 1
+let g:syntastic_aggregate_errors         = 1
+let g:syntastic_python_checkers          = [
+                                         \    'python',
+                                         \    'pylint'
+                                         \ ]
+let g:syntastic_text_checkers            = [
+                                         \    'lacheck',
+                                         \    'proselint',
+                                         \    'text/language_check'
+                                         \ ]
+let g:syntastic_make_checkers            = [
+                                         \    'gmake'
+                                         \ ]
+let g:syntastic_gitcommit_checkers       = [
+                                         \    'proselint',
+                                         \    'text/language_check'
+                                         \ ]
 "  }}}
 
 " Package Specific Options }}}
