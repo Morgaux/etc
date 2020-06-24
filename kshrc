@@ -14,7 +14,7 @@ try_source() { # include external scripts
 
 cd() { # change directories but allow short hand directory names
 	if [ "$#" -eq 0 ] ; then
-		builtin cd "${HOME}"
+		builtin cd "${HOME}" || return 1
 	else
 		builtin cd    "$*"/  2> /dev/null ||
 		builtin cd    "$*"*/ 2> /dev/null ||
@@ -80,7 +80,8 @@ PS1="\$(_PS1DIR) \$ "
 
 #
 # History
-HISTFILE="$HOME/var/history.$(echo "${CURRENT_SHELL}" | sed 's/[^a-zA-Z0-9]//g')"
+# shellcheck disable=SC2001
+HISTFILE="$HOME/var/history.$(echo "$CURRENT_SHELL" | sed 's/[^a-zA-Z0-9-]//g')"
 HISTSIZE=1024
 
 #
