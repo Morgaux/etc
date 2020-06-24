@@ -1292,3 +1292,5 @@ maxHeigth
 #nload
 onload/!
 namespace
+syntastic
+SC2001

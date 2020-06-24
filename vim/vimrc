@@ -113,12 +113,21 @@ let g:vim_markdown_fenced_languages          = [
 " }}}
 
 " options for https://github.com/pangloss/vim-javascript {{{
-
 let g:javascript_plugin_jsdoc           = 1
 let g:javascript_conceal_function       = "ƒ"
 let g:javascript_conceal_arrow_function = "→"
+" }}}
 
-" options for https://github.com/pangloss/vim-javascript }}}
+" options for https://github.com/vim-syntastic/syntastic {{{
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list            = 1
+let g:syntastic_check_on_open            = 1
+let g:syntastic_check_on_wq              = 1
+"  }}}
 
 " Package Specific Options }}}
 
