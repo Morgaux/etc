@@ -106,7 +106,7 @@ clone_or_pull() { # $1:url $2:destdir
 
 		if ! git clone "$1" 1>/dev/null 2>&1
 		then
-			die "git clone $1 failed"
+			die "git clone -depth=1 $1 failed"
 		fi
 	fi
 
