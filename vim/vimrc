@@ -112,6 +112,14 @@ let g:vim_markdown_fenced_languages          = [
                                              \ ]
 " }}}
 
+" options for https://github.com/pangloss/vim-javascript {{{
+
+let g:javascript_plugin_jsdoc           = 1
+let g:javascript_conceal_function       = "ƒ"
+let g:javascript_conceal_arrow_function = "→"
+
+" options for https://github.com/pangloss/vim-javascript }}}
+
 " Package Specific Options }}}
 
 " Typing Settings {{{
@@ -148,6 +156,16 @@ augroup java_scala_filetype " {{{
 	autocmd Filetype scala\|java setlocal shiftwidth=4
 	autocmd Filetype scala\|java setlocal expandtab
 	autocmd Filetype scala\|java setlocal nowrap
+augroup END " }}}
+
+augroup javascript_filetype " {{{
+	autocmd!
+
+	autocmd Filetype javascript setlocal softtabstop=4
+	autocmd Filetype javascript setlocal shiftwidth=4
+	autocmd Filetype javascript setlocal expandtab
+	autocmd Filetype javascript setlocal nowrap
+	autocmd Filetype javascript setlocal foldmethod=syntax
 augroup END " }}}
 
 augroup csharp_razor_filetype " {{{
