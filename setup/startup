@@ -33,8 +33,9 @@ automatically_update_vim_spelling_file() { # {{{
 
 	for spell_file in "${ETC_DIR}/${SPELL_DIR}"/*.add
 	do
-		sort -i "$spell_file" | uniq > "${TMP_DIR}/$(basename "$spell_file")".tmp
-		cat "${TMP_DIR}/$(basename "$spell_file")".tmp > "$spell_file"
+		_ADD_FILENAME="$(basename "$spell_file")"
+		sort -i "$spell_file" | uniq > "${TMP_DIR}/${_ADD_FILENAME}".tmp
+		cat "${TMP_DIR}/${_ADD_FILENAME}".tmp > "$spell_file"
 	done
 
 	cd "$ETC_DIR" && git commit -m "$COMMIT_MESSAGE" "$SPELL_DIR"
