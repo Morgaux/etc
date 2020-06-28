@@ -23,7 +23,7 @@ fi
 # Manage UNIX style configurations }}}
 
 # Run ASCII welcome if first login in past hour {{{
-if [ "$(("$(date +%s)" - "$((60 * 60))"))" -gt "$(head -n 1 "${_LAST_LOGIN_FILE}")" ]
+if [ "$(($(date +%s) - 3600))" -gt "$(head -n 1 "${_LAST_LOGIN_FILE}")" ]
 then
 	[ -x "$(command -v pf)" ] && pf # run pfetch
 fi
