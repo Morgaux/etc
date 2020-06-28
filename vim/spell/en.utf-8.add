@@ -517,6 +517,7 @@ hardcoded
 hardcoding
 hasClass
 haskell
+headerfiles
 hellscape
 help2man
 hex
@@ -1129,6 +1130,7 @@ togglebar
 ToList
 touchscreen
 TP
+tput
 tr
 TradeMe
 TradeMeFeatureEditor
