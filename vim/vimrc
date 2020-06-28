@@ -256,7 +256,6 @@ augroup makefile_filetype " {{{
 	autocmd Filetype make setlocal softtabstop=0
 	autocmd Filetype make setlocal shiftwidth=8
 	autocmd Filetype make setlocal noexpandtab nowrap
-	autocmd Filetype make setlocal foldmethod=indent
 augroup END " }}}
 
 augroup latex_filetype " {{{
