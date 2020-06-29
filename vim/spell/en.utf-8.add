@@ -205,6 +205,7 @@ cpuinfo
 crlf
 crontab
 crt
+cruft
 C's
 CSMA
 css
@@ -261,6 +262,7 @@ diffs
 dir
 dirs
 disk
+dist
 distro
 distros
 Div
@@ -282,6 +284,7 @@ drawPixel
 dreddit
 dropdown
 dropdowns
+DRUMMY
 drw
 dscp
 dstack
@@ -442,6 +445,7 @@ fontconfig
 fontname
 foo
 foobarbaz
+FOO's
 fopen
 forall
 freebsd
@@ -517,6 +521,7 @@ hardcoded
 hardcoding
 hasClass
 haskell
+HDR
 headerfiles
 hellscape
 help2man
@@ -574,6 +579,7 @@ init
 Init
 inline
 INPUTFILE
+Installables
 int
 Int32
 intel
@@ -1054,6 +1060,7 @@ stty
 stuvwxyzabcdefghijklmnopqr
 styledir
 subdir
+subdirs
 sublayer
 sublicense
 sublicensed
@@ -1136,6 +1143,7 @@ TradeMe
 TradeMeFeatureEditor
 TradeMeListingType
 TradeMeType
+troff
 truecolor
 trueos
 TrueOS
@@ -1160,7 +1168,9 @@ uname
 uncycle
 unhide
 unicode
+uninstall
 uninstallation
+uninstalled
 uniq
 unix
 UnmapNotify's
