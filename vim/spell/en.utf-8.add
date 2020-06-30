@@ -158,6 +158,7 @@ cd
 celsius
 center
 certdir
+CFLAGS
 cgi
 checkbox
 chmod
@@ -526,6 +527,7 @@ haskell
 HDR
 <<<<<<< HEAD
 headerfiles
+helloWorld
 hellscape
 help2man
 hex
