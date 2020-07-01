@@ -195,12 +195,14 @@ commandline
 conection
 conf
 config
+configurability
 const
 contrarian
 controlC0
 coords
 cormacrelf
 course_code
+cpp
 cpu
 Cpu
 cpufreq
@@ -855,6 +857,7 @@ paren
 parsing
 pass8
 passwd
+PATHs
 pcbsd
 pdf
 PDF
@@ -1097,6 +1100,7 @@ TAGKEYS
 tagline
 tagmask
 tagset
+tarball
 targetDirectory
 tasyfish
 TC0
@@ -1254,6 +1258,7 @@ wm
 WM
 wms
 WMs
+Wno
 wolfenstein
 Wolfenstein
 wolfenstein3D
