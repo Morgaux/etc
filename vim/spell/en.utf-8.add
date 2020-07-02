@@ -20,6 +20,8 @@
 #onfigired
 #oudary
 #pto
+#raycastlib
+#small3dlib
 1D
 2D
 3D
@@ -251,7 +253,9 @@ Inbox
 Init
 Installables
 Int32
+Iraycastlib/!
 IsLeap
+Ismall3dlib/!
 JB
 JPEG
 JavaScript
@@ -478,6 +482,7 @@ Wallpaper1
 WebDriver
 WebElement
 WebKit
+Wextra
 WiFi
 Wno
 Wolfenstein
@@ -1156,6 +1161,7 @@ static
 statment
 stats
 statusline
+std
 stderr
 stdin
 stdio
