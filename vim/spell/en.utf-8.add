@@ -353,6 +353,7 @@ Pseudocode
 Python3
 Q
 QEMU
+RCL
 README
 REL
 RGB
@@ -543,6 +544,7 @@ args
 argv
 ascii
 attr
+author
 autohint
 autoload
 avg
@@ -821,6 +823,7 @@ hardcoding
 hasClass
 haskell
 headerfiles
+heightAt
 helloWorld
 hellscape
 help2man
@@ -1034,6 +1037,7 @@ pfetch's
 pg1004
 pg103
 pid
+pixelFunc
 pixelsize
 pkg
 pkginfo
@@ -1047,6 +1051,7 @@ plugins
 png
 popup
 pqrstuvwxyzabcdefghijklmno
+prefill
 prepend
 prepended
 preprod
@@ -1070,6 +1075,7 @@ qsort
 r
 randbyte
 rasterized
+raycasted
 raycasting
 raycastlib
 readprop
@@ -1089,6 +1095,7 @@ regexes
 regexp
 rej
 removeClass
+renderComplex
 reparenting
 repo
 repos
