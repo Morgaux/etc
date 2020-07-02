@@ -77,6 +77,7 @@ ascii
 ASCIIbetical
 ASCIIbetically
 attr
+author
 Autocorrections
 autohint
 autoload
@@ -529,6 +530,7 @@ haskell
 HDR
 <<<<<<< HEAD
 headerfiles
+heightAt
 helloWorld
 hellscape
 help2man
@@ -872,6 +874,7 @@ pg103
 PhotoId
 pid
 PIDFILE
+pixelFunc
 pixelsize
 pkg
 pkginfo
@@ -889,6 +892,7 @@ POSIX
 PostUrl
 PPID
 pqrstuvwxyzabcdefghijklmno
+prefill
 prepend
 prepended
 preprod
@@ -923,8 +927,10 @@ qsort
 r
 randbyte
 rasterized
+raycasted
 raycasting
 raycastlib
+RCL
 README
 readprop
 realllllly
@@ -948,6 +954,7 @@ Regolith
 rej
 REL
 removeClass
+renderComplex
 reparenting
 repo
 repos
