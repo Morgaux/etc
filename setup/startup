@@ -73,10 +73,11 @@ fi >/dev/null 2>&1 # hide error stream for the if...fi block
 if [ -x "$(command -v git)" ]
 then
 	# pull git repos in home
-	for i in "$HOME/bin"      \
-	         "$HOME/etc"      \
-	         "$HOME/src/sude" \
-	         "$HOME/src/kata" \
+	for i in "$HOME/bin"             \
+	         "$HOME/etc"             \
+	         "$HOME/src/sude"        \
+	         "$HOME/src/kata"        \
+	         "$HOME/src/wolfenstein" \
 	         ~/uni/*
 	do
 		git_pull_dir "$i"

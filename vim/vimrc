@@ -245,8 +245,6 @@ augroup c_cpp_filetype " {{{
 	autocmd Filetype c\|cpp setlocal shiftwidth=8
 	autocmd Filetype c\|cpp setlocal noexpandtab
 	autocmd Filetype c\|cpp setlocal nowrap
-	autocmd Filetype c\|cpp setlocal foldmethod=syntax
-	autocmd Filetype c\|cpp setlocal foldnestmax=1
 augroup END " }}}
 
 augroup makefile_filetype " {{{
