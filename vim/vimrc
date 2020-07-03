@@ -65,9 +65,9 @@ set completeopt+=noinsert
 " }}}
 
 " options for https://github.com/airblade/vim-gitgutter {{{
-hi link GitGutterAdd    Todo
-hi link GitGutterChange Normal
-hi link GitGutterDelete Error
+highlight link GitGutterAdd    Todo
+highlight link GitGutterChange Normal
+highlight link GitGutterDelete Error
 " }}}
 
 " options for https://github.com/neovimhaskell/haskell-vim {{{
@@ -215,7 +215,7 @@ augroup csharp_razor_filetype " {{{
 	autocmd Filetype cs\|cshtml\|cshtml.html setlocal expandtab
 	autocmd Filetype cs\|cshtml\|cshtml.html setlocal nowrap
 
-	autocmd Filetype cs\|cshtml\|cshtml.html colo vstudioDark
+	autocmd Filetype cs\|cshtml\|cshtml.html colorscheme vstudioDark
 augroup END " }}}
 
 augroup haskell_filetype " {{{
@@ -245,6 +245,10 @@ augroup vimscript_filetype " {{{
 	autocmd Filetype vim setlocal shiftwidth=8
 	autocmd Filetype vim setlocal noexpandtab
 	autocmd Filetype vim setlocal nowrap
+
+	autocmd Filetype vim abbreviate hi   highlight
+	autocmd Filetype vim abbreviate au   autocmd
+	autocmd Filetype vim abbreviate colo colorscheme
 augroup END " }}}
 
 augroup c_cpp_filetype " {{{
@@ -294,8 +298,8 @@ let loaded_matchparen = 1     " prevent annoying paren matching
 
 " Catch whitespace errors
 match Error /\s\+$\| \+\ze\t/
-au InsertEnter * redraw!
-au InsertLeave * redraw!
+autocmd InsertEnter * redraw!
+autocmd InsertLeave * redraw!
 
 " Show tabs as comments
 set list
@@ -303,7 +307,7 @@ set listchars=tab:\|\
 match Comment /\t/
 
 " Set colorscheme (after other highlight settings)
-colo PaperColor
+colorscheme PaperColor
 
 " Visual and Syntax Options }}}
 
@@ -322,7 +326,7 @@ silent !mkdir -p ~/.vim/swp/
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swp//
 " ...except crontab, which will complain that it can't see any changes
-au FileType crontab setlocal bkc=yes
+autocmd FileType crontab setlocal bkc=yes
 
 " Settings Stolen from JCS }}}
 
