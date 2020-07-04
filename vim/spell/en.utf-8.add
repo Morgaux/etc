@@ -288,6 +288,7 @@ drawPixel
 dreddit
 dropdown
 dropdowns
+Drummy
 DRUMMY
 drw
 dscp
@@ -603,6 +604,7 @@ ipv4
 IPv4
 ipv6
 IPv6
+Iraycastlib/!
 IRIX
 isBoosted
 ISC
@@ -610,6 +612,7 @@ isChecked
 isfloating
 ish
 IsLeap
+Ismall3dlib/!
 iso8859
 isPrime
 iterm2
@@ -926,6 +929,7 @@ randbyte
 rasterized
 raycasted
 raycasting
+#raycastlib
 raycastlib
 RCL
 README
@@ -965,6 +969,7 @@ RLOGIN
 rm
 roman
 rpath
+RRethy
 rx
 s
 S1
@@ -1033,6 +1038,7 @@ SLOC
 slock
 SLPFILE
 slstatus
+#small3dlib
 small3dlib
 snaptime
 snd
@@ -1058,6 +1064,7 @@ static
 statment
 stats
 statusline
+std
 stderr
 stdin
 STDIN
@@ -1248,6 +1255,7 @@ WebElement
 WebKit
 webservice
 webstore
+Wextra
 wget
 whitebox
 whitespace

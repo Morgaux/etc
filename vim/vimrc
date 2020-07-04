@@ -65,9 +65,9 @@ set completeopt+=noinsert
 " }}}
 
 " options for https://github.com/airblade/vim-gitgutter {{{
-hi link GitGutterAdd    Todo
-hi link GitGutterChange Normal
-hi link GitGutterDelete Error
+highlight link GitGutterAdd    Todo
+highlight link GitGutterChange Normal
+highlight link GitGutterDelete Error
 " }}}
 
 " options for https://github.com/neovimhaskell/haskell-vim {{{
@@ -131,6 +131,11 @@ let g:syntastic_auto_loc_list            = 1
 let g:syntastic_check_on_open            = 1
 let g:syntastic_check_on_wq              = 1
 let g:syntastic_aggregate_errors         = 1
+let g:syntastic_c_compiler_options       = "-std=c99 -Wall -Wextra -pedantic"
+let g:syntastic_c_include_dirs           = [
+                                         \    'raycastlib',
+                                         \    'small3dlib'
+                                         \ ]
 let g:syntastic_python_checkers          = [
                                          \    'python',
                                          \    'pylint'
@@ -148,6 +153,11 @@ let g:syntastic_gitcommit_checkers       = [
                                          \    'text/language_check'
                                          \ ]
 "  }}}
+
+" options for https://github.com/RRethy/vim-illuminate {{{
+let g:Illuminate_delay                = 0 " show highlight instantly
+let g:Illuminate_highlightUnderCursor = 0 " only highlight matches
+" }}}
 
 " Package Specific Options }}}
 
@@ -205,7 +215,7 @@ augroup csharp_razor_filetype " {{{
 	autocmd Filetype cs\|cshtml\|cshtml.html setlocal expandtab
 	autocmd Filetype cs\|cshtml\|cshtml.html setlocal nowrap
 
-	autocmd Filetype cs\|cshtml\|cshtml.html colo vstudioDark
+	autocmd Filetype cs\|cshtml\|cshtml.html colorscheme vstudioDark
 augroup END " }}}
 
 augroup haskell_filetype " {{{
@@ -235,6 +245,10 @@ augroup vimscript_filetype " {{{
 	autocmd Filetype vim setlocal shiftwidth=8
 	autocmd Filetype vim setlocal noexpandtab
 	autocmd Filetype vim setlocal nowrap
+
+	autocmd Filetype vim abbreviate hi   highlight
+	autocmd Filetype vim abbreviate au   autocmd
+	autocmd Filetype vim abbreviate colo colorscheme
 augroup END " }}}
 
 augroup c_cpp_filetype " {{{
@@ -284,8 +298,8 @@ let loaded_matchparen = 1     " prevent annoying paren matching
 
 " Catch whitespace errors
 match Error /\s\+$\| \+\ze\t/
-au InsertEnter * redraw!
-au InsertLeave * redraw!
+autocmd InsertEnter * redraw!
+autocmd InsertLeave * redraw!
 
 " Show tabs as comments
 set list
@@ -293,7 +307,7 @@ set listchars=tab:\|\
 match Comment /\t/
 
 " Set colorscheme (after other highlight settings)
-colo PaperColor
+colorscheme PaperColor
 
 " Visual and Syntax Options }}}
 
@@ -312,7 +326,7 @@ silent !mkdir -p ~/.vim/swp/
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swp//
 " ...except crontab, which will complain that it can't see any changes
-au FileType crontab setlocal bkc=yes
+autocmd FileType crontab setlocal bkc=yes
 
 " Settings Stolen from JCS }}}
 
