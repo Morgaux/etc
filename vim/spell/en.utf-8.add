@@ -550,6 +550,7 @@ argc
 args
 argv
 ascii
+async
 attr
 author
 autohint
