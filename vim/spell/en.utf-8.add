@@ -198,6 +198,7 @@ configurability
 const
 contrarian
 controlC0
+coord
 coords
 cormacrelf
 course_code
@@ -1245,6 +1246,7 @@ Vundle
 w
 w3m
 wal
+wallHeight
 Wallpaper1
 wav
 wc
