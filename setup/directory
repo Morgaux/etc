@@ -137,6 +137,10 @@ link_from_to ~/etc/xinitrc    ~/.xsession
 link_from_to ~/etc/wal        ~/.cache/wal
 # Symlink dotfiles to the HOME directory }}}
 
+# Symlink MISC configs {{{
+link_from_to ~/etc/setup/vim-spelling ~/etc/.git/hooks/pre-commit
+# Symlink MISC configs }}}
+
 # Make sure these dotfiles are executable {{{
 for i in ~/.kshrc ~/.mkshrc ~/.xinitrc ~/.xsession
 do
