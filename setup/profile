@@ -1,5 +1,5 @@
 #!/bin/sh
-# shellcheck disable=SC2016
+# shellcheck disable=SC2016,SC2129
 
 # ~/etc/setup/profile {{{
 
@@ -62,6 +62,39 @@ done
 	echo ''
 } >> "$TMP_PROFILE"
 # Auto install vim plugins }}}
+
+# Auto commit vim spelling changes {{{
+{
+	echo '' ;
+	echo '# Automatic Spelling Commit ___' | sed 's/_/{/g'
+	echo 'auto_update_vim_spelling_file() {' ;
+	echo '	COMMIT_MESSAGE="Automatic spelling commit"' ;
+	echo '	SPELL_DIR="vim/spell"' ;
+	echo '	ETC_DIR="${HOME}/etc"' ;
+	echo '	TMP_DIR="${HOME}/tmp"' ;
+	echo '' ;
+	echo '	# These dirs must exist to continue' ;
+	echo '	if [ ! -d "$TMP_DIR" ] || [ ! -d "${ETC_DIR}/${SPELL_DIR}" ]' ;
+	echo '	then' ;
+	echo '		return' ;
+	echo '	fi' ;
+	echo '' ;
+	echo '	for spell_file in "${ETC_DIR}/${SPELL_DIR}"/*.add' ;
+	echo '	do' ;
+	echo '		ADD_FILE="$(basename "$spell_file")"' ;
+	echo '		sort -i "$spell_file" | uniq > "${TMP_DIR}/${ADD_FILE}.tmp"' ;
+	echo '		grep -Ev '\''<<|>>|=='\'' "${TMP_DIR}/${ADD_FILE}.tmp" > "$spell_file"' ;
+	echo '	done' ;
+	echo '' ;
+	echo '	( cd "$ETC_DIR" && git commit -m "$COMMIT_MESSAGE" "$SPELL_DIR" )' ;
+	echo '}' ;
+	echo '' ;
+	echo '( auto_update_vim_spelling_file </dev/null >/dev/null 2>&1 & )' ;
+	echo '' ;
+	echo '# Automatic Spelling Commit ___' | sed 's/_/}/g'
+	echo '' ;
+} >> "$TMP_PROFILE"
+# Auto commit vim spelling changes }}}
 
 # Auto startx, MUST be last section added to temporary file {{{
 {
