@@ -17,29 +17,6 @@ run_one_instance_in_bg() { # {{{
 git_pull_dir() { # {{{
 	( cd "$1" && git pull </dev/null >/dev/null 2>&1 & )
 } # }}}
-
-# manage the vim spelling file
-automatically_update_vim_spelling_file() { # {{{
-	COMMIT_MESSAGE="Automatic spelling commit"
-	SPELL_DIR="vim/spell"
-	ETC_DIR="$HOME/etc"
-	TMP_DIR="$HOME/tmp"
-
-	# These dirs must exist to continue
-	if [ ! -d "$TMP_DIR" ] || [ ! -d "${ETC_DIR}/${SPELL_DIR}" ]
-	then
-		return
-	fi
-
-	for spell_file in "${ETC_DIR}/${SPELL_DIR}"/*.add
-	do
-		ADD_FILE="$(basename "$spell_file")"
-		sort -i "$spell_file" | uniq > "${TMP_DIR}/${ADD_FILE}".tmp
-		grep -Ev '>>|<<|==' "${TMP_DIR}/${ADD_FILE}".tmp > "$spell_file"
-	done
-
-	cd "$ETC_DIR" && git commit -m "$COMMIT_MESSAGE" "$SPELL_DIR"
-} # }}}
 # Helper functions }}}
 
 # Arch linux specific startups {{{
@@ -82,9 +59,6 @@ then
 	do
 		git_pull_dir "$i"
 	done
-
-	# commit spelling changes to vim spelling files
-	( automatically_update_vim_spelling_file </dev/null >/dev/null 2>&1 & )
 fi </dev/null >/dev/null 2>&1 # block all io streams for the if...fi block
 # Keep repos up to date - spawn "git pull" daemons }}}
 
