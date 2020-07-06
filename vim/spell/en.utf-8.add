@@ -563,6 +563,7 @@ IDs
 ieee80211
 iexten
 if
+ifndef
 IIII
 IIIII
 IIIIII
@@ -953,6 +954,7 @@ Regex
 regexes
 regexp
 Regolith
+reinclusion
 rej
 REL
 removeClass
