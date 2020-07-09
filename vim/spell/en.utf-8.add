@@ -72,6 +72,8 @@ argv
 ARP
 ARQ
 ascii
+ASCII
+ASCII/!
 ASCIIbetical
 ASCIIbetically
 attr
@@ -532,6 +534,7 @@ hardcoding
 hasClass
 haskell
 HDR
+headerfile
 headerfiles
 heightAt
 helloWorld
@@ -555,6 +558,7 @@ hrs
 htop
 https
 hw
+HXi
 HyperTerm
 i
 i3lock
@@ -1010,6 +1014,7 @@ SC2129
 SC2139
 SC2155
 scanf
+#SCII/!
 scp
 Screenshot
 screenshots
