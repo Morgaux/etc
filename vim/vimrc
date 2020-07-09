@@ -146,7 +146,9 @@ let g:syntastic_text_checkers            = [
                                          \    'text/language_check'
                                          \ ]
 let g:syntastic_make_checkers            = [
-                                         \    'gmake'
+                                         \    'gmake',
+                                         \    'proselint',
+                                         \    'text/language_check'
                                          \ ]
 let g:syntastic_gitcommit_checkers       = [
                                          \    'proselint',
