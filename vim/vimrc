@@ -131,7 +131,13 @@ let g:syntastic_auto_loc_list            = 1
 let g:syntastic_check_on_open            = 1
 let g:syntastic_check_on_wq              = 1
 let g:syntastic_aggregate_errors         = 1
-let g:syntastic_c_compiler_options       = "-std=c99 -Wall -Wextra -pedantic"
+let g:syntastic_c_compiler_options       = "-std=c99"                          .
+                                         \ "-Wall"                             .
+                                         \ "-Wextra"                           .
+                                         \ "-pedantic"                         .
+                                         \ "-Wno-unused-parameter"             .
+                                         \ "-Wno-unused-variable"              .
+                                         \ "-Wno-unused-function"
 let g:syntastic_c_include_dirs           = [
                                          \    'raycastlib',
                                          \    'small3dlib'
