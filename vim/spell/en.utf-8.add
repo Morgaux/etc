@@ -246,6 +246,7 @@ dec
 DECID
 def
 DefaultXX
+dependacies
 deps
 DE's
 deserialization
@@ -323,6 +324,7 @@ ehavior
 emacs
 endian
 endianness
+endif
 ENDIF
 ENDLOOP
 #endring
@@ -357,6 +359,7 @@ EXIF
 exit
 expandtab
 Expr
+extern
 f
 F13
 F14
@@ -564,6 +567,7 @@ IDs
 ieee80211
 iexten
 if
+ifdef
 ifndef
 IIII
 IIIII
@@ -1192,6 +1196,8 @@ uid
 un
 uname
 uncycle
+undef
+UNDEFINE
 unhide
 unicode
 uninstall
@@ -1282,6 +1288,7 @@ wolfenstein
 Wolfenstein
 wolfenstein3D
 Wolfenstein3D
+wolfenstein's
 workflow
 WP27
 writable
