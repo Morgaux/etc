@@ -828,6 +828,7 @@ funcs
 fvwm
 fvwm2rc
 g
+gcc
 geek
 getline
 getpalace
@@ -1162,6 +1163,7 @@ reinclusion
 rej
 removeClass
 renderComplex
+renderSimple
 reparenting
 repo
 repos
@@ -1408,5 +1410,3 @@ yyyy
 z
 zA
 ze
-renderSimple
-gcc
