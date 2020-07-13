@@ -144,16 +144,6 @@ let g:syntastic_c_compiler_options = join([
                                    \    "-Wextra",
                                    \    "-pedantic"
                                    \ ], " ")
-
-" Vim script linter
-let g:syntastic_vim_checkers = [ "vimlint" ]
-
-" Text heavy file types that need grammar checks
-let g:syntastic_tex_checkers       = [ "text/language_check" ]
-let g:syntastic_make_checkers      = [ "text/language_check" ]
-let g:syntastic_text_checkers      = [ "text/language_check" ]
-let g:syntastic_markdown_checkers  = [ "text/language_check" ]
-let g:syntastic_gitcommit_checkers = [ "text/language_check" ]
 "  }}}
 
 " options for https://github.com/RRethy/vim-illuminate {{{
