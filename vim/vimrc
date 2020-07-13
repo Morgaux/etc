@@ -16,6 +16,8 @@ filetype plugin indent on
 " Generic Options {{{
 
 " misc options
+scriptencoding utf-8
+
 set belloff=all
 set showcmd
 set nohlsearch
@@ -305,7 +307,7 @@ set t_8b=[48;2;%lu;%lu;%lum " set background color
 set t_Co=256                  " Enable 256 colors
 set termguicolors             " Enable GUI colors for the terminal for truecolor
 set background=dark           " ahhhhhh my eyes!!
-let loaded_matchparen = 1     " prevent annoying paren matching
+let g:loaded_matchparen = 1     " prevent annoying paren matching
 
 " Catch whitespace errors
 match Error /\s\+$\| \+\ze\t/
