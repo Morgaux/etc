@@ -63,6 +63,7 @@ Ada
 AddDays
 Algol
 Amiga
+Analyzers
 Anthromorphization
 AppImage
 AppImageKit
@@ -137,6 +138,7 @@ Ctrl
 DA
 DBL
 DCC
+DDEBUG
 DE's
 DEADBEEF
 DECID
@@ -147,6 +149,7 @@ DIALOG
 DIV
 DOCPATH
 DRUMMY
+DVERSION
 DVTM
 DataView
 DeathTrap
@@ -310,11 +313,13 @@ Inbox
 Init
 Installables
 Int32
+Iraycastlib
 Iraycastlib/!
 IsBold
 IsFeatured
 IsHighlighted
 IsLeap
+Ismall3dlib
 Ismall3dlib/!
 JB
 JPEG
@@ -385,6 +390,7 @@ NetBIOS
 NetBSD
 NetWMCheck
 Niggurath
+O3
 OA
 OAuth
 OB
@@ -645,6 +651,7 @@ WYSIAYG
 WYSIMOLWYG
 WYSIWYG
 Wallpaper1
+Wanalyzer
 WebDriver
 WebElement
 WebKit
@@ -652,6 +659,7 @@ Wetware
 Wextra
 Whackers
 WiFi
+Wimplicit
 Wireheads
 Wno
 Wolfenstein
@@ -734,6 +742,7 @@ alt
 altmode
 aluable
 amixer
+analyzer
 anthromorphization
 anthropomorphize
 antialias
@@ -1016,7 +1025,9 @@ f5b1
 fabd2f
 fallback
 fallbacks
+fallthrough
 false
+fanalyzer
 fandom
 fandom's
 fannish
@@ -1274,6 +1285,7 @@ libsl
 license
 lifepillar
 linefeeds
+linter
 linux
 listPhotoIds
 listingDuration
@@ -1913,6 +1925,7 @@ vi
 videotex
 vidi
 viewport
+vimlint
 vimrc
 viruses
 vlc
