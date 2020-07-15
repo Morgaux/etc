@@ -16,6 +16,8 @@ filetype plugin indent on
 " Generic Options {{{
 
 " misc options
+scriptencoding utf-8
+
 set belloff=all
 set showcmd
 set nohlsearch
@@ -126,43 +128,22 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+" Misc set up toggles
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list            = 1
 let g:syntastic_check_on_open            = 1
 let g:syntastic_check_on_wq              = 1
 let g:syntastic_aggregate_errors         = 1
-let g:syntastic_c_checkers               = [
-                                         \ "make",
-                                         \ "gcc",
-                                         \ "check"
-                                         \ ]
-let g:syntastic_c_make_fname             = expand('%:t:r') . ".o"
-let g:syntastic_c_compiler_options       = "-std=c99"                          .
-                                         \ "-Wall"                             .
-                                         \ "-Wextra"                           .
-                                         \ "-pedantic"
-let g:syntastic_c_include_dirs           = [
-                                         \    'raycastlib',
-                                         \    'small3dlib'
-                                         \ ]
-let g:syntastic_python_checkers          = [
-                                         \    'python',
-                                         \    'pylint'
-                                         \ ]
-let g:syntastic_text_checkers            = [
-                                         \    'lacheck',
-                                         \    'proselint',
-                                         \    'text/language_check'
-                                         \ ]
-let g:syntastic_make_checkers            = [
-                                         \    'gmake',
-                                         \    'proselint',
-                                         \    'text/language_check'
-                                         \ ]
-let g:syntastic_gitcommit_checkers       = [
-                                         \    'proselint',
-                                         \    'text/language_check'
-                                         \ ]
+
+" C/C++ checker options
+let g:syntastic_c_checkers         = [ "gcc", "clang" ]
+let g:syntastic_c_include_dirs     = [ "raycastlib", "small3dlib" ]
+let g:syntastic_c_compiler_options = join([
+                                   \    "-std=c99",
+                                   \    "-Wall",
+                                   \    "-Wextra",
+                                   \    "-pedantic"
+                                   \ ], " ")
 "  }}}
 
 " options for https://github.com/RRethy/vim-illuminate {{{
@@ -185,6 +166,11 @@ abbreviate intrest   interest
 abbreviate bussiness business
 abbreviate ech       each
 abbreviate eah       each
+abbreviate follwo    follow
+abbreviate ommited   omitted
+abbreviate ommitted  omitted
+abbreviate ommite    omit
+abbreviate ommit     omit
 
 " Typing Settings }}}
 
@@ -305,7 +291,7 @@ set t_8b=[48;2;%lu;%lu;%lum " set background color
 set t_Co=256                  " Enable 256 colors
 set termguicolors             " Enable GUI colors for the terminal for truecolor
 set background=dark           " ahhhhhh my eyes!!
-let loaded_matchparen = 1     " prevent annoying paren matching
+let g:loaded_matchparen = 1     " prevent annoying paren matching
 
 " Catch whitespace errors
 match Error /\s\+$\| \+\ze\t/
