@@ -62,6 +62,8 @@ adulterating
 aeb9b
 AES
 AF
+Affirmer
+Affirmer's
 AFJ
 AFK
 afterward
@@ -251,6 +253,7 @@ chmod
 chomper
 chop's
 chr
+Christof
 chromodynamics
 chroot
 ciphertext
@@ -273,6 +276,7 @@ CMDs
 coauthors
 codebase
 codedark
+codemadness
 codewalker
 codewalkers
 CoEvolution
@@ -290,6 +294,7 @@ conection
 conf
 config
 configurability
+ConfigureRendering
 const
 contrarian
 controlC0
@@ -405,6 +410,7 @@ dropdown
 dropdowns
 Drummy
 DRUMMY
+drummyfish
 drw
 dscp
 dstack
@@ -421,6 +427,8 @@ DVTM
 dweb
 dwiki
 dwm
+dx
+dy
 dylan
 dylanaraps
 dyt
@@ -621,6 +629,7 @@ FORTRANs
 freebsd
 FreeBSD
 freedesktop
+freeMem
 FreeMiNT
 freeware
 french
@@ -646,6 +655,7 @@ GetDisplayValue
 getline
 getpalace
 GETPOWER
+GetSquare
 gid
 gif
 gitgutter
@@ -813,6 +823,7 @@ INPUTFILE
 Installables
 int
 Int32
+int64
 intel
 intercal
 interdepend
@@ -958,6 +969,7 @@ mandelbug
 manjaro
 manpage
 manpages
+Markus
 massey
 matchparen
 math
@@ -1104,6 +1116,7 @@ nonzero
 NOOP
 NOP
 noreply
+NotImplemented
 nouned
 NR
 nuget
@@ -1233,7 +1246,10 @@ pkg
 pkginfo
 PKGS
 pkgtool
+PlaceCircularRoom
 placeholder
+PlaceRectangularRoom
+PlaceWall
 plaintext
 plasticboy
 plexiglass
@@ -1284,6 +1300,8 @@ pseudoprime
 psychedelicware
 #pto
 pto
+ptr
+PUBLIC
 publishAddress
 pufferfish
 PWD
@@ -1299,6 +1317,7 @@ Q
 qed
 QEMU
 qsort
+Quentin
 quine
 quines
 quinishness
@@ -1360,6 +1379,7 @@ rej
 REL
 removeClass
 renderComplex
+RenderConfig
 renderSimple
 reparenting
 repetetetive
@@ -1472,6 +1492,7 @@ servoid
 setprop
 SETPROP
 setroot
+SetSquare
 setup
 sh
 shebang
@@ -1574,6 +1595,7 @@ stdio
 stdout
 stimable
 str
+strcmp
 stringify
 STRIP'd
 struct
@@ -1588,6 +1610,7 @@ SubGenius
 subgenre
 subjargon
 sublayer
+sublicensable
 sublicense
 sublicensed
 sublicenses
@@ -1765,6 +1788,7 @@ uf
 ufetch
 UI
 uid
+uint64
 un
 uname
 unboosted
