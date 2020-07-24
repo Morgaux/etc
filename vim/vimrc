@@ -137,6 +137,7 @@ let g:syntastic_aggregate_errors         = 1
 
 " C/C++ checker options
 let g:syntastic_c_checkers         = [ "gcc", "clang" ]
+let g:syntastic_c_include_dirs     = [ "raycastlib", "small3dlib" ]
 let g:syntastic_c_compiler_options = join([
                                    \    "-std=c99",
                                    \    "-Wall",
