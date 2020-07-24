@@ -119,8 +119,8 @@ let g:vim_markdown_fenced_languages          = [
 
 " options for https://github.com/pangloss/vim-javascript {{{
 let g:javascript_plugin_jsdoc           = 1
-let g:javascript_conceal_function       = "ƒ"
-let g:javascript_conceal_arrow_function = "→"
+let g:javascript_conceal_function       = 'ƒ'
+let g:javascript_conceal_arrow_function = '→'
 " }}}
 
 " options for https://github.com/vim-syntastic/syntastic {{{
@@ -136,16 +136,19 @@ let g:syntastic_check_on_wq              = 1
 let g:syntastic_aggregate_errors         = 1
 
 " C/C++ checker options
-let g:syntastic_c_checkers         = [ "gcc", "clang" ]
-let g:syntastic_c_include_dirs     = [ "raycastlib", "small3dlib" ]
+let g:syntastic_c_checkers         = [ 'gcc',        'clang'      ]
+let g:syntastic_c_include_dirs     = [ 'raycastlib', 'small3dlib' ]
 let g:syntastic_c_compiler_options = join([
-                                   \    "-std=c99",
-                                   \    "-Wall",
-                                   \    "-Wextra",
-                                   \    "-pedantic",
-                                   \    "-Wno-unused",
-                                   \    "-Wno-missing-include-dirs"
-                                   \ ], " ")
+                                   \    '-std=c99',
+                                   \    '-pedantic',
+                                   \    '-Wall',
+                                   \    '-Wextra',
+                                   \    '-Wconversion',
+                                   \    '-Wtraditional',
+                                   \    '-Wtraditional-conversion',
+                                   \    '-Wno-unused',
+                                   \    '-Wno-missing-include-dirs'
+                                   \ ], ' ')
 "  }}}
 
 " options for https://github.com/RRethy/vim-illuminate {{{
@@ -278,6 +281,7 @@ augroup latex_filetype " {{{
 	autocmd Filetype tex setlocal noexpandtab
 	autocmd Filetype tex setlocal nowrap
 augroup END " }}}
+
 " Language Specific Options }}}
 
 " Visual and Syntax Options {{{
@@ -297,8 +301,12 @@ let g:loaded_matchparen = 1     " prevent annoying paren matching
 
 " Catch whitespace errors
 match Error /\s\+$\| \+\ze\t/
-autocmd InsertEnter * redraw!
-autocmd InsertLeave * redraw!
+augroup whitespace_errors " {{{
+	autocmd!
+
+	autocmd InsertEnter * redraw!
+	autocmd InsertLeave * redraw!
+augroup END " }}}
 
 " Show tabs as comments
 set list
@@ -325,7 +333,11 @@ silent !mkdir -p ~/.vim/swp/
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swp//
 " ...except crontab, which will complain that it can't see any changes
-autocmd FileType crontab setlocal bkc=yes
+augroup jcs_autocmds " {{{
+	autocmd!
+
+	autocmd FileType crontab setlocal bkc=yes
+augroup END " }}}
 
 " Settings Stolen from JCS }}}
 
