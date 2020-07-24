@@ -142,7 +142,9 @@ let g:syntastic_c_compiler_options = join([
                                    \    "-std=c99",
                                    \    "-Wall",
                                    \    "-Wextra",
-                                   \    "-pedantic"
+                                   \    "-pedantic",
+                                   \    "-Wno-unused",
+                                   \    "-Wno-missing-include-dirs"
                                    \ ], " ")
 "  }}}
 
