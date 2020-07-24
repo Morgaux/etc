@@ -251,6 +251,7 @@ FreeBSD
 FreeMiNT
 GDK
 GETPOWER
+GNUC
 GNUenv
 GNUstep
 GPLv2
@@ -668,6 +669,8 @@ WYSIMOLWYG
 WYSIWYG
 Wallpaper1
 Wanalyzer
+Wconversion
+Wdeclaration
 WebDriver
 WebElement
 WebKit
@@ -677,10 +680,14 @@ Whackers
 WiFi
 Wimplicit
 Wireheads
+Wmissing
 Wno
 Wolfenstein
 Wolfenstein3D
 Wright
+Wsign
+Wtraditional
+Wunused
 X11
 XC
 XINERAMA
@@ -2067,6 +2074,3 @@ zeroth
 zetta
 zipperhead
 zork
-Wunused
-GNUC
-Wmissing
