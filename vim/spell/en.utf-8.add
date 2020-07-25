@@ -821,6 +821,7 @@ ing
 ingness
 init
 Init
+initState
 inline
 INPUTFILE
 Installables
@@ -1287,6 +1288,7 @@ PRIVILEGE_COMAND
 prob
 proc
 Programmatically
+ProhibitSetNoCompatible
 ProjectSelenium
 propertyCode
 propertyCommandService
@@ -1791,6 +1793,7 @@ uf
 ufetch
 UI
 uid
+uint16
 uint64
 un
 uname
@@ -2076,4 +2079,3 @@ zeroth
 zetta
 zipperhead
 zork
-ProhibitSetNoCompatible
