@@ -222,6 +222,7 @@ c
 C
 C0C0C0
 c5cff
+c89
 c99
 calcations/!
 campfire
@@ -926,6 +927,7 @@ lang
 larch
 larch/!
 lats
+LDFLAGS
 letterism
 Liam
 libexec
@@ -1940,6 +1942,7 @@ WebElement
 WebKit
 webservice
 webstore
+Werror
 wetware
 Wetware
 Wextra
