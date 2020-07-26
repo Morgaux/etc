@@ -144,7 +144,6 @@ let g:syntastic_c_compiler_options = join([
                                    \    '-Wall',
                                    \    '-Wextra',
                                    \    '-Wconversion',
-                                   \    '-Wtraditional',
                                    \    '-Wtraditional-conversion',
                                    \    '-Wno-unused',
                                    \    '-Wno-missing-include-dirs'
