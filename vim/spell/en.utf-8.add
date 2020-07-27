@@ -23,6 +23,7 @@
 #pto
 #raycastlib
 #small3dlib
+#trmcpy
 16-bit
 1D
 2D
@@ -169,6 +170,7 @@ ENDLOOP
 EOF
 EOI
 EP
+ERRO
 ESC
 EWMH
 EXIF
@@ -341,6 +343,7 @@ Koans
 L
 LDFLAGS
 LISPers
+LLVM
 LOGFILE
 LX
 LXX
@@ -438,6 +441,7 @@ PIDFILE
 PKGS
 POSIX
 PPID
+PRAGMA
 PRIVILEGE_COMAND
 PS1
 PS1DIR
@@ -451,6 +455,7 @@ PlaceCircularRoom
 PlaceRectangularRoom
 PlaceWall
 PostUrl
+Pragma
 Programmatically
 ProhibitSetNoCompatible
 ProjectSelenium
@@ -1591,6 +1596,7 @@ pylint
 python3
 q
 qed
+qq
 qsort
 quine
 quines
@@ -1772,7 +1778,10 @@ stdout
 stimable
 str
 strcmp
+strcpy
 stringify
+strlcpy
+strmcpy/!
 struct
 stty
 stuvwxyzabcdefghijklmnopqr
@@ -2082,4 +2091,3 @@ zeroth
 zetta
 zipperhead
 zork
-Werror
