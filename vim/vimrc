@@ -17,6 +17,7 @@ filetype plugin indent on
 
 " misc options
 scriptencoding utf-8
+set ambiwidth=double
 
 set belloff=all
 set showcmd
