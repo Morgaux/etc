@@ -189,16 +189,8 @@ let g:Illuminate_delay                = 0 " show highlight instantly
 let g:Illuminate_highlightUnderCursor = 0 " only highlight matches
 " }}}
 
-" options for https://github.com/APZelos/blamer.nvim {{{
-let g:blamer_enabled              = 0 " Super useful (but annoying in auto mode)
-let g:blamer_delay                = 500
-let g:blamer_show_in_visual_modes = 1
-let g:blamer_prefix               = '<- '
-let g:blamer_template             = '[<committer>] [<commit-short>]: <summary>'
-let g:blamer_date_format          = '%d/%m/%Y %I:%M %p' " Not currently used
-let g:blamer_relative_time        = 0                   " Not currently used
-
-highlight link Blamer NonText
+" options for https://github.com/rhysd/git-messenger.vim {{{
+let g:git_messenger_into_popup_after_show = v:false
 " }}}
 
 " Package Specific Options }}}
