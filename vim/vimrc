@@ -41,7 +41,7 @@ set colorcolumn=+1
 set foldmethod=marker
 set whichwrap=b,s,<,>,[,]
 set conceallevel=2
-set updatetime=50
+set updatetime=100
 
 " use custom settings for files with special settings
 set modeline modelines=5
@@ -187,6 +187,18 @@ let g:syntastic_c_compiler_options = join([
 " options for https://github.com/RRethy/vim-illuminate {{{
 let g:Illuminate_delay                = 0 " show highlight instantly
 let g:Illuminate_highlightUnderCursor = 0 " only highlight matches
+" }}}
+
+" options for https://github.com/APZelos/blamer.nvim {{{
+let g:blamer_enabled              = 1
+let g:blamer_delay                = 500
+let g:blamer_show_in_visual_modes = 1
+let g:blamer_prefix               = '<- '
+let g:blamer_template             = '[<committer>] [<commit-short>]: <summary>'
+let g:blamer_date_format          = '%d/%m/%Y %I:%M %p' " Not currently used
+let g:blamer_relative_time        = 0                   " Not currently used
+
+highlight link Blamer NonText
 " }}}
 
 " Package Specific Options }}}
