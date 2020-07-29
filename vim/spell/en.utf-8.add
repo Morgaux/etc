@@ -106,6 +106,7 @@ AppImage
 AppImageKit
 appimages
 appkey
+APZelos
 Araps
 ard
 AreEqual
@@ -1132,6 +1133,7 @@ numlock
 NUnit
 nvidia
 NVIDIA
+nvim
 nyble
 nybles
 #nymore
@@ -1403,6 +1405,7 @@ Retreive/!
 retrocomputing
 RFC
 RGB
+rhysd
 rigor
 ripoff
 RISC
@@ -2086,6 +2089,3 @@ zeroth
 zetta
 zipperhead
 zork
-nvim
-APZelos
-rhysd
