@@ -17,6 +17,7 @@ filetype plugin indent on
 
 " misc options
 scriptencoding utf-8
+set ambiwidth=double
 
 set belloff=all
 set showcmd
@@ -40,7 +41,7 @@ set colorcolumn=+1
 set foldmethod=marker
 set whichwrap=b,s,<,>,[,]
 set conceallevel=2
-set updatetime=50
+set updatetime=100
 
 " use custom settings for files with special settings
 set modeline modelines=5
@@ -150,9 +151,8 @@ let g:syntastic_c_compiler_options = join([
                                    \    '-Wcomments',
                                    \    '-Wconversion',
                                    \    '-Wdangling-else',
-                                   \    '-Wdeclaration-after-statment',
-                                   \    '-Werror=declaration-after-statment',
-                                   \    '-Werror=depricated',
+                                   \    '-Werror=declaration-after-statement',
+                                   \    '-Werror=deprecated',
                                    \    '-Werror=implicit',
                                    \    '-Werror=implicit-fallthrough',
                                    \    '-Werror=implicit-fallthrough=4',
@@ -171,9 +171,9 @@ let g:syntastic_c_compiler_options = join([
                                    \    '-Werror=unreachable-code',
                                    \    '-Wextra',
                                    \    '-Wformat',
-                                   \    '-Wlogical',
+                                   \    '-Wlogical-op',
                                    \    '-Wmissing-prototypes',
-                                   \    '-Wmissleading-indentation',
+                                   \    '-Wmisleading-indentation',
                                    \    '-Wno-missing-include-dirs',
                                    \    '-Wno-unused',
                                    \    '-Wno-unknown-warning-option',
@@ -187,6 +187,10 @@ let g:syntastic_c_compiler_options = join([
 " options for https://github.com/RRethy/vim-illuminate {{{
 let g:Illuminate_delay                = 0 " show highlight instantly
 let g:Illuminate_highlightUnderCursor = 0 " only highlight matches
+" }}}
+
+" options for https://github.com/rhysd/git-messenger.vim {{{
+let g:git_messenger_into_popup_after_show = v:false
 " }}}
 
 " Package Specific Options }}}
