@@ -104,6 +104,8 @@ ButtonRelease
 C
 C's
 C0C0C0
+C11
+C89
 CARQ
 CC0
 CCC
@@ -338,6 +340,7 @@ KVM
 Kbaud
 Koans
 L
+LDFLAGS
 LISPers
 LOGFILE
 LX
@@ -470,6 +473,7 @@ RRethy
 RUNOFF
 Railroad
 Rasta
+Raytracing
 ReadMe
 Refactor
 Refractor
@@ -585,8 +589,10 @@ TEST4
 TEST5
 TEST6
 TEST7
+TGZ
 THRU
 TLS
+TMOUT
 TMPDIR
 TODO
 TODOs
@@ -637,6 +643,7 @@ UTF8
 UW
 UX
 Unices
+Uninstalling
 Unixes
 Unixoid
 UnmapNotify's
@@ -671,6 +678,7 @@ Wanalyzer
 WebDriver
 WebElement
 WebKit
+Werror
 Wetware
 Wextra
 Whackers
@@ -888,6 +896,7 @@ colors
 colorscheme
 com
 commandline
+cond
 conection
 conf
 config
@@ -1333,6 +1342,7 @@ magenta3
 mailbomb
 main
 man1
+managment
 mandelbug
 manjaro
 manpage
@@ -1691,9 +1701,11 @@ semistandard
 sendmail
 seq
 servoid
+setaf
 setprop
 setroot
 setup
+sgr0
 sh
 shebang
 shelfware
@@ -1965,6 +1977,7 @@ vm
 vmm
 void
 volas
+vs
 w
 w3
 w3m
@@ -2045,7 +2058,9 @@ xsession
 xsetroot
 xsetrootname
 xterm
+xvf
 xx
+xzvf
 y
 yacc
 yay
