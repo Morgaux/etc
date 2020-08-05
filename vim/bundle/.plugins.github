@@ -1,5 +1,6 @@
-vim-jp/vim-vimlparser
-syngan/vim-vimlint
+ljcooke/vim-fortune
+rhysd/git-messenger.vim
+gisphm/vim-gitignore
 RRethy/vim-illuminate
 myint/syntastic-extras
 vim-syntastic/syntastic
