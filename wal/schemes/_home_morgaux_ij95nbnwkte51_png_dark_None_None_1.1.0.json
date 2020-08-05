@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/morgaux/ij95nbnwkte51.png",
+    "alpha": "100",
+    "special": {
+        "background": "#050404",
+        "foreground": "#9fcde8",
+        "cursor": "#9fcde8"
+    },
+    "colors": {
+        "color0": "#050404",
+        "color1": "#6198A4",
+        "color2": "#3292D9",
+        "color3": "#3199DF",
+        "color4": "#51A8D9",
+        "color5": "#6EB7D6",
+        "color6": "#6BB8D3",
+        "color7": "#9fcde8",
+        "color8": "#6f8fa2",
+        "color9": "#6198A4",
+        "color10": "#3292D9",
+        "color11": "#3199DF",
+        "color12": "#51A8D9",
+        "color13": "#6EB7D6",
+        "color14": "#6BB8D3",
+        "color15": "#9fcde8"
+    }
+}
