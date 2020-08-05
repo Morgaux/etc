@@ -852,6 +852,7 @@ byteLiteral
 bytecode
 bytecodes
 c
+c11
 c5cff
 c99
 calcations/!
@@ -896,6 +897,7 @@ colors
 colorscheme
 com
 commandline
+compat
 cond
 conection
 conf
@@ -1767,6 +1769,7 @@ std
 stderr
 stdin
 stdio
+stdlib
 stdout
 stimable
 str
@@ -1913,6 +1916,7 @@ unportably
 unreached
 unshifted
 unusable
+unused
 uparrow
 updategeom
 uppercase
