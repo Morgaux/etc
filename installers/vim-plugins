@@ -31,8 +31,12 @@ err() {
 }
 
 die() {
-	err "${SELF}: ERROR: $@"
+	err "${SELF}: ERROR: $*"
 	exit 1
+}
+
+safe_cd() {
+	cd "$1" || die "Failed to change to directory: $1"
 }
 # Helper functions }}}
 
@@ -80,7 +84,7 @@ clone_or_pull() { # $1:url $2:destdir
 	fi
 
 	_PREV_DIR="$(pwd)"
-	cd "$2"
+	safe_cd "$2"
 
 	if [ -d "$(basename "$1")" ]
 	then
@@ -88,7 +92,7 @@ clone_or_pull() { # $1:url $2:destdir
 		then
 			err "Skipping ${1}..."
 		else
-			cd "$(basename "$1")"
+			safe_cd "$(basename "$1")"
 
 			err "Updating ${1}..."
 
@@ -110,7 +114,7 @@ clone_or_pull() { # $1:url $2:destdir
 		fi
 	fi
 
-	cd "$_PREV_DIR"
+	safe_cd "$_PREV_DIR"
 }
 # Function to clone a repo to a directory, or pull if the directory exists }}}
 
