@@ -1,7 +1,5 @@
 #!/bin/sh
 
-# ~/etc/setup/git-config {{{
-
 export _GIT_NAME="Morgaux"
 export _GIT_EMAIL="3158796-morgaux@users.noreply.gitlab.com"
 
@@ -19,6 +17,4 @@ then
 
 	git config --global credential.helper cache 86400
 fi
-
-# ~/etc/setup/git-config }}}
 

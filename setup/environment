@@ -1,7 +1,5 @@
 #!/bin/sh
 
-# ~/etc/setup/environment {{{
-
 # OS Detection {{{
 # These are any Linux Distros to detect, there is no reasonable way to detect
 # all possible Unix flavours so this is generalised to detect specific distros
@@ -84,6 +82,4 @@ export DOTNET_ROOT
 export DOTNET_CLI_TELEMETRY_OPTOUT
 export DVTM_TERM
 # Exports }}}
-
-# ~/etc/setup/environment }}}
 
