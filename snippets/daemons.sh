@@ -33,8 +33,14 @@ run_one_instance_in_bg() {
 # Run these daemons if running Xorg
 if [ -n "$DISPLAY" ] && xset q >/dev/null 2>&1
 then
-	run_one_instance_in_bg "xbanish"
-	run_one_instance_in_bg "redshift"
-	run_one_instance_in_bg "xrdb" "$HOME/.Xresources"
+	run_one_instance_in_bg "xbanish"                   # hide unused cursor
+	run_one_instance_in_bg "redshift"                  # reduce eyestrain
+	run_one_instance_in_bg "xrdb" "$HOME/.Xresources"  # reload xterm config
+fi
+
+# Run these daemons if running a Linux TTY
+if [ "$TERM" = "linux" ]
+then
+	run_one_instance_in_bg "setfont" "Lat2-Terminus16" # set console font
 fi
 
