@@ -11,6 +11,11 @@ run_one_instance_in_bg() {
 	# as a command name and the remaining arguments as the arguments to pass
 	# to the command. If the command is available, it is called with it's
 	# arguments in a sub shell in the background.
+	#
+	# NOTE: the command is only run if no process matching it's name is
+	# already running, this allows for a simple method of avoiding duplicate
+	# instances (which in the case of redshift for example is disastrous)
+	# without messing around with PID files or other such nonsense.
 
 	# Ignore the fact that this greps ps(1), this is necessary and I know
 	# what I'm doing.
