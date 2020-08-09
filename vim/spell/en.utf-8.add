@@ -1186,6 +1186,7 @@ gray90
 green3
 grep
 grepping
+greps
 gruvbox
 gt
 gtk
@@ -1745,6 +1746,7 @@ sh
 shebang
 shelfware
 shellcheck
+shellscript
 shit'oh
 shitogram
 shortsightedness
@@ -2099,6 +2101,7 @@ xoffset
 xor
 xorg
 xprop
+xrdb
 xref
 xs
 xsession
