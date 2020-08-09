@@ -142,14 +142,3 @@ do
 done
 # Make sure these dotfiles are executable }}}
 
-# Add custom XDG desktop launchers {{{
-if [ -d ~/bin/launchers ] && [ -d ~/.local/share/applications ]
-then
-	for APP in ~/bin/launchers/*.desktop
-	do
-		LAUNCHER="$HOME/.local/share/applications/$(basename "$APP")"
-		[ ! -L "$LAUNCHER" ] && ln -sf "$APP" "$LAUNCHER"
-	done
-fi
-# Add custom XDG desktop launchers }}}
-
