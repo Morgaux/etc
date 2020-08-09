@@ -1,15 +1,14 @@
 #!/bin/sh
 
-# Helper functions {{{
 # run command singleton in background
-run_one_instance_in_bg() { # {{{
+run_one_instance_in_bg() {
 	# shellcheck disable=SC2009
 	if [ -x "$(command -v "$1")" ]
 	then
 		# shellcheck disable=2068
 		ps cax | grep -iq "$1" || ( sh -c $@ &)
 	fi
-} # }}}
+}
 
 if [ -x "$(command -v sudo)"                ] &&
    [ -x "$(command -v pacman)"              ] &&
