@@ -98,29 +98,6 @@ do
 done
 # Keep the HOME directory clean }}}
 
-# Install git repositories if absent {{{
-if [ -x "$(command -v git)" ]
-then
-	[ ! -d "${HOME}/bin" ] &&
-		cd "${HOME}"   &&
-		git clone https://gitlab.com/morgaux/bin
-
-	[ ! -d "${HOME}/src/sude" ] &&
-		cd "${HOME}/src"    &&
-		git clone https://gitlab.com/morgaux/sude
-
-	[ ! -d "${HOME}/src/kata" ] &&
-		cd "${HOME}/src"    &&
-		git clone https://gitlab.com/morgaux/kata
-
-	[ ! -d "${HOME}/src/dvtm" ] &&
-		cd "${HOME}/src"    &&
-		git clone https://github.com/martanne/dvtm
-
-	cd "${HOME}" || echo "couldn't cd home" 1>&2
-fi
-# Install git repositories if absent }}}
-
 # Symlink dotfiles to the HOME directory {{{
 link_from_to ~/etc/aliases    ~/.aliases
 link_from_to ~/etc/fvwmrc     ~/.fvwmrc
