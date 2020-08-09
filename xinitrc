@@ -13,21 +13,6 @@ then
 fi
 # Source external scripts }}}
 
-# Setup fonts for Xorg {{{
-for FONT in /usr/local/share/fonts/gohufont/ \
-            /usr/local/share/fonts/ibm-plex/ \
-            /usr/local/share/fonts/X11/misc/
-do
-	if [ -d "$FONT" ]
-	then
-		xset +fp "$FONT"
-	fi
-done
-
-# update cache in the background
-(fc-cache -f -v > "$HOME/.xsession-errors" >/dev/null 2>&1 &) &
-# Setup fonts for Xorg }}}
-
 # Setup key ring without display manager {{{
 if [ -f /etc/X11/xinit/xinitrc.d/50-systemd-user.sh ]
 then
