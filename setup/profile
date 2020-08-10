@@ -1,9 +1,0 @@
-#!/bin/sh
-
-# Replace old file {{{
-# Replace old file }}}
-
-exit 0 # exit success
-
-# ~/etc/setup/profile }}}
-
