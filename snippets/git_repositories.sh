@@ -12,10 +12,10 @@ clone_or_pull_to() {(
 
 	if [ -d "$FULL_DIR" ] ;
 	then
-		cd "$FULL_DIR" && git pull ;
+		cd "$FULL_DIR" && git pull &
 	else
-		cd "$BASE_DIR" && git clone "$URL" ;
-	fi ;
+		cd "$BASE_DIR" && git clone "$URL" &
+	fi >/dev/null 2>&1 ;
 )}
 
 if [ -x "$(command -v git)" ]
