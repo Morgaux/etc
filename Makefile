@@ -46,7 +46,10 @@ all:
 # Files needed to generate ${PROFILE}, in the order used.
 PROFILE_SNIPPETS := snippets/detect_shell.sh             \
                     snippets/environment.sh              \
-                    snippets/*_aliases.sh                \
+                    snippets/clear_aliases.sh            \
+                    snippets/doas_aliases.sh             \
+                    snippets/misc_aliases.sh             \
+                    snippets/sudo_aliases.sh             \
                     snippets/clean_home.sh               \
                     snippets/git_config.sh               \
                     snippets/git_repositories.sh         \
@@ -151,8 +154,22 @@ ${KSHRC}: ${ALIASES} ${KSHRC_SH_SNIPPETS} ${KSHRC_KSH_SNIPPETS}
 
 # }}}
 
-${ALIASES}:
+# ALIASES {{{
+# This section defines the creation and content of the ~/.aliases file, which
+# provides easy to type shortcuts for interactive shell use.
+
+# These are all of the different alias definition files, to be included in the
+# ~/.aliases file upon creation.
+ALIAS_SNIPPETS := snippets/misc_aliases.sh  \
+                  snippets/clear_aliases.sh \
+                  snippets/doas_aliases.sh  \
+                  snippets/sudo_aliases.sh
+
+${ALIASES}: ${ALIAS_SNIPPETS}
 	@echo "Generating $@..."
+	@{ echo "#!/bin/sh" ; cat $^ | sed -n '/#!\/bin/!p' ; } > $@
+
+# }}}
 
 ${XINITRC}:
 	@echo "Generating $@..."
