@@ -4,6 +4,7 @@
 # except
 !.gitignore
 !vimrc
+!**.vimrc
 !colors/
 !colors/*
 !spell/
