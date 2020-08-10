@@ -20,6 +20,8 @@ BOOKS      :=
 
 all:
 
+# PROFILE {{{
+
 # Files needed to generate ${PROFILE}, in the order used.
 PROFILE_SNIPPETS := snippets/detect_shell.sh             \
                     snippets/environment.sh              \
@@ -32,8 +34,9 @@ PROFILE_SNIPPETS := snippets/detect_shell.sh             \
                     snippets/auto_commit_vim_spelling.sh \
                     snippets/auto_startx.sh
 
+# Rules to generate profile file
 ${PROFILE}: ${PROFILE_SNIPPETS}
-	@echo "Generating $@"
+	@echo "Generating $@..."
 	@{                                                                                                \
 		echo '#!/bin/sh'                                                                        ; \
 		echo ''                                                                                 ; \
@@ -55,27 +58,51 @@ ${PROFILE}: ${PROFILE_SNIPPETS}
 	@[ -f $@ ] || cat ${@:%=%.bak} > $@          # restore backup on failure
 	@chmod 755 $@                                # make new profile executable
 
+# }}}
+
 ${KSHRC}:
-	@echo "Generating $@"
+	@echo "Generating $@..."
 
 ${ALIASES}:
-	@echo "Generating $@"
+	@echo "Generating $@..."
 
 ${XINITRC}:
-	@echo "Generating $@"
+	@echo "Generating $@..."
 
 ${XRESOURCES}:
-	@echo "Generating $@"
+	@echo "Generating $@..."
 
-${VIMRC}:
-	@echo "Generating $@"
+# VIMRC {{{
+
+# These are the sub sections of the main vimrc file, here they are listed in
+# order of inclusion __within__ __that__ __group__, the __group__ order is misc
+# then plugins then language.
+MISC_VIMRCS     := pathogen generic jcs typing visual
+PLUGIN_VIMRCS   := colors-github git-messenger gitgutter illuminate mucomplete \
+                   syntastic
+LANGUAGE_VIMRCS := c cpp csharp fortune haskell java javascript latex makefile \
+                   markdown python razor scala shell vimscript
+
+# The above definitions allow a simplified short hand for identifing *.vimrc
+# files, however, to added the extenstion and path, they are combined into the
+# final .vimrc file.
+ALL_VIMRCS := ${MISC_VIMRCS:%=vim/%.vimrc} \
+              ${PLUGIN_VIMRCS:%=vim/%.vimrc} \
+              ${LANGUAGE_VIMRCS:%=vim/%.vimrc}
+
+# Rules to build vimrc files
+${VIMRC}: ${ALL_VIMRCS}
+	@echo "Generating $@..."
+	@cat ${ALL_VIMRCS} > $@
+
+# }}}
 
 ${FVWMRC}:
-	@echo "Generating $@"
+	@echo "Generating $@..."
 
 ${VIMBUNDLES}:
-	@echo "Installing $@ vim plugin"
+	@echo "Installing vim plugin: $@..."
 
 ${BOOKS}:
-	@echo "Installing $@ book"
+	@echo "Installing book: $@..."
 
