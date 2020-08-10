@@ -11,17 +11,3 @@ alias python='env python3'
 alias py='env python3'
 alias yaourt='yay'
 
-for i in         \
-	e        \
-	ls       \
-	la       \
-	ll       \
-	uf       \
-	nf       \
-	fortune  \
-	neofetch
-do
-	# shellcheck disable=SC2139
-	alias "c${i}=c; ${i}"
-done
-
