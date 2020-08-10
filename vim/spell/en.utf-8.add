@@ -1862,6 +1862,7 @@ sysinfo
 sysop
 sysops
 sysprog
+systemd
 t
 tab0
 tabbed
@@ -2100,6 +2101,7 @@ xerox
 xfce4
 xfce5
 xft
+xinit
 xinitrc
 xml
 xmlns
