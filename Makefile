@@ -73,7 +73,7 @@ ${PROFILE}: ${PROFILE_SNIPPETS}
 		echo '##                                                 ##' ; \
 		echo ''                                                      ; \
 	} | cat - ${PROFILE_SNIPPETS} > ${@:%=%.tmp} # Create new temporary file
-	@[ -f $@ ] && cat $@ > ${@:%=%.bak}          # make a back up
+	@[ -f $@ ] && cat $@ > ${@:%=%.bak} || true  # make a back up
 	@rm -f $@                                    # remove old file
 	@mv ${@:%=%.tmp} $@                          # replace old file with tmp
 	@[ -f $@ ] || cat ${@:%=%.bak} > $@          # restore backup on failure
@@ -81,8 +81,75 @@ ${PROFILE}: ${PROFILE_SNIPPETS}
 
 # }}}
 
-${KSHRC}:
+# KSHRC {{{
+# This section defines the creation of the ksh(1) configuration files, this
+# applies for both the mksh(1) version I prefer for use on linux, and the
+# pdksh(1) public domain version in use on OpenBSD.
+
+# These are the *.ksh snippets used in the ${KSHRC} target, however, ${KSHRC}
+# also uses some other, POSIX sh(1) snippets, these are defined in the
+# ${KSHRC_SH_SNIPPETS} variable as opposed to the ${KSHRC_KSH_SNIPPETS}. As with
+# the other snippet variables, the order of definition __within__ the variable
+# define the order of inclusion. As in this case the ${KSHRC} files are
+# configurations for their respective implementation of the Korn shell language
+# and interpreter, the ${KSHRC_KSH_SNIPPETS} snippets (with the extension *.ksh)
+# are written in the Korn shell language, and since the .kshrc file is defined
+# (elsewhere) as the value of ENV in the shell environment, it is possible that
+# the ${KSHRC} file will get read by a different shell that cannot understand
+# some ksh-isms. So to prevent this, the *.sh snippets are included first, and
+# then a shell detection snippet (hardcoded in the rule rather than a *.ksh
+# file) determines whether the shell reading the ${KSHRC} file should stop there
+# or continue, depending on it's ability to understand the ksh language. Only
+# after this point can the *.ksh snippets be included.
+KSHRC_KSH_SNIPPETS := snippets/cd_overload.ksh \
+                      snippets/emacs_navigation.ksh \
+                      snippets/history.ksh \
+                      snippets/prompt.ksh
+KSHRC_SH_SNIPPETS  := snippets/detect_shell.sh \
+                      snippets/auto_commit_vim_spelling.sh \
+                      snippets/welcome_message.sh
+
+${KSHRC}: ${ALIASES} ${KSHRC_SH_SNIPPETS} ${KSHRC_KSH_SNIPPETS}
 	@echo "Generating $@..."
+	@{                                                                     \
+		echo '#!/bin/ksh'                                            ; \
+		cat ${KSHRC_SH_SNIPPETS} | sed -n '/#!\/bin/!p'              ; \
+		echo ''                                                      ; \
+		echo 'case "$$CURRENT_SHELL" in'                             ; \
+		echo '	*ksh*)'                                              ; \
+		echo '		if [[ $$- = *i* ]]'                          ; \
+		echo '		then'                                        ; \
+		echo '			# try sourcing global kshrc files'   ; \
+		echo '			for sys_kshrc in /etc/ksh.kshrc'     ; \
+		echo '			do'                                  ; \
+		echo '				if [ -f "$$sys_kshrc" ]'     ; \
+		echo '				then'                        ; \
+		echo '					. "$$sys_kshrc"'     ; \
+		echo '				fi'                          ; \
+		echo '			done'                                ; \
+		echo '		else'                                        ; \
+		echo '			return'                              ; \
+		echo '		fi'                                          ; \
+		echo '		;;'                                          ; \
+		echo '	*)'                                                  ; \
+		echo '		# Source aliases for non-ksh, then exit'     ; \
+		echo '		if [ -f "$$HOME/.aliases" ]'                 ; \
+		echo '		then'                                        ; \
+		echo '			. "$$HOME/.aliases"'                 ; \
+		echo '		fi'                                          ; \
+		echo '		return'                                      ; \
+		echo '		;;'                                          ; \
+		echo 'esac'                                                  ; \
+		echo ''                                                      ; \
+		cat ${KSHRC_KSH_SNIPPETS} | sed -n '/#!\/bin/!p'             ; \
+	} > ${@:%=%.tmp}
+	@[ -f $@ ] && cat $@ > ${@:%=%.bak} || true  # make a back up
+	@rm -f $@                                    # remove old file
+	@mv ${@:%=%.tmp} $@                          # replace old file with tmp
+	@[ -f $@ ] || cat ${@:%=%.bak} > $@          # restore backup on failure
+	@chmod 755 $@                                # make new file executable
+
+# }}}
 
 ${ALIASES}:
 	@echo "Generating $@..."
