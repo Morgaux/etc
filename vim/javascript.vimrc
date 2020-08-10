@@ -1,4 +1,4 @@
-augroup javascript_filetype " {{{
+augroup javascript_filetype
 	autocmd!
 
 	autocmd Filetype javascript setlocal softtabstop=4
@@ -6,7 +6,7 @@ augroup javascript_filetype " {{{
 	autocmd Filetype javascript setlocal expandtab
 	autocmd Filetype javascript setlocal nowrap
 	autocmd Filetype javascript setlocal foldmethod=syntax
-augroup END " }}}
+augroup END
 
 " options for https://github.com/pangloss/vim-javascript
 let g:javascript_plugin_jsdoc           = 1
