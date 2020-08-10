@@ -9,5 +9,5 @@ alias x='exit'
 alias ..='cd ..'
 alias python='env python3'
 alias py='env python3'
-alias yaourt='yay'
+alias yaourt='yay' # yaourt is deprecated, this allows me to reuse old snippets
 
