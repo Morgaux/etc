@@ -34,7 +34,14 @@ BOOKS      :=
 # This section defines the actual implementations of the rules to build the
 # target files as needed, and their interdependencies.
 
-all:
+all: ${PROFILE} \
+     ${KSHRC} \
+     ${ALIASES} \
+     ${XINITRC} \
+     ${VIMRC} \
+     ${FVWMRC} \
+     ${VIMBUNDLES} \
+     ${BOOKS}
 
 # PROFILE {{{
 # This section defines the generation of the ~/.profile file and it's
@@ -171,11 +178,26 @@ ${ALIASES}: ${ALIAS_SNIPPETS}
 
 # }}}
 
-${XINITRC}:
-	@echo "Generating $@..."
+# XRESOURCES {{{
+# This section defines the creation and content of the Xorg configuration files,
+# specifically the xinitrc and Xresources files, although the xsession and
+# Xdefaults files are also provided as fallbacks and for backwards
+# compatibility with older versions of Xorg.
 
-${XRESOURCES}:
+XRESOURCES_FILES := X11/scrolling.Xresources X11/colours.Xresources
+XINIT_SNIPPETS   := snippets/font_config.sh \
+                    snippets/keyring.sh \
+                    snippets/start_desktop_environment.sh
+
+${XINITRC}: ${XINIT_SNIPPETS}
 	@echo "Generating $@..."
+	@{ echo "#!/bin/sh" ; cat $^ | sed -n '/#!\/bin/!p' ; } > $@
+
+${XRESOURCES}: ${XRESOURCES_FILES}
+	@echo "Generating $@..."
+	@cat $^ > $@
+
+# }}}
 
 # VIMRC {{{
 # This section defines the rules to the ~/.vimrc configuration file for vim.
@@ -206,14 +228,31 @@ ${VIMRC}: ${ALL_VIMRCS}
 
 # }}}
 
-${FVWMRC}:
+# FVWMRC {{{
+# This section defines the generation of the FVWMRC file for configuring the
+# FVWM window manager, since I only use this on OpenBSD, I simply have a
+# slightly modified file in this directory, there's no need to break it down
+# into sub-files.
+
+${FVWMRC}: fvwm/fvwmrc
 	@echo "Generating $@..."
+	@cat $^ > $@
+
+# }}}
+
+# VIM BUNDLES {{{
 
 ${VIMBUNDLES}:
 	@echo "Installing vim plugin: $@..."
 
+# }}}
+
+# BOOKS {{{
+
 ${BOOKS}:
 	@echo "Installing book: $@..."
+
+# }}}
 
 # }}}
 

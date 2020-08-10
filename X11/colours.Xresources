@@ -1,14 +1,3 @@
-! -----------------------------------------------------------------------------
-! File: ~/etc/Xresources
-! Author: morgaux meyer
-! -----------------------------------------------------------------------------
-
-! Disable the scroll bar
-xterm*scrollBar: false
-
-! Scrollback
-xterm*savelines: 10000
-
 ! DOS box colors (https://unix4lyfe.org/xterm)
 xterm*foreground: rgb:A8/A8/A8
 xterm*background: rgb:00/00/00

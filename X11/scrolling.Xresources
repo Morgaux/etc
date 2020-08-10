@@ -1,0 +1,6 @@
+! Disable the scroll bar
+xterm*scrollBar: false
+
+! Scrollback
+xterm*savelines: 10000
+
