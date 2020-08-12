@@ -1,5 +1,6 @@
 #!/bin/sh
 
+[ -x "$(command -v sudo)" ] ||
 for i in           \
 	apk        \
 	apt        \

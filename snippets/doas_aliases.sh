@@ -1,5 +1,6 @@
 #!/bin/sh
 
+[ -x "$(command -v doas)" ] ||
 for i in pkg pkg_add pkg_delete
 do
 	# Command doesn't exist, don't bother
