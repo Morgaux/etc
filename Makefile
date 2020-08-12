@@ -182,7 +182,11 @@ ALIAS_SNIPPETS := snippets/misc_aliases.sh  \
 
 ${ALIASES}: ${REPO_FILES} ${ALIAS_SNIPPETS}
 	@echo "Generating $@..."
-	@{ echo "#!/bin/sh" ; cat $^ | sed -n '/#!\/bin/!p' ; } > $@
+	@{                                                                     \
+		echo "#!/bin/sh"                                             ; \
+		cat ${ALIAS_SNIPPETS} | sed -n '/#!\/bin/!p'                 ; \
+	} > $@
+	@chmod 755 $@
 
 # }}}
 
@@ -199,11 +203,16 @@ XINIT_SNIPPETS   := snippets/font_config.sh \
 
 ${XINITRC}: ${REPO_FILES} ${XINIT_SNIPPETS}
 	@echo "Generating $@..."
-	@{ echo "#!/bin/sh" ; cat $^ | sed -n '/#!\/bin/!p' ; } > $@
+	@{                                                                     \
+		echo "#!/bin/sh"                                             ; \
+		cat ${XINIT_SNIPPETS} | sed -n '/#!\/bin/!p'                 ; \
+	} > $@
+	@chmod 755 $@
 
 ${XRESOURCES}: ${REPO_FILES} ${XRESOURCES_FILES}
 	@echo "Generating $@..."
 	@cat ${XRESOURCES_FILES} > $@
+	@chmod 755 $@
 
 # }}}
 
