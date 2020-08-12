@@ -4,6 +4,8 @@
 # Must be first non-comment
 .POSIX:
 
+# CONFIG {{{
+
 # DIRS {{{
 # This section defines the directories used by groups of targets, allowing
 # generic groups of targets to initialize the targets in that directory.
@@ -13,7 +15,7 @@ BOOK_DIR       := ${HOME}/var/books
 
 # }}}
 
-# TARGETS {{{
+# TARGET {{{
 # This section defines the filenames and their required locations for the
 # configuration files managed by this makefile and repository.
 
@@ -27,6 +29,10 @@ FVWMRC     := ${HOME}/.fvwmrc
 
 VIMBUNDLES := 
 BOOKS      := 
+
+# }}}
+
+REPO_FILES := Makefile
 
 # }}}
 
@@ -66,23 +72,24 @@ PROFILE_SNIPPETS := snippets/detect_shell.sh             \
                     snippets/auto_startx.sh
 
 # Rules to generate profile file
-${PROFILE}: ${PROFILE_SNIPPETS}
+${PROFILE}: ${REPO_FILES} ${PROFILE_SNIPPETS}
 	@echo "Generating $@..."
 	@{                                                                     \
-		echo '#!/bin/sh'                                             ; \
-		echo ''                                                      ; \
-		echo '##                                                 ##' ; \
-		echo '#                !!! IMPORTANT !!!                  #' ; \
-		echo '#                                                   #' ; \
-		echo '#        DO NOT MODIFY - FILE AUTO-GENERATED        #' ; \
-		echo '#                                                   #' ; \
-		echo '#                                                   #' ; \
-		echo '#              Mi volas vidi morgaux                #' ; \
-		echo '#                                                   #' ; \
-		echo '#                                                   #' ; \
-		echo '##                                                 ##' ; \
-		echo ''                                                      ; \
-	} | cat - ${PROFILE_SNIPPETS} > ${@:%=%.tmp} # Create new temporary file
+		echo "#!/bin/sh"                                             ; \
+		echo ""                                                      ; \
+		echo "##                                                 ##" ; \
+		echo "#                !!! IMPORTANT !!!                  #" ; \
+		echo "#                                                   #" ; \
+		echo "#        DO NOT MODIFY - FILE AUTO-GENERATED        #" ; \
+		echo "#                                                   #" ; \
+		echo "#                                                   #" ; \
+		echo "#              Mi volas vidi morgaux                #" ; \
+		echo "#                                                   #" ; \
+		echo "#                                                   #" ; \
+		echo "##                                                 ##" ; \
+		echo ""                                                      ; \
+		cat ${PROFILE_SNIPPETS} | sed -n '/#!\/bin/!p'               ; \
+	} > ${@:%=%.tmp}                             # create new temporary file
 	@[ -f $@ ] && cat $@ > ${@:%=%.bak} || true  # make a back up
 	@rm -f $@                                    # remove old file
 	@mv ${@:%=%.tmp} $@                          # replace old file with tmp
@@ -115,11 +122,12 @@ KSHRC_KSH_SNIPPETS := snippets/cd_overload.ksh \
                       snippets/emacs_navigation.ksh \
                       snippets/history.ksh \
                       snippets/prompt.ksh
+
 KSHRC_SH_SNIPPETS  := snippets/detect_shell.sh \
                       snippets/auto_commit_vim_spelling.sh \
                       snippets/welcome_message.sh
 
-${KSHRC}: ${ALIASES} ${KSHRC_SH_SNIPPETS} ${KSHRC_KSH_SNIPPETS}
+${KSHRC}: ${REPO_FILES} ${ALIASES} ${KSHRC_SH_SNIPPETS} ${KSHRC_KSH_SNIPPETS}
 	@echo "Generating $@..."
 	@{                                                                     \
 		echo '#!/bin/ksh'                                            ; \
@@ -172,7 +180,7 @@ ALIAS_SNIPPETS := snippets/misc_aliases.sh  \
                   snippets/doas_aliases.sh  \
                   snippets/sudo_aliases.sh
 
-${ALIASES}: ${ALIAS_SNIPPETS}
+${ALIASES}: ${REPO_FILES} ${ALIAS_SNIPPETS}
 	@echo "Generating $@..."
 	@{ echo "#!/bin/sh" ; cat $^ | sed -n '/#!\/bin/!p' ; } > $@
 
@@ -189,13 +197,13 @@ XINIT_SNIPPETS   := snippets/font_config.sh \
                     snippets/keyring.sh \
                     snippets/start_desktop_environment.sh
 
-${XINITRC}: ${XINIT_SNIPPETS}
+${XINITRC}: ${REPO_FILES} ${XINIT_SNIPPETS}
 	@echo "Generating $@..."
 	@{ echo "#!/bin/sh" ; cat $^ | sed -n '/#!\/bin/!p' ; } > $@
 
-${XRESOURCES}: ${XRESOURCES_FILES}
+${XRESOURCES}: ${REPO_FILES} ${XRESOURCES_FILES}
 	@echo "Generating $@..."
-	@cat $^ > $@
+	@cat ${XRESOURCES_FILES} > $@
 
 # }}}
 
@@ -222,7 +230,7 @@ ALL_VIMRCS := ${MISC_VIMRCS:%=vim/%.vimrc} \
               ${LANGUAGE_VIMRCS:%=vim/%.vimrc}
 
 # Rules to build vimrc files
-${VIMRC}: ${ALL_VIMRCS}
+${VIMRC}: ${REPO_FILES} ${ALL_VIMRCS}
 	@echo "Generating $@..."
 	@cat ${ALL_VIMRCS} > $@
 
@@ -234,7 +242,7 @@ ${VIMRC}: ${ALL_VIMRCS}
 # slightly modified file in this directory, there's no need to break it down
 # into sub-files.
 
-${FVWMRC}: fvwm/fvwmrc
+${FVWMRC}: ${REPO_FILES} fvwm/fvwmrc
 	@echo "Generating $@..."
 	@cat $^ > $@
 
@@ -242,14 +250,14 @@ ${FVWMRC}: fvwm/fvwmrc
 
 # VIM BUNDLES {{{
 
-${VIMBUNDLES}: ${VIM_BUNDLE_DIR}
+${VIMBUNDLES}: ${REPO_FILES} ${VIM_BUNDLE_DIR}
 	@echo "Installing vim plugin: $@..."
 
 # }}}
 
 # BOOKS {{{
 
-${BOOKS}:
+${BOOKS}: ${REPO_FILES}
 	@echo "Installing book: $@..."
 
 # }}}

@@ -21,6 +21,7 @@ clone_or_pull_to() {(
 if [ -x "$(command -v git)" ]
 then
 	clone_or_pull_to "https://gitlab.com/morgaux/bin"         "$HOME"
+	clone_or_pull_to "https://gitlab.com/morgaux/etc"         "$HOME"
 	clone_or_pull_to "https://gitlab.com/morgaux/sude"        "$HOME/src"
 	clone_or_pull_to "https://gitlab.com/morgaux/kata"        "$HOME/src"
 	clone_or_pull_to "https://github.com/martanne/dvtm"       "$HOME/src"
