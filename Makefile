@@ -34,14 +34,14 @@ BOOKS      :=
 # This section defines the actual implementations of the rules to build the
 # target files as needed, and their interdependencies.
 
-all: ${PROFILE} \
-     ${KSHRC} \
-     ${ALIASES} \
-     ${XINITRC} \
-     ${VIMRC} \
-     ${FVWMRC} \
-     ${VIMBUNDLES} \
-     ${BOOKS}
+all: rc_files misc_files installations
+	@echo "Completed building $@"
+
+rc_files: ${KSHRC} ${XINITRC} ${VIMRC} ${FVWMRC}
+
+misc_files: ${PROFILE} ${ALIASES}
+
+installations: ${VIMBUNDLES} ${BOOKS}
 
 # PROFILE {{{
 # This section defines the generation of the ~/.profile file and it's
@@ -242,7 +242,7 @@ ${FVWMRC}: fvwm/fvwmrc
 
 # VIM BUNDLES {{{
 
-${VIMBUNDLES}:
+${VIMBUNDLES}: ${VIM_BUNDLE_DIR}
 	@echo "Installing vim plugin: $@..."
 
 # }}}
@@ -253,6 +253,8 @@ ${BOOKS}:
 	@echo "Installing book: $@..."
 
 # }}}
+
+.PHONY: all rc_files misc_files installations
 
 # }}}
 
