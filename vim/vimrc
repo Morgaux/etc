@@ -119,9 +119,7 @@ let g:vim_markdown_fenced_languages          = [
 " }}}
 
 " options for https://github.com/pangloss/vim-javascript {{{
-let g:javascript_plugin_jsdoc           = 1
-let g:javascript_conceal_function       = 'ƒ'
-let g:javascript_conceal_arrow_function = '→'
+let g:javascript_plugin_jsdoc = 1
 " }}}
 
 " options for https://github.com/vim-syntastic/syntastic {{{
