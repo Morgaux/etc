@@ -92,6 +92,7 @@ Amiga
 amixer
 analyzer
 Analyzers
+Annon
 anthromorphization
 Anthromorphization
 anthropomorphize
@@ -124,6 +125,9 @@ ASCII
 ASCII/!
 ASCIIbetical
 ASCIIbetically
+AsEnumerable
+AsParallel
+AsQueryable
 asshole
 attr
 augroup
@@ -162,6 +166,7 @@ bg
 BiCapitalization
 biff
 BigBlue
+BigInt
 bignum
 bignums
 bin
@@ -297,7 +302,9 @@ colors
 colorscheme
 com
 commandline
+comparers
 compat
+Concat
 cond
 conection
 conf
@@ -368,6 +375,9 @@ deboned
 dec
 DECID
 def
+DefaultIfEmpty
+defaultSelector
+defaultValue
 DefaultXX
 define's
 DELETEIMAGE
@@ -461,6 +471,10 @@ efghijklmnopqrstuvwxyzabcd
 egotiable
 #ehavior
 ehavior
+ElementAt
+ElementAtOrDefault
+elements
+elementSelector
 emacs
 emoticon
 emoticons
@@ -615,6 +629,7 @@ firefighting
 firefox
 Firefox
 firewater
+FirstOrDefault
 FIXME
 fizzbuzz
 FizzBuzz
@@ -701,6 +716,8 @@ gray90
 green3
 grep
 grepping
+GroupBy
+GroupJoin
 gruvbox
 gt
 gtk
@@ -797,11 +814,14 @@ IBMness
 ICBM
 ICCCM
 icewm
+IComparer
 Iconify
 ide
 IDE
 IDs
 ieee80211
+IEnumerable
+IEqualityComparer
 iexten
 if
 ifdef
@@ -916,6 +936,7 @@ kern
 keybind
 keybindings
 keymap
+keySelector
 keystring
 keysym
 keyval
@@ -938,6 +959,7 @@ lameitude
 lang
 larch
 larch/!
+LastOrDefault
 lats
 LDFLAGS
 letterism
@@ -966,6 +988,7 @@ LLVM
 LoadXml
 LOGFILE
 logintimestamp
+LongCount
 lossage
 lossitudecruft
 lowercase
@@ -1176,6 +1199,7 @@ OEMs
 of
 offense
 offline
+OfType
 OG
 Oj
 ok
@@ -1206,6 +1230,8 @@ opkg
 opqrstuvwxyzabcdefghijklmn
 Oq
 ord
+OrderBy
+OrderByDescending
 ORed
 org
 os
@@ -1510,6 +1536,7 @@ sed
 seeked
 segfault
 sel
+SelectMany
 Selectric
 self
 SELF
@@ -1520,6 +1547,7 @@ semistandard
 sendmail
 SEO
 seq
+SequenceEqual
 servoid
 setaf
 setprop
@@ -1563,6 +1591,8 @@ SIOCGIWESSID
 sizeof
 skeptical
 skillfully
+SkipLast
+SkipWhile
 slmenu
 SLOC
 slock
@@ -1703,7 +1733,9 @@ TAGKEYS
 tagline
 tagmask
 tagset
+TakeLast
 takeout
+TakeWhile
 tarball
 tarballs
 targetDirectory
@@ -1785,11 +1817,21 @@ tmp
 TMPDIR
 Tmux
 to
+ToArray
+ToDictionary
 TODO
 TODOs
 toFile
 togglebar
+ToHashSet
+ToImmutableArray
+ToImmutableDictionary
+ToImmutableHashSet
+ToImmutableList
+ToImmutableSortedDictionary
+ToImmutableSortedSet
 ToList
+ToLookup
 touchscreen
 TP
 tput
@@ -1807,11 +1849,13 @@ TrademeReturnUrl
 TradeMe's
 TrademeSecret
 TradeMeType
+TResult
 #trmcpy
 troff
 truecolor
 trueos
 TrueOS
+TSource
 TTF
 TTT
 tty
@@ -2126,7 +2170,3 @@ zeroth
 zetta
 zipperhead
 zork
-Annon
-ToImmutableArray
-ToImmutableDictionary
-elements
