@@ -107,6 +107,7 @@ AppImage
 AppImageKit
 appimages
 appkey
+applyInterface
 APZelos
 Araps
 ard
@@ -375,7 +376,9 @@ deboned
 dec
 DECID
 def
+defaultComparer
 DefaultIfEmpty
+defaultPredicate
 defaultSelector
 defaultValue
 DefaultXX
@@ -408,6 +411,7 @@ disk
 dist
 distro
 distros
+div
 Div
 DIV
 dman
@@ -895,6 +899,7 @@ Ismall3dlib
 Ismall3dlib/!
 iso8859
 isPrime
+iterateable
 iterm2
 iTerm2
 itspriddle
