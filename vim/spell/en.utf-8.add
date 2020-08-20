@@ -115,6 +115,7 @@ AreEqual
 arg
 argc
 args
+ArgumentException
 ArgumentNullException
 argv
 armor
@@ -861,6 +862,7 @@ initState
 inline
 INPUTFILE
 Installables
+instanceof
 int
 Int32
 int64
@@ -1264,6 +1266,7 @@ pagestotal
 palaceWebCode
 pangloss
 param
+paramName
 params
 paren
 parsing
@@ -1837,6 +1840,7 @@ ToImmutableSortedDictionary
 ToImmutableSortedSet
 ToList
 ToLookup
+toString
 touchscreen
 TP
 tput
