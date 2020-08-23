@@ -328,6 +328,7 @@ cpu
 Cpu
 cpufreq
 cpuinfo
+CreateClass
 crlf
 crontab
 crt
