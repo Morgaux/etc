@@ -378,6 +378,7 @@ deboned
 dec
 DECID
 def
+defaultAccumulator
 defaultComparer
 DefaultIfEmpty
 defaultPredicate
