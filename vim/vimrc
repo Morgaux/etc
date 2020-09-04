@@ -191,8 +191,10 @@ augroup csharp_razor_filetype " {{{
 	autocmd Filetype cs\|cshtml\|cshtml.html setlocal shiftwidth=4
 	autocmd Filetype cs\|cshtml\|cshtml.html setlocal expandtab
 	autocmd Filetype cs\|cshtml\|cshtml.html setlocal nowrap
+	autocmd Filetype cs\|cshtml\|cshtml.html setlocal foldmarker=#region,#endregion
 
-	autocmd Filetype cs\|cshtml\|cshtml.html colorscheme vstudioDark
+	"autocmd Filetype cs\|cshtml\|cshtml.html colorscheme vstudioDark
+	autocmd Filetype cs\|cshtml\|cshtml.html colorscheme codedark
 augroup END " }}}
 
 augroup haskell_filetype " {{{
