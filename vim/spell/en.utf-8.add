@@ -37,6 +37,7 @@ abcdefghijklmnopqrstuvwxyz
 ABCDEFGHIJKLMNOPQRSTUVWXYZ
 ability
 ac
+acc
 accumulator
 ACHTUNG
 Ack
@@ -134,6 +135,7 @@ asshole
 attr
 augroup
 author
+autocmd
 Autocorrections
 autohint
 autoload
@@ -334,7 +336,9 @@ crontab
 crt
 cruft
 cruftitudelame
+cs
 C's
+cshtml
 CSMA
 css
 CSS
@@ -351,6 +355,7 @@ cz
 d
 d2021
 d3869b
+D6
 d6a
 d79921
 DA
@@ -630,6 +635,7 @@ FILENAME
 filenames
 filesystem
 filesystems
+Filetype
 FileType
 firebottle
 firefighting
@@ -691,6 +697,9 @@ GetDisplayValue
 getline
 getpalace
 GETPOWER
+GetPropertyImage
+GetPropertyImageIDList
+GetPropertyImageList
 GetSquare
 gid
 gif
@@ -1413,6 +1422,9 @@ raycasting
 #raycastlib
 raycastlib
 Raytracing
+RBPI
+RBPR000001
+RBPR999999
 rc
 RCL
 read
@@ -1628,6 +1640,7 @@ softcopies
 softcopy
 Solaris
 solarized
+SortId
 Soundalike
 SOUND_MIXER_READ_DEVMASK
 sovok
@@ -2012,6 +2025,7 @@ void
 volas
 vs
 VS
+vstudioDark
 VTNR
 Vundle
 w
