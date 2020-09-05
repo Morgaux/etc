@@ -338,6 +338,7 @@ cruft
 cruftitudelame
 cs
 C's
+csharp
 cshtml
 CSMA
 css
@@ -496,6 +497,7 @@ endianness
 endif
 ENDIF
 ENDLOOP
+endregion
 #endring
 endring
 enum
@@ -810,6 +812,7 @@ homunculi
 hostname
 Hotfix
 hotkeys
+hotmail
 hpmor
 HPMOR
 hr
@@ -870,6 +873,7 @@ ing
 ingness
 init
 Init
+inits
 initState
 inline
 INPUTFILE
@@ -2197,7 +2201,3 @@ zeroth
 zetta
 zipperhead
 zork
-csharp
-endregion
-inits
-hotmail
