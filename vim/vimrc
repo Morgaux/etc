@@ -127,10 +127,6 @@ let g:Illuminate_delay                = 0 " show highlight instantly
 let g:Illuminate_highlightUnderCursor = 0 " only highlight matches
 " }}}
 
-" options for https://github.com/rhysd/git-messenger.vim {{{
-let g:git_messenger_into_popup_after_show = v:false
-" }}}
-
 " Package Specific Options }}}
 
 " Typing Settings {{{
@@ -311,7 +307,7 @@ set t_8b=[48;2;%lu;%lu;%lum " set background color
 set t_Co=256                  " Enable 256 colors
 set termguicolors             " Enable GUI colors for the terminal for truecolor
 set background=dark           " ahhhhhh my eyes!!
-let g:loaded_matchparen = 1     " prevent annoying paren matching
+let g:loaded_matchparen = 1   " prevent annoying paren matching
 
 " Catch whitespace errors
 match Error /\s\+$\| \+\ze\t/
@@ -328,7 +324,7 @@ set listchars=tab:\|\
 match Comment /\t/
 
 " Set colorscheme (after other highlight settings)
-colorscheme PaperColor
+colorscheme codedark
 
 " Visual and Syntax Options }}}
 
