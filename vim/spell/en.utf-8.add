@@ -347,6 +347,9 @@ CSS
 cstopb
 CTAttributes
 CTBG
+cterm
+ctermbg
+ctermfg
 CTFG
 Ctrl
 currentTime
@@ -748,10 +751,13 @@ gtkrc
 GTKX
 gui
 GUIAttributes
+guibg
 GUIBG
 guid
 Guids
+guifg
 GUIFG
+guisp
 gutenberg
 gz
 h
@@ -946,6 +952,7 @@ jpg
 jQuery
 jre
 js
+JSON
 Jul
 Jun
 k
@@ -1020,6 +1027,7 @@ lpscheduleddb
 ls
 lsb
 lt
+Lua
 LX
 LXX
 m
@@ -1308,6 +1316,7 @@ pg103
 PhotoData
 PhotoId
 PhotoUploadRequest
+PHP
 phreak
 phreaking
 phreaks
@@ -1603,6 +1612,7 @@ Shubniggurath
 ShubNiggurath
 shutdown
 shutting
+sid
 sidecar
 Sierpinski's
 SIGARCH
@@ -1800,6 +1810,7 @@ teletype
 TeleTYpe
 teletypes
 teraflop
+term256
 TerminalPlus
 TEST1
 TEST2
@@ -2179,6 +2190,7 @@ y
 yacc
 YACC
 YAFIYGI
+YAML
 yay
 yellow3
 yiffle
