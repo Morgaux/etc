@@ -1,4 +1,3 @@
-OrangeT/vim-csharp
 ljcooke/vim-fortune
 gisphm/vim-gitignore
 RRethy/vim-illuminate
@@ -8,7 +7,6 @@ plasticboy/vim-markdown
 Michal-Miko/vim-mono-red
 cormacrelf/vim-colors-github
 kyle-thompson/xresources-colors.vim
-sheerun/vim-polyglot
 kadekillary/skull-vim
 marciomazza/vim-brogrammer-theme
 jdsimcoe/panic.vim
