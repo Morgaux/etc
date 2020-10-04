@@ -68,12 +68,17 @@ Affirmer's
 Algol
 Amiga
 Analyzers
+Annon
 Anthromorphization
 AppImage
 AppImageKit
 Araps
 AreEqual
+ArgumentException
 ArgumentNullException
+AsEnumerable
+AsParallel
+AsQueryable
 Autocorrections
 BASM
 BAT0
@@ -92,6 +97,7 @@ Berkeleyism
 Berzerkeley
 BiCapitalization
 BigBlue
+BigInt
 Blackbox
 Boudary
 Boudary/!
@@ -140,12 +146,15 @@ ClkTagBar
 ClkWinTitle
 CoEvolution
 ColorColumn
+Concat
 ConfigureRendering
 Cpu
+CreateClass
 CreateFrame
 CreateMap
 Createmap
 Ctrl
+D6
 DA
 DBL
 DCC
@@ -164,6 +173,7 @@ DVERSION
 DVTM
 DataView
 DeathTrap
+DefaultIfEmpty
 DefaultXX
 Devs
 Div
@@ -182,6 +192,8 @@ EWMH
 EXIF
 EditListingRequest
 Edsger
+ElementAt
+ElementAtOrDefault
 EndDate
 ErrorDescription
 Escher
@@ -252,7 +264,9 @@ Feynman
 Feynman's
 FileName
 FileType
+Filetype
 Firefox
+FirstOrDefault
 FizzBuzz
 Foonly
 FreeBSD
@@ -273,8 +287,13 @@ GUIBG
 GUIFG
 Galactica
 GetDisplayValue
+GetPropertyImage
+GetPropertyImageIDList
+GetPropertyImageList
 GetSquare
 GitHub
+GroupBy
+GroupJoin
 Guids
 H
 H1
@@ -296,8 +315,11 @@ IBMism
 IBMness
 ICBM
 ICCCM
+IComparer
 IDE
 IDs
+IEnumerable
+IEqualityComparer
 IIII
 IIIII
 IIIIII
@@ -324,6 +346,7 @@ IWebElement
 Iconify
 Imagemagick
 Inbox
+IndexOutOfRangeException
 Init
 Installables
 Int32
@@ -337,6 +360,7 @@ Ismall3dlib
 Ismall3dlib/!
 JB
 JPEG
+JSON
 JavaScript
 Jin
 Jira
@@ -355,6 +379,7 @@ LOGFILE
 LX
 LXX
 Laby
+LastOrDefault
 Liam
 LineNr
 ListingExtras
@@ -363,6 +388,8 @@ ListingImageCount
 ListingRequest
 ListingTemporalExtraPromotionRequest
 LoadXml
+LongCount
+Lua
 M
 MMM
 MMMM
@@ -402,6 +429,7 @@ NOP
 NR
 NUnit
 NVIDIA
+NaN
 Narnia
 Neovim
 NetBIOS
@@ -420,6 +448,7 @@ OG
 ORed
 OSS
 Obi-Wan
+OfType
 Oj
 Ok
 Om
@@ -436,6 +465,8 @@ OpenBSD
 OpenGL
 OpenJDK
 Oq
+OrderBy
+OrderByDescending
 Os
 Ot
 Ou
@@ -444,6 +475,7 @@ Oy
 PATHs
 PDF
 PF
+PHP
 PIDFILE
 PKGS
 POSIX
@@ -473,6 +505,9 @@ Q
 QEMU
 Quentin
 RATFOR
+RBPI
+RBPR000001
+RBPR999999
 RCL
 README
 REL
@@ -550,8 +585,10 @@ Scotty
 Screenshot
 Screenshots
 ScumOS
+SelectMany
 Selectric
 Semidestructor
+SequenceEqual
 SetSquare
 ShiftMask
 Shockwave
@@ -561,11 +598,14 @@ ShubNiggurath
 Shubniggurath
 Sierpinski's
 SigNificaNce
+SkipLast
+SkipWhile
 SmallTalk
 Smalltalk
 Smokey
 Smurfs
 Solaris
+SortId
 Soundalike
 SpellBad
 Spurgeon
@@ -610,9 +650,13 @@ TMPDIR
 TODO
 TODOs
 TP
+TResult
+TSource
 TTF
 TTT
 TabLineSel
+TakeLast
+TakeWhile
 TeX
 TeXhacker
 TeXhackers
@@ -628,7 +672,17 @@ Texinfo
 Theater's
 Thunar
 Tmux
+ToArray
+ToDictionary
+ToHashSet
+ToImmutableArray
+ToImmutableDictionary
+ToImmutableHashSet
+ToImmutableList
+ToImmutableSortedDictionary
+ToImmutableSortedSet
 ToList
+ToLookup
 TradeMe
 TradeMe's
 TradeMeFeatureEditor
@@ -736,6 +790,7 @@ Xorg
 Xresources
 YACC
 YAFIYGI
+YAML
 Z
 Z0
 Z80
@@ -754,6 +809,7 @@ abbrevs
 abcdefghijklmnopqrstuvwxyz
 ability
 ac
+acc
 accumulator
 acknowledge
 acknowledged
@@ -797,6 +853,7 @@ app
 appcursor
 appimages
 appkey
+applyInterface
 ard
 arg
 argc
@@ -809,6 +866,7 @@ asshole
 attr
 augroup
 author
+autocmd
 autohint
 autoload
 autorouting
@@ -903,6 +961,7 @@ ciphertxtmsg
 classfile
 cleartxtmsg
 cloc
+clubstew
 cmd
 coauthors
 codebase
@@ -919,6 +978,7 @@ colors
 colorscheme
 com
 commandline
+comparers
 compat
 cond
 conection
@@ -944,8 +1004,14 @@ crontab
 crt
 cruft
 cruftitudelame
+cs
+csharp
+cshtml
 css
 cstopb
+cterm
+ctermbg
+ctermfg
 currentTime
 cursorlinenr
 cyan3
@@ -972,6 +1038,11 @@ debian
 deboned
 dec
 def
+defaultAccumulator
+defaultComparer
+defaultPredicate
+defaultSelector
+defaultValue
 define's
 demos
 dependacies
@@ -995,6 +1066,7 @@ disk
 dist
 distro
 distros
+div
 dman
 dmenu
 dmenucmd
@@ -1044,12 +1116,15 @@ eeing
 efghijklmnopqrstuvwxyzabcd
 egotiable
 ehavior
+elementSelector
+elements
 emacs
 emoticon
 emoticons
 endian
 endianness
 endif
+endregion
 endring
 enum
 enums
@@ -1192,7 +1267,10 @@ gtk2
 gtk3
 gtkrc
 gui
+guibg
 guid
+guifg
+guisp
 gutenberg
 gz
 h
@@ -1244,6 +1322,7 @@ homebrew
 homunculi
 hostname
 hotkeys
+hotmail
 hpmor
 hr
 hrs
@@ -1280,7 +1359,9 @@ ing
 ingness
 init
 initState
+inits
 inline
+instanceof
 int
 int64
 intel
@@ -1298,6 +1379,7 @@ isPrime
 isfloating
 ish
 iso8859
+iterateable
 iterm2
 itspriddle
 itude
@@ -1321,6 +1403,7 @@ kde
 kde3
 kde4
 kern
+keySelector
 keybind
 keybindings
 keymap
@@ -1372,6 +1455,7 @@ main
 man1
 managment
 mandelbug
+mandoc
 manjaro
 manpage
 manpages
@@ -1383,6 +1467,7 @@ maxHeigth
 maxWidth
 md
 mdi
+mdocml
 med
 medievalism
 meg
@@ -1537,6 +1622,7 @@ pagestotal
 palaceWebCode
 pangloss
 param
+paramName
 params
 paren
 parsing
@@ -1751,6 +1837,7 @@ shovelware
 showstopper
 shutdown
 shutting
+sid
 sidecar
 simpson
 sizeof
@@ -1882,6 +1969,7 @@ teleporting
 teletype
 teletypes
 teraflop
+term256
 testbedding
 testcase
 testcases
@@ -1905,6 +1993,7 @@ timestamp
 tmp
 to
 toFile
+toString
 togglebar
 touchscreen
 tput
@@ -2022,6 +2111,7 @@ vmm
 void
 volas
 vs
+vstudioDark
 w
 w3
 w3m

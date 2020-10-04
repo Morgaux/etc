@@ -1,16 +1,12 @@
 ljcooke/vim-fortune
-rhysd/git-messenger.vim
 gisphm/vim-gitignore
 RRethy/vim-illuminate
-myint/syntastic-extras
-vim-syntastic/syntastic
 pangloss/vim-javascript
 justinmk/vim-syntax-extra
 plasticboy/vim-markdown
 Michal-Miko/vim-mono-red
 cormacrelf/vim-colors-github
 kyle-thompson/xresources-colors.vim
-sheerun/vim-polyglot
 kadekillary/skull-vim
 marciomazza/vim-brogrammer-theme
 jdsimcoe/panic.vim
@@ -20,7 +16,6 @@ fenetikm/falcon
 preservim/nerdtree
 neovimhaskell/haskell-vim
 arcticicestudio/nord-vim
-OrangeT/vim-csharp
 tpope/vim-fugitive
 epeery/vim-ugly
 cocopon/iceberg.vim
